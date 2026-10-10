@@ -1,0 +1,2673 @@
+[
+  {
+    "id": "CND-03",
+    "topic": "cond",
+    "sub": "symmetry of positions",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Six items are inspected in sequence and exactly 2 are found defective. Every arrangement of the defects among the six positions is equally likely. What is the probability that the defective items are the <b>first and last</b> items inspected?",
+    "data": "",
+    "answer": {
+      "value": 0.06666666666666667,
+      "display": "1/15"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/15",
+        "correct": true,
+        "why": "",
+        "v": 0.06666666666666667
+      },
+      {
+        "text": "1/36",
+        "correct": false,
+        "why": "This treats the two defects as independent positions with probability $1/6$ each, ignoring that they must occupy different positions.",
+        "v": 0.027777777777777776
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This is the probability that a particular position, such as the first, is defective.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/30",
+        "correct": false,
+        "why": "This divides by ordered pairs of positions ($6\\cdot5 = 30$); the two defects are indistinguishable, so only the 15 unordered pairs count.",
+        "v": 0.03333333333333333
+      }
+    ],
+    "solution": [
+      "Given exactly two defects, the pair of positions is equally likely to be any of the $\\binom{6}{2} = 15$ two-element subsets.",
+      "Only one subset, $\\{1,6\\}$, is favourable.",
+      "$P = 1/15$."
+    ],
+    "hints": [
+      "Think of the pair of defect positions as a random 2-element subset.",
+      "How many such subsets are there?",
+      "How many equal $\\{1,6\\}$?"
+    ],
+    "concept": "Symmetry given the count of defects.",
+    "misconception": "Multiplying position probabilities as if independent.",
+    "why": "Conditioning on the count makes every placement equally likely.",
+    "fam": "cond:symmetry"
+  },
+  {
+    "id": "CND-04",
+    "topic": "cond",
+    "sub": "at least one: reduced sample space",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two independent audits each flag a firm with probability $\\tfrac12$. You are told that <b>at least one</b> audit flagged the firm. What is the probability that <b>both</b> flagged it?",
+    "data": "",
+    "answer": {
+      "value": 0.3333333333333333,
+      "display": "1/3"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/3",
+        "correct": true,
+        "why": "",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This would be right if you knew which audit had flagged the firm; \"at least one\" leaves three outcomes.",
+        "v": 0.5
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the unconditional probability that both flagged.",
+        "v": 0.25
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This is the probability that exactly one audit flagged, given at least one.",
+        "v": 0.6666666666666666
+      }
+    ],
+    "solution": [
+      "Outcomes (audit 1, audit 2) with at least one flag: FF, FN, NF. Each is equally likely.",
+      "Both flagged: FF only. $P = 1/3$."
+    ],
+    "hints": [
+      "List the outcomes consistent with \"at least one audit flagged\".",
+      "Are those outcomes equally likely?",
+      "Count those with both flags."
+    ],
+    "concept": "Conditioning on a union.",
+    "misconception": "Treating \"at least one\" as \"a specified one\".",
+    "why": "Learning only that at least one flagged keeps all three outcomes in play.",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-06",
+    "topic": "cond",
+    "sub": "posterior from a count condition",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three machines produce one item each, independently. Machine 1 makes a defective item with probability 0.1, machine 2 with probability 0.2 and machine 3 with probability 0.3. Exactly <b>one</b> of the three items is found defective. What is the probability that it came from <b>machine 1</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.14070351758793972,
+      "display": "0.1407"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1407",
+        "correct": true,
+        "why": "",
+        "v": 0.14070351758793972
+      },
+      {
+        "text": "0.1667",
+        "correct": false,
+        "why": "This weights machines by their defect rates alone and ignores that the other two items were good.",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "0.1",
+        "correct": false,
+        "why": "This is the unconditional probability that machine 1’s item is defective.",
+        "v": 0.1
+      },
+      {
+        "text": "0.504",
+        "correct": false,
+        "why": "This is the probability that none of the items is defective, not a posterior.",
+        "v": 0.504
+      }
+    ],
+    "solution": [
+      "Exactly one defective item has three disjoint patterns:",
+      "only machine 1: $0.1\\cdot0.8\\cdot0.7 = 0.056$; only machine 2: $0.9\\cdot0.2\\cdot0.7 = 0.126$; only machine 3: $0.9\\cdot0.8\\cdot0.3 = 0.216$.",
+      "Total $0.398$. $P(\\text{machine 1}\\mid\\text{exactly one}) = 0.056/0.398 \\approx 0.141$."
+    ],
+    "hints": [
+      "List the three ways exactly one item can be defective.",
+      "Compute the probability of each pattern using independence.",
+      "Divide the pattern with machine 1 by the sum of the patterns."
+    ],
+    "concept": "Conditioning on the total count.",
+    "misconception": "Ignoring the good items in the other positions.",
+    "why": "The conditioning event is the union of the three patterns.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-08",
+    "topic": "cond",
+    "sub": "specific card known",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three cards are dealt from a standard deck. Given that the <b>ace of hearts is among the three cards</b>, what is the probability that <b>all three are aces</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.002352941176470588,
+      "display": "0.00235"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.00235",
+        "correct": true,
+        "why": "",
+        "v": 0.002352941176470588
+      },
+      {
+        "text": "0.000181",
+        "correct": false,
+        "why": "This is the unconditional probability that three cards are all aces.",
+        "v": 0.00018099547511312217
+      },
+      {
+        "text": "0.00226",
+        "correct": false,
+        "why": "The two unknown cards come from the 51 cards other than the ace of hearts, not from all 52.",
+        "v": 0.0022624434389140274
+      },
+      {
+        "text": "0.0588",
+        "correct": false,
+        "why": "This is the probability that one other specified card is an ace; two more aces are needed.",
+        "v": 0.058823529411764705
+      }
+    ],
+    "solution": [
+      "Given the ace of hearts is in the hand, the other two cards form a uniformly random pair from the remaining 51 cards: $\\binom{51}{2} = 1275$ pairs.",
+      "Both must be among the 3 remaining aces: $\\binom32 = 3$ pairs.",
+      "$P = 3/1275 \\approx 0.00235$."
+    ],
+    "hints": [
+      "Once the ace of hearts is fixed, how many cards remain to be chosen, and from how many?",
+      "How many pairs of the other cards would make all three aces?",
+      "Divide favourable pairs by all pairs."
+    ],
+    "concept": "Conditioning on a known member of a sample.",
+    "misconception": "Not reducing the population after the known card.",
+    "why": "The remaining two cards are a random sample from the other 51.",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-09",
+    "topic": "cond",
+    "sub": "specific versus at least one",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A hand of two cards is dealt from a full pack and you are told only that it contains <b>one or more hearts</b>. What is the chance that the hand consists of <b>two hearts</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.13333333333333333,
+      "display": "2/15"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "2/15",
+        "correct": true,
+        "why": "",
+        "v": 0.13333333333333333
+      },
+      {
+        "text": "4/17",
+        "correct": false,
+        "why": "This is the probability that both are hearts given that a <i>specified</i> card is a heart; \"at least one\" is weaker information.",
+        "v": 0.23529411764705882
+      },
+      {
+        "text": "1/17",
+        "correct": false,
+        "why": "This is the unconditional probability that both cards are hearts.",
+        "v": 0.058823529411764705
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the probability that one particular card is a heart.",
+        "v": 0.25
+      }
+    ],
+    "solution": [
+      "$P(\\text{both hearts}) = \\dfrac{\\binom{13}{2}}{\\binom{52}{2}} = \\dfrac{78}{1326}$.",
+      "$P(\\text{at least one heart}) = 1-\\dfrac{\\binom{39}{2}}{\\binom{52}{2}} = 1-\\dfrac{741}{1326} = \\dfrac{585}{1326}$.",
+      "$P = 78/585 = 2/15 \\approx 0.133$."
+    ],
+    "hints": [
+      "Both hearts is a subset of at least one heart.",
+      "Compute $P(\\text{at least one heart})$ via the complement.",
+      "Divide $P(\\text{both})$ by $P(\\text{at least one})$."
+    ],
+    "concept": "Conditioning on a union versus on a specified event.",
+    "misconception": "Treating \"at least one\" as \"the first\".",
+    "why": "The conditioning event includes outcomes with only one heart, which dilutes the probability.",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-10",
+    "topic": "cond",
+    "sub": "sequential stages",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A candidate goes through three interview rounds and is eliminated at the first round she fails. $P(\\text{pass round 1}) = 0.8$, $P(\\text{pass round 2}\\mid\\text{pass round 1}) = 0.6$ and $P(\\text{pass round 3}\\mid\\text{pass rounds 1 and 2}) = 0.5$. Given that she was <b>not hired</b> (did not pass all three), what is the probability that she was eliminated <b>after passing at least one round</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.736842105263158,
+      "display": "0.7368"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.7368",
+        "correct": true,
+        "why": "",
+        "v": 0.736842105263158
+      },
+      {
+        "text": "0.4211",
+        "correct": false,
+        "why": "This is the probability of elimination in round 2 only; elimination in round 3 also follows a passed round.",
+        "v": 0.42105263157894746
+      },
+      {
+        "text": "0.2632",
+        "correct": false,
+        "why": "This is the probability of elimination in round 1, which is the complement of what is asked.",
+        "v": 0.2631578947368421
+      },
+      {
+        "text": "0.56",
+        "correct": false,
+        "why": "This is the unconditional probability of the event; it has not been divided by $P(\\text{not hired})$.",
+        "v": 0.56
+      }
+    ],
+    "solution": [
+      "Elimination probabilities: round 1: $0.2$; round 2: $0.8\\cdot0.4 = 0.32$; round 3: $0.8\\cdot0.6\\cdot0.5 = 0.24$. Hired: $0.24$.",
+      "$P(\\text{not hired}) = 0.76$.",
+      "Eliminated after passing at least one round = round 2 or round 3: $0.32+0.24 = 0.56$.",
+      "$P = 0.56/0.76 \\approx 0.737$."
+    ],
+    "hints": [
+      "List the mutually exclusive ways the process can end and their probabilities.",
+      "The condition \"not hired\" is the union of three elimination outcomes.",
+      "The event of interest is elimination in round 2 or round 3."
+    ],
+    "concept": "Conditioning on a union of stage-wise outcomes.",
+    "misconception": "Forgetting to condition on the elimination.",
+    "why": "The conditional probability restricts attention to the three elimination outcomes.",
+    "fam": "cond:sequential"
+  },
+  {
+    "id": "CND-11",
+    "topic": "cond",
+    "sub": "Pólya urn",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "An urn holds 4 red and 6 blue balls. Each time a ball is drawn, it is returned together with <b>3 more balls of the same colour</b>. What is the probability that exactly <b>2 of the first 3 draws</b> are red?",
+    "data": "",
+    "answer": {
+      "value": 0.24230769230769234,
+      "display": "0.2423"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2423",
+        "correct": true,
+        "why": "",
+        "v": 0.24230769230769234
+      },
+      {
+        "text": "0.288",
+        "correct": false,
+        "why": "This is the binomial value with fixed probability 0.4; reinforcement changes the composition after every draw.",
+        "v": 0.28800000000000003
+      },
+      {
+        "text": "0.0808",
+        "correct": false,
+        "why": "This is the probability of the single order R, R, B; the pattern can occur in 3 orders, all equally likely.",
+        "v": 0.08076923076923077
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This corresponds to sampling without replacement; here balls are added, not removed.",
+        "v": 0.30000000000000004
+      }
+    ],
+    "solution": [
+      "One order, e.g. R, R, B: $\\dfrac{4}{10}\\cdot\\dfrac{7}{13}\\cdot\\dfrac{6}{16} = \\dfrac{168}{2080}$.",
+      "The other two orders (R,B,R and B,R,R) have the same probability because the numerators and denominators are the same numbers in a different order.",
+      "$P = 3\\times\\dfrac{168}{2080} = \\dfrac{504}{2080} \\approx 0.242$."
+    ],
+    "hints": [
+      "Compute the probability of one specific order, e.g. R, R, B.",
+      "How does the urn change after each draw?",
+      "Is the probability of R, B, R different from R, R, B?"
+    ],
+    "concept": "Pólya urn: order does not matter for the probability.",
+    "misconception": "Using a binomial model with a fixed success probability.",
+    "why": "Exchangeability makes all orders with the same number of reds equally likely.",
+    "fam": "cond:sequential"
+  },
+  {
+    "id": "CND-12",
+    "topic": "cond",
+    "sub": "ordering of independent dice",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three independent fair 8-sided dice are rolled in turn. What is the probability that the three results are <b>strictly increasing</b> in the order rolled (first < second < third)?",
+    "data": "",
+    "answer": {
+      "value": 0.109375,
+      "display": "0.1094"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1094",
+        "correct": true,
+        "why": "",
+        "v": 0.109375
+      },
+      {
+        "text": "0.1667",
+        "correct": false,
+        "why": "By symmetry all 6 orderings of distinct values are equally likely, but equal values are also possible, so $1/6$ overstates the probability.",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "0.6563",
+        "correct": false,
+        "why": "This counts all orderings of three distinct values; only the increasing order is favourable.",
+        "v": 0.65625
+      },
+      {
+        "text": "0.0156",
+        "correct": false,
+        "why": "This is the probability that all three results are equal, not that they are strictly increasing.",
+        "v": 0.015625
+      }
+    ],
+    "solution": [
+      "Each of the $8^3 = 512$ triples is equally likely.",
+      "A strictly increasing triple is determined by choosing 3 distinct values: $\\binom{8}{3} = 56$.",
+      "$P = 56/512 = 7/64 \\approx 0.109$."
+    ],
+    "hints": [
+      "Each ordered triple of results is equally likely.",
+      "How many triples have three distinct values in increasing order?",
+      "Choose the set of three values; the order is then forced."
+    ],
+    "concept": "Counting ordered outcomes with a monotone constraint.",
+    "misconception": "Using $1/3!$ without allowing ties.",
+    "why": "Each set of three distinct values appears in exactly one increasing order.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-13",
+    "topic": "cond",
+    "sub": "multi-stage total probability",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A hire pool has 18 laptops, 11 of which have never been rented. Three batches of 3 laptops are rented out at random one after another, and each batch is returned to the pool after use (so each batch is a uniformly random set of 3, independent of the others). What is the probability that the <b>third batch contains no laptop that was ever rented before</b>, either originally or in the first two batches?",
+    "data": "",
+    "answer": {
+      "value": 0.06286895784391468,
+      "display": "0.0629"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0629",
+        "correct": true,
+        "why": "",
+        "v": 0.06286895784391468
+      },
+      {
+        "text": "0.2022",
+        "correct": false,
+        "why": "This ignores the first two batches, which also used laptops.",
+        "v": 0.20220588235294118
+      },
+      {
+        "text": "0.00827",
+        "correct": false,
+        "why": "The first two batches need not be entirely among the never-rented laptops; they only must avoid the third batch.",
+        "v": 0.008267636166166294
+      },
+      {
+        "text": "0.1127",
+        "correct": false,
+        "why": "Only one earlier batch has been taken into account; there are two.",
+        "v": 0.11274960351787773
+      }
+    ],
+    "solution": [
+      "Fix the third batch. It must consist of 3 never-rented laptops: $\\dfrac{\\binom{11}{3}}{\\binom{18}{3}} = \\dfrac{165}{816}$.",
+      "Given that, each earlier batch must avoid those 3 laptops: probability $\\dfrac{\\binom{15}{3}}{\\binom{18}{3}} = \\dfrac{455}{816}$ each, independently.",
+      "$P = \\dfrac{165}{816}\\left(\\dfrac{455}{816}\\right)^2 \\approx 0.0629$."
+    ],
+    "hints": [
+      "It is easier to start from the third batch and ask what the earlier batches must avoid.",
+      "The batches are independent random 3-sets.",
+      "Multiply: third batch all new, first batch disjoint from it, second batch disjoint from it."
+    ],
+    "concept": "Multi-stage reasoning with independent random subsets.",
+    "misconception": "Tracking only the first stage.",
+    "why": "Conditioning on the identity of the third batch makes the rest independent.",
+    "fam": "cond:sequential"
+  },
+  {
+    "id": "CND-14",
+    "topic": "cond",
+    "sub": "symmetry: given the number of up moves",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A trader’s profit-and-loss is positive on any given day with probability $p$ and negative otherwise, independently across days. In a four-day week exactly <b>two days were profitable</b>. What is the probability that the profitable days were the <b>first two days</b> of the week?",
+    "data": "",
+    "answer": {
+      "value": 0.16666666666666666,
+      "display": "1/6"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/6",
+        "correct": true,
+        "why": "",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the probability that days 1 and 2 are both up when $p = 1/2$, without conditioning on the number of up days.",
+        "v": 0.25
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This is the probability that day 1 is up given the condition, not that days 1 and 2 are both up.",
+        "v": 0.5
+      },
+      {
+        "text": "1/8",
+        "correct": false,
+        "why": "The two up days are chosen from $\\binom42 = 6$ equally likely pairs, so this is too small.",
+        "v": 0.125
+      }
+    ],
+    "solution": [
+      "Given exactly two up days, every set of two days is equally likely, whatever $p$ is: $\\binom42 = 6$ sets.",
+      "Only $\\{1,2\\}$ is favourable: $P = 1/6$."
+    ],
+    "hints": [
+      "Does the answer depend on $p$ once the number of up days is known?",
+      "Every arrangement of two ups among four days has probability $p^2(1-p)^2$.",
+      "Divide one arrangement by the number of arrangements."
+    ],
+    "concept": "Symmetry given the number of successes in Bernoulli trials.",
+    "misconception": "Trying to compute with $p$ instead of using symmetry.",
+    "why": "All arrangements with the same count have equal probability.",
+    "fam": "cond:symmetry"
+  },
+  {
+    "id": "CND-15",
+    "topic": "cond",
+    "sub": "nested events",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A component lasts beyond 1000 hours with probability 0.90, beyond 3000 hours with probability 0.60 and beyond 5000 hours with probability 0.25. Given that it <b>fails before 5000 hours</b>, what is the probability that it failed <b>before 3000 hours</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.5333333333333333,
+      "display": "8/15"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "8/15",
+        "correct": true,
+        "why": "",
+        "v": 0.5333333333333333
+      },
+      {
+        "text": "2/5",
+        "correct": false,
+        "why": "This is the unconditional probability of failing before 3000 hours.",
+        "v": 0.4
+      },
+      {
+        "text": "3/10",
+        "correct": false,
+        "why": "The probabilities of nested events are divided, not multiplied.",
+        "v": 0.30000000000000004
+      },
+      {
+        "text": "7/12",
+        "correct": false,
+        "why": "This is the probability of failing between 3000 and 5000 hours given survival to 3000 hours, the reverse conditioning.",
+        "v": 0.5833333333333334
+      }
+    ],
+    "solution": [
+      "Failing before 3000 h is contained in failing before 5000 h, so the intersection is the smaller event.",
+      "$P(F_{3000}) = 1-0.60 = 0.40$, $P(F_{5000}) = 1-0.25 = 0.75$.",
+      "$P(F_{3000}\\mid F_{5000}) = \\dfrac{0.40}{0.75} = \\dfrac{8}{15}$."
+    ],
+    "hints": [
+      "Is one of the two events contained in the other?",
+      "Convert survival probabilities into failure probabilities.",
+      "Divide the probability of the smaller event by that of the larger."
+    ],
+    "concept": "Conditional probability for nested events.",
+    "misconception": "Conditioning in the wrong direction.",
+    "why": "If $A\\subset B$ then $P(A\\mid B) = P(A)/P(B)$.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-16",
+    "topic": "cond",
+    "sub": "optimising a conditional design",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Eight red and eight green tokens must be split between two bags (each bag receiving at least one token). A bag is then chosen with probability $\\tfrac13$ for bag 1 and $\\tfrac23$ for bag 2, and a token is drawn at random from it. How should the tokens be split to maximise the probability of drawing a red token, and what is that probability?",
+    "data": "",
+    "answer": {
+      "value": 0.8222222222222222,
+      "display": "37/45"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "37/45",
+        "correct": true,
+        "why": "",
+        "v": 0.8222222222222222
+      },
+      {
+        "text": "29/45",
+        "correct": false,
+        "why": "This puts the single red token in the bag that is chosen less often; it should go in the more likely bag.",
+        "v": 0.6444444444444444
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "An equal split gives $\\tfrac12$ in every bag, which can be improved by concentrating red tokens where they count most.",
+        "v": 0.5
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This puts all red tokens in bag 2 and all green in bag 1; leaving one red alone in bag 2 and the rest with the greens does better.",
+        "v": 0.6666666666666666
+      }
+    ],
+    "solution": [
+      "The total probability is $\\tfrac13\\cdot\\dfrac{r_1}{n_1} + \\tfrac23\\cdot\\dfrac{8-r_1}{n_2}$.",
+      "Best: put exactly one red token alone in the more likely bag (bag 2), so it gives red with probability 1, and all remaining tokens (7 red, 8 green) in bag 1: $\\dfrac13\\cdot\\dfrac7{15}$.",
+      "$P = \\dfrac23+\\dfrac{7}{45} = \\dfrac{37}{45} \\approx 0.822$."
+    ],
+    "hints": [
+      "Write the probability of red as a weighted average of the bag proportions.",
+      "The bag chosen more often should have the highest possible proportion of red.",
+      "What is the highest proportion one bag can have, and what is left for the other?"
+    ],
+    "concept": "Optimising a total-probability expression.",
+    "misconception": "Balancing the bags rather than concentrating red tokens in the more likely bag.",
+    "why": "A weighted average is maximised by placing the larger weight on the larger value.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-17",
+    "topic": "cond",
+    "sub": "information about a later draw",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two cards are dealt from a standard deck. You are told that the <b>second card is a spade</b> (but are not shown either card). What is the probability that <b>both cards are spades</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.23529411764705882,
+      "display": "4/17"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "4/17",
+        "correct": true,
+        "why": "",
+        "v": 0.23529411764705882
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the probability that the first card is a spade without the information; the second card being a spade removes one spade from the others.",
+        "v": 0.25
+      },
+      {
+        "text": "1/17",
+        "correct": false,
+        "why": "This is the unconditional probability that both are spades.",
+        "v": 0.058823529411764705
+      },
+      {
+        "text": "6/25",
+        "correct": false,
+        "why": "After removing the second card there are 51 cards for the first, not 50.",
+        "v": 0.24
+      }
+    ],
+    "solution": [
+      "Given that the second card is a spade, the first card is equally likely to be any of the other 51 cards, 12 of which are spades.",
+      "$P = 12/51 = 4/17 \\approx 0.235$."
+    ],
+    "hints": [
+      "By symmetry, the first card is a random card from those not used as the second.",
+      "How many spades and how many cards remain?",
+      "Divide the spades left by the cards left."
+    ],
+    "concept": "Conditioning on a later draw.",
+    "misconception": "Thinking that the later draw cannot affect the earlier card.",
+    "why": "In an exchangeable sequence information about any draw updates the others equally.",
+    "fam": "cond:symmetry"
+  },
+  {
+    "id": "CND-18",
+    "topic": "cond",
+    "sub": "Markov dependence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A commuter uses route X or route Y each day. She chooses X on the first day with probability 0.4. On every later day she stays with the previous day's route with probability 0.7 and switches with probability 0.3. What is the probability that she uses <b>X, X, Y, Y</b> on days 1 to 4?",
+    "data": "",
+    "answer": {
+      "value": 0.05879999999999999,
+      "display": "0.0588"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0588",
+        "correct": true,
+        "why": "",
+        "v": 0.05879999999999999
+      },
+      {
+        "text": "0.1372",
+        "correct": false,
+        "why": "The change from X to Y on day 3 has probability 0.3, not 0.7.",
+        "v": 0.1372
+      },
+      {
+        "text": "0.0625",
+        "correct": false,
+        "why": "This treats each day as an independent fair choice, ignoring both the initial probability and the persistence.",
+        "v": 0.0625
+      },
+      {
+        "text": "0.0882",
+        "correct": false,
+        "why": "The first-day probability of X is 0.4, not 0.6.",
+        "v": 0.0882
+      }
+    ],
+    "solution": [
+      "Multiply along the sequence: day 1 X: 0.4; day 2 stays X: 0.7; day 3 switches to Y: 0.3; day 4 stays Y: 0.7.",
+      "$0.4\\times0.7\\times0.3\\times0.7 = 0.0588$."
+    ],
+    "hints": [
+      "Each day depends only on the previous day. Use the chain rule.",
+      "Which transitions occur: stay, switch, stay?",
+      "Multiply the first-day probability by the three transition probabilities."
+    ],
+    "concept": "Chain rule for a two-state Markov sequence.",
+    "misconception": "Treating the days as independent.",
+    "why": "Each factor is the conditional probability of the next day given the previous one.",
+    "fam": "cond:sequential"
+  },
+  {
+    "id": "CND-20",
+    "topic": "cond",
+    "sub": "envelope puzzle",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Four envelopes are on a table: one holds two \\$100 notes, one holds two \\$50 notes, and two hold one \\$100 note and one \\$50 note. An envelope is chosen at random and one of its notes, chosen at random, is drawn out: it is a <b>\\$100 note</b>. What is the probability that the <b>other note in the envelope is also \\$100</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.5,
+      "display": "1/2"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/2",
+        "correct": true,
+        "why": "",
+        "v": 0.5
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This treats the three kinds of envelope as equally likely, but mixed envelopes are twice as common.",
+        "v": 0.6666666666666666
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the unconditional probability of choosing the two-\\$100 envelope.",
+        "v": 0.25
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "Seeing a \\$100 note rules out the two-\\$50 envelope; of the three \\$100 notes, two belong to the double-\\$100 envelope.",
+        "v": 0.3333333333333333
+      }
+    ],
+    "solution": [
+      "There are 8 equally likely (envelope, note) pairs. Pairs showing \\$100: 2 from the double-\\$100 envelope and 1 from each mixed envelope: 4 pairs.",
+      "Of those, the other note is \\$100 in the 2 pairs from the double-\\$100 envelope.",
+      "$P = 2/4 = 1/2$."
+    ],
+    "hints": [
+      "Count the equally likely ways of seeing a \\$100 note.",
+      "In how many of them is the other note also \\$100?",
+      "Use notes (not envelopes) as the equally likely outcomes."
+    ],
+    "concept": "Conditioning on an observed item.",
+    "misconception": "Treating envelope types as equally likely.",
+    "why": "Observing a \\$100 note is evidence for the envelopes with more \\$100 notes.",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-22",
+    "topic": "cond",
+    "sub": "competing events in a game",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A game uses a fair eight-sided die. On the first roll, 8 wins and 1 loses immediately. Any other first roll (2 to 7) becomes the \"point\": the die is then rolled repeatedly until the point appears (win) or a 1 or an 8 appears (loss), whichever comes first. What is the probability of winning?",
+    "data": "",
+    "answer": {
+      "value": 0.375,
+      "display": "3/8"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "3/8",
+        "correct": true,
+        "why": "",
+        "v": 0.375
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This ignores that rolling an 8 during the point phase is also a loss; only 1 was counted.",
+        "v": 0.5
+      },
+      {
+        "text": "1/8",
+        "correct": false,
+        "why": "This counts only an immediate win on the first roll.",
+        "v": 0.125
+      },
+      {
+        "text": "7/32",
+        "correct": false,
+        "why": "This allows only one further roll; the die is rolled repeatedly until the game ends.",
+        "v": 0.21875
+      }
+    ],
+    "solution": [
+      "On the point phase each roll ends the game with probability $3/8$ (point, 1 or 8), and it is a win with probability $1/8$. So $P(\\text{win}\\mid\\text{point phase}) = \\dfrac{1/8}{3/8} = \\dfrac13$.",
+      "First roll: 8 wins ($1/8$); 2 to 7 enters the point phase ($6/8$).",
+      "$P = \\dfrac18+\\dfrac68\\cdot\\dfrac13 = \\dfrac38$."
+    ],
+    "hints": [
+      "Split on the first roll: immediate win, immediate loss, or point.",
+      "During the point phase only three outcomes end the game. Which of them wins?",
+      "Probability of winning in the point phase is the winning share of the ending outcomes."
+    ],
+    "concept": "Total probability with a repeated-trial stage.",
+    "misconception": "Counting only one extra roll.",
+    "why": "Ignoring irrelevant rolls, the ending outcome is equally likely to be any of the three.",
+    "fam": "cond:sequential"
+  },
+  {
+    "id": "CND-24",
+    "topic": "cond",
+    "sub": "reduced sample space with a product",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A fair four-sided die (faces 1 to 4) and a fair six-sided die are rolled and their <b>product</b> is recorded. Given that the product exceeds 6, what is the probability that it is <b>at least 12</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.6666666666666666,
+      "display": "2/3"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "2/3",
+        "correct": true,
+        "why": "",
+        "v": 0.6666666666666666
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This divides the favourable outcomes by all 24 outcomes and does not use the condition.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This is the probability of the condition itself, the product exceeding 6.",
+        "v": 0.5
+      },
+      {
+        "text": "4/5",
+        "correct": false,
+        "why": "The denominator should count all outcomes with product above 6, which is 12.",
+        "v": 0.8
+      }
+    ],
+    "solution": [
+      "Outcomes with product $>6$: $a=2$: $b=4,5,6$ (3); $a=3$: $b=3,4,5,6$ (4); $a=4$: $b=2,\\dots,6$ (5): 12 outcomes.",
+      "Of those, product $\\ge12$: $(2,6),(3,4),(3,5),(3,6),(4,3),(4,4),(4,5),(4,6)$: 8 outcomes.",
+      "$P = 8/12 = 2/3$."
+    ],
+    "hints": [
+      "List the outcomes where the product exceeds 6.",
+      "Among those, which have product 12 or more?",
+      "Divide the second count by the first."
+    ],
+    "concept": "Reduced sample space for non-standard dice.",
+    "misconception": "Dividing by 24.",
+    "why": "All 24 outcomes are equally likely, so conditioning restricts to the 12.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-25",
+    "topic": "cond",
+    "sub": "reduced sample space with counts",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Four independent tosses of a fair coin are made, and the report says only that the tosses were <b>not all tails</b>. What is the probability that heads came up on <b>three or more</b> of the tosses?",
+    "data": "",
+    "answer": {
+      "value": 0.3333333333333333,
+      "display": "1/3"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/3",
+        "correct": true,
+        "why": "",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "5/16",
+        "correct": false,
+        "why": "The denominator should exclude the all-tails outcome that the condition rules out: 15, not 16.",
+        "v": 0.3125
+      },
+      {
+        "text": "4/15",
+        "correct": false,
+        "why": "This counts only outcomes with exactly three heads; four heads also qualifies.",
+        "v": 0.26666666666666666
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This would be the probability for the even split between \"at most two\" and \"more than two\" heads, which does not apply here.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "At least one head: $2^4-1 = 15$ outcomes. At least three heads: $\\binom43+\\binom44 = 5$ outcomes (all inside the 15).",
+      "$P = 5/15 = 1/3$."
+    ],
+    "hints": [
+      "How many outcomes have at least one head?",
+      "How many of them have three or more heads?",
+      "Divide the second count by the first."
+    ],
+    "concept": "Conditioning on a binomial event.",
+    "misconception": "Using the full sample space as the denominator.",
+    "why": "All 15 outcomes remaining after conditioning are equally likely.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-26",
+    "topic": "cond",
+    "sub": "reduced sample space with dice",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A pair of fair dice is thrown and the total is known to be <b>four or less</b>. What is the probability that <b>one of the dice, at least, displays a single dot</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.8333333333333334,
+      "display": "5/6"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "5/6",
+        "correct": true,
+        "why": "",
+        "v": 0.8333333333333334
+      },
+      {
+        "text": "11/36",
+        "correct": false,
+        "why": "This is the unconditional probability that at least one die shows 1.",
+        "v": 0.3055555555555556
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This counts only the outcomes (1,1), (1,2), (1,3); the reversed pairs (2,1), (3,1) also qualify.",
+        "v": 0.5
+      },
+      {
+        "text": "5/36",
+        "correct": false,
+        "why": "This divides by the whole sample space rather than the six outcomes with a sum of at most 4.",
+        "v": 0.1388888888888889
+      }
+    ],
+    "solution": [
+      "Outcomes with sum $\\le4$: (1,1), (1,2), (2,1), (1,3), (3,1), (2,2): 6 outcomes.",
+      "With at least one die showing 1: all except (2,2): 5 outcomes.",
+      "$P = 5/6$."
+    ],
+    "hints": [
+      "List the outcomes with sum at most 4.",
+      "Which of these have a die showing 1?",
+      "Divide the number of qualifying outcomes by the six outcomes."
+    ],
+    "concept": "Conditioning on a sum.",
+    "misconception": "Missing the reversed order outcomes.",
+    "why": "Conditioning restricts to six equally likely outcomes.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-27",
+    "topic": "cond",
+    "sub": "unknown composition",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A supplier ships crates of three components in which the number of faulty components is equally likely to be 0, 1, 2 or 3. One component is tested and put back, then a component is tested again. If the first test finds a <b>faulty</b> component, what is the probability that the second test also finds a <b>faulty</b> one?",
+    "data": "",
+    "answer": {
+      "value": 0.7777777777777778,
+      "display": "7/9"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "7/9",
+        "correct": true,
+        "why": "",
+        "v": 0.7777777777777778
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This is the unconditional probability that the second test is faulty; the first result is informative about the crate.",
+        "v": 0.5
+      },
+      {
+        "text": "5/6",
+        "correct": false,
+        "why": "This is the value for crates of 2 components with 0, 1 or 2 faulty; here there are 3 components.",
+        "v": 0.8333333333333334
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This would be the probability if the crate were known to hold exactly 2 faulty components.",
+        "v": 0.6666666666666666
+      }
+    ],
+    "solution": [
+      "$P(F_1) = \\tfrac14\\left(0+\\tfrac13+\\tfrac23+1\\right) = \\tfrac12$.",
+      "$P(F_1\\cap F_2) = \\tfrac14\\left(0+\\tfrac19+\\tfrac49+1\\right) = \\tfrac14\\cdot\\tfrac{14}{9} = \\tfrac{7}{18}$.",
+      "$P(F_2\\mid F_1) = \\dfrac{7/18}{1/2} = \\dfrac79$."
+    ],
+    "hints": [
+      "Condition on the number of faulty components $k$; the two tests are independent given $k$.",
+      "Compute $P(W_1)$ and $P(W_1\\cap W_2)$ by averaging over $k$.",
+      "Divide the second by the first."
+    ],
+    "concept": "Draws that are conditionally independent but unconditionally dependent.",
+    "misconception": "Assuming the draws are independent unconditionally.",
+    "why": "The first draw updates beliefs about the composition, which raises the chance of another white.",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-28",
+    "topic": "cond",
+    "sub": "conditioning on a union",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Five cards from a shuffled pack are dealt face down. An observer reveals only that the number of <b>hearts is four or five</b>. What is the probability that <b>all five cards are hearts</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.04411764705882353,
+      "display": "0.0441"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0441",
+        "correct": true,
+        "why": "",
+        "v": 0.04411764705882353
+      },
+      {
+        "text": "0.000495",
+        "correct": false,
+        "why": "This is the unconditional probability of five hearts.",
+        "v": 0.0004951980792316927
+      },
+      {
+        "text": "0.6429",
+        "correct": false,
+        "why": "The fifth card in a four-heart hand is any non-heart: 39 choices, not 1.",
+        "v": 0.6428571428571429
+      },
+      {
+        "text": "0.1875",
+        "correct": false,
+        "why": "This is the probability that the fifth card is a heart given that the first four are hearts, a different condition.",
+        "v": 0.1875
+      }
+    ],
+    "solution": [
+      "Exactly four hearts: $\\binom{13}{4}\\cdot39 = 715\\cdot39 = 27\\,885$. Five hearts: $\\binom{13}{5} = 1287$.",
+      "$P(\\text{five}\\mid\\ge4) = \\dfrac{1287}{27885+1287} = \\dfrac{1287}{29172} \\approx 0.0441$."
+    ],
+    "hints": [
+      "Both events are counts of five-card hands, so no common denominator is needed.",
+      "Count hands with exactly four hearts: choose 4 hearts and one non-heart.",
+      "Divide five-heart hands by hands with at least four hearts."
+    ],
+    "concept": "Conditioning on an \"at least\" event through counts.",
+    "misconception": "Forgetting the non-heart card choices in the denominator.",
+    "why": "All hands are equally likely, so the ratio of counts is the conditional probability.",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-29",
+    "topic": "cond",
+    "sub": "solving for the intersection",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two events satisfy $P(A)=0.5$ and $P(B)=0.3$. The conditional probability of $A$ given $B$ exceeds the conditional probability of $B$ given $A$ by 0.3. Determine the probability that both events occur.",
+    "data": "",
+    "answer": {
+      "value": 0.22499999999999998,
+      "display": "0.225"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.225",
+        "correct": true,
+        "why": "",
+        "v": 0.22499999999999998
+      },
+      {
+        "text": "0.15",
+        "correct": false,
+        "why": "This is $P(A)P(B)$, which would be the intersection under independence; independence is not implied here.",
+        "v": 0.15
+      },
+      {
+        "text": "0.45",
+        "correct": false,
+        "why": "This is $P(B\\mid A) = x/0.5$ evaluated at the correct $x$, not the intersection itself.",
+        "v": 0.45
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is the given value of the difference, not the intersection.",
+        "v": 0.3
+      }
+    ],
+    "solution": [
+      "Let $x = P(A\\cap B)$. Then $P(A\\mid B) = x/0.3$ and $P(B\\mid A) = x/0.5$.",
+      "$\\dfrac{x}{0.3}-\\dfrac{x}{0.5} = 0.3 \\Rightarrow x\\left(\\dfrac{10}{3}-2\\right) = 0.3 \\Rightarrow x = 0.225$."
+    ],
+    "hints": [
+      "Write both conditional probabilities in terms of $P(A\\cap B)$.",
+      "Substitute into the given difference.",
+      "Solve the linear equation for $x$."
+    ],
+    "concept": "Using the definition of conditional probability algebraically.",
+    "misconception": "Assuming independence.",
+    "why": "Both conditional probabilities share the numerator $P(A\\cap B)$.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-30",
+    "topic": "cond",
+    "sub": "joint table",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A random firm is classified by sector (rows) and region (columns). The joint probabilities are:<table class=\"jt\"><tr><th></th><th>North</th><th>South</th><th>East</th><th>West</th></tr><tr><th>Manufacturing</th><td>.10</td><td>.06</td><td>.08</td><td>.04</td></tr><tr><th>Services</th><td>.12</td><td>.15</td><td>.14</td><td>.11</td></tr><tr><th>Agriculture</th><td>.06</td><td>.05</td><td>.03</td><td>.06</td></tr></table>Given that the firm is <b>not located in the South</b>, what is the probability that it is in <b>Manufacturing</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.2972972972972973,
+      "display": "0.2973"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2973",
+        "correct": true,
+        "why": "",
+        "v": 0.2972972972972973
+      },
+      {
+        "text": "0.28",
+        "correct": false,
+        "why": "This is the unconditional probability of Manufacturing.",
+        "v": 0.28
+      },
+      {
+        "text": "0.22",
+        "correct": false,
+        "why": "This is the joint probability of Manufacturing and not South; it has not been divided by $P(\\text{not South})$.",
+        "v": 0.22
+      },
+      {
+        "text": "0.2308",
+        "correct": false,
+        "why": "This is the probability of Manufacturing given the firm <i>is</i> in the South.",
+        "v": 0.23076923076923075
+      }
+    ],
+    "solution": [
+      "$P(\\text{Manufacturing}\\cap\\text{not South}) = 0.10+0.08+0.04 = 0.22$.",
+      "$P(\\text{not South}) = 1-(0.06+0.15+0.05) = 0.74$.",
+      "$P = 0.22/0.74 \\approx 0.297$."
+    ],
+    "hints": [
+      "Which cells make up the event \"not South\" and the event \"Manufacturing and not South\"?",
+      "The probability of \"not South\" is the complement of the South column total.",
+      "Divide the joint by the conditioning probability."
+    ],
+    "concept": "Conditional probability from a joint table.",
+    "misconception": "Reporting the joint probability as the conditional.",
+    "why": "The conditioning event restricts the table to the three non-South columns.",
+    "fam": "cond:table"
+  },
+  {
+    "id": "CND-31",
+    "topic": "cond",
+    "sub": "conditioning on at least one",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A customer holds a store loyalty card ($L$) with probability 0.35 and a co-branded credit card ($B$) with probability 0.45; the probability of holding both is 0.15. Given that the customer holds <b>at least one</b> of the two cards, what is the probability that the customer holds the <b>credit card</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.6923076923076923,
+      "display": "0.6923"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6923",
+        "correct": true,
+        "why": "",
+        "v": 0.6923076923076923
+      },
+      {
+        "text": "0.45",
+        "correct": false,
+        "why": "This is the unconditional probability of holding the credit card.",
+        "v": 0.45
+      },
+      {
+        "text": "0.4615",
+        "correct": false,
+        "why": "This is the probability of holding the credit card <i>only</i>; customers holding both also hold the credit card.",
+        "v": 0.46153846153846156
+      },
+      {
+        "text": "0.2308",
+        "correct": false,
+        "why": "This is the probability of holding both cards given at least one.",
+        "v": 0.23076923076923075
+      }
+    ],
+    "solution": [
+      "$P(L\\cup B) = 0.35+0.45-0.15 = 0.65$.",
+      "Since $B\\subset L\\cup B$, $P(B\\mid L\\cup B) = 0.45/0.65 \\approx 0.692$."
+    ],
+    "hints": [
+      "What is the probability of holding at least one of the cards?",
+      "Is holding the credit card a subset of holding at least one card?",
+      "Divide $P(B)$ by $P(L\\cup B)$."
+    ],
+    "concept": "Conditioning on a union.",
+    "misconception": "Using the marginal probability.",
+    "why": "The credit-card event is entirely inside the conditioning event.",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-33",
+    "topic": "cond",
+    "sub": "two-stage transfers",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Bag 1 holds 5 red and 3 green balls; bag 2 holds 4 red and 4 green balls. A ball is moved at random from bag 1 to bag 2, then a ball is moved at random from bag 2 back to bag 1. What is the probability that bag 1 ends up with <b>more red balls than it started with</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.16666666666666666,
+      "display": "1/6"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/6",
+        "correct": true,
+        "why": "",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "3/8",
+        "correct": false,
+        "why": "This is only the probability that the first transferred ball is green; the returning ball must then be red.",
+        "v": 0.375
+      },
+      {
+        "text": "3/16",
+        "correct": false,
+        "why": "After the transfer bag 2 holds 9 balls, so the denominator is 9.",
+        "v": 0.1875
+      },
+      {
+        "text": "5/9",
+        "correct": false,
+        "why": "This is the probability that bag 1 returns to its original composition (same colour moved there and back).",
+        "v": 0.5555555555555556
+      }
+    ],
+    "solution": [
+      "Bag 1 gains a red ball only if a green ball leaves and a red ball returns.",
+      "First transfer green: $3/8$. Bag 2 then has 4 red, 5 green (9 balls). Second transfer red: $4/9$.",
+      "$P = \\dfrac38\\cdot\\dfrac49 = \\dfrac16$."
+    ],
+    "hints": [
+      "How can bag 1 end up with one more red ball than it began with?",
+      "After the first transfer, how many balls and how many red balls are in bag 2?",
+      "Multiply the two stage probabilities."
+    ],
+    "concept": "Two-stage experiment with changing composition.",
+    "misconception": "Not updating bag 2 after the first transfer.",
+    "why": "The second stage depends on the first only through the colour moved.",
+    "fam": "cond:sequential"
+  },
+  {
+    "id": "CND-35",
+    "topic": "cond",
+    "sub": "inferring a joint probability",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "8% of firms have a debt problem ($D$) and 5% have a governance problem ($G$). Among firms that have <b>at least one</b> of the two problems, 20% have <b>both</b>. A firm with a governance problem is selected. What is the probability that it also has a debt problem?",
+    "data": "",
+    "answer": {
+      "value": 0.4333333333333334,
+      "display": "0.4333"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.4333",
+        "correct": true,
+        "why": "",
+        "v": 0.4333333333333334
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the share of firms with at least one problem that have both, not the share of governance-problem firms.",
+        "v": 0.2
+      },
+      {
+        "text": "0.2708",
+        "correct": false,
+        "why": "This is $P(G\\mid D)$, the probability of a governance problem given a debt problem.",
+        "v": 0.27083333333333337
+      },
+      {
+        "text": "0.0217",
+        "correct": false,
+        "why": "This is $P(D\\cap G)$; it must be divided by $P(G) = 0.05$.",
+        "v": 0.02166666666666667
+      }
+    ],
+    "solution": [
+      "Let $x = P(D\\cap G)$. Then $P(D\\cup G) = 0.08+0.05-x = 0.13-x$ and $x = 0.20(0.13-x)$.",
+      "$1.2x = 0.026$, so $x \\approx 0.0217$.",
+      "$P(D\\mid G) = x/0.05 \\approx 0.433$."
+    ],
+    "hints": [
+      "Express $P(D\\cup G)$ in terms of the unknown intersection.",
+      "Use \"20% of at least one are both\" as an equation.",
+      "Then divide the intersection by $P(G)$."
+    ],
+    "concept": "Solving for an intersection from a conditional statement.",
+    "misconception": "Mistaking the 20% for a conditional on $G$.",
+    "why": "The statement \"20% of those with at least one have both\" is a conditional probability given the union.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-37",
+    "topic": "cond",
+    "sub": "first to draw a winner",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Seven tickets, 3 of them winning, are drawn alternately without replacement by two players, player 1 first, until a winning ticket is drawn. The player who draws the first winning ticket wins the prize. What is the probability that <b>player 1</b> wins?",
+    "data": "",
+    "answer": {
+      "value": 0.6285714285714286,
+      "display": "22/35"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "22/35",
+        "correct": true,
+        "why": "",
+        "v": 0.6285714285714286
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The players are not symmetric: player 1 draws first and so is more likely to find the first winning ticket.",
+        "v": 0.5
+      },
+      {
+        "text": "3/7",
+        "correct": false,
+        "why": "This is the probability that player 1 wins on the very first draw ($3/7$) only.",
+        "v": 0.42857142857142855
+      },
+      {
+        "text": "3/5",
+        "correct": false,
+        "why": "This counts only the winning tickets at draws 1 and 3; draw 5 is also player 1’s.",
+        "v": 0.6
+      }
+    ],
+    "solution": [
+      "The three winning tickets occupy a random 3-subset of the 7 draw positions. The first winning ticket is at position $k$ with probability $\\dfrac{\\binom{7-k}{2}}{\\binom73}$:",
+      "$k=1$: 15/35, $k=2$: 10/35, $k=3$: 6/35, $k=4$: 3/35, $k=5$: 1/35.",
+      "Player 1 draws at odd positions: $(15+6+1)/35 = 22/35 \\approx 0.629$."
+    ],
+    "hints": [
+      "Player 1 wins if the first winning ticket is at draw 1, 3 or 5.",
+      "The first winning ticket is at position $k$ when the other two winners are among the later positions.",
+      "Count subsets: $\\binom{7-k}{2}$ out of $\\binom73 = 35$."
+    ],
+    "concept": "Distribution of the first success in sampling without replacement.",
+    "misconception": "Assuming equal chances for both players.",
+    "why": "The first-draw advantage is built into the positions of the first winner.",
+    "fam": "cond:sequential"
+  },
+  {
+    "id": "CND-38",
+    "topic": "cond",
+    "sub": "diagnose: sampling with and without replacement",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A manager picks 2 employees at random (without replacement) from 5 women and 5 men for a training programme. A student computes $P(\\text{both are women}) = \\frac{5}{10}\\times\\frac{5}{10} = \\frac14$. What is the error and the correct value?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "After the first woman is picked only 4 women remain among 9 people: $\\frac{5}{10}\\cdot\\frac{4}{9} = \\frac29$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "After the first woman is picked only 4 women remain among 9 people: $\\frac{5}{10}\\cdot\\frac{4}{9} = \\frac29$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The student should have used $\\frac{5}{10}\\cdot\\frac{4}{10}=\\frac15$",
+        "correct": false,
+        "why": "Only the numerator was updated; the number of people left is also 9, not 10."
+      },
+      {
+        "text": "There is no error: each pick is independent of the previous one",
+        "correct": false,
+        "why": "Picks without replacement are not independent; the second pick depends on the first."
+      },
+      {
+        "text": "The correct value is $\\frac{5}{10}\\cdot\\frac{5}{9}=\\frac{5}{18}$",
+        "correct": false,
+        "why": "The number of women left after one woman is picked is 4, not 5."
+      }
+    ],
+    "solution": [
+      "$P(W_1) = 5/10$. Given $W_1$, the remaining pool is 4 women among 9: $P(W_2\\mid W_1) = 4/9$.",
+      "$P(W_1\\cap W_2) = \\frac{5}{10}\\cdot\\frac49 = \\frac{2}{9}\\approx0.222$."
+    ],
+    "hints": [
+      "Does the composition of the pool change after the first selection?",
+      "What is $P(W_2\\mid W_1)$?",
+      "Multiply $P(W_1)$ by that conditional probability."
+    ],
+    "concept": "Multiplication rule with dependent draws.",
+    "misconception": "Treating draws without replacement as independent.",
+    "why": "The student’s answer corresponds to selecting with replacement.",
+    "fam": "cond:diagnose"
+  },
+  {
+    "id": "CND-39",
+    "topic": "cond",
+    "sub": "conditioning on a detail",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A family has two children; each child is independently a boy or a girl with probability 1/2 and is born on any of 7 weekdays with equal probability. You are told that <b>at least one child is a boy born on a Tuesday</b>. What is the probability that <b>both children are boys</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.48148148148148145,
+      "display": "13/27"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "13/27",
+        "correct": true,
+        "why": "",
+        "v": 0.48148148148148145
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This is the answer if you are told only that \"at least one is a boy\"; the extra detail (Tuesday) makes the two-boys case relatively more likely.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This would be the answer if you were told that a <i>specific</i> (say the older) child is a boy.",
+        "v": 0.5
+      },
+      {
+        "text": "27/196",
+        "correct": false,
+        "why": "This is the probability of the <i>conditioning</i> event (at least one Tuesday boy), not the probability of two boys given it.",
+        "v": 0.1377551020408163
+      }
+    ],
+    "solution": [
+      "Each child has 14 equally likely (sex, day) types, so 196 equally likely ordered families.",
+      "At least one Tuesday boy: $196 - 13^2 = 27$ families.",
+      "Both boys with at least one Tuesday boy: boys on 7 days each: $49 - 36 = 13$ families.",
+      "$P = 13/27 \\approx 0.481$."
+    ],
+    "hints": [
+      "Enumerate equally likely (sex, weekday) pairs for each child: how many are there?",
+      "Count families with at least one Tuesday boy using the complement of \"no Tuesday boy\".",
+      "Among those, count families in which both children are boys."
+    ],
+    "concept": "Conditioning on a detail changes the likelihood of the cases: reduced sample space counting.",
+    "misconception": "Assuming the extra detail is irrelevant (answer 1/3).",
+    "why": "The Tuesday detail makes a two-boy family more likely to be described this way (two chances to have a Tuesday boy).",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-40",
+    "topic": "cond",
+    "sub": "interpretation: Simpson’s paradox",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "Two job-training programmes: employment rates after one year.<table class=\"jt\"><tr><th></th><th>Low-skill entrants</th><th>High-skill entrants</th><th>All</th></tr><tr><th>Programme 1</th><td>20 / 100</td><td>9 / 10</td><td>29 / 110</td></tr><tr><th>Programme 2</th><td>1 / 10</td><td>70 / 100</td><td>71 / 110</td></tr></table>Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Programme 1 has the higher rate within each skill group but the lower rate overall, because it mostly enrols low-skill entrants (Simpson’s paradox)"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Programme 1 has the higher rate within each skill group but the lower rate overall, because it mostly enrols low-skill entrants (Simpson’s paradox)",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Programme 2 is better, because its overall rate (64.5%) is higher than Programme 1’s (26.4%)",
+        "correct": false,
+        "why": "The overall rates mix groups with very different baseline employment. Comparing within each skill group is the fair comparison."
+      },
+      {
+        "text": "The data are inconsistent: a programme cannot be better in each group but worse overall",
+        "correct": false,
+        "why": "This is possible. The overall rate is a weighted average of group rates with different weights (group sizes)."
+      },
+      {
+        "text": "Programme 1 is better only for low-skill entrants",
+        "correct": false,
+        "why": "Programme 1 is also better for high-skill entrants (90% versus 70%)."
+      }
+    ],
+    "solution": [
+      "Within low-skill: $20\\% > 10\\%$. Within high-skill: $90\\% > 70\\%$. So Programme 1 does better in <i>both</i> groups.",
+      "Overall: Programme 1 $= 29/110 = 26.4\\%$ and Programme 2 $= 71/110 = 64.5\\%$.",
+      "The overall rate is $\\sum P(\\text{group})\\,P(\\text{employed}\\mid\\text{group})$; Programme 1 puts 91% of its weight on the low-skill group, Programme 2 only 9%."
+    ],
+    "hints": [
+      "Compare the programmes within each skill group first.",
+      "How do the two programmes differ in their group composition?",
+      "The overall rate is a weighted average, with weights given by composition."
+    ],
+    "concept": "Law of total probability: overall rates depend on the mixing weights (Simpson’s paradox).",
+    "misconception": "Comparing aggregate rates when group compositions differ.",
+    "why": "Skill is a confounder: it affects both enrolment and employment.",
+    "fam": "cond:diagnose"
+  },
+  {
+    "id": "CND-41",
+    "topic": "cond",
+    "sub": "reading conditional probability in words",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A retailer sends a promotional email. Which probability describes \"among the customers who <b>opened</b> the email, the share who <b>bought</b>\"?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$P(\\text{bought}\\mid\\text{opened})$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$P(\\text{bought}\\mid\\text{opened})$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$P(\\text{opened}\\mid\\text{bought})$",
+        "correct": false,
+        "why": "This is the share of buyers who opened the email: the conditioning event is \"bought\"."
+      },
+      {
+        "text": "$P(\\text{bought}\\cap\\text{opened})$",
+        "correct": false,
+        "why": "This is the share of <i>all</i> customers who both opened and bought, not restricted to openers."
+      },
+      {
+        "text": "$P(\\text{bought})$",
+        "correct": false,
+        "why": "This is the share of all customers who bought, ignoring who opened the email."
+      }
+    ],
+    "solution": [
+      "\"Among those who opened\" restricts attention to openers: the conditioning event is \"opened\".",
+      "The share of them who bought is $P(\\text{bought}\\mid\\text{opened})$."
+    ],
+    "hints": [
+      "Which group is the denominator: all customers or a subgroup?",
+      "\"Among those who ...\" names the subgroup.",
+      "The event after \"share who ...\" goes before the bar."
+    ],
+    "concept": "Identifying the conditioning event from a verbal description.",
+    "misconception": "Swapping the two events.",
+    "why": "Conditional probability is a proportion within a subgroup.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-42",
+    "topic": "cond",
+    "sub": "tree diagram: joint from stage probabilities",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "60% of a firm's components come from supplier A. 3% of supplier A's components are defective. What is the probability that a randomly chosen component came from supplier A <b>and</b> is defective?",
+    "data": "",
+    "answer": {
+      "value": 0.018,
+      "display": "0.018"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Multiply along the branch: $P(A)\\,P(\\text{defective}\\mid A) = 0.60\\times0.03 = 0.018$."
+    ],
+    "hints": [
+      "The event is \"A and defective\": a path through the tree.",
+      "The second branch is conditional on the first.",
+      "Multiply the probabilities along the path."
+    ],
+    "concept": "Multiplication rule from a tree.",
+    "misconception": "Adding the two percentages.",
+    "why": "The joint probability is the share of supplier A times the defect rate within that share.",
+    "fam": "cond:sequential"
+  },
+  {
+    "id": "CND-43",
+    "topic": "cond",
+    "sub": "chain rule for three events",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A loan applicant must pass three checks in order. The probability of passing the first is 0.8. Given that the first is passed, the probability of passing the second is 0.7; given that both are passed, the probability of passing the third is 0.5. What is the probability that the applicant passes <b>all three</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.27999999999999997,
+      "display": "0.28"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(C_1C_2C_3) = P(C_1)\\,P(C_2\\mid C_1)\\,P(C_3\\mid C_1C_2) = 0.8\\times0.7\\times0.5 = 0.28$."
+    ],
+    "hints": [
+      "Each probability is conditional on the earlier checks being passed.",
+      "Write the joint as a product of a marginal and conditionals.",
+      "Multiply the three numbers."
+    ],
+    "concept": "Chain rule for sequential events.",
+    "misconception": "Treating the checks as independent with the wrong marginal probabilities.",
+    "why": "Each factor is the probability of the next step given the history so far.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-44",
+    "topic": "cond",
+    "sub": "conditional independence versus independence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Given the state of the economy (boom or recession), two firms' hiring decisions $A$ and $B$ are independent. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$A$ and $B$ can still be dependent unconditionally, because both are driven by the state of the economy"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$A$ and $B$ can still be dependent unconditionally, because both are driven by the state of the economy",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$A$ and $B$ must be independent unconditionally",
+        "correct": false,
+        "why": "Conditional independence given a common cause does not carry over: the common driver induces dependence."
+      },
+      {
+        "text": "$A$ and $B$ must be mutually exclusive",
+        "correct": false,
+        "why": "Both firms can hire in a boom; nothing makes the events disjoint."
+      },
+      {
+        "text": "$A$ and $B$ are dependent given the state of the economy",
+        "correct": false,
+        "why": "The premise says they are independent <i>given</i> the state."
+      }
+    ],
+    "solution": [
+      "Example: in a boom each firm hires with probability 0.8; in a recession 0.2; boom and recession equally likely.",
+      "Then $P(A) = P(B) = 0.5$ but $P(A\\cap B) = 0.5(0.64)+0.5(0.04) = 0.34 \\ne 0.25$.",
+      "So the events are dependent unconditionally."
+    ],
+    "hints": [
+      "Construct a small numerical example with two states.",
+      "Compute $P(A\\cap B)$ by conditioning on the state.",
+      "Compare with $P(A)P(B)$."
+    ],
+    "concept": "Conditional independence does not imply independence.",
+    "misconception": "Assuming independence given a variable means independence overall.",
+    "why": "A shared driver makes outcomes move together when it is not observed.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-45",
+    "topic": "cond",
+    "sub": "diagnose: the prosecutor’s fallacy",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A forensic test matches an innocent person's DNA profile with probability 1 in 10,000. A suspect from a city of one million people matches, and the prosecutor says: \"The chance the suspect is innocent is 1 in 10,000.\" What is the error?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "It treats $P(\\text{match}\\mid\\text{innocent})$ as $P(\\text{innocent}\\mid\\text{match})$; about 100 innocent people would match, so the suspect alone is far from certainly guilty"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "It treats $P(\\text{match}\\mid\\text{innocent})$ as $P(\\text{innocent}\\mid\\text{match})$; about 100 innocent people would match, so the suspect alone is far from certainly guilty",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Nothing: a 1 in 10,000 match probability means a 1 in 10,000 chance of innocence",
+        "correct": false,
+        "why": "The match probability is conditional on innocence; the probability of innocence given a match is a different conditional."
+      },
+      {
+        "text": "The prosecutor should have used 1 in 1,000,000, the size of the city",
+        "correct": false,
+        "why": "The relevant calculation combines the match rate with the number of people who could match, not the population size alone."
+      },
+      {
+        "text": "The suspect must be innocent because 100 people match",
+        "correct": false,
+        "why": "A match is still evidence; with about 100 matches the suspect is one of about 101 equally plausible matches if there is no other evidence, so the probability of innocence is high but not certain."
+      }
+    ],
+    "solution": [
+      "Among 1,000,000 people, about $1{,}000{,}000\\times10^{-4} = 100$ innocent people match, plus the guilty person.",
+      "Without other evidence, $P(\\text{innocent}\\mid\\text{match}) \\approx 100/101$, not $10^{-4}$.",
+      "The prosecutor transposed the conditional."
+    ],
+    "hints": [
+      "Which is given: P(match | innocent) or P(innocent | match)?",
+      "Count how many innocent people in the city would be expected to match.",
+      "Compare with the number of guilty matches."
+    ],
+    "concept": "Prosecutor’s fallacy as a transposed conditional.",
+    "misconception": "Equating $P(E\\mid H)$ with $P(H\\mid E)$.",
+    "why": "The base rate of innocence is very high, so even a rare match produces many innocent matches.",
+    "fam": "cond:diagnose"
+  },
+  {
+    "id": "CND-46",
+    "topic": "cond",
+    "sub": "comparing conditional rates",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "In an A/B test, 120 of the 400 visitors shown the promotion bought, and 90 of the 600 visitors not shown the promotion bought. What is $P(\\text{buy}\\mid\\text{promotion}) - P(\\text{buy}\\mid\\text{no promotion})$?",
+    "data": "",
+    "answer": {
+      "value": 0.15,
+      "display": "0.15"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(\\text{buy}\\mid\\text{promo}) = 120/400 = 0.30$.",
+      "$P(\\text{buy}\\mid\\text{no promo}) = 90/600 = 0.15$.",
+      "Difference $= 0.15$."
+    ],
+    "hints": [
+      "Each probability is a proportion within its own group.",
+      "Which counts form the denominators?",
+      "Subtract the two proportions."
+    ],
+    "concept": "Conditional probabilities from group counts.",
+    "misconception": "Dividing both by the grand total.",
+    "why": "The groups have different sizes, so rates must be computed within each group.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-47",
+    "topic": "cond",
+    "sub": "ordered draws without replacement",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "An urn holds 5 red and 4 blue balls. Three balls are drawn one after another without replacement. What is the probability that they appear in the colour order <b>red, blue, red</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.15873015873015872,
+      "display": "10/63"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "$\\dfrac59\\cdot\\dfrac48\\cdot\\dfrac47 = \\dfrac{80}{504} = \\dfrac{10}{63} \\approx 0.159$.",
+      "After one red is removed, 4 of the remaining 8 balls are blue; after one blue is also removed, 4 of the remaining 7 are red."
+    ],
+    "hints": [
+      "The colour order is fixed, so use the chain rule.",
+      "Update the composition after each draw.",
+      "Multiply the three conditional probabilities."
+    ],
+    "concept": "Chain rule without replacement.",
+    "misconception": "Not updating the composition.",
+    "why": "Each conditional probability reflects the balls already removed.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-48",
+    "topic": "cond",
+    "sub": "conditioning on a sum of two dice",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two fair dice are rolled and the sum is 7. What is the probability that <b>one of the dice shows a 3</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.3333333333333333,
+      "display": "1/3"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/3",
+        "correct": true,
+        "why": "",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/6",
+        "correct": false,
+        "why": "This is the probability that the first die shows 3 given nothing else; both orders (3,4) and (4,3) contain a 3.",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "11/36",
+        "correct": false,
+        "why": "This is the unconditional probability that at least one die shows a 3.",
+        "v": 0.3055555555555556
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "Of the six outcomes with sum 7, only (3,4) and (4,3) contain a 3.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "Outcomes with sum 7: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1): six equally likely.",
+      "Those containing a 3: (3,4) and (4,3).",
+      "$P = 2/6 = 1/3$."
+    ],
+    "hints": [
+      "List the outcomes with sum 7.",
+      "Which of them contain a 3?",
+      "Divide the number containing a 3 by the six outcomes."
+    ],
+    "concept": "Reduced sample space.",
+    "misconception": "Using all 36 outcomes in the denominator.",
+    "why": "The six sum-7 outcomes are equally likely.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-49",
+    "topic": "cond",
+    "sub": "conditioning on the maximum",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two fair dice are rolled and the larger of the two numbers is 4. What is the probability that the <b>smaller</b> number is 2?",
+    "data": "",
+    "answer": {
+      "value": 0.2857142857142857,
+      "display": "2/7"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "2/7",
+        "correct": true,
+        "why": "",
+        "v": 0.2857142857142857
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "The seven outcomes with maximum 4 are not four equally likely smaller values: the smaller value 4 (outcome (4,4)) occurs once, the others twice.",
+        "v": 0.25
+      },
+      {
+        "text": "1/7",
+        "correct": false,
+        "why": "The smaller number 2 arises from two ordered outcomes, (2,4) and (4,2).",
+        "v": 0.14285714285714285
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "There are seven outcomes with maximum 4, not six.",
+        "v": 0.3333333333333333
+      }
+    ],
+    "solution": [
+      "Outcomes with maximum 4: $(4,1),(4,2),(4,3),(4,4),(1,4),(2,4),(3,4)$: seven outcomes.",
+      "Smaller number 2: $(4,2)$ and $(2,4)$.",
+      "$P = 2/7$."
+    ],
+    "hints": [
+      "List all ordered outcomes whose larger value is 4.",
+      "The pair (4,4) occurs once; the others twice.",
+      "Count those with smaller value 2."
+    ],
+    "concept": "Conditioning on an order statistic.",
+    "misconception": "Treating the four possible smaller values as equally likely.",
+    "why": "Ordered outcomes, not values, are equally likely.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-50",
+    "topic": "cond",
+    "sub": "sampling without replacement: exactly one",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A batch of 20 invoices contains 6 with errors. Two invoices are checked at random without replacement. What is the probability that <b>exactly one</b> has an error?",
+    "data": "",
+    "answer": {
+      "value": 0.4421052631578947,
+      "display": "0.4421"
+    },
+    "fmt": "d",
+    "tol": 0.0006,
+    "options": [],
+    "solution": [
+      "Error then clean: $\\tfrac{6}{20}\\cdot\\tfrac{14}{19}$; clean then error: $\\tfrac{14}{20}\\cdot\\tfrac{6}{19}$.",
+      "$P = 2\\cdot\\dfrac{84}{380} = \\dfrac{168}{380} \\approx 0.442$."
+    ],
+    "hints": [
+      "There are two orders in which exactly one error occurs.",
+      "Update the counts after the first invoice.",
+      "Add the two orders."
+    ],
+    "concept": "Exactly one in two draws without replacement.",
+    "misconception": "Using sampling with replacement.",
+    "why": "The two orders are disjoint and equally likely.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-51",
+    "topic": "cond",
+    "sub": "identity for a conditional union",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "For events $A$, $B$ and $C$ with $P(C)>0$, which expression equals $P(A\\cup B\\mid C)$?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$P(A\\mid C)+P(B\\mid C)-P(A\\cap B\\mid C)$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$P(A\\mid C)+P(B\\mid C)-P(A\\cap B\\mid C)$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$P(A\\mid C)+P(B\\mid C)$",
+        "correct": false,
+        "why": "This double counts outcomes in $A\\cap B$ (within $C$), unless $A$ and $B$ are disjoint given $C$."
+      },
+      {
+        "text": "$P(A\\mid C)\\,P(B\\mid C)$",
+        "correct": false,
+        "why": "This is a product, valid for the intersection only under conditional independence."
+      },
+      {
+        "text": "$P(A\\cup B)/P(C)$",
+        "correct": false,
+        "why": "The numerator should be $P((A\\cup B)\\cap C)$, not $P(A\\cup B)$."
+      }
+    ],
+    "solution": [
+      "Conditional on $C$, $P(\\cdot\\mid C)$ is itself a probability measure, so the addition rule holds:",
+      "$P(A\\cup B\\mid C) = P(A\\mid C)+P(B\\mid C)-P(A\\cap B\\mid C)$."
+    ],
+    "hints": [
+      "Is $P(\\cdot\\mid C)$ a probability measure?",
+      "Which rules does a probability measure satisfy?",
+      "Apply the addition rule within $C$."
+    ],
+    "concept": "Conditional probability is a probability measure.",
+    "misconception": "Applying rules for unconditional events with the wrong denominator.",
+    "why": "Conditioning only changes the sample space, not the axioms.",
+    "fam": "cond:information"
+  },
+  {
+    "id": "CND-52",
+    "topic": "cond",
+    "sub": "ballot problem",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "In an election candidate $A$ receives 3 votes and candidate $B$ receives 2. The votes are counted in a uniformly random order. What is the probability that $A$ is <b>strictly ahead</b> of $B$ throughout the count?",
+    "data": "",
+    "answer": {
+      "value": 0.2,
+      "display": "1/5"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "There are $\\binom52 = 10$ equally likely orders of 3 A's and 2 B's.",
+      "A is strictly ahead throughout only for AAABB and AABAB: 2 orders.",
+      "$P = 2/10 = 1/5$ (the ballot theorem gives $(3-2)/(3+2)$)."
+    ],
+    "hints": [
+      "Count the equally likely orders of the votes.",
+      "The first vote must be for $A$; list the orders that keep $A$ strictly ahead.",
+      "Check against $(a-b)/(a+b)$."
+    ],
+    "concept": "Ballot problem.",
+    "misconception": "Assuming the order of votes is irrelevant.",
+    "why": "The ballot theorem counts paths staying above the diagonal.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-53",
+    "topic": "cond",
+    "sub": "geometric waiting time conditioned on parity",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A fair coin is tossed until the first head. Given that the first head occurred on an <b>even-numbered</b> toss, what is the probability that it occurred on <b>toss 2</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.75,
+      "display": "3/4"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "3/4",
+        "correct": true,
+        "why": "",
+        "v": 0.75
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the unconditional probability of the first head on toss 2.",
+        "v": 0.25
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The first head is on toss 2 with probability $\\tfrac14$ out of a total of $\\tfrac13$ for even tosses, which is more than half.",
+        "v": 0.5
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This does not equal the ratio $\\tfrac14\\big/\\tfrac13$.",
+        "v": 0.6666666666666666
+      }
+    ],
+    "solution": [
+      "$P(\\text{first head on toss }2) = \\tfrac14$.",
+      "$P(\\text{even}) = \\tfrac14+\\tfrac1{16}+\\cdots = \\tfrac13$.",
+      "$P = \\dfrac{1/4}{1/3} = \\dfrac34$."
+    ],
+    "hints": [
+      "Write $P(\\text{toss }2\\cap\\text{even})$ and $P(\\text{even})$.",
+      "The event \"toss 2\" is contained in \"even\".",
+      "Sum the geometric series for $P(\\text{even})$."
+    ],
+    "concept": "Conditioning with a geometric distribution.",
+    "misconception": "Forgetting to condition.",
+    "why": "Earlier tosses carry more mass than later ones.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-54",
+    "topic": "cond",
+    "sub": "equal conditional probabilities imply independence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "$P(A\\mid B) = P(A\\mid B^c) = 0.4$ and $P(B)$ is strictly between 0 and 1. Which conclusion is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$A$ and $B$ are independent, and $P(A) = 0.4$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$A$ and $B$ are independent, and $P(A) = 0.4$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$A$ and $B$ are mutually exclusive",
+        "correct": false,
+        "why": "Exclusive events have $P(A\\mid B) = 0$, not 0.4."
+      },
+      {
+        "text": "$P(A) = 0.8$",
+        "correct": false,
+        "why": "By total probability $P(A) = 0.4P(B)+0.4P(B^c) = 0.4$."
+      },
+      {
+        "text": "Nothing can be concluded about $P(A)$",
+        "correct": false,
+        "why": "Total probability determines $P(A)$ because both conditional probabilities are given and equal."
+      }
+    ],
+    "solution": [
+      "$P(A) = P(A\\mid B)P(B)+P(A\\mid B^c)P(B^c) = 0.4\\,[P(B)+P(B^c)] = 0.4$.",
+      "Since $P(A\\mid B) = P(A)$, the events are independent."
+    ],
+    "hints": [
+      "Use the law of total probability for $P(A)$.",
+      "What is $P(B)+P(B^c)$?",
+      "Compare $P(A\\mid B)$ with $P(A)$."
+    ],
+    "concept": "Independence characterised through conditional probabilities.",
+    "misconception": "Failing to use total probability.",
+    "why": "If $A$ is equally likely whether or not $B$ occurs, $B$ carries no information about $A$.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-55",
+    "topic": "cond",
+    "sub": "reversing a conditional from three numbers",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "$P(A) = 0.5$, $P(B) = 0.25$ and $P(A\\mid B) = 0.6$. What is $P(B\\mid A)$?",
+    "data": "",
+    "answer": {
+      "value": 0.3,
+      "display": "0.3"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(A\\cap B) = P(A\\mid B)P(B) = 0.6\\times0.25 = 0.15$.",
+      "$P(B\\mid A) = P(A\\cap B)/P(A) = 0.15/0.5 = 0.30$."
+    ],
+    "hints": [
+      "Both conditional probabilities share the same intersection.",
+      "Find $P(A\\cap B)$ from the given conditional.",
+      "Divide by $P(A)$."
+    ],
+    "concept": "Reversing a conditional with the joint probability.",
+    "misconception": "Assuming $P(B\\mid A) = P(A\\mid B)$.",
+    "why": "The intersection is the common link between the two conditionals.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-56",
+    "topic": "cond",
+    "sub": "when conditional probability is undefined",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "For which situation is $P(A\\mid B) = P(A\\cap B)/P(B)$ <b>not defined</b> by this formula?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$P(B) = 0$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$P(B) = 0$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$P(A) = 0$",
+        "correct": false,
+        "why": "Then $P(A\\cap B) = 0$ and $P(A\\mid B) = 0$, which is well defined when $P(B)>0$."
+      },
+      {
+        "text": "$P(A\\cap B) = 0$",
+        "correct": false,
+        "why": "This gives $P(A\\mid B) = 0$, a perfectly valid value."
+      },
+      {
+        "text": "$A\\subset B$",
+        "correct": false,
+        "why": "Then $P(A\\mid B) = P(A)/P(B)$, which is defined."
+      }
+    ],
+    "solution": [
+      "The formula divides by $P(B)$, so it requires $P(B)>0$.",
+      "When $P(B) = 0$ the conditional probability is not defined by this ratio."
+    ],
+    "hints": [
+      "Which quantity is in the denominator?",
+      "What happens when it is zero?",
+      "Check that the other cases still have $P(B)>0$."
+    ],
+    "concept": "Domain of the definition of conditional probability.",
+    "misconception": "Mixing up zero numerator with zero denominator.",
+    "why": "You cannot condition on an event that has no probability mass.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-57",
+    "topic": "cond",
+    "sub": "conditioning on parity of a sum",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two fair dice are rolled and the sum is even. What is the probability that <b>both</b> dice show odd numbers?",
+    "data": "",
+    "answer": {
+      "value": 0.5,
+      "display": "1/2"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "An even sum arises from (odd, odd) or (even, even): $9+9 = 18$ outcomes.",
+      "Both odd: 9 outcomes. $P = 9/18 = 1/2$."
+    ],
+    "hints": [
+      "In which two ways can a sum be even?",
+      "How many outcomes does each way contain?",
+      "Divide the both-odd outcomes by all outcomes with an even sum."
+    ],
+    "concept": "Reduced sample space with parity.",
+    "misconception": "Using the unconditional probability of both odd (1/4).",
+    "why": "The two ways of getting an even sum are equally likely.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-58",
+    "topic": "cond",
+    "sub": "interpreting two conditional probabilities",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A retailer finds $P(\\text{received a discount}\\mid\\text{repeat customer}) = 0.7$ and $P(\\text{repeat customer}\\mid\\text{received a discount}) = 0.2$. Which statement is a correct reading?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Most repeat customers received a discount, but only a minority of discount recipients are repeat customers"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Most repeat customers received a discount, but only a minority of discount recipients are repeat customers",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Most discount recipients are repeat customers",
+        "correct": false,
+        "why": "That would be $P(\\text{repeat}\\mid\\text{discount})>0.5$; it equals 0.2."
+      },
+      {
+        "text": "The two probabilities must be equal because both describe the same pairs of events",
+        "correct": false,
+        "why": "They have different denominators (repeat customers vs discount recipients) and generally differ."
+      },
+      {
+        "text": "A repeat customer has a 20% chance of receiving a discount",
+        "correct": false,
+        "why": "That mixes up the direction: 0.7 is the chance for a repeat customer."
+      }
+    ],
+    "solution": [
+      "0.7 is the share of repeat customers (the conditioning group) who got a discount.",
+      "0.2 is the share of discount recipients who are repeat customers.",
+      "So most repeat customers got a discount, but repeat customers are only 20% of those receiving discounts."
+    ],
+    "hints": [
+      "Which group is the denominator of each probability?",
+      "Read each as \"among ..., the share who ...\".",
+      "Compare 0.7 and 0.2 with one half."
+    ],
+    "concept": "Direction of conditioning in a business reading.",
+    "misconception": "Swapping the denominators.",
+    "why": "Different denominators make the two conditionals independent facts.",
+    "fam": "cond:diagnose"
+  },
+  {
+    "id": "CND-59",
+    "topic": "cond",
+    "sub": "continuous conditioning: uniform",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A number $X$ is uniform on $(0,1)$. Given that $X>0.3$, what is the probability that $X>0.5$?",
+    "data": "",
+    "answer": {
+      "value": 0.7142857142857143,
+      "display": "5/7"
+    },
+    "fmt": "p",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$P(X>0.5\\mid X>0.3) = \\dfrac{P(X>0.5)}{P(X>0.3)} = \\dfrac{0.5}{0.7} = \\dfrac57 \\approx 0.714$."
+    ],
+    "hints": [
+      "$\\{X>0.5\\}$ is inside $\\{X>0.3\\}$.",
+      "For a uniform variable probability is length.",
+      "Divide the lengths."
+    ],
+    "concept": "Conditioning a uniform variable on a half-line.",
+    "misconception": "Answering 0.5.",
+    "why": "The conditional distribution is uniform on the remaining interval.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-60",
+    "topic": "cond",
+    "sub": "conditional expectation from a reduced space",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A fair six-sided die is rolled and shows an <b>even</b> number. What is the expected value of the roll given this information?",
+    "data": "",
+    "answer": {
+      "value": 4,
+      "display": "4"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Given even, the outcomes 2, 4, 6 are equally likely.",
+      "$E = (2+4+6)/3 = 4$."
+    ],
+    "hints": [
+      "Which outcomes remain possible?",
+      "Are they equally likely?",
+      "Average the remaining outcomes."
+    ],
+    "concept": "Conditional expectation on a reduced sample space.",
+    "misconception": "Using the unconditional mean 3.5.",
+    "why": "The conditional distribution is uniform on the even faces.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-61",
+    "topic": "cond",
+    "sub": "memorylessness of a geometric waiting time",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A salesperson makes a sale on each independent call with probability 0.2. She has made 3 calls without a sale. What is the probability that she makes a sale within the <b>next 2 calls</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.3599999999999999,
+      "display": "0.36"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "The calls are independent, so past failures do not matter.",
+      "$P(\\text{sale within 2}) = 1-0.8^2 = 0.36$.",
+      "Check: $1-P(\\text{no sale in 5})/P(\\text{no sale in 3}) = 1-0.8^2$."
+    ],
+    "hints": [
+      "Do three earlier failures change the next call?",
+      "Compute the probability of no sale in two calls.",
+      "Take the complement."
+    ],
+    "concept": "Memorylessness.",
+    "misconception": "The gambler’s fallacy.",
+    "why": "Independent trials ignore the past.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-62",
+    "topic": "cond",
+    "sub": "conditioning on distinct values",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three numbers are drawn one after another, with replacement, from $\\{1,2,3,4,5,6\\}$. Given that all three are different, what is the probability that they are in <b>increasing</b> order?",
+    "data": "",
+    "answer": {
+      "value": 0.16666666666666666,
+      "display": "1/6"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/6",
+        "correct": true,
+        "why": "",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "5/54",
+        "correct": false,
+        "why": "This is the unconditional probability of an increasing triple; the condition raises it.",
+        "v": 0.09259259259259259
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "There are $3! = 6$ equally likely orders of three distinct values, not 3.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "Only one of the six orders is increasing.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "Given three distinct values, all $3! = 6$ orderings are equally likely by symmetry.",
+      "One of them is increasing: $P = 1/6$."
+    ],
+    "hints": [
+      "Given the set of three distinct values, how many orders are possible?",
+      "Are they equally likely?",
+      "How many are increasing?"
+    ],
+    "concept": "Symmetry given distinct values.",
+    "misconception": "Not conditioning.",
+    "why": "Conditioning on distinctness leaves every ordering of a set equally likely.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-63",
+    "topic": "cond",
+    "sub": "symmetry: different colours",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "An urn holds 5 red and 3 blue balls. Two balls are drawn without replacement and have <b>different colours</b>. What is the probability that the <b>first</b> ball drawn was red?",
+    "data": "",
+    "answer": {
+      "value": 0.5,
+      "display": "1/2"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/2",
+        "correct": true,
+        "why": "",
+        "v": 0.5
+      },
+      {
+        "text": "5/8",
+        "correct": false,
+        "why": "This is the unconditional probability that the first ball is red; the condition removes the bias.",
+        "v": 0.625
+      },
+      {
+        "text": "3/7",
+        "correct": false,
+        "why": "This is $P(\\text{second blue}\\mid\\text{first red})$, a different quantity.",
+        "v": 0.42857142857142855
+      },
+      {
+        "text": "15/56",
+        "correct": false,
+        "why": "This is $P(\\text{red then blue})$, not divided by $P(\\text{different colours})$.",
+        "v": 0.26785714285714285
+      }
+    ],
+    "solution": [
+      "$P(RB) = \\tfrac58\\cdot\\tfrac37 = \\tfrac{15}{56}$ and $P(BR) = \\tfrac38\\cdot\\tfrac57 = \\tfrac{15}{56}$.",
+      "The two orders are equally likely, so $P(\\text{first red}\\mid\\text{different}) = \\tfrac12$."
+    ],
+    "hints": [
+      "Compute the probabilities of red-then-blue and blue-then-red.",
+      "Are they equal?",
+      "Condition on their union."
+    ],
+    "concept": "Symmetry in sampling without replacement.",
+    "misconception": "Reporting the unconditional probability.",
+    "why": "Both orders of a given pair of colours are equally likely.",
+    "fam": "cond:symmetry"
+  },
+  {
+    "id": "CND-64",
+    "topic": "cond",
+    "sub": "conditioning on at least two of three",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Three independent events each occur with probability $\\tfrac12$. Given that <b>at least two</b> occur, what is the probability that <b>all three</b> occur?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "1/4"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "$P(\\text{all three}) = 1/8$. $P(\\text{at least two}) = (3+1)/8 = 1/2$.",
+      "$P = (1/8)/(1/2) = 1/4$."
+    ],
+    "hints": [
+      "How many of the 8 equally likely outcomes have at least two events?",
+      "How many have all three?",
+      "Divide the second count by the first."
+    ],
+    "concept": "Conditioning on a count of successes.",
+    "misconception": "Using the unconditional probability 1/8 of all three occurring.",
+    "why": "Of the 4 outcomes with at least two occurrences, exactly one has three.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-65",
+    "topic": "cond",
+    "sub": "geometric conditioning on a region",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A point $(X,Y)$ is chosen uniformly in the unit square. Given that $X+Y>1$, what is the probability that $X>\\tfrac12$?",
+    "data": "",
+    "answer": {
+      "value": 0.75,
+      "display": "3/4"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "The region $X+Y>1$ is a triangle of area $\\tfrac12$.",
+      "Within it, $X>\\tfrac12$ leaves the part $\\{x>\\tfrac12,\\ y>1-x\\}$ of area $\\int_{1/2}^1 x\\,dx = \\tfrac38$.",
+      "$P = \\dfrac{3/8}{1/2} = \\dfrac34$."
+    ],
+    "hints": [
+      "Draw the unit square and shade $x+y>1$.",
+      "Find the area of the part with $x>\\tfrac12$.",
+      "Divide by the area of the triangle."
+    ],
+    "concept": "Conditioning in a geometric setting.",
+    "misconception": "Using the unconditional $\\tfrac12$.",
+    "why": "Probability is area ratio under the uniform distribution.",
+    "fam": "cond:reduced-space"
+  },
+  {
+    "id": "CND-66",
+    "topic": "cond",
+    "sub": "conditioning on arrival order",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two independent arrival times $A$ and $B$ are uniform on $(0,1)$. Given that $B>0.4$, what is the probability that $A<B$?",
+    "data": "",
+    "answer": {
+      "value": 0.7,
+      "display": "0.7"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(A<B,\\ B>0.4) = \\int_{0.4}^{1} b\\,db = \\dfrac{1-0.16}{2} = 0.42$.",
+      "$P(B>0.4) = 0.6$.",
+      "$P = 0.42/0.6 = 0.7$."
+    ],
+    "hints": [
+      "Condition on the value of $B$: $P(A<b) = b$.",
+      "Integrate over $b>0.4$.",
+      "Divide by $P(B>0.4)$."
+    ],
+    "concept": "Conditional probability with two continuous variables.",
+    "misconception": "Answering one half.",
+    "why": "Larger values of $B$ make $A<B$ more likely.",
+    "fam": "cond:reduced-space"
+  }
+]

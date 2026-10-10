@@ -1,0 +1,2350 @@
+[
+  {
+    "id": "CNT-01",
+    "topic": "counting",
+    "sub": "multiplication principle with restrictions",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A company issues employee IDs made of one department letter from $\\{A,B,C,D,E\\}$ followed by a four-digit number. The first digit of the number may not be 0 and the last digit must be odd; the middle two digits are unrestricted. How many different IDs can be issued?",
+    "data": "",
+    "answer": {
+      "value": 22500,
+      "display": "22,500"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "22,500",
+        "correct": true,
+        "why": "",
+        "v": 22500
+      },
+      {
+        "text": "50,000",
+        "correct": false,
+        "why": "This ignores both restrictions on the number: the first digit cannot be 0 and the last must be odd.",
+        "v": 50000
+      },
+      {
+        "text": "45,000",
+        "correct": false,
+        "why": "The restriction on the last digit (odd) has not been applied.",
+        "v": 45000
+      },
+      {
+        "text": "18,000",
+        "correct": false,
+        "why": "There are 5 odd digits (1, 3, 5, 7, 9), not 4.",
+        "v": 18000
+      }
+    ],
+    "solution": [
+      "Fill the positions one at a time and multiply the number of choices.",
+      "Letter: 5. First digit: 9 (1 to 9). Two middle digits: 10 each. Last digit: 5 (odd).",
+      "$5\\times9\\times10\\times10\\times5 = 22\\,500$."
+    ],
+    "hints": [
+      "Choose each character in turn and ask how many options remain for that position.",
+      "The first digit has 9 options, the last has 5; they can be chosen independently of the others.",
+      "Multiply: 5 letters, 9, 10, 10, 5."
+    ],
+    "concept": "Multiplication principle with position-specific restrictions.",
+    "misconception": "Applying a restriction to the wrong position or forgetting one.",
+    "why": "The number of codes is the product of the choices at each independent position.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-02",
+    "topic": "counting",
+    "sub": "arrangements with a positional restriction",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Four panellists and a moderator are to sit in a row of five chairs for a broadcast. The moderator must take one of the two end chairs. In how many different ways can the five people be seated?",
+    "data": "",
+    "answer": {
+      "value": 48,
+      "display": "48"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "48",
+        "correct": true,
+        "why": "",
+        "v": 48
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "This ignores the restriction on the moderator and counts all arrangements of five people.",
+        "v": 120
+      },
+      {
+        "text": "24",
+        "correct": false,
+        "why": "The moderator can take either end chair; this counts only one of them.",
+        "v": 24
+      },
+      {
+        "text": "12",
+        "correct": false,
+        "why": "After placing the moderator, all four panellists can be arranged in the remaining chairs: $4!$, not $3!$.",
+        "v": 12
+      }
+    ],
+    "solution": [
+      "The moderator has 2 possible chairs. The four panellists then fill the remaining four chairs in $4! = 24$ ways.",
+      "Total: $2\\times24 = 48$."
+    ],
+    "hints": [
+      "Place the person with the restriction first.",
+      "How many choices does the moderator have, and then how many people remain to arrange?",
+      "Multiply the two stages."
+    ],
+    "concept": "Counting permutations after fixing a restricted object.",
+    "misconception": "Using $5!$ and forgetting the restriction.",
+    "why": "The moderator’s choice and the panellists’ order are independent stages.",
+    "fam": "count:arrange"
+  },
+  {
+    "id": "CNT-03",
+    "topic": "counting",
+    "sub": "arrangements with blocks",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Six distinct books are placed on a shelf: 3 statistics books, 2 econometrics books and 1 dictionary. The three statistics books must stand together and the two econometrics books must stand together. How many arrangements are possible?",
+    "data": "",
+    "answer": {
+      "value": 72,
+      "display": "72"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "72",
+        "correct": true,
+        "why": "",
+        "v": 72
+      },
+      {
+        "text": "12",
+        "correct": false,
+        "why": "This arranges the statistics books among themselves and the econometrics books among themselves but never orders the three blocks.",
+        "v": 12
+      },
+      {
+        "text": "720",
+        "correct": false,
+        "why": "This ignores the requirement that each subject’s books stand together.",
+        "v": 720
+      },
+      {
+        "text": "144",
+        "correct": false,
+        "why": "The order within the two-book block is already included once as $2!$; doubling counts it again.",
+        "v": 144
+      }
+    ],
+    "solution": [
+      "Treat the statistics books as one block and the econometrics books as another. With the dictionary there are 3 units, arranged in $3! = 6$ ways.",
+      "Within the statistics block the books can be ordered in $3! = 6$ ways, within the econometrics block in $2! = 2$ ways.",
+      "$6\\times6\\times2 = 72$."
+    ],
+    "hints": [
+      "Think of each group that must stay together as a single object first.",
+      "How many objects are there on the shelf once the blocks are formed, and in how many orders?",
+      "Then multiply by the number of orderings inside each block."
+    ],
+    "concept": "Counting arrangements with several blocks.",
+    "misconception": "Forgetting to order the blocks themselves.",
+    "why": "Block order and within-block order are independent choices, so their counts multiply.",
+    "fam": "count:arrange"
+  },
+  {
+    "id": "CNT-04",
+    "topic": "counting",
+    "sub": "circular arrangements",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three couples are to be seated at a round table with six identical chairs. Two seatings are the same if one is a rotation of the other. In how many distinct ways can they be seated if each couple must sit side by side?",
+    "data": "",
+    "answer": {
+      "value": 16,
+      "display": "16"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "16",
+        "correct": true,
+        "why": "",
+        "v": 16
+      },
+      {
+        "text": "48",
+        "correct": false,
+        "why": "Three blocks around a circle can be arranged in $(3-1)! = 2$ ways, not $3!$; rotations are the same seating.",
+        "v": 48
+      },
+      {
+        "text": "2",
+        "correct": false,
+        "why": "This orders the couples around the table but ignores the two possible orders within each couple.",
+        "v": 2
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "This is the number of circular arrangements of six people with no couple restriction.",
+        "v": 120
+      }
+    ],
+    "solution": [
+      "Treat each couple as a block: 3 blocks around a circle can be arranged in $(3-1)! = 2$ ways, since rotations are identical.",
+      "Within each block the two partners can swap places: $2^3 = 8$ ways.",
+      "$2\\times8 = 16$."
+    ],
+    "hints": [
+      "Combine each couple into one object; how many objects sit around the table?",
+      "For $n$ objects around a circle, rotations are equivalent: there are $(n-1)!$ arrangements.",
+      "Each couple can be seated in 2 internal orders."
+    ],
+    "concept": "Circular permutations combined with blocks.",
+    "misconception": "Using $n!$ for a circle without removing rotations.",
+    "why": "Fixing one block removes the rotational symmetry, leaving $(n-1)!$ patterns.",
+    "fam": "count:arrange"
+  },
+  {
+    "id": "CNT-05",
+    "topic": "counting",
+    "sub": "arrangements with repeated letters",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A student lists every distinct way of re-ordering all nine letters of the word ECONOMICS, never writing the same string twice. How many entries will the list contain?",
+    "data": "",
+    "answer": {
+      "value": 90720,
+      "display": "90,720"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "90,720",
+        "correct": true,
+        "why": "",
+        "v": 90720
+      },
+      {
+        "text": "362,880",
+        "correct": false,
+        "why": "This treats the two C’s and the two O’s as distinguishable letters.",
+        "v": 362880
+      },
+      {
+        "text": "181,440",
+        "correct": false,
+        "why": "Only one repeated letter has been divided out; both C and O occur twice.",
+        "v": 181440
+      },
+      {
+        "text": "45,360",
+        "correct": false,
+        "why": "A third repeated letter has been assumed; only C and O repeat (E, N, M, I, S occur once).",
+        "v": 45360
+      }
+    ],
+    "solution": [
+      "ECONOMICS has 9 letters: C occurs twice, O occurs twice, and E, N, M, I, S once each.",
+      "If all letters were different there would be $9!$ arrangements; swapping the two C’s or the two O’s gives the same word, so divide by $2!\\,2!$.",
+      "$\\dfrac{9!}{2!\\,2!} = 90\\,720$."
+    ],
+    "hints": [
+      "Count how many times each letter appears in the word.",
+      "Start from $9!$ and correct for indistinguishable repeats.",
+      "Divide by $2!$ for each letter that occurs twice."
+    ],
+    "concept": "Permutations with indistinguishable objects.",
+    "misconception": "Using $n!$ when some objects are identical.",
+    "why": "Each distinct word is counted $2!\\,2!$ times among the $9!$ labelled arrangements.",
+    "fam": "count:multinomial"
+  },
+  {
+    "id": "CNT-06",
+    "topic": "counting",
+    "sub": "at least one: complement",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A fund manager must choose 3 stocks for a portfolio from a watch-list of 12 stocks, of which 4 are technology stocks. How many portfolios contain <b>at least one technology stock</b>?",
+    "data": "",
+    "answer": {
+      "value": 164,
+      "display": "164"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "164",
+        "correct": true,
+        "why": "",
+        "v": 164
+      },
+      {
+        "text": "112",
+        "correct": false,
+        "why": "This counts only portfolios with exactly one technology stock; portfolios with two or three also qualify.",
+        "v": 112
+      },
+      {
+        "text": "56",
+        "correct": false,
+        "why": "This is the number of portfolios with <i>no</i> technology stock.",
+        "v": 56
+      },
+      {
+        "text": "220",
+        "correct": false,
+        "why": "This counts all portfolios, including those with no technology stock.",
+        "v": 220
+      }
+    ],
+    "solution": [
+      "Total portfolios: $\\binom{12}{3} = 220$.",
+      "Portfolios with no technology stock use only the 8 others: $\\binom{8}{3} = 56$.",
+      "At least one: $220-56 = 164$."
+    ],
+    "hints": [
+      "\"At least one\" is usually easier through its opposite.",
+      "How many portfolios contain no technology stock at all?",
+      "Subtract that count from the total number of portfolios."
+    ],
+    "concept": "Counting \"at least one\" with the complement.",
+    "misconception": "Choosing one special item and then anything, which double counts.",
+    "why": "Every portfolio either has no technology stock or at least one, never both.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-07",
+    "topic": "counting",
+    "sub": "selection then designation",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A department of 10 faculty members forms a 3-person hiring panel and then names one of the three as chair. In how many ways can the panel and its chair be chosen?",
+    "data": "",
+    "answer": {
+      "value": 360,
+      "display": "360"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "360",
+        "correct": true,
+        "why": "",
+        "v": 360
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "This counts only the panels; each panel can be given a chair in three ways.",
+        "v": 120
+      },
+      {
+        "text": "720",
+        "correct": false,
+        "why": "This treats the three roles as all different (ordered selection), but only the chair is special.",
+        "v": 720
+      },
+      {
+        "text": "1,200",
+        "correct": false,
+        "why": "The chair must be one of the three panel members, not any of the ten faculty members.",
+        "v": 1200
+      }
+    ],
+    "solution": [
+      "Choose the panel: $\\binom{10}{3} = 120$ ways. Choose the chair from the three: 3 ways.",
+      "$120\\times3 = 360$.",
+      "Check: choose the chair first (10 ways), then the other two members $\\binom{9}{2} = 36$: $10\\times36 = 360$."
+    ],
+    "hints": [
+      "Is the order of the panel members relevant? What distinguishes one member?",
+      "Choose the panel first, then the chair.",
+      "You can verify by choosing the chair first."
+    ],
+    "concept": "Combinations followed by a designation.",
+    "misconception": "Using permutations for a set where only one member is special.",
+    "why": "Two valid orders of choosing must produce the same total.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-08",
+    "topic": "counting",
+    "sub": "restrictions: inclusion-exclusion on teams",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A project team of 5 is to be chosen from 11 candidates, including individuals $A$, $B$, $P$ and $Q$. $A$ and $B$ will not serve on the same team, and the team must contain <b>at least one</b> of $P$ and $Q$. How many teams are possible?",
+    "data": "",
+    "answer": {
+      "value": 287,
+      "display": "287"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "287",
+        "correct": true,
+        "why": "",
+        "v": 287
+      },
+      {
+        "text": "252",
+        "correct": false,
+        "why": "Teams containing both $A$ and $B$ <i>and</i> neither of $P$, $Q$ have been subtracted twice; add them back once.",
+        "v": 252
+      },
+      {
+        "text": "378",
+        "correct": false,
+        "why": "Only the restriction on $A$ and $B$ was applied; the team must also contain $P$ or $Q$.",
+        "v": 378
+      },
+      {
+        "text": "210",
+        "correct": false,
+        "why": "This adds the two sets of unwanted teams instead of removing them from the total.",
+        "v": 210
+      }
+    ],
+    "solution": [
+      "Total teams: $\\binom{11}{5} = 462$.",
+      "Bad type 1: both $A$ and $B$ on the team: $\\binom{9}{3} = 84$.",
+      "Bad type 2: neither $P$ nor $Q$: choose all 5 from the other 9: $\\binom{9}{5} = 126$.",
+      "Both bad types: $A$, $B$ on, $P$, $Q$ off: choose 3 from the remaining 7: $\\binom{7}{3} = 35$.",
+      "Valid: $462 - (84+126-35) = 287$."
+    ],
+    "hints": [
+      "Count the teams that break at least one rule and subtract from the total.",
+      "The two ways of breaking the rules can happen together, so use inclusion-exclusion.",
+      "In the overlap, $A$ and $B$ are on the team, $P$ and $Q$ are off, and 3 places are filled from 7 others."
+    ],
+    "concept": "Inclusion-exclusion for selections with two simultaneous constraints.",
+    "misconception": "Subtracting two overlapping bad sets without restoring their intersection.",
+    "why": "A team that breaks both rules is removed twice by simple subtraction, so it must be added back once.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-09",
+    "topic": "counting",
+    "sub": "lattice paths through a waypoint",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A delivery robot moves on a city grid from the depot at $(0,0)$ to a customer at $(5,3)$, taking only unit steps east or north. It must pass through the charging point at $(2,1)$. How many different routes are there?",
+    "data": "",
+    "answer": {
+      "value": 30,
+      "display": "30"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "30",
+        "correct": true,
+        "why": "",
+        "v": 30
+      },
+      {
+        "text": "56",
+        "correct": false,
+        "why": "This counts all routes from $(0,0)$ to $(5,3)$, ignoring the required charging point.",
+        "v": 56
+      },
+      {
+        "text": "13",
+        "correct": false,
+        "why": "The numbers of routes for the two legs must be multiplied, not added.",
+        "v": 13
+      },
+      {
+        "text": "60",
+        "correct": false,
+        "why": "The second leg has 3 east and 2 north steps: $\\binom{5}{2}$ routes; an extra factor of 2 has no basis.",
+        "v": 60
+      }
+    ],
+    "solution": [
+      "Leg 1: $(0,0)\\to(2,1)$ needs 2 east and 1 north steps: $\\binom{3}{1} = 3$ routes.",
+      "Leg 2: $(2,1)\\to(5,3)$ needs 3 east and 2 north steps: $\\binom{5}{2} = 10$ routes.",
+      "The legs are chosen independently: $3\\times10 = 30$."
+    ],
+    "hints": [
+      "A route through a given point splits into two independent legs.",
+      "Each leg is an arrangement of east and north steps.",
+      "Count each leg with a binomial coefficient and multiply."
+    ],
+    "concept": "Counting lattice paths with a mandatory waypoint.",
+    "misconception": "Counting all paths and forgetting the waypoint, or adding leg counts.",
+    "why": "Every valid route corresponds to one choice for each leg.",
+    "fam": "count:paths-bars"
+  },
+  {
+    "id": "CNT-10",
+    "topic": "counting",
+    "sub": "partitions into unlabelled groups",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Ten students are split into a group of 4 for a macroeconomics project and two groups of 3 that will both work on the same microeconomics project (so these two groups are not distinguished from each other). In how many ways can the split be made?",
+    "data": "",
+    "answer": {
+      "value": 2100,
+      "display": "2,100"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "2,100",
+        "correct": true,
+        "why": "",
+        "v": 2100
+      },
+      {
+        "text": "4,200",
+        "correct": false,
+        "why": "This treats the two groups of 3 as labelled; swapping them gives the same split, so divide by 2.",
+        "v": 4200
+      },
+      {
+        "text": "700",
+        "correct": false,
+        "why": "Dividing by $3!$ would be right for three identical groups; only the two groups of 3 are identical.",
+        "v": 700
+      },
+      {
+        "text": "8,400",
+        "correct": false,
+        "why": "Multiplying by 2 goes the wrong way: identical groups reduce the number of distinct splits.",
+        "v": 8400
+      }
+    ],
+    "solution": [
+      "Choose the group of 4: $\\binom{10}{4} = 210$. Choose one group of 3 from the remaining 6: $\\binom{6}{3} = 20$; the rest form the other group.",
+      "That gives $210\\times20 = 4200$ ordered choices, but the two groups of 3 are interchangeable, so each split has been counted twice.",
+      "$4200/2 = 2100$."
+    ],
+    "hints": [
+      "First count as if every group were labelled.",
+      "Which groups are interchangeable? How many times is each split counted?",
+      "Divide by the number of ways of ordering the identical groups."
+    ],
+    "concept": "Partitions into groups with some groups indistinguishable.",
+    "misconception": "Treating identical groups as labelled.",
+    "why": "Each unlabelled split corresponds to exactly 2 labelled splits.",
+    "fam": "count:multinomial"
+  },
+  {
+    "id": "CNT-11",
+    "topic": "counting",
+    "sub": "multinomial coefficient",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A six-question multiple-choice quiz has options A, B, C and D for every question. How many different answer keys contain exactly two A's, two B's, one C and one D?",
+    "data": "",
+    "answer": {
+      "value": 180,
+      "display": "180"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "180",
+        "correct": true,
+        "why": "",
+        "v": 180
+      },
+      {
+        "text": "720",
+        "correct": false,
+        "why": "This treats all six answers as distinguishable; the two A’s are interchangeable, as are the two B’s.",
+        "v": 720
+      },
+      {
+        "text": "4,096",
+        "correct": false,
+        "why": "This counts all possible answer keys, not only those with the specified composition.",
+        "v": 4096
+      },
+      {
+        "text": "360",
+        "correct": false,
+        "why": "The division by $2!\\,2!$ already accounts for the repeated letters; the extra factor has no basis.",
+        "v": 360
+      }
+    ],
+    "solution": [
+      "Choose which two questions get A: $\\binom{6}{2}$; which two of the remaining four get B: $\\binom{4}{2}$; which of the last two gets C: $\\binom{2}{1}$; the final question is D.",
+      "$15\\times6\\times2 = 180$.",
+      "Equivalently $\\dfrac{6!}{2!\\,2!\\,1!\\,1!} = 180$."
+    ],
+    "hints": [
+      "An answer key is a way of labelling six positions with letters.",
+      "Choose the positions for each letter in turn.",
+      "The result is a multinomial coefficient."
+    ],
+    "concept": "Multinomial coefficients for labelling positions.",
+    "misconception": "Not dividing out identical labels.",
+    "why": "The multinomial counts distinct arrangements of a multiset.",
+    "fam": "count:multinomial"
+  },
+  {
+    "id": "CNT-12",
+    "topic": "counting",
+    "sub": "distribution of identical objects",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A ministry distributes 14 identical grants among 5 regions. Regions 1 and 2 must each receive at least one grant; the other three regions may receive none. How many distributions are possible?",
+    "data": "",
+    "answer": {
+      "value": 1820,
+      "display": "1,820"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "1,820",
+        "correct": true,
+        "why": "",
+        "v": 1820
+      },
+      {
+        "text": "3,060",
+        "correct": false,
+        "why": "This ignores the minimum of one grant for regions 1 and 2.",
+        "v": 3060
+      },
+      {
+        "text": "715",
+        "correct": false,
+        "why": "This is the count when every region needs at least one grant; regions 3 to 5 may receive none.",
+        "v": 715
+      },
+      {
+        "text": "4,368",
+        "correct": false,
+        "why": "The number of bars is one less than the number of regions (4), so the second argument should be 4.",
+        "v": 4368
+      }
+    ],
+    "solution": [
+      "Give one grant to each of regions 1 and 2 first. That leaves 12 grants to distribute among 5 regions with no restrictions.",
+      "Non-negative solutions of $x_1+\\dots+x_5 = 12$: $\\binom{12+4}{4} = \\binom{16}{4} = 1820$."
+    ],
+    "hints": [
+      "Remove the compulsory grants first; what is left to distribute?",
+      "After that there are no restrictions, so use stars and bars.",
+      "Non-negative solutions of a sum to $n$ in $k$ variables: $\\binom{n+k-1}{k-1}$."
+    ],
+    "concept": "Stars and bars with lower bounds.",
+    "misconception": "Using the formula for positive integers when only some variables are bounded below.",
+    "why": "Shifting variables by their minimums turns bounded counts into unrestricted ones.",
+    "fam": "count:paths-bars"
+  },
+  {
+    "id": "CNT-13",
+    "topic": "counting",
+    "sub": "sampling with replacement",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three friends each independently pick one of 5 restaurants at random for lunch (every restaurant is equally likely for each friend). What is the probability that all three choose <b>different</b> restaurants?",
+    "data": "",
+    "answer": {
+      "value": 0.48,
+      "display": "12/25"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "12/25",
+        "correct": true,
+        "why": "",
+        "v": 0.48
+      },
+      {
+        "text": "3/5",
+        "correct": false,
+        "why": "This is $1 - 2/5$, a guess that ignores that the third friend must avoid two restaurants.",
+        "v": 0.6
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The sample space for independent choices has $5^3 = 125$ outcomes, not a count of ordered selections without repeats.",
+        "v": 0.5
+      },
+      {
+        "text": "2/25",
+        "correct": false,
+        "why": "The choices are ordered (friend 1, 2, 3), so each set of three restaurants corresponds to $3! = 6$ outcomes.",
+        "v": 0.08
+      }
+    ],
+    "solution": [
+      "There are $5^3 = 125$ equally likely outcomes.",
+      "Favourable: friend 1 has 5 options, friend 2 has 4 (different from friend 1), friend 3 has 3: $5\\times4\\times3 = 60$.",
+      "$P = 60/125 = 12/25 = 0.48$."
+    ],
+    "hints": [
+      "How many outcomes are there when each friend chooses independently?",
+      "Count outcomes in which no restaurant is repeated by choosing in order.",
+      "Divide the favourable count by $5^3$."
+    ],
+    "concept": "Probability of no repeats in sampling with replacement.",
+    "misconception": "Using the without-replacement count for the denominator.",
+    "why": "The probability is the ratio of the count of repeat-free sequences to all sequences.",
+    "fam": "count:probability"
+  },
+  {
+    "id": "CNT-14",
+    "topic": "counting",
+    "sub": "onto assignments",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Five parcels are sent, each independently and with equal probability, to one of three depots. What is the probability that <b>every depot receives at least one parcel</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.6172839506172839,
+      "display": "50/81"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "50/81",
+        "correct": true,
+        "why": "",
+        "v": 0.6172839506172839
+      },
+      {
+        "text": "32/81",
+        "correct": false,
+        "why": "This counts the outcomes that leave at least one depot empty (with overlaps counted twice), the opposite of the event asked for.",
+        "v": 0.3950617283950617
+      },
+      {
+        "text": "49/81",
+        "correct": false,
+        "why": "The outcomes in which two depots are empty were subtracted twice; add the 3 such outcomes back.",
+        "v": 0.6049382716049383
+      },
+      {
+        "text": "10/81",
+        "correct": false,
+        "why": "Choosing which depot receives which parcel in a fixed pattern does not count all onto assignments.",
+        "v": 0.12345679012345678
+      }
+    ],
+    "solution": [
+      "There are $3^5 = 243$ equally likely assignments.",
+      "Let $E_i$ be \"depot $i$ empty\". $|E_i| = 2^5 = 32$, $|E_i\\cap E_j| = 1$, and all three empty is impossible.",
+      "At least one empty: $3(32) - 3(1) + 0 = 93$.",
+      "Every depot used: $243-93 = 150$, so $P = 150/243 = 50/81 \\approx 0.617$."
+    ],
+    "hints": [
+      "Count the assignments in which some depot is empty, then take the complement.",
+      "Use inclusion-exclusion over the events \"depot $i$ is empty\".",
+      "If depots $i$ and $j$ are both empty, every parcel goes to the third depot."
+    ],
+    "concept": "Inclusion-exclusion for onto functions.",
+    "misconception": "Subtracting overlapping cases without correcting for their intersections.",
+    "why": "Alternating inclusion and exclusion counts each assignment with an empty depot exactly once.",
+    "fam": "count:probability"
+  },
+  {
+    "id": "CNT-15",
+    "topic": "counting",
+    "sub": "inclusion of specific items in a sample",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "An auditor draws a simple random sample of 15 invoices from a batch of 120. Two particular invoices, $X$ and $Y$, are of special interest. What is the probability that <b>exactly one</b> of $X$ and $Y$ is in the sample?",
+    "data": "",
+    "answer": {
+      "value": 0.22058823529411764,
+      "display": "15/68"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "15/68",
+        "correct": true,
+        "why": "",
+        "v": 0.22058823529411764
+      },
+      {
+        "text": "1/68",
+        "correct": false,
+        "why": "This is the probability that <i>both</i> invoices are selected.",
+        "v": 0.014705882352941176
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This adds the two inclusion probabilities and counts the case where both are selected twice.",
+        "v": 0.25
+      },
+      {
+        "text": "7/32",
+        "correct": false,
+        "why": "The second factor should use the 119 invoices remaining after $X$ is considered, not the original 120.",
+        "v": 0.21875
+      }
+    ],
+    "solution": [
+      "$P(X\\text{ in}) = 15/120$. Given that, $Y$ is out with probability $\\dfrac{105}{119}$ (105 of the 119 other invoices are not selected).",
+      "The same holds with $X$ and $Y$ exchanged, and the two cases are disjoint:",
+      "$P = 2\\cdot\\dfrac{15}{120}\\cdot\\dfrac{105}{119} = \\dfrac{15}{68} \\approx 0.221$."
+    ],
+    "hints": [
+      "Split the event into two disjoint cases according to which invoice is selected.",
+      "Given $X$ is in the sample, what is the chance that $Y$ is not?",
+      "A random sample is symmetric between invoices, so the two cases have equal probability."
+    ],
+    "concept": "Inclusion probabilities in simple random sampling.",
+    "misconception": "Using the unconditional probability for the second invoice.",
+    "why": "Sampling without replacement makes the second inclusion probability depend on the first.",
+    "fam": "count:probability"
+  },
+  {
+    "id": "CNT-16",
+    "topic": "counting",
+    "sub": "dealing into hands",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Four players are each dealt 13 cards from a freshly shuffled pack. What is the probability that every player ends up holding <b>exactly one of the four kings</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.10549819927971188,
+      "display": "0.1055"
+    },
+    "fmt": "d",
+    "tol": 0.0003,
+    "options": [
+      {
+        "text": "0.1055",
+        "correct": true,
+        "why": "",
+        "v": 0.10549819927971188
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This treats the four kings as if each were assigned to a player with independent equal chances, which is the right count only for the first king.",
+        "v": 0.25
+      },
+      {
+        "text": "0.0044",
+        "correct": false,
+        "why": "The kings can go to the four players in $4! = 24$ ways; this counts only one assignment.",
+        "v": 0.004395758303321329
+      },
+      {
+        "text": "0.0938",
+        "correct": false,
+        "why": "This uses independent draws with replacement; the kings occupy distinct cards, so the denominator is $52\\cdot51\\cdot50\\cdot49$.",
+        "v": 0.09375
+      }
+    ],
+    "solution": [
+      "Think of the positions of the four kings among the 52 dealt positions. Each position belongs to a player (13 positions each).",
+      "Favourable ordered placements of the 4 distinct kings: choose a player for each king so all differ ($4!$), and a position in that player’s 13: $4!\\cdot13^4$.",
+      "Total ordered placements: $52\\cdot51\\cdot50\\cdot49$.",
+      "$P = \\dfrac{24\\cdot28561}{6\\,497\\,400} \\approx 0.1055$."
+    ],
+    "hints": [
+      "Place the four kings one at a time into the 52 positions.",
+      "For a favourable outcome the kings go to four different players: how many assignments of kings to players are there?",
+      "Each king then has 13 positions in its player’s hand; the total number of ordered placements is $52\\cdot51\\cdot50\\cdot49$."
+    ],
+    "concept": "Counting equally likely placements of distinguished cards.",
+    "misconception": "Using independent probabilities for sampling without replacement.",
+    "why": "All ordered placements of the kings are equally likely, so probability is a ratio of counts.",
+    "fam": "count:probability"
+  },
+  {
+    "id": "CNT-17",
+    "topic": "counting",
+    "sub": "arrangements of repeated letters: adjacency",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The eleven letters of MISSISSIPPI are arranged in a random order. What is the probability that the four S's appear <b>consecutively</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.024242424242424242,
+      "display": "4/165"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "4/165",
+        "correct": true,
+        "why": "",
+        "v": 0.024242424242424242
+      },
+      {
+        "text": "1/330",
+        "correct": false,
+        "why": "After gluing the S’s there are 8 objects (the block, M, four I’s, two P’s) to arrange, not 7.",
+        "v": 0.0030303030303030303
+      },
+      {
+        "text": "3/110",
+        "correct": false,
+        "why": "A run of four adjacent slots among 11 can start at slots 1 to 8, so there are 8 favourable slot sets, not 9.",
+        "v": 0.02727272727272727
+      },
+      {
+        "text": "4/11",
+        "correct": false,
+        "why": "There is no reason for the probability to equal a single-letter proportion.",
+        "v": 0.36363636363636365
+      }
+    ],
+    "solution": [
+      "Total distinct arrangements: $\\dfrac{11!}{4!\\,4!\\,2!} = 34\\,650$.",
+      "Glue the four S’s into one block. The objects are the block, M, four I’s and two P’s: $\\dfrac{8!}{4!\\,2!} = 840$ arrangements.",
+      "$P = 840/34650 \\approx 0.0242$."
+    ],
+    "hints": [
+      "Count the distinct arrangements of all letters first.",
+      "For the favourable count, treat the four S’s as a single block.",
+      "The block, M, four I’s and two P’s are the objects to arrange."
+    ],
+    "concept": "Probability that identical objects are adjacent.",
+    "misconception": "Miscounting the objects after forming a block.",
+    "why": "Both counts use the same notion of \"distinct arrangement\", so their ratio is the probability.",
+    "fam": "count:multinomial"
+  },
+  {
+    "id": "CNT-19",
+    "topic": "counting",
+    "sub": "digit problems with cases",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "How many six-digit numbers (no leading zero) have <b>no repeated digit</b> and are <b>divisible by 5</b>?",
+    "data": "",
+    "answer": {
+      "value": 28560,
+      "display": "28,560"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "28,560",
+        "correct": true,
+        "why": "",
+        "v": 28560
+      },
+      {
+        "text": "30,240",
+        "correct": false,
+        "why": "When the last digit is 5 the first digit has only 8 options (not 0 and not 5), so the two cases have different counts.",
+        "v": 30240
+      },
+      {
+        "text": "15,120",
+        "correct": false,
+        "why": "This counts only numbers ending in 0; numbers ending in 5 also qualify.",
+        "v": 15120
+      },
+      {
+        "text": "54,432",
+        "correct": false,
+        "why": "The last digit is fixed first (0 or 5); the other digits then lose options one at a time.",
+        "v": 54432
+      }
+    ],
+    "solution": [
+      "A number divisible by 5 ends in 0 or 5.",
+      "Ends in 0: the other five digits are an ordered selection from 1 to 9: $9\\cdot8\\cdot7\\cdot6\\cdot5 = 15\\,120$.",
+      "Ends in 5: first digit from $\\{1,\\dots,9\\}\\setminus\\{5\\}$: 8; then four more digits from the 8 remaining (0 is now allowed): $8\\cdot7\\cdot6\\cdot5 = 1680$. Total $8\\times1680 = 13\\,440$.",
+      "Sum: $28\\,560$."
+    ],
+    "hints": [
+      "Split by the last digit, since it determines divisibility.",
+      "When the last digit is 0, there is no further restriction on the leading digit; when it is 5, 0 is no longer excluded from the middle but the first digit still cannot be 0.",
+      "Fill the leading digit first in the second case."
+    ],
+    "concept": "Cases with restrictions on first and last digits.",
+    "misconception": "Assuming the two cases have the same count.",
+    "why": "The leading-digit restriction interacts with the choice of last digit.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-20",
+    "topic": "counting",
+    "sub": "ordered selection",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A consultancy has 7 analysts available and 4 different tasks to allocate, one analyst per task, no analyst taking more than one task. In how many ways can the tasks be allocated?",
+    "data": "",
+    "answer": {
+      "value": 840,
+      "display": "840"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "840",
+        "correct": true,
+        "why": "",
+        "v": 840
+      },
+      {
+        "text": "35",
+        "correct": false,
+        "why": "This ignores which task each analyst does; the tasks are different, so order matters.",
+        "v": 35
+      },
+      {
+        "text": "2,401",
+        "correct": false,
+        "why": "This allows the same analyst to take several tasks.",
+        "v": 2401
+      },
+      {
+        "text": "5,040",
+        "correct": false,
+        "why": "This arranges all seven analysts; only four tasks are assigned.",
+        "v": 5040
+      }
+    ],
+    "solution": [
+      "The first task can go to any of 7 analysts, the second to any of the remaining 6, then 5, then 4.",
+      "$7\\cdot6\\cdot5\\cdot4 = 840 = P(7,4)$."
+    ],
+    "hints": [
+      "Are the tasks interchangeable or different from each other?",
+      "Assign the tasks in sequence; how many analysts remain each time?",
+      "This is a permutation of 4 chosen from 7."
+    ],
+    "concept": "Permutations as ordered selections.",
+    "misconception": "Using combinations when positions are distinguishable.",
+    "why": "Different tasks make each assignment an ordered selection.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-21",
+    "topic": "counting",
+    "sub": "inclusion-exclusion with sampling",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A committee of 5 is chosen at random from 7 first-year, 6 second-year and 5 third-year students. What is the probability that <b>exactly two</b> of the three year groups are represented on the committee?",
+    "data": "",
+    "answer": {
+      "value": 0.2900326797385621,
+      "display": "0.29"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.29",
+        "correct": true,
+        "why": "",
+        "v": 0.2900326797385621
+      },
+      {
+        "text": "0.2966",
+        "correct": false,
+        "why": "These counts include committees drawn entirely from one year, which represent only one group.",
+        "v": 0.2965686274509804
+      },
+      {
+        "text": "0.9967",
+        "correct": false,
+        "why": "This is the probability that at least two groups are represented, including committees with all three.",
+        "v": 0.9967320261437909
+      },
+      {
+        "text": "0.1471",
+        "correct": false,
+        "why": "Only one pair of year groups was considered; any of the three pairs can be the represented pair.",
+        "v": 0.14705882352941177
+      }
+    ],
+    "solution": [
+      "Total committees: $\\binom{18}{5} = 8568$.",
+      "For a given pair of year groups, committees using only those two groups but not just one of them: $\\binom{a+b}{5} - \\binom{a}{5} - \\binom{b}{5}$.",
+      "Years (1,2): $\\binom{13}{5}-\\binom75-\\binom65 = 1287-21-6 = 1260$. Years (1,3): $792-21-1 = 770$. Years (2,3): $462-6-1 = 455$.",
+      "Total $2485$, so $P = 2485/8568 \\approx 0.290$."
+    ],
+    "hints": [
+      "Fix which two year groups are represented and count the committees using exactly those two.",
+      "Within a pair, subtract the committees that come entirely from one of the two years.",
+      "Add the three pair counts and divide by $\\binom{18}{5}$."
+    ],
+    "concept": "Counting committees with exactly $k$ of several groups represented.",
+    "misconception": "Including single-group committees in each pair count.",
+    "why": "Each committee with exactly two represented groups belongs to exactly one pair.",
+    "fam": "count:probability"
+  },
+  {
+    "id": "CNT-22",
+    "topic": "counting",
+    "sub": "positions in a random order",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Twelve research proposals, 4 of them on infrastructure, are presented to a panel in a uniformly random order. What is the probability that the four infrastructure proposals are presented <b>consecutively</b> (in some order, in four adjacent slots)?",
+    "data": "",
+    "answer": {
+      "value": 0.01818181818181818,
+      "display": "1/55"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/55",
+        "correct": true,
+        "why": "",
+        "v": 0.01818181818181818
+      },
+      {
+        "text": "1/33",
+        "correct": false,
+        "why": "This is the probability that all four fall in the first six slots, a different event.",
+        "v": 0.030303030303030304
+      },
+      {
+        "text": "4/165",
+        "correct": false,
+        "why": "A block of four slots can start at positions 1 to 9 only, so there are 9 starting points, not 12.",
+        "v": 0.024242424242424242
+      },
+      {
+        "text": "1/12",
+        "correct": false,
+        "why": "The probability depends on the number of ways the four slots can be placed among all $\\binom{12}{4}$ sets of slots.",
+        "v": 0.08333333333333333
+      }
+    ],
+    "solution": [
+      "The set of slots occupied by the infrastructure proposals is equally likely to be any of $\\binom{12}{4} = 495$ four-element subsets.",
+      "The subset is four consecutive slots if it starts at slot 1, 2, …, 9: 9 subsets.",
+      "$P = 9/495 = 1/55 \\approx 0.0182$."
+    ],
+    "hints": [
+      "Only the set of occupied slots matters; all sets of four slots are equally likely.",
+      "How many sets of four slots are consecutive?",
+      "A run of four starting at slot $s$ needs $s+3\\le12$."
+    ],
+    "concept": "Random placement of special items among positions.",
+    "misconception": "Counting starting points incorrectly or ignoring the equal-likelihood of slot sets.",
+    "why": "By symmetry the occupied slots are a uniformly random 4-subset.",
+    "fam": "count:probability"
+  },
+  {
+    "id": "CNT-23",
+    "topic": "counting",
+    "sub": "card hands",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Five cards are dealt from a standard 52-card deck. What is the probability of being dealt <b>exactly three of a kind</b>: three cards of one rank and two other cards of two different ranks (so a full house or four of a kind does not count)?",
+    "data": "",
+    "answer": {
+      "value": 0.02112845138055222,
+      "display": "0.0211"
+    },
+    "fmt": "d",
+    "tol": 0.0002,
+    "options": [
+      {
+        "text": "0.0211",
+        "correct": true,
+        "why": "",
+        "v": 0.02112845138055222
+      },
+      {
+        "text": "0.0226",
+        "correct": false,
+        "why": "Choosing any two other cards can produce a full house or four of a kind, which must be excluded.",
+        "v": 0.02256902761104442
+      },
+      {
+        "text": "0.00132",
+        "correct": false,
+        "why": "The suits of the two other cards must also be chosen: $4\\times4$ ways.",
+        "v": 0.0013205282112845138
+      },
+      {
+        "text": "0.00704",
+        "correct": false,
+        "why": "Three cards of different ranks are not three of a kind; the three equal-rank cards come from one rank.",
+        "v": 0.007042817126850741
+      }
+    ],
+    "solution": [
+      "Rank of the triple: 13. Choose 3 of its 4 suits: $\\binom43 = 4$.",
+      "Two other ranks (different from each other and from the triple): $\\binom{12}{2} = 66$; a suit for each: $4\\cdot4 = 16$.",
+      "Favourable: $13\\cdot4\\cdot66\\cdot16 = 54\\,912$. Total hands: $\\binom{52}{5} = 2\\,598\\,960$.",
+      "$P \\approx 0.0211$."
+    ],
+    "hints": [
+      "Build the hand in stages: the rank of the triple, then its suits.",
+      "The other two cards must have different ranks, both different from the triple.",
+      "Don’t forget to choose the suit for each of the two other cards."
+    ],
+    "concept": "Classical probability with a structured count.",
+    "misconception": "Allowing the two extra cards to match each other or the triple.",
+    "why": "Each hand of this type is generated exactly once by the staged construction.",
+    "fam": "count:probability"
+  },
+  {
+    "id": "CNT-24",
+    "topic": "counting",
+    "sub": "complement counting with repetition",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A three-character access code uses the letters A, B, C, D, E, with repetition allowed. How many codes contain <b>at least one repeated letter</b>?",
+    "data": "",
+    "answer": {
+      "value": 65,
+      "display": "65"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "65",
+        "correct": true,
+        "why": "",
+        "v": 65
+      },
+      {
+        "text": "60",
+        "correct": false,
+        "why": "This is the number of codes with <i>no</i> repeated letter.",
+        "v": 60
+      },
+      {
+        "text": "125",
+        "correct": false,
+        "why": "This counts all codes, not only those with a repeat.",
+        "v": 125
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "This subtracts only the 5 codes in which all three letters are equal, as if \"no repeat\" meant \"all letters the same\". Codes with different letters number $5\\cdot4\\cdot3 = 60$.",
+        "v": 120
+      }
+    ],
+    "solution": [
+      "All codes: $5^3 = 125$.",
+      "Codes with no repeated letter: $5\\cdot4\\cdot3 = 60$.",
+      "At least one repeat: $125-60 = 65$."
+    ],
+    "hints": [
+      "Count the opposite event: all letters different.",
+      "How many codes are there in total when repetition is allowed?",
+      "Subtract the no-repeat count from the total number of codes."
+    ],
+    "concept": "Complement counting.",
+    "misconception": "Trying to count each repeat pattern separately and missing some.",
+    "why": "The events \"some repeat\" and \"no repeat\" partition the codes.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-25",
+    "topic": "counting",
+    "sub": "solving for an unknown population size",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A bag contains red and blue balls, with 4 more blue balls than red balls and fewer than 50 balls in total. Two balls are drawn without replacement. The probability that they have the <b>same colour</b> is $47/95$. How many balls are in the bag?",
+    "data": "",
+    "answer": {
+      "value": 20,
+      "display": "20"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "20",
+        "correct": true,
+        "why": "",
+        "v": 20
+      },
+      {
+        "text": "76",
+        "correct": false,
+        "why": "This is the larger root of the quadratic ($r=36$ red, 40 blue), which is excluded by \"fewer than 50 balls\".",
+        "v": 76
+      },
+      {
+        "text": "8",
+        "correct": false,
+        "why": "This is the number of red balls $r$, not the total.",
+        "v": 8
+      },
+      {
+        "text": "24",
+        "correct": false,
+        "why": "This does not satisfy the equation; check $P(\\text{same})$ for $r=10$.",
+        "v": 24
+      }
+    ],
+    "solution": [
+      "Let there be $r$ red and $r+4$ blue balls: $n = 2r+4$.",
+      "$P(\\text{same}) = \\dfrac{r(r-1)+(r+4)(r+3)}{(2r+4)(2r+3)} = \\dfrac{2r^2+6r+12}{4r^2+14r+12} = \\dfrac{47}{95}$.",
+      "Cross-multiplying: $r^2 - 44r + 288 = 0$, so $r = 8$ or $r = 36$.",
+      "$r = 36$ gives 76 balls, which violates \"fewer than 50\", so $r=8$, 12 blue, $n = 20$."
+    ],
+    "hints": [
+      "Express the probability in terms of the number of red balls $r$.",
+      "Set it equal to $47/95$ and rearrange to a quadratic in $r$.",
+      "Two roots appear; which one satisfies the size condition?"
+    ],
+    "concept": "Using a probability equation to recover a population size.",
+    "misconception": "Accepting both roots of the quadratic or reporting a component instead of the total.",
+    "why": "The quadratic arises because the same-colour probability is a ratio of quadratics in $r$.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-26",
+    "topic": "counting",
+    "sub": "arrangement with a forbidden adjacency",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Five analysts $A, B, C, D, E$ line up for a photograph. In how many orders are $A$ and $B$ <b>not</b> standing next to each other?",
+    "data": "",
+    "answer": {
+      "value": 72,
+      "display": "72"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "72",
+        "correct": true,
+        "why": "",
+        "v": 72
+      },
+      {
+        "text": "48",
+        "correct": false,
+        "why": "This is the number of orders in which $A$ and $B$ <i>are</i> adjacent.",
+        "v": 48
+      },
+      {
+        "text": "96",
+        "correct": false,
+        "why": "Adjacent pairs can occur as $AB$ or $BA$; the block can be ordered in 2 ways.",
+        "v": 96
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "This ignores the restriction.",
+        "v": 120
+      }
+    ],
+    "solution": [
+      "Total orders: $5! = 120$.",
+      "Orders with $A$ and $B$ adjacent: treat them as a block ($4!$ orders of 4 units) and order the block internally in 2 ways: $2\\cdot24 = 48$.",
+      "Not adjacent: $120-48 = 72$."
+    ],
+    "hints": [
+      "Count the complement: orders in which they are adjacent.",
+      "Glue $A$ and $B$ into one unit; in how many ways can the pair itself be ordered?",
+      "Subtract from $5!$."
+    ],
+    "concept": "Complement counting with a block.",
+    "misconception": "Forgetting the internal order of the block.",
+    "why": "Restrictions \"not together\" are usually easiest through the complement.",
+    "fam": "count:arrange"
+  },
+  {
+    "id": "CNT-27",
+    "topic": "counting",
+    "sub": "arrangement of letters: vowels together",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "How many distinct arrangements of the letters of the word BUDGET can be made in which the two vowels, U and E, are <b>next to each other</b>?",
+    "data": "",
+    "answer": {
+      "value": 240,
+      "display": "240"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "240",
+        "correct": true,
+        "why": "",
+        "v": 240
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "The vowel block can be written as UE or EU, doubling the count.",
+        "v": 120
+      },
+      {
+        "text": "720",
+        "correct": false,
+        "why": "This ignores the requirement that the vowels be adjacent.",
+        "v": 720
+      },
+      {
+        "text": "48",
+        "correct": false,
+        "why": "After forming the block there are 5 units (the block and 4 consonants), so $5!$ orders, not $4!$.",
+        "v": 48
+      }
+    ],
+    "solution": [
+      "Form a block from U and E: 2 internal orders.",
+      "The block and the four consonants B, D, G, T give 5 units: $5! = 120$ orders.",
+      "Total $2\\times120 = 240$."
+    ],
+    "hints": [
+      "Treat the two vowels as a single unit.",
+      "How many units are there, and in how many orders?",
+      "Multiply by the internal orderings of the block."
+    ],
+    "concept": "Blocks in permutations.",
+    "misconception": "Counting the block as a single arrangement.",
+    "why": "Block order and internal order are independent choices.",
+    "fam": "count:arrange"
+  },
+  {
+    "id": "CNT-28",
+    "topic": "counting",
+    "sub": "handshakes: combinations",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "At a networking event each of 12 attendees shakes hands exactly once with every other attendee. How many handshakes take place?",
+    "data": "",
+    "answer": {
+      "value": 66,
+      "display": "66"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Each handshake is an unordered pair of attendees: $\\binom{12}{2} = \\dfrac{12\\cdot11}{2} = 66$."
+    ],
+    "hints": [
+      "Is a handshake between $a$ and $b$ different from one between $b$ and $a$?",
+      "Count pairs, not ordered pairs.",
+      "Compute $\\binom{12}{2}$."
+    ],
+    "concept": "Counting unordered pairs.",
+    "misconception": "Using $12\\times11$ without dividing by 2.",
+    "why": "Each pair is counted twice among ordered pairs.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-29",
+    "topic": "counting",
+    "sub": "selection with at least from each group",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A panel of 4 is to be chosen from 5 economists and 4 sociologists, and must contain <b>at least one</b> person from each discipline. How many panels are possible?",
+    "data": "",
+    "answer": {
+      "value": 120,
+      "display": "120"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "120",
+        "correct": true,
+        "why": "",
+        "v": 120
+      },
+      {
+        "text": "126",
+        "correct": false,
+        "why": "This includes panels made up of only economists or only sociologists.",
+        "v": 126
+      },
+      {
+        "text": "121",
+        "correct": false,
+        "why": "The all-sociologist panel is also excluded: it contains no economist.",
+        "v": 121
+      },
+      {
+        "text": "420",
+        "correct": false,
+        "why": "Choosing one of each first and then any two others counts panels with several members of a discipline more than once.",
+        "v": 420
+      }
+    ],
+    "solution": [
+      "All panels: $\\binom94 = 126$.",
+      "All economists: $\\binom54 = 5$. All sociologists: $\\binom44 = 1$.",
+      "Valid: $126-5-1 = 120$.",
+      "(Direct count: $1E3S+2E2S+3E1S = 5\\cdot4+10\\cdot6+10\\cdot4 = 120$.)"
+    ],
+    "hints": [
+      "Which panels violate the requirement?",
+      "There are two kinds of bad panel; neither overlaps the other.",
+      "Subtract both from the total."
+    ],
+    "concept": "Counting with a requirement of representation.",
+    "misconception": "Over-counting by choosing the required members first.",
+    "why": "The complement consists of two disjoint, small cases.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-30",
+    "topic": "counting",
+    "sub": "bit strings: no consecutive ones",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A binary access code has 8 bits. How many codes contain <b>no two consecutive 1s</b>?",
+    "data": "",
+    "answer": {
+      "value": 55,
+      "display": "55"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Let $a_n$ count valid strings of length $n$. A valid string ends in 0 (any valid string of length $n-1$ before it) or in 01 (any valid string of length $n-2$ before that).",
+      "$a_n = a_{n-1}+a_{n-2}$, $a_1 = 2$, $a_2 = 3$: $5, 8, 13, 21, 34, 55$.",
+      "$a_8 = 55$."
+    ],
+    "hints": [
+      "Look at the last bit of a valid string.",
+      "If the last bit is 1, what must the bit before it be?",
+      "Build the sequence $a_n = a_{n-1}+a_{n-2}$ up to $n=8$."
+    ],
+    "concept": "Recursive counting of restricted sequences.",
+    "misconception": "Trying to count by inclusion-exclusion without a pattern.",
+    "why": "Each valid string is built uniquely from a shorter valid string.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-31",
+    "topic": "counting",
+    "sub": "password with character classes",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A 4-character PIN uses digits 0 to 9 with repetition allowed. How many PINs contain <b>at least one 7</b>?",
+    "data": "",
+    "answer": {
+      "value": 3439,
+      "display": "3,439"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "3,439",
+        "correct": true,
+        "why": "",
+        "v": 3439
+      },
+      {
+        "text": "4,000",
+        "correct": false,
+        "why": "Choosing the position of a 7 and then anything counts PINs with several 7s more than once.",
+        "v": 4000
+      },
+      {
+        "text": "6,561",
+        "correct": false,
+        "why": "This is the number of PINs with <i>no</i> 7.",
+        "v": 6561
+      },
+      {
+        "text": "9,271",
+        "correct": false,
+        "why": "There are four positions, so the number without a 7 is $9^4$, not $9^3$.",
+        "v": 9271
+      }
+    ],
+    "solution": [
+      "All PINs: $10^4 = 10\\,000$.",
+      "PINs with no 7: $9^4 = 6561$.",
+      "At least one 7: $10\\,000-6561 = 3439$."
+    ],
+    "hints": [
+      "Count the PINs that contain no 7 at all.",
+      "Each position then has 9 options.",
+      "Subtract from the total number of PINs."
+    ],
+    "concept": "Complement counting for \"at least one\".",
+    "misconception": "Choosing the special digit first and over-counting.",
+    "why": "The complement is a single product.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-32",
+    "topic": "counting",
+    "sub": "combination: subsets of a set",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A fund manager is considering 7 candidate stocks and may include any subset in a portfolio, including holding none. How many different portfolios (subsets) are possible?",
+    "data": "",
+    "answer": {
+      "value": 128,
+      "display": "128"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Each stock is either in or out: $2^7 = 128$ portfolios (including the empty portfolio).",
+      "Check: $\\sum_k\\binom7k = 2^7$."
+    ],
+    "hints": [
+      "For each stock there are two possibilities.",
+      "The decisions are independent.",
+      "Multiply seven 2’s."
+    ],
+    "concept": "Number of subsets.",
+    "misconception": "Counting only portfolios of a fixed size.",
+    "why": "A subset corresponds to a sequence of in/out decisions.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-33",
+    "topic": "counting",
+    "sub": "multisets: selection with repetition",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A cafe sells 5 kinds of pastry. In how many ways can a customer choose a box of 8 pastries if the order does not matter and each kind may be chosen any number of times?",
+    "data": "",
+    "answer": {
+      "value": 495,
+      "display": "495"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "495",
+        "correct": true,
+        "why": "",
+        "v": 495
+      },
+      {
+        "text": "56",
+        "correct": false,
+        "why": "This chooses 5 of 8 distinct items; here 8 pastries are taken from 5 kinds, with repetition allowed.",
+        "v": 56
+      },
+      {
+        "text": "390,625",
+        "correct": false,
+        "why": "This counts ordered selections, but the order of pastries in the box does not matter.",
+        "v": 390625
+      },
+      {
+        "text": "1,287",
+        "correct": false,
+        "why": "The number of bars is one less than the number of kinds: $\\binom{8+4}{4}$, not $\\binom{8+5}{5}$.",
+        "v": 1287
+      }
+    ],
+    "solution": [
+      "The number of multisets of size 8 from 5 kinds equals the number of non-negative integer solutions of $x_1+\\dots+x_5 = 8$.",
+      "Stars and bars: $\\binom{8+5-1}{5-1} = \\binom{12}{4} = 495$."
+    ],
+    "hints": [
+      "Only how many of each kind matters, not the order.",
+      "Translate to counting non-negative integer solutions of a sum.",
+      "Use $\\binom{n+k-1}{k-1}$."
+    ],
+    "concept": "Combinations with repetition.",
+    "misconception": "Using ordered counts or the wrong bar count.",
+    "why": "A selection is a list of five counts adding to 8.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-34",
+    "topic": "counting",
+    "sub": "tournament: number of matches",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "In a round-robin tournament each of 9 teams plays every other team exactly <b>twice</b> (home and away). How many matches are played in total?",
+    "data": "",
+    "answer": {
+      "value": 72,
+      "display": "72"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Pairs of teams: $\\binom92 = 36$. Each pair meets twice: $72$ matches.",
+      "Equivalently each team plays $8\\times2$ matches, and each match involves two teams: $9\\cdot16/2 = 72$."
+    ],
+    "hints": [
+      "How many different pairs of teams are there?",
+      "Each pair plays more than once.",
+      "Multiply by the number of meetings."
+    ],
+    "concept": "Counting pairs and repeated meetings.",
+    "misconception": "Counting each match twice.",
+    "why": "Home and away matches are different events for the same pair.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-35",
+    "topic": "counting",
+    "sub": "lottery: probability from counting",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A lottery draws 6 distinct numbers from 1 to 40. A ticket has 6 distinct numbers. What is the probability that a ticket matches <b>all six</b> drawn numbers? Give the answer as a decimal to 8 places, e.g. 0.00000026.",
+    "data": "",
+    "answer": {
+      "value": 2.6052657631605e-7,
+      "display": "2.61e-7"
+    },
+    "fmt": "d",
+    "tol": 5e-9,
+    "options": [],
+    "solution": [
+      "The number of possible draws is $\\binom{40}{6} = 3\\,838\\,380$, all equally likely.",
+      "One of them matches the ticket: $P = 1/3\\,838\\,380 \\approx 2.6\\times10^{-7}$."
+    ],
+    "hints": [
+      "The order in which numbers are drawn does not matter.",
+      "How many different sets of 6 numbers can be drawn from 40?",
+      "Only one set matches the ticket."
+    ],
+    "concept": "Classical probability with combinations.",
+    "misconception": "Using ordered selections ($40\\cdot39\\cdots$) in the denominator.",
+    "why": "Each 6-subset is equally likely to be drawn.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-36",
+    "topic": "counting",
+    "sub": "hockey-stick identity: counting by summing",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A committee of 4 is chosen from 10 people numbered 1 to 10. Classifying each committee by its <b>lowest-numbered member</b> $k$ shows that the number of committees equals $\\sum_{k=1}^{7}\\binom{10-k}{3}$. What is the value of this sum?",
+    "data": "",
+    "answer": {
+      "value": 210,
+      "display": "210"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "210",
+        "correct": true,
+        "why": "",
+        "v": 210
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "The sum counts committees of 4, so it equals $\\binom{10}{4}$, not $\\binom{10}{3}$.",
+        "v": 120
+      },
+      {
+        "text": "330",
+        "correct": false,
+        "why": "The hockey-stick sum stops at $\\binom{9}{3}$ for $k=1$, giving $\\binom{10}{4}$, not $\\binom{11}{4}$.",
+        "v": 330
+      },
+      {
+        "text": "588",
+        "correct": false,
+        "why": "The terms decrease with $k$; they are not all equal to $\\binom93$.",
+        "v": 588
+      }
+    ],
+    "solution": [
+      "Every committee of 4 has a unique lowest-numbered member $k$; the other 3 members are chosen from the $10-k$ people above $k$: $\\binom{10-k}{3}$ committees.",
+      "Summing over $k$ counts every committee once, so the sum is $\\binom{10}{4} = 210$."
+    ],
+    "hints": [
+      "Classify each committee by its smallest member.",
+      "If the smallest member is $k$, how many choices remain for the other three?",
+      "Every committee has exactly one smallest member."
+    ],
+    "concept": "Counting the same set in two ways.",
+    "misconception": "Evaluating the sum numerically with an arithmetic slip.",
+    "why": "The sum and $\\binom{10}{4}$ count the same collection of committees.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-37",
+    "topic": "counting",
+    "sub": "distinguishable objects into boxes",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Six different invoices are each assigned to one of 3 approvers (an approver may receive any number, including none). How many assignments are possible?",
+    "data": "",
+    "answer": {
+      "value": 729,
+      "display": "729"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "729",
+        "correct": true,
+        "why": "",
+        "v": 729
+      },
+      {
+        "text": "216",
+        "correct": false,
+        "why": "This would assign 3 invoices to 6 approvers; here each of the 6 invoices chooses one of 3 approvers.",
+        "v": 216
+      },
+      {
+        "text": "28",
+        "correct": false,
+        "why": "This counts distributions of <i>identical</i> items; the invoices are different.",
+        "v": 28
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "Approvers can receive several invoices, so this restricted count is not appropriate.",
+        "v": 120
+      }
+    ],
+    "solution": [
+      "Each invoice independently chooses one of 3 approvers: $3^6 = 729$ assignments."
+    ],
+    "hints": [
+      "Does an approver have to receive at most one invoice?",
+      "Each invoice has its own independent choice.",
+      "Multiply the choices."
+    ],
+    "concept": "Assignments of distinguishable objects to labelled boxes.",
+    "misconception": "Mixing up which set is the domain.",
+    "why": "Each assignment is a function from invoices to approvers.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-38",
+    "topic": "counting",
+    "sub": "derangement count",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Four employees each write their name on a gift tag and the four gifts are shuffled and handed out one per employee. In how many of the $4!$ distributions does <b>nobody</b> receive their own gift?",
+    "data": "",
+    "answer": {
+      "value": 9,
+      "display": "9"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "9",
+        "correct": true,
+        "why": "",
+        "v": 9
+      },
+      {
+        "text": "15",
+        "correct": false,
+        "why": "This is $24-9$: the number of distributions in which <i>at least one</i> employee receives their own gift.",
+        "v": 15
+      },
+      {
+        "text": "6",
+        "correct": false,
+        "why": "This is the number of distributions with exactly two correct gifts.",
+        "v": 6
+      },
+      {
+        "text": "3",
+        "correct": false,
+        "why": "This counts only the distributions made of two swapped pairs; four-cycles also leave nobody with their own gift.",
+        "v": 3
+      }
+    ],
+    "solution": [
+      "Inclusion-exclusion over \"employee $i$ gets their own gift\":",
+      "$4! - \\binom41 3! + \\binom42 2! - \\binom43 1! + \\binom44 0! = 24-24+12-4+1 = 9$."
+    ],
+    "hints": [
+      "Count the complement: distributions with at least one fixed point.",
+      "If $k$ specific employees get their own gifts, the rest can be arranged in $(4-k)!$ ways.",
+      "Alternate signs: $24-24+12-4+1$."
+    ],
+    "concept": "Derangements by inclusion-exclusion.",
+    "misconception": "Subtracting only the single-match cases.",
+    "why": "Each distribution with several matches is counted by the alternating sum exactly once.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-39",
+    "topic": "counting",
+    "sub": "ordering with ties",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Seven applicants are ranked into three outcome bands: 2 receive \"strong\", 3 receive \"adequate\" and 2 receive \"weak\". In how many different ways can the bands be allocated to the 7 distinct applicants?",
+    "data": "",
+    "answer": {
+      "value": 210,
+      "display": "210"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "210",
+        "correct": true,
+        "why": "",
+        "v": 210
+      },
+      {
+        "text": "5,040",
+        "correct": false,
+        "why": "This treats the labels as all different; applicants in the same band are interchangeable in label.",
+        "v": 5040
+      },
+      {
+        "text": "420",
+        "correct": false,
+        "why": "After choosing the strong and adequate groups the weak group is determined, so there is no further factor of 2.",
+        "v": 420
+      },
+      {
+        "text": "2,187",
+        "correct": false,
+        "why": "This counts all assignments of three labels, not only those with the specified numbers.",
+        "v": 2187
+      }
+    ],
+    "solution": [
+      "Choose which 2 applicants are \"strong\": $\\binom72 = 21$. From the remaining 5 choose 3 for \"adequate\": $\\binom53 = 10$. The last 2 are \"weak\".",
+      "$21\\times10 = 210 = \\dfrac{7!}{2!\\,3!\\,2!}$."
+    ],
+    "hints": [
+      "Choose the members of each band in turn.",
+      "After two bands are filled, the third is forced.",
+      "This is a multinomial coefficient."
+    ],
+    "concept": "Multinomial coefficient for labelling people.",
+    "misconception": "Using $7!$ or $3^7$.",
+    "why": "The multinomial counts labellings with prescribed numbers per label.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-40",
+    "topic": "counting",
+    "sub": "pigeonhole principle",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A company has 400 employees. Which statement can be guaranteed to be true?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "At least two employees share a birthday (day of the year)"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "At least two employees share a birthday (day of the year)",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "At least 10 employees share a birthday",
+        "correct": false,
+        "why": "Spread evenly, about 1.1 per day: at least 2 per day is guaranteed, but not 10."
+      },
+      {
+        "text": "At least one birthday is shared by exactly two employees",
+        "correct": false,
+        "why": "Some days could have 3 or more employees and none exactly two; the guarantee is only that some day has at least two."
+      },
+      {
+        "text": "Every day of the year is the birthday of at least one employee",
+        "correct": false,
+        "why": "With 400 employees it is possible that some days are missed."
+      }
+    ],
+    "solution": [
+      "There are at most 366 possible birthdays and 400 employees.",
+      "By the pigeonhole principle at least $\\lceil400/366\\rceil = 2$ employees share a day.",
+      "No stronger statement is guaranteed."
+    ],
+    "hints": [
+      "How many \"boxes\" (birthdays) are there?",
+      "If everyone had a different birthday, how many employees could there be at most?",
+      "Which statement follows with certainty, not just likelihood?"
+    ],
+    "concept": "Pigeonhole principle.",
+    "misconception": "Confusing \"likely\" with \"guaranteed\".",
+    "why": "More objects than boxes forces a box with at least two.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-41",
+    "topic": "counting",
+    "sub": "selection with a fixed member",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A working group of 5 is chosen from 12 staff. The head of department must be in the group and two particular rivals, $R_1$ and $R_2$, must <b>not both</b> be chosen. How many groups are possible? (The head is neither $R_1$ nor $R_2$.)",
+    "data": "",
+    "answer": {
+      "value": 294,
+      "display": "294"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "294",
+        "correct": true,
+        "why": "",
+        "v": 294
+      },
+      {
+        "text": "330",
+        "correct": false,
+        "why": "This ignores the restriction on the two rivals.",
+        "v": 330
+      },
+      {
+        "text": "210",
+        "correct": false,
+        "why": "Fixing both rivals leaves 9 people (excluding the head and the rivals) for 2 more places: $\\binom92$.",
+        "v": 210
+      },
+      {
+        "text": "672",
+        "correct": false,
+        "why": "The head of department must be in the group, so the base count is $\\binom{11}{4}$.",
+        "v": 672
+      }
+    ],
+    "solution": [
+      "With the head fixed, choose 4 more from the other 11: $\\binom{11}{4} = 330$.",
+      "Groups containing both rivals: choose 2 more from the remaining 9: $\\binom92 = 36$.",
+      "Valid: $330-36 = 294$."
+    ],
+    "hints": [
+      "Fix the head first; how many places and people remain?",
+      "Count the groups that contain both rivals.",
+      "Subtract the groups containing both rivals from the total."
+    ],
+    "concept": "Counting with a required member and a forbidden pair.",
+    "misconception": "Forgetting to fix the head.",
+    "why": "Fixing members reduces the problem to a smaller selection.",
+    "fam": "count:select"
+  },
+  {
+    "id": "CNT-42",
+    "topic": "counting",
+    "sub": "ways to reach a total with dice",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Three fair dice are rolled. In how many of the 216 ordered outcomes is the <b>sum equal to 10</b>?",
+    "data": "",
+    "answer": {
+      "value": 27,
+      "display": "27"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Count ordered triples by their multiset: $\\{1,3,6\\}$ and $\\{1,4,5\\}$, $\\{2,2,6\\}$, $\\{2,3,5\\}$, $\\{2,4,4\\}$, $\\{3,3,4\\}$.",
+      "Distinct values give $3! = 6$ orders; two equal values give 3 orders.",
+      "$6+6+3+6+3+3 = 27$."
+    ],
+    "hints": [
+      "List the unordered triples of values from 1 to 6 that sum to 10.",
+      "For each, count the number of distinct orderings.",
+      "Triples with a repeated value have 3 orderings, with three distinct values 6."
+    ],
+    "concept": "Counting ordered outcomes with a fixed sum.",
+    "misconception": "Counting only unordered triples.",
+    "why": "Each unordered triple corresponds to a number of ordered outcomes by its multiplicity pattern.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-43",
+    "topic": "counting",
+    "sub": "seating: circular with a restriction",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Seven directors sit at a round table (rotations count as the same seating). Two of them, $P$ and $Q$, refuse to sit next to each other. How many seatings are possible?",
+    "data": "",
+    "answer": {
+      "value": 480,
+      "display": "480"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "480",
+        "correct": true,
+        "why": "",
+        "v": 480
+      },
+      {
+        "text": "240",
+        "correct": false,
+        "why": "This is the number of seatings in which $P$ and $Q$ <i>are</i> adjacent.",
+        "v": 240
+      },
+      {
+        "text": "3,600",
+        "correct": false,
+        "why": "These are linear-order counts; around a circular table fix one person to remove rotations: $6!$ in total.",
+        "v": 3600
+      },
+      {
+        "text": "600",
+        "correct": false,
+        "why": "The adjacent pair can sit as $PQ$ or $QP$, so $2\\cdot5!$ must be removed.",
+        "v": 600
+      }
+    ],
+    "solution": [
+      "Circular seatings of 7 people: $(7-1)! = 720$.",
+      "$P,Q$ adjacent: treat them as a block; 6 units around a circle: $5! = 120$, times 2 internal orders $=240$.",
+      "Not adjacent: $720-240 = 480$."
+    ],
+    "hints": [
+      "How many circular arrangements of 7 people are there?",
+      "Count the arrangements in which $P$ and $Q$ sit together.",
+      "Subtract the adjacent seatings from all circular seatings."
+    ],
+    "concept": "Circular permutations with an adjacency restriction.",
+    "misconception": "Using linear counts or forgetting the internal order of the block.",
+    "why": "Rotational symmetry is removed by fixing one person.",
+    "fam": "count:arrange"
+  },
+  {
+    "id": "CNT-44",
+    "topic": "counting",
+    "sub": "paths avoiding a point",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A courier moves from $(0,0)$ to $(4,4)$ on a grid taking only unit steps east or north. A road closure blocks the junction $(2,2)$, so routes cannot pass through it. How many routes are possible?",
+    "data": "",
+    "answer": {
+      "value": 34,
+      "display": "34"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "34",
+        "correct": true,
+        "why": "",
+        "v": 34
+      },
+      {
+        "text": "70",
+        "correct": false,
+        "why": "This counts all routes, including those through the closed junction.",
+        "v": 70
+      },
+      {
+        "text": "36",
+        "correct": false,
+        "why": "This is the number of routes that <i>do</i> pass through $(2,2)$.",
+        "v": 36
+      },
+      {
+        "text": "58",
+        "correct": false,
+        "why": "Routes through $(2,2)$ number $\\binom42\\times\\binom42$ (product of the two legs), not a sum.",
+        "v": 58
+      }
+    ],
+    "solution": [
+      "All routes: $\\binom84 = 70$.",
+      "Through $(2,2)$: $\\binom42\\cdot\\binom42 = 6\\cdot6 = 36$.",
+      "Routes avoiding it: $70-36 = 34$."
+    ],
+    "hints": [
+      "Count the routes that do pass through the closed junction.",
+      "A route through $(2,2)$ is a route to it followed by a route from it.",
+      "Subtract from all routes."
+    ],
+    "concept": "Complement counting for lattice paths.",
+    "misconception": "Adding the leg counts instead of multiplying.",
+    "why": "Legs of a route through a given point are chosen independently.",
+    "fam": "count:paths-bars"
+  },
+  {
+    "id": "CNT-45",
+    "topic": "counting",
+    "sub": "at most one of two groups",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A hiring panel of 3 is to be chosen from 6 internal and 4 external members. How many panels contain <b>more internal than external</b> members?",
+    "data": "",
+    "answer": {
+      "value": 80,
+      "display": "80"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "80",
+        "correct": true,
+        "why": "",
+        "v": 80
+      },
+      {
+        "text": "60",
+        "correct": false,
+        "why": "Panels with 3 internal members also have more internal than external.",
+        "v": 60
+      },
+      {
+        "text": "100",
+        "correct": false,
+        "why": "This counts panels with at least one external member, including those with majority external.",
+        "v": 100
+      },
+      {
+        "text": "116",
+        "correct": false,
+        "why": "The case of 1 internal and 2 external has fewer internal than external and must be excluded.",
+        "v": 116
+      }
+    ],
+    "solution": [
+      "More internal than external in a panel of 3 means 3 internal, or 2 internal and 1 external.",
+      "$\\binom63 + \\binom62\\binom41 = 20+60 = 80$."
+    ],
+    "hints": [
+      "Which compositions of a 3-person panel have an internal majority?",
+      "Count each composition separately.",
+      "Add the counts."
+    ],
+    "concept": "Counting by composition.",
+    "misconception": "Including the minority-internal case.",
+    "why": "Compositions are mutually exclusive cases.",
+    "fam": "count:multinomial"
+  },
+  {
+    "id": "CNT-46",
+    "topic": "counting",
+    "sub": "probability from counting: birthdays in a month",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Four colleagues each independently have a birthday in one of 12 equally likely months. What is the probability that <b>all four birthdays are in different months</b>? (Give a decimal to 4 places.)",
+    "data": "",
+    "answer": {
+      "value": 0.5729166666666666,
+      "display": "0.5729"
+    },
+    "fmt": "d",
+    "tol": 0.0006,
+    "options": [],
+    "solution": [
+      "$12^4 = 20\\,736$ equally likely month sequences.",
+      "All different: $12\\cdot11\\cdot10\\cdot9 = 11\\,880$.",
+      "$P = 11\\,880/20\\,736 \\approx 0.5729$."
+    ],
+    "hints": [
+      "How many equally likely sequences of four months are there?",
+      "Count sequences with no repeated month by choosing in order.",
+      "Divide the favourable count by the total number of sequences."
+    ],
+    "concept": "Probability of no repeats.",
+    "misconception": "Dividing by $\\binom{12}{4}$ instead of $12^4$.",
+    "why": "Ordered sequences are equally likely under independence.",
+    "fam": "count:multiplication"
+  },
+  {
+    "id": "CNT-47",
+    "topic": "counting",
+    "sub": "rankings with a fixed top",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Six firms are ranked from 1 (best) to 6 (worst). In how many rankings does firm $F$ occupy a <b>top-two</b> position?",
+    "data": "",
+    "answer": {
+      "value": 240,
+      "display": "240"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "240",
+        "correct": true,
+        "why": "",
+        "v": 240
+      },
+      {
+        "text": "120",
+        "correct": false,
+        "why": "Firm $F$ can take either of the two top positions.",
+        "v": 120
+      },
+      {
+        "text": "360",
+        "correct": false,
+        "why": "This treats the firm as equally likely to be in the top half (three positions); the condition is the top two positions.",
+        "v": 360
+      },
+      {
+        "text": "1,440",
+        "correct": false,
+        "why": "After placing $F$ in one of two positions there are $5!$ orders for the others, not $6!$.",
+        "v": 1440
+      }
+    ],
+    "solution": [
+      "$F$ takes position 1 or 2: 2 choices. The other 5 firms fill the remaining positions in $5! = 120$ ways.",
+      "$2\\times120 = 240$."
+    ],
+    "hints": [
+      "Place the special firm first: how many allowed positions?",
+      "Then arrange the other firms.",
+      "Multiply the number of allowed positions by the arrangements of the rest."
+    ],
+    "concept": "Permutations with a positional condition.",
+    "misconception": "Not multiplying by the number of allowed positions.",
+    "why": "Allowed positions and arrangements of the rest are independent stages.",
+    "fam": "count:multiplication"
+  }
+]

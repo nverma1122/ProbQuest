@@ -1,0 +1,2911 @@
+[
+  {
+    "id": "BAY-01",
+    "topic": "bayes",
+    "sub": "total probability",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A lender's loan book is split into prime borrowers (50%), near-prime (30%) and subprime (20%). The probability of default within a year is 0.02, 0.08 and 0.25 respectively. What is the probability that a randomly chosen loan defaults within a year?",
+    "data": "",
+    "answer": {
+      "value": 0.084,
+      "display": "0.084"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.084",
+        "correct": true,
+        "why": "",
+        "v": 0.084
+      },
+      {
+        "text": "0.1167",
+        "correct": false,
+        "why": "This is the unweighted average of the three default rates; the segments have different sizes.",
+        "v": 0.11666666666666665
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is the default rate of the largest-risk segment only.",
+        "v": 0.25
+      },
+      {
+        "text": "0.01",
+        "correct": false,
+        "why": "This is the contribution of the prime segment only; the other segments must be added.",
+        "v": 0.01
+      }
+    ],
+    "solution": [
+      "Condition on the segment and add the weighted probabilities:",
+      "$P(D) = 0.5(0.02) + 0.3(0.08) + 0.2(0.25) = 0.010+0.024+0.050 = 0.084$."
+    ],
+    "hints": [
+      "Which events partition the loan book?",
+      "Each segment contributes its share times its default rate.",
+      "Add the three contributions."
+    ],
+    "concept": "Law of total probability.",
+    "misconception": "Averaging the segment rates without weights.",
+    "why": "The segments are disjoint and cover all loans, so contributions add.",
+    "fam": "bayes:total-probability"
+  },
+  {
+    "id": "BAY-02",
+    "topic": "bayes",
+    "sub": "total probability over stages",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "60% of an online retailer's orders are shipped to home addresses and 40% to pickup points. Home orders are returned with probability 0.15 and pickup orders with probability 0.05. A returned item is refunded in full with probability 0.9 for home orders and 0.7 for pickup orders. What is the probability that a randomly chosen order ends in a <b>full refund</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.095,
+      "display": "0.095"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.095",
+        "correct": true,
+        "why": "",
+        "v": 0.095
+      },
+      {
+        "text": "0.11",
+        "correct": false,
+        "why": "This is the probability that an order is returned; not every return is fully refunded.",
+        "v": 0.11
+      },
+      {
+        "text": "0.17",
+        "correct": false,
+        "why": "This is an unweighted sum of the branch probabilities; each branch must be multiplied by its share of orders.",
+        "v": 0.17
+      },
+      {
+        "text": "0.82",
+        "correct": false,
+        "why": "This is the probability of a full refund <i>given a return</i> using the order mix, not the probability for a randomly chosen order.",
+        "v": 0.8200000000000001
+      }
+    ],
+    "solution": [
+      "Follow the tree. Home: $0.6\\times0.15\\times0.9 = 0.081$. Pickup: $0.4\\times0.05\\times0.7 = 0.014$.",
+      "The branches are disjoint: $0.081+0.014 = 0.095$."
+    ],
+    "hints": [
+      "Draw the tree with delivery type first, then return, then refund.",
+      "Multiply along each branch that ends in a full refund.",
+      "Add the branch probabilities."
+    ],
+    "concept": "Total probability through a multi-stage tree.",
+    "misconception": "Not multiplying along the whole branch.",
+    "why": "Each full-refund path corresponds to a unique branch.",
+    "fam": "bayes:total-probability"
+  },
+  {
+    "id": "BAY-04",
+    "topic": "bayes",
+    "sub": "reverse total probability",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Overall, 90% of invoices are paid on time. 25% of invoices are flagged \"express\", and 80% of express invoices are paid on time. What is the probability that a <b>non-express</b> invoice is paid on time?",
+    "data": "",
+    "answer": {
+      "value": 0.9333333333333332,
+      "display": "0.9333"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.9333",
+        "correct": true,
+        "why": "",
+        "v": 0.9333333333333332
+      },
+      {
+        "text": "0.9",
+        "correct": false,
+        "why": "This is the overall on-time rate; the express invoices are paid less reliably, so the others must be higher.",
+        "v": 0.9
+      },
+      {
+        "text": "0.1",
+        "correct": false,
+        "why": "This subtracts rates directly rather than removing the express contribution from the total and rescaling.",
+        "v": 0.09999999999999998
+      },
+      {
+        "text": "0.1333",
+        "correct": false,
+        "why": "The express invoices contribute $0.25\\times0.8$ to the total, not $0.8$.",
+        "v": 0.1333333333333333
+      }
+    ],
+    "solution": [
+      "Total probability: $0.9 = 0.25(0.8) + 0.75\\,x$, where $x$ is the non-express on-time rate.",
+      "$0.75x = 0.9-0.2 = 0.7$, so $x = 0.9333$."
+    ],
+    "hints": [
+      "Write the total probability of being on time as a weighted sum over the two invoice types.",
+      "The unknown is the non-express conditional probability.",
+      "Solve the linear equation."
+    ],
+    "concept": "Using total probability backwards.",
+    "misconception": "Subtracting percentages without weighting.",
+    "why": "The overall rate is a weighted average of the two group rates.",
+    "fam": "bayes:total-probability"
+  },
+  {
+    "id": "BAY-05",
+    "topic": "bayes",
+    "sub": "reversing a conditional",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "40% of households own a bicycle. Of the households that own a bicycle, 30% also own a car. Overall 50% of households own a car. What is the probability that a household owns a bicycle <b>given that it owns a car</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.24,
+      "display": "0.24"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.24",
+        "correct": true,
+        "why": "",
+        "v": 0.24
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is $P(\\text{car}\\mid\\text{bicycle})$, the conditional in the opposite direction.",
+        "v": 0.3
+      },
+      {
+        "text": "0.4",
+        "correct": false,
+        "why": "This is the unconditional probability of owning a bicycle.",
+        "v": 0.4
+      },
+      {
+        "text": "0.12",
+        "correct": false,
+        "why": "This is the joint probability of owning both; it must be divided by $P(\\text{car})$.",
+        "v": 0.12
+      }
+    ],
+    "solution": [
+      "$P(\\text{bicycle}\\cap\\text{car}) = P(\\text{car}\\mid\\text{bicycle})P(\\text{bicycle}) = 0.3\\times0.4 = 0.12$.",
+      "$P(\\text{bicycle}\\mid\\text{car}) = 0.12/0.50 = 0.24$."
+    ],
+    "hints": [
+      "Which conditional probability is given and which is asked for?",
+      "Find the joint probability first.",
+      "Divide by the probability of the conditioning event."
+    ],
+    "concept": "Reversing a conditional.",
+    "misconception": "Equating $P(A\\mid B)$ and $P(B\\mid A)$.",
+    "why": "Both conditionals share the same joint probability and differ only in the denominator.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-06",
+    "topic": "bayes",
+    "sub": "partition and posterior",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A streaming service's users are students (25%), professionals (45%) and retirees (30%). In a given month 60% of students, 30% of professionals and 50% of retirees stream a live event. A user who streamed the event is chosen. What is the probability that the user is a <b>professional</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.3103448275862069,
+      "display": "0.3103"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3103",
+        "correct": true,
+        "why": "",
+        "v": 0.3103448275862069
+      },
+      {
+        "text": "0.45",
+        "correct": false,
+        "why": "This is the prior share of professionals; professionals are less likely than average to stream.",
+        "v": 0.45
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is the streaming rate of professionals, $P(\\text{stream}\\mid\\text{professional})$.",
+        "v": 0.3
+      },
+      {
+        "text": "0.135",
+        "correct": false,
+        "why": "This is the joint probability of being a professional who streams; divide by $P(\\text{stream})$.",
+        "v": 0.135
+      }
+    ],
+    "solution": [
+      "$P(\\text{stream}) = 0.25(0.6)+0.45(0.3)+0.30(0.5) = 0.15+0.135+0.15 = 0.435$.",
+      "$P(\\text{professional}\\mid\\text{stream}) = \\dfrac{0.135}{0.435} \\approx 0.310$."
+    ],
+    "hints": [
+      "Compute the probability of streaming from the three segments.",
+      "Compute the joint probability for professionals.",
+      "Divide the joint by the total."
+    ],
+    "concept": "Posterior over a partition.",
+    "misconception": "Using the prior or the likelihood as the answer.",
+    "why": "The posterior share is each segment’s contribution to the total evidence.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-09",
+    "topic": "bayes",
+    "sub": "transfer between boxes",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Box 1 holds 3 red and 2 green balls; box 2 holds 1 red and 3 green balls. Two balls are taken from box 1 at random (without replacement) and placed in box 2; then one ball is drawn from box 2 and is <b>red</b>. What is the probability that both transferred balls were red?",
+    "data": "",
+    "answer": {
+      "value": 0.4090909090909091,
+      "display": "0.4091"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.4091",
+        "correct": true,
+        "why": "",
+        "v": 0.4090909090909091
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is the prior probability that both transferred balls are red.",
+        "v": 0.3
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the probability of drawing red from box 2 after two red balls were added; it is a likelihood, not the posterior.",
+        "v": 0.5
+      },
+      {
+        "text": "0.15",
+        "correct": false,
+        "why": "This is the joint probability of the transfer and the red draw; it must be divided by $P(\\text{red})$.",
+        "v": 0.15
+      }
+    ],
+    "solution": [
+      "Transfer outcomes: RR with prob $\\binom32/\\binom52 = 0.3$; RG: $3\\cdot2/10 = 0.6$; GG: $1/10 = 0.1$.",
+      "Box 2 then has 6 balls with 3, 2, 1 red balls respectively, so $P(\\text{red}\\mid\\cdot) = 1/2,\\ 1/3,\\ 1/6$.",
+      "$P(\\text{red}) = 0.15+0.20+0.0167 = 0.3667$.",
+      "$P(RR\\mid\\text{red}) = 0.15/0.3667 \\approx 0.409$."
+    ],
+    "hints": [
+      "List the three possible transfers and their probabilities.",
+      "For each transfer, what is the composition of box 2 and the probability of drawing red?",
+      "Apply Bayes’ theorem to the transfer RR."
+    ],
+    "concept": "Bayes’ theorem with a hidden intermediate stage.",
+    "misconception": "Ignoring that the transfer composition is uncertain.",
+    "why": "The red draw is more likely after a red-heavy transfer.",
+    "fam": "bayes:information"
+  },
+  {
+    "id": "BAY-10",
+    "topic": "bayes",
+    "sub": "what information was received",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two independent credit checks each pass an applicant with probability $\\tfrac12$. Analyst $X$ is told \"the <b>first</b> check passed\". Analyst $Y$ is told \"<b>at least one</b> check passed\". What probability does each assign to <b>both</b> checks having passed?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$X$: $\\tfrac12$ and $Y$: $\\tfrac13$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$X$: $\\tfrac12$ and $Y$: $\\tfrac13$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Both assign $\\tfrac13$",
+        "correct": false,
+        "why": "Knowing which check passed (\"the first\") leaves only two outcomes, so $X$’s probability is $\\tfrac12$."
+      },
+      {
+        "text": "Both assign $\\tfrac12$",
+        "correct": false,
+        "why": "\"At least one passed\" keeps three outcomes (PP, PF, FP), so $Y$’s probability is $\\tfrac13$."
+      },
+      {
+        "text": "$X$: $\\tfrac13$ and $Y$: $\\tfrac12$",
+        "correct": false,
+        "why": "The two probabilities are the wrong way round: the more specific information gives the higher probability."
+      }
+    ],
+    "solution": [
+      "$X$: given the first passed, the second is independent: $P(\\text{both}) = \\tfrac12$.",
+      "$Y$: outcomes with at least one pass are PP, PF, FP, equally likely: $P(\\text{both}) = \\tfrac13$.",
+      "The same facts, reported differently, carry different information."
+    ],
+    "hints": [
+      "List the outcomes consistent with each analyst’s information.",
+      "Are the remaining outcomes equally likely?",
+      "Count those with both checks passed."
+    ],
+    "concept": "The information received determines the conditioning event.",
+    "misconception": "Treating \"a check passed\" and \"the first check passed\" as the same.",
+    "why": "\"At least one\" is weaker information than a specific check.",
+    "fam": "bayes:information"
+  },
+  {
+    "id": "BAY-12",
+    "topic": "bayes",
+    "sub": "base rates",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Card fraud affects 4% of transactions made abroad and 0.5% of transactions made at home. The bank processes <b>three times as many</b> transactions at home as abroad. A transaction known to be fraudulent is chosen at random. What is the probability that it was made <b>abroad</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.7272727272727273,
+      "display": "0.7273"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.7273",
+        "correct": true,
+        "why": "",
+        "v": 0.7272727272727273
+      },
+      {
+        "text": "0.8889",
+        "correct": false,
+        "why": "This ignores the change in the mix and still treats the locations as equally common.",
+        "v": 0.888888888888889
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is the prior probability of abroad.",
+        "v": 0.25
+      },
+      {
+        "text": "0.01",
+        "correct": false,
+        "why": "This is the joint probability of abroad and fraud; divide by $P(\\text{fraud})$.",
+        "v": 0.01
+      }
+    ],
+    "solution": [
+      "Priors: abroad $0.25$, home $0.75$.",
+      "$P(\\text{abroad}\\mid\\text{fraud}) = \\dfrac{0.25(0.04)}{0.25(0.04)+0.75(0.005)} = \\dfrac{0.01}{0.01375} \\approx 0.727$."
+    ],
+    "hints": [
+      "Convert \"three times as many\" into prior probabilities.",
+      "Weight the fraud rates by the new priors.",
+      "Compare with the equal-prior answer."
+    ],
+    "concept": "Effect of the base rate on the posterior.",
+    "misconception": "Using the equal-prior answer.",
+    "why": "A smaller prior for the high-risk group lowers its posterior share.",
+    "fam": "bayes:testing"
+  },
+  {
+    "id": "BAY-13",
+    "topic": "bayes",
+    "sub": "which container",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Bag $X$ holds 2 red and 8 blue chips; bag $Y$ holds 6 red and 4 blue chips. A bag is chosen at random and a chip is drawn: it is <b>red</b>. What is the probability that the chip came from bag $X$?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "0.25"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.25",
+        "correct": true,
+        "why": "",
+        "v": 0.25
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the prior probability of bag $X$; the red chip favours bag $Y$.",
+        "v": 0.5
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the proportion of red chips in bag $X$, not the posterior.",
+        "v": 0.2
+      },
+      {
+        "text": "0.75",
+        "correct": false,
+        "why": "This is the probability that the chip came from bag $Y$.",
+        "v": 0.75
+      }
+    ],
+    "solution": [
+      "$P(X\\mid\\text{red}) = \\dfrac{0.5(0.2)}{0.5(0.2)+0.5(0.6)} = \\dfrac{0.1}{0.4} = 0.25$."
+    ],
+    "hints": [
+      "Both bags are equally likely a priori.",
+      "What is the probability of red from each bag?",
+      "Divide bag $X$’s contribution by the total."
+    ],
+    "concept": "Posterior for a two-state partition.",
+    "misconception": "Reporting the proportion of red chips.",
+    "why": "Observing red shifts belief towards the red-rich bag.",
+    "fam": "bayes:information"
+  },
+  {
+    "id": "BAY-15",
+    "topic": "bayes",
+    "sub": "which source",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Reports come from team $A$ (70% of reports) or team $B$ (30%). Team $A$ files a report late with probability 0.2 and team $B$ with probability 0.5. A <b>late</b> report arrives. What is the probability that it came from team $B$?",
+    "data": "",
+    "answer": {
+      "value": 0.5172413793103449,
+      "display": "0.5172"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.5172",
+        "correct": true,
+        "why": "",
+        "v": 0.5172413793103449
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is the prior share of reports from team $B$.",
+        "v": 0.3
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is team $B$’s lateness rate, not the probability that a late report is from $B$.",
+        "v": 0.5
+      },
+      {
+        "text": "0.14",
+        "correct": false,
+        "why": "This is the joint probability of team $A$ and late.",
+        "v": 0.13999999999999999
+      }
+    ],
+    "solution": [
+      "$P(\\text{late}) = 0.7(0.2)+0.3(0.5) = 0.14+0.15 = 0.29$.",
+      "$P(B\\mid\\text{late}) = 0.15/0.29 \\approx 0.517$."
+    ],
+    "hints": [
+      "Find the total probability that a report is late.",
+      "Find the joint probability of team $B$ and late.",
+      "Divide the joint probability by the total probability of the evidence."
+    ],
+    "concept": "Bayes with unequal reliability.",
+    "misconception": "Reporting the prior.",
+    "why": "Team $B$ is a minority of reports but much more often late, which raises its posterior share.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-16",
+    "topic": "bayes",
+    "sub": "weights from sizes",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Departments $X$, $Y$ and $Z$ have 40, 60 and 100 employees. 25%, 50% and 10% of them respectively are on flexible contracts. One employee on a flexible contract is chosen at random. What is the probability that this employee works in department $Z$?",
+    "data": "",
+    "answer": {
+      "value": 0.2,
+      "display": "0.2"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2",
+        "correct": true,
+        "why": "",
+        "v": 0.2
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the share of all employees in $Z$; flexible contracts are rarer there.",
+        "v": 0.5
+      },
+      {
+        "text": "0.1",
+        "correct": false,
+        "why": "This is the share of $Z$ employees on flexible contracts.",
+        "v": 0.1
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "The denominator omits department $Z$’s own flexible employees.",
+        "v": 0.25
+      }
+    ],
+    "solution": [
+      "Flexible employees: $X$: $40(0.25) = 10$; $Y$: $60(0.5) = 30$; $Z$: $100(0.1) = 10$. Total 50.",
+      "$P(Z) = 10/50 = 0.20$."
+    ],
+    "hints": [
+      "Count the flexible employees in each department.",
+      "A random flexible employee is equally likely to be any of them.",
+      "Divide $Z$’s count by the total."
+    ],
+    "concept": "Posterior from counts.",
+    "misconception": "Using the department’s share of all employees.",
+    "why": "With equally likely individuals, the posterior is a ratio of counts.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-17",
+    "topic": "bayes",
+    "sub": "sequential evidence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A box holds a fair die and a die that always shows 6. One die is chosen at random and rolled twice; both rolls show 6. What is the probability that the <b>always-6 die</b> was chosen?",
+    "data": "",
+    "answer": {
+      "value": 0.972972972972973,
+      "display": "0.973"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.973",
+        "correct": true,
+        "why": "",
+        "v": 0.972972972972973
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the prior probability; two sixes are far more likely from the loaded die.",
+        "v": 0.5
+      },
+      {
+        "text": "0.8571",
+        "correct": false,
+        "why": "This uses only one roll as evidence; two sixes were observed, which has probability $1/36$ for the fair die.",
+        "v": 0.8571428571428571
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "Two sixes do not rule out the fair die; it produces them with probability $1/36$.",
+        "v": 1
+      }
+    ],
+    "solution": [
+      "$P(\\text{two 6s}\\mid\\text{loaded}) = 1$, $P(\\text{two 6s}\\mid\\text{fair}) = 1/36$.",
+      "$P(\\text{loaded}\\mid\\text{two 6s}) = \\dfrac{0.5\\cdot1}{0.5\\cdot1+0.5\\cdot\\frac1{36}} = \\dfrac{36}{37} \\approx 0.973$."
+    ],
+    "hints": [
+      "How likely is the evidence \"two sixes\" under each die?",
+      "Both dice are equally likely a priori.",
+      "Apply Bayes’ theorem."
+    ],
+    "concept": "Posterior updating with repeated independent evidence.",
+    "misconception": "Using one roll rather than both.",
+    "why": "Each additional six multiplies the odds of the loaded die by 6.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-18",
+    "topic": "bayes",
+    "sub": "impossible evidence",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A switch is either a standard one (equally likely to be \"up\" or \"down\" on each independent test) or a stuck one that always shows \"up\". One switch is chosen at random and tested three times, showing up, up, down. What is the probability that the switch is the <b>standard</b> one?",
+    "data": "",
+    "answer": {
+      "value": 1,
+      "display": "1"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "1",
+        "correct": true,
+        "why": "",
+        "v": 1
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the prior; the final \"down\" is impossible for the stuck switch.",
+        "v": 0.5
+      },
+      {
+        "text": "0.125",
+        "correct": false,
+        "why": "This is the likelihood of the observed sequence under the standard switch, not a posterior.",
+        "v": 0.125
+      },
+      {
+        "text": "0",
+        "correct": false,
+        "why": "The stuck switch can never show \"down\", so the observation rules it out entirely.",
+        "v": 0
+      }
+    ],
+    "solution": [
+      "$P(\\text{up, up, down}\\mid\\text{stuck}) = 0$, since it never shows \"down\".",
+      "The observation can only come from the standard switch: posterior $= 1$."
+    ],
+    "hints": [
+      "Can the stuck switch produce a \"down\"?",
+      "What is the likelihood of the observation under each hypothesis?",
+      "What does Bayes’ theorem give when one likelihood is zero?"
+    ],
+    "concept": "Zero-likelihood evidence eliminates a hypothesis.",
+    "misconception": "Letting the prior dominate.",
+    "why": "The posterior of any hypothesis with zero likelihood is zero.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-20",
+    "topic": "bayes",
+    "sub": "three hypotheses",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A fund has three analysts: a strong one who calls market direction correctly 90% of the time, an average one (60%) and a weak one (50%). One is chosen at random and makes a call, which turns out to be <b>correct</b>. What is the probability that the strong analyst made the call?",
+    "data": "",
+    "answer": {
+      "value": 0.45,
+      "display": "0.45"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.45",
+        "correct": true,
+        "why": "",
+        "v": 0.45
+      },
+      {
+        "text": "0.3333",
+        "correct": false,
+        "why": "This is the prior probability of the strong analyst.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "0.9",
+        "correct": false,
+        "why": "This is the strong analyst’s accuracy, not the posterior.",
+        "v": 0.9
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "The weak analyst’s contribution (0.5) was left out of the total.",
+        "v": 0.6
+      }
+    ],
+    "solution": [
+      "With equal priors the posterior is proportional to the likelihoods: $\\dfrac{0.9}{0.9+0.6+0.5} = \\dfrac{0.9}{2.0} = 0.45$."
+    ],
+    "hints": [
+      "The three priors are equal, so they cancel.",
+      "Sum the three accuracies.",
+      "Divide the strong analyst’s accuracy by the sum."
+    ],
+    "concept": "Posterior over three hypotheses.",
+    "misconception": "Omitting a hypothesis from the total.",
+    "why": "Equal priors make the posterior proportional to the likelihoods.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-21",
+    "topic": "bayes",
+    "sub": "host reveals information",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A prize is behind one of three doors, equally likely. You choose door 1. The host, who knows where the prize is and always opens a different door that does not hide the prize (choosing at random if he has a choice), opens door 3. What is the probability that the prize is behind <b>door 2</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.6666666666666666,
+      "display": "2/3"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "2/3",
+        "correct": true,
+        "why": "",
+        "v": 0.6666666666666666
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This ignores how the host chose: if the prize were behind door 1 he could open either door, so opening door 3 is weaker evidence for door 1.",
+        "v": 0.5
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This is the prior for door 1 (or any door); the host’s action is informative.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "Door 3 being empty does not make door 2 certain; the prize may still be behind door 1.",
+        "v": 1
+      }
+    ],
+    "solution": [
+      "$P(\\text{open 3}\\mid\\text{prize 1}) = \\tfrac12$ (random choice), $P(\\text{open 3}\\mid\\text{prize 2}) = 1$ (forced), $P(\\text{open 3}\\mid\\text{prize 3}) = 0$.",
+      "$P(\\text{prize 2}\\mid\\text{open 3}) = \\dfrac{\\frac13\\cdot1}{\\frac13\\cdot\\frac12+\\frac13\\cdot1} = \\dfrac23$."
+    ],
+    "hints": [
+      "What is the probability that the host opens door 3 under each prize location?",
+      "He cannot open your door or the prize door.",
+      "Apply Bayes’ theorem with equal priors."
+    ],
+    "concept": "Posterior depends on the mechanism that produced the evidence.",
+    "misconception": "Treating the opened door as a random observation.",
+    "why": "When the prize is behind door 2 the host’s action is forced; when behind door 1 it is a coin toss.",
+    "fam": "bayes:information"
+  },
+  {
+    "id": "BAY-22",
+    "topic": "bayes",
+    "sub": "many hypotheses",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Eight machines are numbered $1,\\dots,8$; machine $i$ produces a defective item with probability $i/20$. One machine is chosen at random and produces a defective item. What is the probability that it was machine <b>8</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.2222222222222222,
+      "display": "2/9"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "2/9",
+        "correct": true,
+        "why": "",
+        "v": 0.2222222222222222
+      },
+      {
+        "text": "1/8",
+        "correct": false,
+        "why": "This is the prior probability of machine 8.",
+        "v": 0.125
+      },
+      {
+        "text": "2/5",
+        "correct": false,
+        "why": "This is machine 8’s defect rate, not the posterior.",
+        "v": 0.4
+      },
+      {
+        "text": "2/7",
+        "correct": false,
+        "why": "The total weight is $1+\\dots+8 = 36$, not 28.",
+        "v": 0.2857142857142857
+      }
+    ],
+    "solution": [
+      "With equal priors the posterior is proportional to $i/20$, so $P(8\\mid D) = \\dfrac{8}{1+2+\\cdots+8} = \\dfrac{8}{36} = \\dfrac29 \\approx 0.222$."
+    ],
+    "hints": [
+      "The priors are equal, so they cancel in Bayes’ theorem.",
+      "Sum the likelihoods $i/20$ over the eight machines.",
+      "Divide machine 8’s likelihood by the sum."
+    ],
+    "concept": "Posterior over many equally likely hypotheses.",
+    "misconception": "Misadding the series.",
+    "why": "The posterior is proportional to the likelihood when the priors are equal.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-23",
+    "topic": "bayes",
+    "sub": "screening with a prior",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "An auditor's initial suspicion that a filing is fraudulent is 30%. Red flags appear in 60% of fraudulent filings and in 10% of honest ones. A filing shows <b>red flags</b>. What is the probability that it is fraudulent?",
+    "data": "",
+    "answer": {
+      "value": 0.72,
+      "display": "0.72"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.72",
+        "correct": true,
+        "why": "",
+        "v": 0.72
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This is the probability of red flags given fraud, the reverse conditional.",
+        "v": 0.6
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is the prior suspicion, which the red flags should increase.",
+        "v": 0.3
+      },
+      {
+        "text": "0.18",
+        "correct": false,
+        "why": "This is the joint probability of fraud and red flags; divide by $P(\\text{flags})$.",
+        "v": 0.18
+      }
+    ],
+    "solution": [
+      "$P(\\text{flags}) = 0.3(0.6)+0.7(0.1) = 0.18+0.07 = 0.25$.",
+      "$P(\\text{fraud}\\mid\\text{flags}) = 0.18/0.25 = 0.72$."
+    ],
+    "hints": [
+      "Compute the total probability of red flags.",
+      "Then the joint of fraud and red flags.",
+      "Divide the joint probability by the total probability of the evidence."
+    ],
+    "concept": "Bayes with a subjective prior.",
+    "misconception": "Confusing the likelihood with the posterior.",
+    "why": "Red flags are six times as likely under fraud, but the lower prior tempers the update.",
+    "fam": "bayes:testing"
+  },
+  {
+    "id": "BAY-25",
+    "topic": "bayes",
+    "sub": "sequential evidence",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A candidate is eventually hired with probability 0.5. If hired, a call arrives on Monday with probability 0.3 and, independently, on Tuesday with probability 0.4. If not hired, calls (to say so) arrive with probability 0.1 on Monday and 0.2 on Tuesday, independently. <b>No call has arrived by the end of Tuesday.</b> What is the probability that the candidate is hired?",
+    "data": "",
+    "answer": {
+      "value": 0.36842105263157887,
+      "display": "0.3684"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3684",
+        "correct": true,
+        "why": "",
+        "v": 0.36842105263157887
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the prior; the absence of calls is evidence against being hired.",
+        "v": 0.5
+      },
+      {
+        "text": "0.42",
+        "correct": false,
+        "why": "This is the probability of no call given hired, a likelihood.",
+        "v": 0.42
+      },
+      {
+        "text": "0.4375",
+        "correct": false,
+        "why": "This uses only Monday’s silence; Tuesday’s silence is also observed.",
+        "v": 0.43749999999999994
+      }
+    ],
+    "solution": [
+      "Likelihood of no call by Tuesday: hired $0.7\\times0.6 = 0.42$; not hired $0.9\\times0.8 = 0.72$.",
+      "$P(\\text{hired}\\mid\\text{no call}) = \\dfrac{0.5(0.42)}{0.5(0.42)+0.5(0.72)} = \\dfrac{0.42}{1.14} \\approx 0.368$."
+    ],
+    "hints": [
+      "Evidence over two days is conditionally independent given the state.",
+      "Multiply the no-call probabilities for each state.",
+      "Apply Bayes’ theorem to the combined evidence."
+    ],
+    "concept": "Updating on a sequence of conditionally independent observations.",
+    "misconception": "Updating with only one day’s evidence.",
+    "why": "Silence on both days is less likely if hired than if not.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-26",
+    "topic": "bayes",
+    "sub": "recessive trait",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A recessive condition shows only in people with two copies ($aa$) of a gene. Anna shows the dominant trait and her brother has the condition ($aa$); their parents both show the dominant trait. Anna marries a man who is a carrier ($Aa$) with probability $\\tfrac1{50}$ and otherwise has no copy of $a$. What is the probability that their first child has the condition?",
+    "data": "",
+    "answer": {
+      "value": 0.003333333333333333,
+      "display": "0.00333"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.00333",
+        "correct": true,
+        "why": "",
+        "v": 0.003333333333333333
+      },
+      {
+        "text": "0.005",
+        "correct": false,
+        "why": "This assumes Anna is a carrier for sure; she is a carrier only with probability $2/3$ (her parents are both $Aa$, and she is not $aa$).",
+        "v": 0.005
+      },
+      {
+        "text": "0.1667",
+        "correct": false,
+        "why": "This assumes the husband is certainly a carrier; he is one with probability $1/50$.",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "0.0025",
+        "correct": false,
+        "why": "Given that Anna shows the dominant trait, $P(Aa) = 2/3$, not $1/2$.",
+        "v": 0.0025
+      }
+    ],
+    "solution": [
+      "Both parents must be $Aa$ (their son is $aa$). Given Anna is not $aa$, $P(Aa) = \\dfrac{2/4}{3/4} = \\dfrac23$.",
+      "The child is $aa$ only if both parents are carriers and both pass on $a$: $\\dfrac23\\cdot\\dfrac1{50}\\cdot\\dfrac14 = \\dfrac{1}{300} \\approx 0.0033$."
+    ],
+    "hints": [
+      "What genotypes can Anna’s parents have?",
+      "Given Anna is not $aa$, find the probability she is $Aa$.",
+      "A child needs $a$ from each parent: each carrier passes it with probability $1/2$."
+    ],
+    "concept": "Conditional probability in a genetic setting.",
+    "misconception": "Using the unconditional probability of Anna’s genotype.",
+    "why": "Her phenotype removes the $aa$ case, leaving $Aa$ and $AA$ in ratio 2:1.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-27",
+    "topic": "bayes",
+    "sub": "agreement of two judges",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two referees independently classify a paper correctly with probability 0.7 each (a wrong classification is the opposite verdict). Given that the two referees <b>agree</b> with each other, what is the probability that their common verdict is <b>correct</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.8448275862068965,
+      "display": "0.8448"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.8448",
+        "correct": true,
+        "why": "",
+        "v": 0.8448275862068965
+      },
+      {
+        "text": "0.7",
+        "correct": false,
+        "why": "This is the accuracy of one referee; agreement of two is stronger evidence.",
+        "v": 0.7
+      },
+      {
+        "text": "0.49",
+        "correct": false,
+        "why": "This is the probability that both are correct, not divided by the probability of agreement.",
+        "v": 0.49
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "Agreement can occur in two ways (both right, both wrong), which are not equally likely.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "Agree and correct: $0.7^2 = 0.49$. Agree and wrong: $0.3^2 = 0.09$.",
+      "$P(\\text{correct}\\mid\\text{agree}) = \\dfrac{0.49}{0.58} \\approx 0.845$."
+    ],
+    "hints": [
+      "In how many ways can the two referees agree?",
+      "Compute the probability of each way.",
+      "Divide the correct case by the total probability of agreement."
+    ],
+    "concept": "Posterior given agreement.",
+    "misconception": "Taking the single-referee accuracy as the answer.",
+    "why": "Two independent signals that agree are more reliable than either alone.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-31",
+    "topic": "bayes",
+    "sub": "noisy message",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "An event is true with probability 0.6. A sensor reports it correctly with probability 0.7; otherwise it reports \"true\" or \"false\" with equal probability. The sensor reports <b>\"true\"</b>. What is the probability that the event is in fact true?",
+    "data": "",
+    "answer": {
+      "value": 0.894736842105263,
+      "display": "0.8947"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.8947",
+        "correct": true,
+        "why": "",
+        "v": 0.894736842105263
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This is the prior probability that the event is true.",
+        "v": 0.6
+      },
+      {
+        "text": "0.7",
+        "correct": false,
+        "why": "This is the accuracy of the reporting rule, but the random report can also say \"true\" for a false event.",
+        "v": 0.7
+      },
+      {
+        "text": "0.85",
+        "correct": false,
+        "why": "This is $P(\\text{report true}\\mid\\text{true})$, a likelihood, not the posterior.",
+        "v": 0.85
+      }
+    ],
+    "solution": [
+      "$P(\\text{report true}\\mid\\text{true}) = 0.7+0.3(0.5) = 0.85$; $P(\\text{report true}\\mid\\text{false}) = 0.3(0.5) = 0.15$.",
+      "$P(\\text{true}\\mid\\text{report true}) = \\dfrac{0.6(0.85)}{0.6(0.85)+0.4(0.15)} = \\dfrac{0.51}{0.57} \\approx 0.895$."
+    ],
+    "hints": [
+      "Find the probability that the sensor says \"true\" in each state.",
+      "Include the case in which the sensor guesses.",
+      "Apply Bayes’ theorem with prior 0.6."
+    ],
+    "concept": "Posterior through a noisy channel.",
+    "misconception": "Ignoring guessing.",
+    "why": "The reported value is a mixture of a correct report and a random report.",
+    "fam": "bayes:testing"
+  },
+  {
+    "id": "BAY-32",
+    "topic": "bayes",
+    "sub": "common cause",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two parts come from the same batch. The batch is of good quality with probability 0.7 and then each part is defective independently with probability 0.02; otherwise (probability 0.3) each part is defective independently with probability 0.15. The first part is found to be <b>defective</b>. What is the probability that the second part is also defective?",
+    "data": "",
+    "answer": {
+      "value": 0.11915254237288134,
+      "display": "0.1192"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1192",
+        "correct": true,
+        "why": "",
+        "v": 0.11915254237288134
+      },
+      {
+        "text": "0.059",
+        "correct": false,
+        "why": "This is the unconditional probability that the second part is defective; the first part’s defect is informative about the batch.",
+        "v": 0.059
+      },
+      {
+        "text": "0.0225",
+        "correct": false,
+        "why": "This treats the batch as certainly poor.",
+        "v": 0.0225
+      },
+      {
+        "text": "0.15",
+        "correct": false,
+        "why": "This is the defect rate for a poor batch, but the batch might be good.",
+        "v": 0.15
+      }
+    ],
+    "solution": [
+      "$P(\\text{poor}\\mid D_1) = \\dfrac{0.3(0.15)}{0.3(0.15)+0.7(0.02)} = \\dfrac{0.045}{0.059} \\approx 0.763$.",
+      "$P(D_2\\mid D_1) = 0.763(0.15)+0.237(0.02) \\approx 0.119$."
+    ],
+    "hints": [
+      "The parts are independent only given the batch quality.",
+      "Update the probability that the batch is poor after the first defect.",
+      "Use total probability for the second part with the updated weights."
+    ],
+    "concept": "Conditional independence and updating through a common cause.",
+    "misconception": "Treating the two parts as independent unconditionally.",
+    "why": "The first defect is evidence for a poor batch, raising the second part’s defect probability.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-33",
+    "topic": "bayes",
+    "sub": "partition and posterior",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A subscription service has monthly (50%), annual (30%) and family (20%) plans. Renewal rates are 0.6, 0.8 and 0.9 respectively. A subscriber who <b>did not renew</b> is chosen. What is the probability that this subscriber was on the <b>monthly</b> plan?",
+    "data": "",
+    "answer": {
+      "value": 0.7142857142857143,
+      "display": "0.7143"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.7143",
+        "correct": true,
+        "why": "",
+        "v": 0.7142857142857143
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the prior share of monthly subscribers.",
+        "v": 0.5
+      },
+      {
+        "text": "0.4",
+        "correct": false,
+        "why": "This is the non-renewal rate of monthly subscribers.",
+        "v": 0.4
+      },
+      {
+        "text": "0.4167",
+        "correct": false,
+        "why": "This is the share of monthly plans among those who <i>did</i> renew.",
+        "v": 0.41666666666666663
+      }
+    ],
+    "solution": [
+      "Non-renewal rates: $0.4, 0.2, 0.1$.",
+      "$P(\\text{non-renewal}) = 0.5(0.4)+0.3(0.2)+0.2(0.1) = 0.28$.",
+      "$P(\\text{monthly}\\mid\\text{non-renewal}) = 0.20/0.28 \\approx 0.714$."
+    ],
+    "hints": [
+      "Use non-renewal probabilities, not renewal probabilities.",
+      "Weight by the plan shares.",
+      "Divide the monthly term by the total."
+    ],
+    "concept": "Posterior based on a complementary event.",
+    "misconception": "Using renewal rates.",
+    "why": "The evidence is non-renewal, so the likelihoods are complementary.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-34",
+    "topic": "bayes",
+    "sub": "rare conditions",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "One transaction in 20,000 is fraudulent. A screening rule flags 98% of fraudulent transactions and 2% of legitimate ones. A transaction is flagged. What is the probability that it is <b>fraudulent</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.0024441340782122905,
+      "display": "0.00244"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.00244",
+        "correct": true,
+        "why": "",
+        "v": 0.0024441340782122905
+      },
+      {
+        "text": "0.98",
+        "correct": false,
+        "why": "This is the detection rate, $P(\\text{flag}\\mid\\text{fraud})$, not the posterior.",
+        "v": 0.98
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "The base rate is tiny, so most flags are false alarms.",
+        "v": 0.5
+      },
+      {
+        "text": "0.02",
+        "correct": false,
+        "why": "This is the false-flag rate for legitimate transactions.",
+        "v": 0.02
+      }
+    ],
+    "solution": [
+      "$P(\\text{flag}) = 0.00005(0.98)+0.99995(0.02) = 0.000049+0.019999 = 0.020048$.",
+      "$P(\\text{fraud}\\mid\\text{flag}) = 0.000049/0.020048 \\approx 0.0024$.",
+      "About 1 flagged transaction in 400 is fraudulent."
+    ],
+    "hints": [
+      "Think of 20,000 transactions: how many are fraudulent, and how many are flagged in total?",
+      "False alarms come from the 19,999 legitimate ones.",
+      "Compare true flags to all flags."
+    ],
+    "concept": "Base-rate fallacy in screening.",
+    "misconception": "Equating sensitivity with the posterior.",
+    "why": "Even a small false-positive rate produces many false alarms when the condition is rare.",
+    "fam": "bayes:testing"
+  },
+  {
+    "id": "BAY-36",
+    "topic": "bayes",
+    "sub": "predictive probability",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A box holds five strategies whose success probabilities are $0.1, 0.3, 0.5, 0.7, 0.9$. One strategy is chosen at random and tried once: it <b>succeeds</b>. If the same strategy is tried again, what is the probability that it succeeds again?",
+    "data": "",
+    "answer": {
+      "value": 0.6599999999999999,
+      "display": "0.66"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.66",
+        "correct": true,
+        "why": "",
+        "v": 0.6599999999999999
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the unconditional success probability; the first success is informative about which strategy was chosen.",
+        "v": 0.5
+      },
+      {
+        "text": "0.9",
+        "correct": false,
+        "why": "This assumes the best strategy was chosen.",
+        "v": 0.9
+      },
+      {
+        "text": "0.7",
+        "correct": false,
+        "why": "This is the posterior weight of the 0.7 strategy; the predictive probability is a weighted average of all five.",
+        "v": 0.7
+      }
+    ],
+    "solution": [
+      "Posterior weights are proportional to $p_i$: $0.1,0.3,0.5,0.7,0.9$ (sum 2.5).",
+      "$P(\\text{second success}\\mid\\text{first success}) = \\dfrac{\\sum p_i^2}{\\sum p_i} = \\dfrac{1.65}{2.5} = 0.66$."
+    ],
+    "hints": [
+      "After one success, the weights of the strategies are proportional to $p_i$.",
+      "Average the success probability with those weights.",
+      "The numerator is $\\sum p_i^2$."
+    ],
+    "concept": "Predictive probability after updating.",
+    "misconception": "Using the prior mean 0.5.",
+    "why": "A success shifts weight towards high-probability strategies.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-39",
+    "topic": "bayes",
+    "sub": "Poisson likelihoods",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A bank branch receives complaints at a Poisson rate of 6 per month. A new training programme reduces the rate to 4 per month in 60% of branches and has no effect in the other 40%. A branch that completed the programme has <b>3 complaints</b> in a month. What is the probability that the programme was effective for this branch?",
+    "data": "",
+    "answer": {
+      "value": 0.7665746545193762,
+      "display": "0.7666"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.7666",
+        "correct": true,
+        "why": "",
+        "v": 0.7665746545193762
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This is the prior probability that the programme works.",
+        "v": 0.6
+      },
+      {
+        "text": "0.1954",
+        "correct": false,
+        "why": "This is the Poisson probability of 3 complaints when the rate is 4: a likelihood.",
+        "v": 0.19536681481316456
+      },
+      {
+        "text": "0.6865",
+        "correct": false,
+        "why": "This uses equal priors for the two rates; the prior probability that the programme works is 0.6.",
+        "v": 0.6864564835986605
+      }
+    ],
+    "solution": [
+      "$P(3\\mid\\lambda=4) = e^{-4}4^3/3! = 0.1954$; $P(3\\mid\\lambda=6) = e^{-6}6^3/3! = 0.0892$.",
+      "$P(\\text{effective}\\mid3) = \\dfrac{0.6(0.1954)}{0.6(0.1954)+0.4(0.0892)} = \\dfrac{0.1172}{0.1529} \\approx 0.767$."
+    ],
+    "hints": [
+      "What is the probability of exactly 3 complaints at each rate?",
+      "Weight by 0.6 and 0.4.",
+      "Divide the effective term by the sum."
+    ],
+    "concept": "Posterior with discrete Poisson likelihoods.",
+    "misconception": "Using the prior.",
+    "why": "A count of 3 is more probable when the rate is 4.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-41",
+    "topic": "bayes",
+    "sub": "random number of trials",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A buyer rolls a fair die and then inspects that many items from a delivery (as many as the die shows). Each item is defective independently with probability 0.1. What is the probability that <b>no inspected item</b> is defective?",
+    "data": "",
+    "answer": {
+      "value": 0.7028385,
+      "display": "0.7028"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.7028",
+        "correct": true,
+        "why": "",
+        "v": 0.7028385
+      },
+      {
+        "text": "0.6916",
+        "correct": false,
+        "why": "This uses the average number of items (3.5) as if it were fixed; the probability must be averaged over the die outcomes.",
+        "v": 0.6915901242788246
+      },
+      {
+        "text": "0.9",
+        "correct": false,
+        "why": "This is the probability for a single item only.",
+        "v": 0.9
+      },
+      {
+        "text": "0.4686",
+        "correct": false,
+        "why": "This is the probability that at least one item is defective when 6 items are inspected.",
+        "v": 0.46855899999999995
+      }
+    ],
+    "solution": [
+      "Condition on the die: $P(\\text{none}\\mid n) = 0.9^n$.",
+      "$P = \\tfrac16(0.9+0.81+0.729+0.6561+0.5905+0.5314) = \\dfrac{4.2170}{6} \\approx 0.703$."
+    ],
+    "hints": [
+      "Condition on the number of items inspected.",
+      "Each case has probability $0.9^n$.",
+      "Average over the six equally likely values of $n$."
+    ],
+    "concept": "Total probability with a random sample size.",
+    "misconception": "Plugging in the mean sample size.",
+    "why": "The probability is an average of a convex function, not the function at the mean.",
+    "fam": "bayes:total-probability"
+  },
+  {
+    "id": "BAY-44",
+    "topic": "bayes",
+    "sub": "transfer between purses",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Purse 1 holds 5 ten-pound notes and 3 twenty-pound notes; purse 2 holds 2 ten-pound and 6 twenty-pound notes. One note is moved at random from purse 1 to purse 2, then a note is drawn at random from purse 2. What is the probability that the note drawn is a <b>twenty-pound</b> note?",
+    "data": "",
+    "answer": {
+      "value": 0.7083333333333333,
+      "display": "17/24"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "17/24",
+        "correct": true,
+        "why": "",
+        "v": 0.7083333333333333
+      },
+      {
+        "text": "3/4",
+        "correct": false,
+        "why": "This is the probability for purse 2 before any note is added.",
+        "v": 0.75
+      },
+      {
+        "text": "3/8",
+        "correct": false,
+        "why": "This is the probability that the moved note was a twenty.",
+        "v": 0.375
+      },
+      {
+        "text": "51/64",
+        "correct": false,
+        "why": "After the transfer purse 2 holds 9 notes, so the denominators are 9.",
+        "v": 0.796875
+      }
+    ],
+    "solution": [
+      "Moved a ten (prob $5/8$): purse 2 has 2 tens, 6 twenties, 1 more ten: 9 notes with 6 twenties, so $P(20) = 6/9$.",
+      "Moved a twenty ($3/8$): 7 twenties of 9.",
+      "$P = \\dfrac58\\cdot\\dfrac69+\\dfrac38\\cdot\\dfrac79 = \\dfrac{51}{72} = \\dfrac{17}{24} \\approx 0.708$."
+    ],
+    "hints": [
+      "Condition on the denomination moved.",
+      "Update the composition of purse 2.",
+      "Combine with the law of total probability."
+    ],
+    "concept": "Total probability after a transfer.",
+    "misconception": "Using the original composition.",
+    "why": "The moved note changes the numerator and denominator of purse 2’s proportion.",
+    "fam": "bayes:information"
+  },
+  {
+    "id": "BAY-46",
+    "topic": "bayes",
+    "sub": "rare event screening in counts",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "0.1% of accounts are used for illicit transfers. A monitoring rule flags 95% of illicit accounts and 2% of legitimate accounts. Out of every <b>1,000 flagged accounts</b>, about how many are actually illicit?",
+    "data": "",
+    "answer": {
+      "value": 45.38939321548017,
+      "display": "45.3894"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "45.3894",
+        "correct": true,
+        "why": "",
+        "v": 45.38939321548017
+      },
+      {
+        "text": "950",
+        "correct": false,
+        "why": "This confuses the detection rate (95% of illicit accounts flagged) with the share of flagged accounts that are illicit.",
+        "v": 950
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "This is the number of illicit accounts per 1,000 accounts overall, not per 1,000 flagged.",
+        "v": 1
+      },
+      {
+        "text": "20",
+        "correct": false,
+        "why": "This is the number of legitimate accounts flagged per 1,000 legitimate accounts.",
+        "v": 20
+      }
+    ],
+    "solution": [
+      "Take 1,000,000 accounts: 1,000 illicit, 950 flagged; 999,000 legitimate, $0.02\\times999\\,000 = 19\\,980$ flagged.",
+      "Flagged total: $20\\,930$; illicit share $950/20\\,930 \\approx 4.5\\%$.",
+      "Per 1,000 flagged: about $45$."
+    ],
+    "hints": [
+      "Use a large imaginary population and compute counts.",
+      "How many legitimate accounts are flagged?",
+      "Take the ratio of flagged illicit to all flagged and scale to 1,000."
+    ],
+    "concept": "Natural-frequency version of Bayes’ theorem.",
+    "misconception": "Reading detection rate as precision.",
+    "why": "False flags from the huge legitimate group swamp the true detections.",
+    "fam": "bayes:testing"
+  },
+  {
+    "id": "BAY-48",
+    "topic": "bayes",
+    "sub": "relative rates",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "30% of drivers in a portfolio are novices, 50% are intermediate and 20% are experienced. Accident rates of novice and intermediate drivers are four and two times that of experienced drivers. A driver who had an accident is chosen. What is the probability that the driver is <b>experienced</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.08333333333333333,
+      "display": "0.0833"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0833",
+        "correct": true,
+        "why": "",
+        "v": 0.08333333333333333
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the prior share of experienced drivers; they have fewer accidents.",
+        "v": 0.2
+      },
+      {
+        "text": "0.1429",
+        "correct": false,
+        "why": "This is the ratio of the experienced relative rate to the sum of the three relative rates, ignoring the portfolio shares.",
+        "v": 0.14285714285714285
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is a ratio of relative rates that ignores the shares of drivers.",
+        "v": 0.25
+      }
+    ],
+    "solution": [
+      "With relative rates 4, 2, 1 and shares 0.3, 0.5, 0.2: weights $1.2, 1.0, 0.2$ (sum 2.4).",
+      "$P(\\text{experienced}\\mid\\text{accident}) = 0.2/2.4 \\approx 0.083$."
+    ],
+    "hints": [
+      "Assign the experienced group rate 1 and the others 4 and 2.",
+      "Multiply by shares.",
+      "Divide the experienced weight by the total."
+    ],
+    "concept": "Bayes with relative rates.",
+    "misconception": "Ignoring group sizes.",
+    "why": "Only ratios of accident rates matter.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-50",
+    "topic": "bayes",
+    "sub": "sampling evidence",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A shipment comes from supplier $A$ (35% of shipments, 4% of units defective) or supplier $B$ (65% of shipments, 1.5% defective). An inspector tests 30 units from one shipment and finds <b>3 defective</b>. What is the probability that the shipment came from supplier $A$?",
+    "data": "",
+    "answer": {
+      "value": 0.836076864416994,
+      "display": "0.8361"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.8361",
+        "correct": true,
+        "why": "",
+        "v": 0.836076864416994
+      },
+      {
+        "text": "0.35",
+        "correct": false,
+        "why": "This is the prior probability that the shipment is from supplier $A$; three defectives in 30 are more likely from $A$.",
+        "v": 0.35
+      },
+      {
+        "text": "0.04",
+        "correct": false,
+        "why": "This is supplier $A$’s defect rate.",
+        "v": 0.04
+      },
+      {
+        "text": "0.5895",
+        "correct": false,
+        "why": "This uses only the defect rate as evidence and ignores the observed count of 3 in 30.",
+        "v": 0.5894736842105263
+      }
+    ],
+    "solution": [
+      "The binomial coefficient cancels. $A$: $0.35(0.04)^3(0.96)^{27} = 0.35\\times6.4\\times10^{-5}\\times0.3324 = 7.44\\times10^{-6}$.",
+      "$B$: $0.65(0.015)^3(0.985)^{27} = 0.65\\times3.375\\times10^{-6}\\times0.6645 = 1.46\\times10^{-6}$.",
+      "$P(A\\mid3) = \\dfrac{7.44}{7.44+1.46} \\approx 0.836$."
+    ],
+    "hints": [
+      "Find the probability of 3 defectives in 30 under each supplier.",
+      "The binomial coefficient is common to both and cancels.",
+      "Weight by 0.35 and 0.65 and normalise."
+    ],
+    "concept": "Bayes with binomial likelihoods.",
+    "misconception": "Using only the defect rate.",
+    "why": "The sample count carries much more information than the prior.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-51",
+    "topic": "bayes",
+    "sub": "diagnose: transposed conditional",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A screening test detects a condition in 90% of people who have it and gives a false alarm for 10% of people who do not. Only 1% of the population has the condition. A news article says: \"If you test positive, there is a 90% chance you have it.\" What is the error?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "It treats $P(\\text{positive}\\mid\\text{condition}) = 0.9$ as if it were $P(\\text{condition}\\mid\\text{positive})$; with a 1% base rate the latter is only about 8%"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "It treats $P(\\text{positive}\\mid\\text{condition}) = 0.9$ as if it were $P(\\text{condition}\\mid\\text{positive})$; with a 1% base rate the latter is only about 8%",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Nothing: a test with 90% sensitivity gives a 90% chance of the condition after a positive result",
+        "correct": false,
+        "why": "Sensitivity is the probability of a positive result <i>given</i> the condition, not of the condition given a positive result."
+      },
+      {
+        "text": "The article should have used the false-alarm rate: 10%",
+        "correct": false,
+        "why": "The false-alarm rate is a different conditional probability and is also not the answer."
+      },
+      {
+        "text": "The article is right because the test is accurate in both directions",
+        "correct": false,
+        "why": "Accuracy in one direction does not carry over: it depends on the base rate."
+      }
+    ],
+    "solution": [
+      "Per 1000 people: 10 have the condition, 9 test positive; 990 do not, about 99 test positive.",
+      "$P(\\text{condition}\\mid+) = \\dfrac{9}{9+99} \\approx 0.083$.",
+      "The article transposed the conditional."
+    ],
+    "hints": [
+      "Which probability does \"detects the condition in 90%\" describe: positive given condition, or condition given positive?",
+      "Consider 1000 people and count true and false positives.",
+      "Apply Bayes’ theorem with the 1% prior."
+    ],
+    "concept": "Reversing a conditional probability requires the prior (Bayes).",
+    "misconception": "The base-rate fallacy.",
+    "why": "The 99 false positives from the healthy majority dwarf the 9 true positives.",
+    "fam": "bayes:diagnose"
+  },
+  {
+    "id": "BAY-52",
+    "topic": "bayes",
+    "sub": "diagnose: ignoring prior proportions",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "Plant A produces 10% of a firm’s output with 5% defective; plant B produces 90% with 1% defective. A defective item is found. A student argues: \"A is five times more defective than B, so $P(A\\mid\\text{defective}) = 5/(5+1) = 0.83$.\" What is the correct probability that the item came from plant A?",
+    "data": "",
+    "answer": {
+      "value": 0.35714285714285715,
+      "display": "0.3571"
+    },
+    "fmt": "d",
+    "tol": 0.002,
+    "options": [
+      {
+        "text": "0.3571",
+        "correct": true,
+        "why": "",
+        "v": 0.35714285714285715
+      },
+      {
+        "text": "0.8333",
+        "correct": false,
+        "why": "This uses only the likelihood ratio and ignores that plant B produces nine times as many items.",
+        "v": 0.8333333333333334
+      },
+      {
+        "text": "0.1",
+        "correct": false,
+        "why": "This is the prior probability of plant A; its higher defect rate raises it.",
+        "v": 0.1
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "This is the defect rate of plant A, $P(\\text{defective}\\mid A)$.",
+        "v": 0.05
+      }
+    ],
+    "solution": [
+      "$P(A\\cap D) = 0.1(0.05) = 0.005$; $P(B\\cap D) = 0.9(0.01) = 0.009$.",
+      "$P(A\\mid D) = 0.005/0.014 \\approx 0.357$.",
+      "Posterior odds = prior odds $(1:9)$ $\\times$ likelihood ratio $(5:1) = 5:9$."
+    ],
+    "hints": [
+      "The student has accounted for the defect rates but not for something else. What?",
+      "Compare the number of defective items from each plant per 1000 items produced.",
+      "Posterior odds = prior odds $\\times$ likelihood ratio."
+    ],
+    "concept": "Bayes’ theorem needs both priors and likelihoods.",
+    "misconception": "Using the likelihood ratio as if it were the posterior.",
+    "why": "Plant B makes up for its lower defect rate with sheer volume.",
+    "fam": "bayes:diagnose"
+  },
+  {
+    "id": "BAY-53",
+    "topic": "bayes",
+    "sub": "interpretation: reversing a survey statistic",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "In a labour-force survey, 80% of the unemployed respondents are under 35. A commentator concludes: \"So 80% of workers under 35 are unemployed.\" Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "The commentator transposed the conditional: $P(\\text{under 35}\\mid\\text{unemployed}) = 0.8$ says nothing about $P(\\text{unemployed}\\mid\\text{under 35})$ without the base rates"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "The commentator transposed the conditional: $P(\\text{under 35}\\mid\\text{unemployed}) = 0.8$ says nothing about $P(\\text{unemployed}\\mid\\text{under 35})$ without the base rates",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The conclusion is correct because the same people are being described",
+        "correct": false,
+        "why": "The two statements have different denominators (the unemployed versus the under-35s)."
+      },
+      {
+        "text": "The conclusion is wrong, and the true figure must be 20%",
+        "correct": false,
+        "why": "There is no way to derive 20% from the information."
+      },
+      {
+        "text": "The conclusion is correct if the survey is random",
+        "correct": false,
+        "why": "Random sampling does not turn one conditional probability into its reverse."
+      }
+    ],
+    "solution": [
+      "$P(\\text{U35}\\mid\\text{Unemp}) = 0.8$ and $P(\\text{Unemp}\\mid\\text{U35}) = \\dfrac{P(\\text{U35}\\mid\\text{Unemp})\\,P(\\text{Unemp})}{P(\\text{U35})}$.",
+      "If, say, 7% of workers are unemployed and 40% are under 35, the unemployment rate among the under-35s is $0.8\\times0.07/0.40 = 14\\%$."
+    ],
+    "hints": [
+      "Which group forms the denominator of each percentage?",
+      "Write both statements as conditional probabilities.",
+      "The two are related by Bayes’ formula using $P(\\text{Unemp})$ and $P(\\text{U35})$."
+    ],
+    "concept": "Conditional probability is not symmetric (prosecutor’s fallacy in surveys).",
+    "misconception": "Transposing a conditional.",
+    "why": "The unemployed are a small group, so most under-35s are employed even if most unemployed are young.",
+    "fam": "bayes:diagnose"
+  },
+  {
+    "id": "BAY-54",
+    "topic": "bayes",
+    "sub": "diagnose: simple vs weighted average",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "An online shop gets 90% of its visitors from mobile, where 2% buy, and 10% from desktop, where 8% buy. A student computes the overall conversion rate as $(2\\% + 8\\%)/2 = 5\\%$. What is the correct overall rate?",
+    "data": "",
+    "answer": {
+      "value": 0.026000000000000002,
+      "display": "0.026"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.026",
+        "correct": true,
+        "why": "",
+        "v": 0.026000000000000002
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "The simple average treats the two channels as equally important; the overall rate weights each by its share of visitors.",
+        "v": 0.05
+      },
+      {
+        "text": "0.08",
+        "correct": false,
+        "why": "This is the desktop rate only.",
+        "v": 0.08
+      },
+      {
+        "text": "0.02",
+        "correct": false,
+        "why": "This is the mobile rate only; desktop visitors also contribute.",
+        "v": 0.02
+      }
+    ],
+    "solution": [
+      "By the law of total probability: $P(\\text{buy}) = 0.9(0.02)+0.1(0.08) = 0.018+0.008 = 0.026$, i.e. 2.6%."
+    ],
+    "hints": [
+      "Are the two groups of visitors of equal size?",
+      "The overall rate is an average of group rates weighted by group sizes.",
+      "$0.9\\times0.02+0.1\\times0.08$."
+    ],
+    "concept": "Law of total probability: weighted average of conditional probabilities.",
+    "misconception": "Using an unweighted average.",
+    "why": "The result must lie between 2% and 8%, close to 2% because mobile dominates.",
+    "fam": "bayes:diagnose"
+  },
+  {
+    "id": "BAY-55",
+    "topic": "bayes",
+    "sub": "natural frequencies",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Out of every 1000 employees screened for a rare skill gap, 20 truly have it. The screen flags 18 of those 20 and also flags 49 of the 980 who do not. Among employees who are flagged, what proportion truly have the gap?",
+    "data": "",
+    "answer": {
+      "value": 0.26865671641791045,
+      "display": "0.2687"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Flagged in total: $18+49 = 67$.",
+      "Of these 18 truly have the gap: $18/67 \\approx 0.269$."
+    ],
+    "hints": [
+      "Count everyone who is flagged, true or false.",
+      "How many of the flagged truly have the gap?",
+      "Divide the second count by the first."
+    ],
+    "concept": "Posterior from counts of flagged people.",
+    "misconception": "Using 18/20 as the answer.",
+    "why": "Most flagged people are false positives because the gap is rare.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-56",
+    "topic": "bayes",
+    "sub": "odds form",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Before reviewing a transaction, an auditor puts the chance it is fraudulent at 1%. A rule fires on 90% of fraudulent transactions and 6% of legitimate ones. Using odds, what is the probability that a transaction is fraudulent given the rule fires?",
+    "data": "",
+    "answer": {
+      "value": 0.13157894736842107,
+      "display": "0.1316"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "Prior odds $=0.01/0.99 \\approx 0.0101$. Likelihood ratio $=0.9/0.06 = 15$.",
+      "Posterior odds $\\approx 0.1515$, so probability $=0.1515/1.1515 \\approx 0.1316$."
+    ],
+    "hints": [
+      "Convert the prior probability to odds.",
+      "Multiply by the ratio of the two firing rates.",
+      "Convert the posterior odds back to a probability."
+    ],
+    "concept": "Posterior odds equal prior odds times the likelihood ratio.",
+    "misconception": "Reporting the odds as a probability.",
+    "why": "A likelihood ratio of 15 only lifts a 1% prior to about 13%.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-57",
+    "topic": "bayes",
+    "sub": "sequential updating with two tests",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A supplier is \"weak\" with probability 0.10. A weak supplier misses a delivery date with probability 0.5, a good one with probability 0.1. Given the supplier misses two consecutive dates (independent given type), what is the probability that it is weak?",
+    "data": "",
+    "answer": {
+      "value": 0.7352941176470588,
+      "display": "0.7353"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Likelihood of two misses: weak $0.5^2 = 0.25$, good $0.1^2 = 0.01$.",
+      "Posterior $=0.1(0.25)/(0.1(0.25)+0.9(0.01)) = 0.025/0.034 \\approx 0.735$."
+    ],
+    "hints": [
+      "Find the chance of two misses under each supplier type.",
+      "Misses are independent given the type, so multiply.",
+      "Apply Bayes’ rule with the 0.10 prior."
+    ],
+    "concept": "Updating on two observations at once.",
+    "misconception": "Using a single miss probability.",
+    "why": "Repeated evidence multiplies the likelihood ratio.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-58",
+    "topic": "bayes",
+    "sub": "second look after a first update",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Using the supplier model above (weak with prior 0.10; miss probability 0.5 if weak, 0.1 if good), the supplier has just missed one date. What is the probability that it misses the <b>next</b> date as well?",
+    "data": "",
+    "answer": {
+      "value": 0.24285714285714285,
+      "display": "0.2429"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "After one miss: $P(\\text{weak}) = 0.05/0.14 \\approx 0.357$.",
+      "Next miss: $0.357(0.5)+0.643(0.1) \\approx 0.243$."
+    ],
+    "hints": [
+      "First update the probability of \"weak\" after one miss.",
+      "Use that as the new prior for the next date.",
+      "Combine with the law of total probability."
+    ],
+    "concept": "Posterior predictive probability.",
+    "misconception": "Using the original 0.10 prior for the next date.",
+    "why": "The next-date probability mixes both types with updated weights.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-59",
+    "topic": "bayes",
+    "sub": "three hypotheses",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Orders come from Region A (50%), B (30%) or C (20%). Late-delivery rates are 4%, 10% and 12% respectively. A late order is selected. From which region is it most likely to have come?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Region B (posterior about 0.41)"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Region B (posterior about 0.41)",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Region A, because it has the largest share of orders",
+        "correct": false,
+        "why": "A’s posterior is $0.02/0.07 \\approx 0.286$, less than B’s 0.429."
+      },
+      {
+        "text": "Region C, because its late rate is highest",
+        "correct": false,
+        "why": "C’s posterior is $0.03/0.07 \\approx 0.286$, below B."
+      },
+      {
+        "text": "All regions are equally likely",
+        "correct": false,
+        "why": "The prior shares and late rates differ, so the posteriors differ."
+      }
+    ],
+    "solution": [
+      "Joint (late and region): A $0.5(0.04)=0.02$, B $0.3(0.10)=0.03$, C $0.2(0.12)=0.024$; total $0.074$.",
+      "Posteriors: A 0.27, B 0.41, C 0.32."
+    ],
+    "hints": [
+      "Multiply each prior by its late rate.",
+      "Normalise by the total.",
+      "Compare the three posteriors."
+    ],
+    "concept": "Posterior over a three-way partition.",
+    "misconception": "Picking by prior share or by likelihood alone.",
+    "why": "Prior and likelihood both matter.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-60",
+    "topic": "bayes",
+    "sub": "false-positive paradox diagnostic",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A manager says: \"The credit model is 95% accurate in both directions, so a flagged applicant has a 95% chance of defaulting.\" Defaults are 2% of applicants. What is the flaw?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "It ignores the base rate: with 2% defaults, most flagged applicants are non-defaulters"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "It ignores the base rate: with 2% defaults, most flagged applicants are non-defaulters",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Nothing: 95% accuracy means 95% of flagged applicants default",
+        "correct": false,
+        "why": "This confuses $P(\\text{flag}\\mid\\text{default})$ with $P(\\text{default}\\mid\\text{flag})$."
+      },
+      {
+        "text": "Accuracy cannot be the same in both directions",
+        "correct": false,
+        "why": "A model can have equal sensitivity and specificity; the error is elsewhere."
+      },
+      {
+        "text": "The model should flag more applicants",
+        "correct": false,
+        "why": "More flags would not change the base-rate issue."
+      }
+    ],
+    "solution": [
+      "Per 10 000 applicants: 200 defaulters, 190 flagged; 9 800 non-defaulters, 490 flagged.",
+      "Flagged who default: $190/680 \\approx 0.28$."
+    ],
+    "hints": [
+      "Think about 10 000 applicants.",
+      "Count flagged defaulters and flagged non-defaulters.",
+      "Compare the two counts."
+    ],
+    "concept": "Base-rate neglect.",
+    "misconception": "Confusing sensitivity with posterior probability.",
+    "why": "A small base rate dilutes the flagged group with false positives.",
+    "fam": "bayes:diagnose"
+  },
+  {
+    "id": "BAY-61",
+    "topic": "bayes",
+    "sub": "screening threshold",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A screen detects 80% of true cases. The prevalence is 5%. What specificity (to 3 decimals) is needed so that 50% of positive results are true cases?",
+    "data": "",
+    "answer": {
+      "value": 0.9578947368421052,
+      "display": "0.9579"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "For PPV 0.5, false positives must equal true positives: $0.95(1-\\text{spec}) = 0.05(0.8)=0.04$.",
+      "$1-\\text{spec} = 0.0421$, specificity $\\approx 0.958$."
+    ],
+    "hints": [
+      "PPV of 0.5 means true positives equal false positives.",
+      "Write the true-positive rate across the whole population.",
+      "Solve for the false-positive rate among non-cases."
+    ],
+    "concept": "Working backwards from a target positive predictive value.",
+    "misconception": "Setting specificity equal to 0.5.",
+    "why": "Rare conditions demand very high specificity.",
+    "fam": "bayes:testing"
+  },
+  {
+    "id": "BAY-62",
+    "topic": "bayes",
+    "sub": "which factory produced it",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Plant 1 makes 70% of chips and has a defect rate of 2%; Plant 2 makes 30% with a defect rate of 5%. A defective chip is found. What is the probability it came from Plant 2?",
+    "data": "",
+    "answer": {
+      "value": 0.5172413793103449,
+      "display": "0.5172"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(\\text{defect}) = 0.014+0.015 = 0.029$.",
+      "$P(\\text{Plant 2}\\mid\\text{defect}) = 0.015/0.029 \\approx 0.517$."
+    ],
+    "hints": [
+      "Find the overall defect rate first.",
+      "What part of it comes from Plant 2?",
+      "Divide the favourable count by the total."
+    ],
+    "concept": "Basic Bayes with two sources.",
+    "misconception": "Answering 0.30.",
+    "why": "The higher defect rate lifts Plant 2 above its production share.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-63",
+    "topic": "bayes",
+    "sub": "inverse probability from a table",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Of 400 survey respondents, 160 are renters. 56 renters and 36 non-renters said they plan to switch banks. Given that someone plans to switch, what is the probability they are a renter?",
+    "data": "",
+    "answer": {
+      "value": 0.6086956521739131,
+      "display": "0.6087"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Plan to switch: $56+36 = 92$.",
+      "Renters among them: $56/92 \\approx 0.609$."
+    ],
+    "hints": [
+      "How many respondents plan to switch in total?",
+      "How many of them rent?",
+      "Divide the second by the first."
+    ],
+    "concept": "Reversing the conditioning in a table.",
+    "misconception": "Using 56/160.",
+    "why": "56/160 is the switching rate among renters, not the share of switchers who rent.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-64",
+    "topic": "bayes",
+    "sub": "discrete prior on a coin",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A coin is one of three types with equal prior probability: $P(\\text{H})=0.3$, $0.5$ or $0.8$. It is tossed three times and shows 3 heads. What is the probability it is the $0.8$ coin?",
+    "data": "",
+    "answer": {
+      "value": 0.7710843373493975,
+      "display": "0.7711"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Likelihoods: $0.027, 0.125, 0.512$.",
+      "Posterior $=0.512/0.664 \\approx 0.771$."
+    ],
+    "hints": [
+      "Compute the probability of three heads for each coin.",
+      "Equal priors cancel.",
+      "Divide the third likelihood by the sum."
+    ],
+    "concept": "Posterior over a discrete parameter.",
+    "misconception": "Using the single-toss probability 0.8.",
+    "why": "Three heads in a row strongly favours the heads-heavy coin.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-65",
+    "topic": "bayes",
+    "sub": "randomised response",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "To ask a sensitive question, each respondent secretly tosses a fair coin: heads means answer \"Yes\" regardless; tails means answer truthfully. 62% of responses are \"Yes\". Estimate the proportion who truly have the trait.",
+    "data": "",
+    "answer": {
+      "value": 0.24,
+      "display": "0.24"
+    },
+    "fmt": "d",
+    "tol": 0.01,
+    "options": [],
+    "solution": [
+      "$P(\\text{Yes}) = 0.5 + 0.5p = 0.62$.",
+      "$p = 0.24$."
+    ],
+    "hints": [
+      "Write $P(\\text{Yes})$ by conditioning on the coin.",
+      "Heads gives Yes for sure.",
+      "Solve $0.5+0.5p = 0.62$."
+    ],
+    "concept": "Inverting total probability to estimate a hidden proportion.",
+    "misconception": "Reporting 0.62 directly.",
+    "why": "Half of the Yes answers are noise from the coin.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-66",
+    "topic": "bayes",
+    "sub": "two independent alarms",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A server is compromised with probability 0.02. Alarm X fires with probability 0.7 if compromised and 0.05 otherwise; Alarm Y fires with probability 0.6 if compromised and 0.1 otherwise (independent given the state). Both alarms fire. What is the probability the server is compromised?",
+    "data": "",
+    "answer": {
+      "value": 0.631578947368421,
+      "display": "0.6316"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Both fire: compromised $0.7(0.6)=0.42$, clean $0.05(0.1)=0.005$.",
+      "Posterior $=0.0084/(0.0084+0.0049) \\approx 0.632$."
+    ],
+    "hints": [
+      "Multiply the two firing rates within each state.",
+      "Weight by the priors.",
+      "Normalise by the sum of the weighted terms."
+    ],
+    "concept": "Combining independent pieces of evidence.",
+    "misconception": "Averaging the two alarm rates.",
+    "why": "Given the state, the alarms multiply.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-67",
+    "topic": "bayes",
+    "sub": "one alarm fires, other silent",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Using the alarms from the previous setting (compromised prior 0.02; X fires with 0.7 vs 0.05; Y fires with 0.6 vs 0.1), Alarm X fires but Alarm Y stays <b>silent</b>. What is the probability the server is compromised?",
+    "data": "",
+    "answer": {
+      "value": 0.11267605633802817,
+      "display": "0.1127"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "Compromised: $0.7(0.4)=0.28$; clean: $0.05(0.9)=0.045$.",
+      "Posterior $=0.0056/(0.0056+0.0441) \\approx 0.113$."
+    ],
+    "hints": [
+      "A silent alarm uses the complement of its firing rate.",
+      "Multiply within each state.",
+      "Apply Bayes with the prior."
+    ],
+    "concept": "Negative evidence matters too.",
+    "misconception": "Ignoring the silent alarm.",
+    "why": "A silent alarm lowers the posterior relative to X-only evidence.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-68",
+    "topic": "bayes",
+    "sub": "identifying the mistaken conditional",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A test has $P(\\text{positive}\\mid\\text{condition}) = 0.9$. Which statement correctly describes this number?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Among people with the condition, 90% test positive"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Among people with the condition, 90% test positive",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Among people who test positive, 90% have the condition",
+        "correct": false,
+        "why": "This reverses the conditioning; that quantity is the positive predictive value."
+      },
+      {
+        "text": "90% of the population has the condition",
+        "correct": false,
+        "why": "It is not a population share."
+      },
+      {
+        "text": "The test is correct 90% of the time overall",
+        "correct": false,
+        "why": "Overall accuracy also depends on the specificity and prevalence."
+      }
+    ],
+    "solution": [
+      "$P(A\\mid B)$ restricts attention to cases where $B$ holds. Here that is people with the condition."
+    ],
+    "hints": [
+      "Which group is conditioned on?",
+      "Read the bar as \"among those who\".",
+      "Match with the options."
+    ],
+    "concept": "Reading conditional probability notation.",
+    "misconception": "Transposing the conditional.",
+    "why": "The group named after the bar is the group being described.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-69",
+    "topic": "bayes",
+    "sub": "prosecution-style evidence",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A record matches a suspect on a feature shared by 1 in 5 000 people. The pool of equally plausible people is 20 000, and exactly one is the source. Assuming a source always matches, what is the probability the matched suspect is the source?",
+    "data": "",
+    "answer": {
+      "value": 0.20000800032001279,
+      "display": "0.2"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "Expected other matches $\\approx 19999/5000 \\approx 4$.",
+      "Posterior $=1/(1+4.0) \\approx 0.20$."
+    ],
+    "hints": [
+      "Estimate how many innocent people also match.",
+      "The source is one of the matched group.",
+      "Divide 1 by the size of that group."
+    ],
+    "concept": "Match probability is not the posterior.",
+    "misconception": "Answering 0.9998.",
+    "why": "A rare feature still matches several people in a big pool.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-70",
+    "topic": "bayes",
+    "sub": "which urn after two draws",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Urn 1 has 3 red and 2 blue balls; Urn 2 has 1 red and 4 blue. An urn is chosen at random and two balls are drawn without replacement: both are red. What is the probability the urn was Urn 1?",
+    "data": "",
+    "answer": {
+      "value": 1,
+      "display": "1"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Urn 2 has only one red ball, so two reds are impossible.",
+      "The posterior for Urn 1 is 1."
+    ],
+    "hints": [
+      "Can Urn 2 supply two red balls?",
+      "If not, what is its likelihood?",
+      "What follows for the posterior?"
+    ],
+    "concept": "Zero likelihood eliminates a hypothesis.",
+    "misconception": "Using the prior 0.5.",
+    "why": "The evidence is impossible under Urn 2.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-71",
+    "topic": "bayes",
+    "sub": "sampling for quality",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A lot is \"good\" (2% defective) with probability 0.8 or \"bad\" (10% defective) with probability 0.2. Two items are inspected independently and both are defective. What is the probability the lot is bad?",
+    "data": "",
+    "answer": {
+      "value": 0.8620689655172414,
+      "display": "0.8621"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Likelihoods: bad $0.01$, good $0.0004$.",
+      "Posterior bad $=0.002/(0.002+0.00032) \\approx 0.862$."
+    ],
+    "hints": [
+      "Compute the chance of two defectives under each lot type.",
+      "Weight by the prior.",
+      "Normalise by the sum of the weighted terms."
+    ],
+    "concept": "Inference about batch quality.",
+    "misconception": "Adding the defect rates.",
+    "why": "Two defectives are much more probable from a bad lot.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-72",
+    "topic": "bayes",
+    "sub": "accuracy versus predictive value comparison",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Test P has sensitivity 0.99 and specificity 0.90. Test Q has sensitivity 0.80 and specificity 0.99. Prevalence is 1%. Which test has the higher probability of a true case given a positive result?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Test Q (PPV about 0.45 against about 0.09 for P)"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Test Q (PPV about 0.45 against about 0.09 for P)",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Test P, because its sensitivity is higher",
+        "correct": false,
+        "why": "P’s PPV is $0.0099/(0.0099+0.099)\\approx0.091$."
+      },
+      {
+        "text": "They are equal because prevalence is the same",
+        "correct": false,
+        "why": "The error rates differ, so PPVs differ."
+      },
+      {
+        "text": "Cannot be determined without the sample size",
+        "correct": false,
+        "why": "PPV depends on sensitivity, specificity and prevalence only."
+      }
+    ],
+    "solution": [
+      "P: $0.0099/(0.0099+0.099) \\approx 0.091$.",
+      "Q: $0.008/(0.008+0.0099) \\approx 0.447$."
+    ],
+    "hints": [
+      "Compute true and false positives for each test.",
+      "Compare the shares that are true.",
+      "Specificity matters more at low prevalence."
+    ],
+    "concept": "PPV depends strongly on specificity when prevalence is low.",
+    "misconception": "Choosing by sensitivity.",
+    "why": "Most positives at low prevalence come from the healthy group.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-73",
+    "topic": "bayes",
+    "sub": "game-show style conditioning",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A prize is behind one of 4 doors. You pick door 1. The host, who knows where the prize is, opens one of the <b>other</b> doors that does not hold the prize (chosen at random among valid ones) and shows nothing. What is the probability the prize is behind a particular <b>other unopened</b> door?",
+    "data": "",
+    "answer": {
+      "value": 0.375,
+      "display": "3/8"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "Prize behind your door: $1/4$. Behind one of the other three: $3/4$, shared equally among the two unopened ones: $3/8$ each."
+    ],
+    "hints": [
+      "Your door keeps 1/4.",
+      "The other 3/4 is now concentrated on the unopened doors.",
+      "Split equally between the two remaining others."
+    ],
+    "concept": "Host knowledge changes the posterior.",
+    "misconception": "Answering 1/3.",
+    "why": "Opening a door reveals information because the host avoids the prize.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-74",
+    "topic": "bayes",
+    "sub": "prior sensitivity",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A signal appears with probability 0.8 when a stock is \"up-trending\" and 0.3 otherwise. How large must the prior probability of up-trending be for the posterior after seeing the signal to equal 0.5?",
+    "data": "",
+    "answer": {
+      "value": 0.2727272727272727,
+      "display": "0.2727"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "Need $p(0.8) = (1-p)(0.3)$.",
+      "$p = 0.3/1.1 \\approx 0.273$."
+    ],
+    "hints": [
+      "Posterior 0.5 means the two joint terms are equal.",
+      "Write the equation: prior times 0.8 equals complement times 0.3.",
+      "Solve the linear equation for the prior probability."
+    ],
+    "concept": "Solving for the prior that gives a target posterior.",
+    "misconception": "Setting the prior to 0.5.",
+    "why": "Equal joint terms give a 50% posterior.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-75",
+    "topic": "bayes",
+    "sub": "insurance claim risk class",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Drivers are low-risk (60%), medium (30%) or high-risk (10%), with annual claim probabilities 0.05, 0.15 and 0.40. A driver files a claim this year. What is the probability the driver is high-risk?",
+    "data": "",
+    "answer": {
+      "value": 0.3478260869565218,
+      "display": "0.3478"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Joint: $0.03, 0.045, 0.04$; total $0.115$.",
+      "High-risk: $0.04/0.115 \\approx 0.348$."
+    ],
+    "hints": [
+      "Multiply each class share by its claim rate.",
+      "Sum for the total claim probability.",
+      "Take the high-risk share."
+    ],
+    "concept": "Posterior over risk classes.",
+    "misconception": "Answering 0.40.",
+    "why": "High-risk drivers are rare but over-represented among claimants.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-76",
+    "topic": "bayes",
+    "sub": "which statement increases belief",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "When does observing event $E$ <b>increase</b> the probability of hypothesis $H$?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "When $P(E\\mid H) > P(E\\mid H^c)$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "When $P(E\\mid H) > P(E\\mid H^c)$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "When $P(E\\mid H)$ is large, whatever $P(E\\mid H^c)$ is",
+        "correct": false,
+        "why": "If $E$ is just as likely without $H$, observing it changes nothing."
+      },
+      {
+        "text": "When $P(H)$ is large",
+        "correct": false,
+        "why": "A large prior does not by itself mean the evidence raises it."
+      },
+      {
+        "text": "When $E$ is rare",
+        "correct": false,
+        "why": "Rarity alone does not point toward $H$."
+      }
+    ],
+    "solution": [
+      "$P(H\\mid E) > P(H)$ exactly when $P(E\\mid H) > P(E)$, which is equivalent to $P(E\\mid H) > P(E\\mid H^c)$."
+    ],
+    "hints": [
+      "Compare the evidence rates with and without $H$.",
+      "If they are equal, nothing changes.",
+      "Pick the option comparing them."
+    ],
+    "concept": "Direction of a Bayesian update.",
+    "misconception": "Judging by $P(E\\mid H)$ alone.",
+    "why": "Evidence helps only if it is more likely under $H$ than under its complement.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-77",
+    "topic": "bayes",
+    "sub": "tree reading",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A tree has first branches \"Online order\" (0.65) and \"In-store order\" (0.35). Online orders are returned with probability 0.12; in-store with 0.04. Given an order was returned, what is the probability it was online?",
+    "data": "",
+    "answer": {
+      "value": 0.8478260869565217,
+      "display": "0.8478"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Returned: online $0.078$, in-store $0.014$.",
+      "Online share $=0.078/0.092 \\approx 0.848$."
+    ],
+    "hints": [
+      "Multiply along each path ending in \"returned\".",
+      "Add the two paths.",
+      "Divide the online path by the total."
+    ],
+    "concept": "Reading a reversed probability from a tree.",
+    "misconception": "Answering 0.65 or 0.12.",
+    "why": "Online orders dominate returns by both volume and rate.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-78",
+    "topic": "bayes",
+    "sub": "majority of tests",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A component is defective with probability 0.1. Each of 3 independent checks flags a defective one with probability 0.8 and a sound one with probability 0.15. Exactly 2 of the 3 checks flag the component. What is the probability that it is defective?",
+    "data": "",
+    "answer": {
+      "value": 0.4264889629321117,
+      "display": "0.4265"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "Likelihoods: defective $3(0.64)(0.2)=0.384$; sound $3(0.0225)(0.85)=0.0574$.",
+      "Weighted: $0.1(0.384)=0.0384$ and $0.9(0.0574)=0.0516$.",
+      "Posterior $=0.0384/0.09 \\approx 0.427$."
+    ],
+    "hints": [
+      "Write the binomial probability of exactly 2 flags under each state.",
+      "Weight by the prior.",
+      "Normalise by the sum of the weighted terms."
+    ],
+    "concept": "Binomial likelihood in a posterior.",
+    "misconception": "Omitting the number of arrangements.",
+    "why": "The counting factor cancels only if applied to both states.",
+    "fam": "bayes:testing"
+  },
+  {
+    "id": "BAY-79",
+    "topic": "bayes",
+    "sub": "conditioning on a sum",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A die is chosen at random: a fair die, or a loaded die that shows 6 with probability 1/2 (other faces equally likely). It is rolled and shows 6. What is the probability that it is the loaded die?",
+    "data": "",
+    "answer": {
+      "value": 0.75,
+      "display": "3/4"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "$P(6) = 0.25+1/12 = 1/3$.",
+      "Posterior $=0.25/(1/3) = 3/4$."
+    ],
+    "hints": [
+      "Find the probability of a 6 under each die.",
+      "Weight by 1/2 each.",
+      "Divide the favourable count by the total."
+    ],
+    "concept": "Posterior for a loaded die.",
+    "misconception": "Answering 1/2.",
+    "why": "A 6 is three times as likely under the loaded die.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-80",
+    "topic": "bayes",
+    "sub": "misreading a likelihood ratio",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A forecasting signal has likelihood ratio 4 in favour of a recession. A student says \"so a recession is now 4 times as likely, i.e. probability rises from 10% to 40%\". What is the correct reading?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "The <i>odds</i> are multiplied by 4: 1:9 becomes 4:9, a probability of about 31%"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "The <i>odds</i> are multiplied by 4: 1:9 becomes 4:9, a probability of about 31%",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The student is right: probability is multiplied by 4",
+        "correct": false,
+        "why": "Only the odds are multiplied; probabilities saturate at 1."
+      },
+      {
+        "text": "The probability becomes 4%",
+        "correct": false,
+        "why": "A ratio above 1 raises, not lowers, the probability."
+      },
+      {
+        "text": "The probability becomes 50%",
+        "correct": false,
+        "why": "That would need a larger likelihood ratio."
+      }
+    ],
+    "solution": [
+      "Prior odds $=0.1/0.9 = 1/9$. Posterior odds $=4/9$.",
+      "Probability $=4/13 \\approx 0.31$."
+    ],
+    "hints": [
+      "Convert 10% to odds.",
+      "Multiply the odds by 4.",
+      "Convert back to a probability."
+    ],
+    "concept": "Likelihood ratios act on odds.",
+    "misconception": "Multiplying probabilities by the ratio.",
+    "why": "Odds, not probabilities, scale by the likelihood ratio.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-81",
+    "topic": "bayes",
+    "sub": "two-stage screening",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Prevalence is 2%. Stage 1 has sensitivity 0.9 and false-positive rate 0.10. Only those who test positive are retested with an independent Stage 2 (sensitivity 0.95, false-positive rate 0.02). What fraction of those who test positive at <b>both</b> stages truly have the condition?",
+    "data": "",
+    "answer": {
+      "value": 0.8971668415529905,
+      "display": "0.8972"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Both positive: cases $0.02(0.855)=0.0171$; non-cases $0.98(0.002)=0.00196$.",
+      "Posterior $\\approx 0.897$."
+    ],
+    "hints": [
+      "Multiply the two stage rates for each group.",
+      "Weight by prevalence.",
+      "Normalise by the sum of the weighted terms."
+    ],
+    "concept": "Sequential screening raises predictive value.",
+    "misconception": "Using the Stage 2 PPV with the original prevalence.",
+    "why": "Independent second tests multiply the evidence.",
+    "fam": "bayes:total-probability"
+  },
+  {
+    "id": "BAY-82",
+    "topic": "bayes",
+    "sub": "sampling from two populations",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A survey draws a person from a city in which 55% are under 40. Under-40s own a car with probability 0.35; others with probability 0.70. A sampled person owns a car. What is the probability the person is under 40?",
+    "data": "",
+    "answer": {
+      "value": 0.3793103448275862,
+      "display": "0.3793"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Joint: $0.1925$ and $0.315$.",
+      "Posterior $=0.1925/0.5075 \\approx 0.379$."
+    ],
+    "hints": [
+      "Multiply each group share by its ownership rate.",
+      "Add to get overall ownership.",
+      "Take the under-40 portion."
+    ],
+    "concept": "Inference about group membership.",
+    "misconception": "Answering 0.55.",
+    "why": "Car ownership is more common among the older group, lowering the under-40 share.",
+    "fam": "bayes:updating"
+  },
+  {
+    "id": "BAY-83",
+    "topic": "bayes",
+    "sub": "impossibility of a high posterior",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A condition has prevalence 0.1%. A test detects every case (sensitivity 1) and has false-positive rate 5%. Which is the best description of $P(\\text{condition}\\mid\\text{positive})$?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "About 2%: perfect sensitivity cannot offset a 5% false-positive rate at 0.1% prevalence"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "About 2%: perfect sensitivity cannot offset a 5% false-positive rate at 0.1% prevalence",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "100%, because every case is detected",
+        "correct": false,
+        "why": "Detecting all cases says nothing about the false positives."
+      },
+      {
+        "text": "95%, the complement of the false-positive rate",
+        "correct": false,
+        "why": "That is the specificity, not the PPV."
+      },
+      {
+        "text": "50%, because the result is either right or wrong",
+        "correct": false,
+        "why": "Outcomes need not be equally likely."
+      }
+    ],
+    "solution": [
+      "Per 100 000: 100 cases flagged, $99\\,900\\times0.05 = 4\\,995$ false positives.",
+      "PPV $=100/5\\,095 \\approx 0.0196$."
+    ],
+    "hints": [
+      "Take 100 000 people.",
+      "Count true and false positives.",
+      "Divide true by all positives."
+    ],
+    "concept": "Low prevalence drives PPV.",
+    "misconception": "Equating PPV with sensitivity or specificity.",
+    "why": "False positives from the large healthy group dominate.",
+    "fam": "bayes:partition"
+  },
+  {
+    "id": "BAY-84",
+    "topic": "bayes",
+    "sub": "prior from a hierarchy",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A fund manager is \"skilled\" with probability 0.2. Skilled managers beat the market in a given year with probability 0.65; unskilled with 0.45. A manager beat the market in two consecutive independent years. What is the probability that the manager beats it in a <b>third</b> year?",
+    "data": "",
+    "answer": {
+      "value": 0.5185598377281948,
+      "display": "0.5186"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "Posterior skilled $=0.0845/(0.0845+0.162)\\approx0.343$.",
+      "Next year $=0.343(0.65)+0.657(0.45)\\approx0.519$."
+    ],
+    "hints": [
+      "Update the probability of \"skilled\" after two wins.",
+      "Use it as the weight for the next year.",
+      "Mix the two win rates."
+    ],
+    "concept": "Predicting after learning about hidden quality.",
+    "misconception": "Using the prior mix 0.49.",
+    "why": "Two wins nudge the belief toward skill, raising the prediction slightly.",
+    "fam": "bayes:partition"
+  }
+]

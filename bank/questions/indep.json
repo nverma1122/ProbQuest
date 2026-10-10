@@ -1,0 +1,2429 @@
+[
+  {
+    "id": "IND-01",
+    "topic": "indep",
+    "sub": "independence and complements",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Suppose $A$ and $B$ are independent events and neither is certain nor impossible. Select the one conclusion that <b>must hold</b>.",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$A^c$ and $B$ are independent"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$A^c$ and $B$ are independent",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$A$ and $B$ are mutually exclusive",
+        "correct": false,
+        "why": "Independent events with positive probabilities have $P(A\\cap B) = P(A)P(B) > 0$, so they can occur together."
+      },
+      {
+        "text": "$P(A\\cup B) = P(A) + P(B)$",
+        "correct": false,
+        "why": "This holds only for mutually exclusive events; here $P(A\\cup B) = P(A)+P(B)-P(A)P(B)$."
+      },
+      {
+        "text": "$P(A\\mid B) < P(A)$",
+        "correct": false,
+        "why": "For independent events $P(A\\mid B) = P(A)$ exactly, not smaller."
+      }
+    ],
+    "solution": [
+      "$P(A^c\\cap B) = P(B)-P(A\\cap B) = P(B)-P(A)P(B) = (1-P(A))P(B) = P(A^c)P(B)$.",
+      "So $A^c$ and $B$ are independent. The other statements are false for independent events with positive probability."
+    ],
+    "hints": [
+      "Test each statement against the definition $P(A\\cap B)=P(A)P(B)$.",
+      "Could independent events with positive probabilities be mutually exclusive?",
+      "Write $P(A^c\\cap B)$ as $P(B) - P(A\\cap B)$."
+    ],
+    "concept": "Independence is preserved under complements.",
+    "misconception": "Confusing independence with exclusivity.",
+    "why": "Learning that $A$ did not occur says no more about $B$ than learning that it did.",
+    "fam": "indep:definition"
+  },
+  {
+    "id": "IND-02",
+    "topic": "indep",
+    "sub": "ranking probabilities of repeated trials",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A compliance officer compares three scenarios and wants them ordered by probability, <b>largest first</b>. (a) Six independent audits, each passed with probability 0.9, are all passed. (b) A fair coin shows at least one head in two tosses. (c) At least two of three independent checks, each succeeding with probability 0.4, succeed.",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "(b), then (a), then (c): 0.75 > 0.531 > 0.352"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "(b), then (a), then (c): 0.75 > 0.531 > 0.352",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "(a), then (b), then (c)",
+        "correct": false,
+        "why": "Six trials at 0.9 succeed together with probability $0.9^6 \\approx 0.531$, which is less than 0.75."
+      },
+      {
+        "text": "(b), then (c), then (a)",
+        "correct": false,
+        "why": "$P(c) = 3(0.4)^2(0.6)+0.4^3 = 0.352$, which is smaller than $0.9^6 \\approx 0.531$."
+      },
+      {
+        "text": "(c), then (a), then (b)",
+        "correct": false,
+        "why": "The ranking is reversed: (b) has probability 0.75, the largest."
+      }
+    ],
+    "solution": [
+      "(a) $0.9^6 = 0.531$. (b) $1-0.5^2 = 0.75$. (c) $3(0.4)^2(0.6) + (0.4)^3 = 0.288 + 0.064 = 0.352$.",
+      "Order: (b) $0.75 >$ (a) $0.531 >$ (c) $0.352$."
+    ],
+    "hints": [
+      "Compute each probability with an appropriate formula.",
+      "(a) is a product of independent probabilities; (b) uses the complement; (c) is a binomial tail.",
+      "Compare the three numbers."
+    ],
+    "concept": "Probabilities of repeated independent trials.",
+    "misconception": "Judging by intuition about how many trials are involved.",
+    "why": "The three events use three different structural tools: product, complement and binomial sum.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-03",
+    "topic": "indep",
+    "sub": "gambler’s fallacy",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A trader's trades are independent and each is profitable with probability 0.5. After seven profitable trades in a row she says: \"I am due a loss, so the next trade is much more likely to lose.\" Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Given independence, the next trade is profitable with probability 0.5, whatever the previous results"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Given independence, the next trade is profitable with probability 0.5, whatever the previous results",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The probability of a loss is higher because eight profitable trades in a row are rare",
+        "correct": false,
+        "why": "The chance of eight in a row is small <i>before</i> any trade is made; given seven, the eighth is still 50:50."
+      },
+      {
+        "text": "The probability of a profit is higher because she is on a winning streak",
+        "correct": false,
+        "why": "This is the \"hot hand\" version of the same error; independence means the streak carries no information."
+      },
+      {
+        "text": "The probability depends on the number of trades remaining in the year",
+        "correct": false,
+        "why": "Independent trades are unaffected by how many remain."
+      }
+    ],
+    "solution": [
+      "By independence $P(\\text{8th profitable}\\mid\\text{first 7 profitable}) = \\dfrac{0.5^8}{0.5^7} = 0.5$.",
+      "The streak is unlikely in advance, but past results do not change the probability of the next independent trade."
+    ],
+    "hints": [
+      "What does independence say about the effect of past trades on the next one?",
+      "Compute $P(\\text{8 profits})/P(\\text{7 profits})$.",
+      "Distinguish the probability of the whole streak from the probability of one more success."
+    ],
+    "concept": "Independence and the gambler’s fallacy.",
+    "misconception": "Believing past results make a reversal more likely (\"due\").",
+    "why": "The unconditional probability of the whole run is small, but the next trial is a fresh independent event.",
+    "fam": "indep:diagnose"
+  },
+  {
+    "id": "IND-04",
+    "topic": "indep",
+    "sub": "independence in a table",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Firms are classified by export status (exporter $E$ / non-exporter $N$) and size (large $L$ / small $S$). It is known that $P(E\\cap L) = 0.15$ and $P(E\\cap S) = 0.25$. What value must $P(N\\cap S)$ take for export status and size to be <b>independent</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.375,
+      "display": "0.375"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.375",
+        "correct": true,
+        "why": "",
+        "v": 0.375
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is $P(E\\cap S)$, not the missing cell; the cells must be chosen to make the joint probabilities factor.",
+        "v": 0.25
+      },
+      {
+        "text": "0.24",
+        "correct": false,
+        "why": "This multiplies $P(N)$ by $P(E)$, which are complementary events and cannot be independent.",
+        "v": 0.24
+      },
+      {
+        "text": "0.225",
+        "correct": false,
+        "why": "This is $P(N\\cap L) = 0.225$, the neighbouring cell, not $P(N\\cap S)$.",
+        "v": 0.22499999999999995
+      }
+    ],
+    "solution": [
+      "$P(E) = 0.15+0.25 = 0.40$. Independence needs $P(E\\cap L) = P(E)P(L)$, so $P(L) = 0.15/0.40 = 0.375$.",
+      "Then $P(N\\cap L) = 0.375-0.15 = 0.225$ and $P(N\\cap S) = 1-0.15-0.25-0.225 = 0.375$.",
+      "(Check: $P(N)P(S) = 0.6\\times0.625 = 0.375$.)"
+    ],
+    "hints": [
+      "Find $P(E)$ from the two given cells.",
+      "Use $P(E\\cap L)=P(E)P(L)$ to determine $P(L)$.",
+      "The four cells sum to 1."
+    ],
+    "concept": "Using independence to complete a joint table.",
+    "misconception": "Filling the missing cell without using the product rule.",
+    "why": "Independence ties each cell to the row and column totals.",
+    "fam": "indep:definition"
+  },
+  {
+    "id": "IND-05",
+    "topic": "indep",
+    "sub": "conditioning independent events",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two machines are independently in working order on a given day with probabilities 0.9 and 0.7. Given that <b>at least one machine is down</b>, what is the probability that machine 1 is down?",
+    "data": "",
+    "answer": {
+      "value": 0.2702702702702703,
+      "display": "0.2703"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2703",
+        "correct": true,
+        "why": "",
+        "v": 0.2702702702702703
+      },
+      {
+        "text": "0.1",
+        "correct": false,
+        "why": "This is the unconditional probability that machine 1 is down.",
+        "v": 0.1
+      },
+      {
+        "text": "0.3333",
+        "correct": false,
+        "why": "This is the odds-like ratio of the two down probabilities; it does not use the union.",
+        "v": 0.33333333333333337
+      },
+      {
+        "text": "0.03",
+        "correct": false,
+        "why": "This is the probability that both machines are down.",
+        "v": 0.03
+      }
+    ],
+    "solution": [
+      "$P(\\text{at least one down}) = 1-P(\\text{both up}) = 1-0.9\\cdot0.7 = 0.37$.",
+      "Machine 1 down implies at least one down, so $P(M_1\\text{ down}\\mid\\text{at least one down}) = \\dfrac{0.1}{0.37} \\approx 0.270$."
+    ],
+    "hints": [
+      "What is the probability that at least one machine is down?",
+      "Is \"machine 1 down\" contained in \"at least one down\"?",
+      "Divide the probability of machine 1 being down by that of the union."
+    ],
+    "concept": "Conditioning an independent pair on a union.",
+    "misconception": "Assuming independence means the condition has no effect.",
+    "why": "The condition about the union is informative about each part even though the machines are independent.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-06",
+    "topic": "indep",
+    "sub": "redundancy",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A data-centre power system has three independent backup generators. During an outage each fails to start with probability 0.05. What is the probability that <b>all three fail to start</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.00012500000000000003,
+      "display": "0.000125"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.000125",
+        "correct": true,
+        "why": "",
+        "v": 0.00012500000000000003
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "This is the failure probability of a single generator; redundancy lowers the risk.",
+        "v": 0.05
+      },
+      {
+        "text": "0.15",
+        "correct": false,
+        "why": "This adds the probabilities, which does not describe all failing together and can exceed 1 with more units.",
+        "v": 0.15000000000000002
+      },
+      {
+        "text": "0.8574",
+        "correct": false,
+        "why": "This is the probability that all three start successfully.",
+        "v": 0.8573749999999999
+      }
+    ],
+    "solution": [
+      "The generators fail independently, so $P(\\text{all fail}) = 0.05^3 = 0.000125$."
+    ],
+    "hints": [
+      "All three must fail; are the failures independent?",
+      "Multiply the three failure probabilities.",
+      "Compare with a single generator’s 0.05."
+    ],
+    "concept": "Multiplication rule for independent events.",
+    "misconception": "Adding failure probabilities.",
+    "why": "Independent failures multiply, so each extra backup cuts the risk sharply.",
+    "fam": "indep:repeated-trials"
+  },
+  {
+    "id": "IND-07",
+    "topic": "indep",
+    "sub": "conditioning on one trial",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Six employees independently own an electric vehicle with probability 0.3 each. It is known that <b>a particular employee, Kim, owns one</b>. What is the probability that <b>at least three</b> of the six employees own an electric vehicle?",
+    "data": "",
+    "answer": {
+      "value": 0.47178000000000014,
+      "display": "0.4718"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.4718",
+        "correct": true,
+        "why": "",
+        "v": 0.47178000000000014
+      },
+      {
+        "text": "0.2557",
+        "correct": false,
+        "why": "This is the unconditional probability of at least three owners among six; Kim’s ownership is known and counts as one.",
+        "v": 0.25569000000000025
+      },
+      {
+        "text": "0.1631",
+        "correct": false,
+        "why": "This requires at least three among the <i>other five</i>, but Kim already provides one: two more are needed.",
+        "v": 0.16308000000000022
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is a single employee’s ownership probability, not the probability for the group.",
+        "v": 0.3
+      }
+    ],
+    "solution": [
+      "Kim contributes one owner. By independence the other five are still independent with $p=0.3$. We need at least two more owners among them.",
+      "$P = 1 - 0.7^5 - 5(0.3)(0.7)^4 = 1 - 0.16807 - 0.36015 = 0.4718$."
+    ],
+    "hints": [
+      "How many more owners are needed once Kim is known to be one?",
+      "The other five employees are unaffected by Kim.",
+      "Use the complement of \"none or exactly one among the five\"."
+    ],
+    "concept": "Conditioning on one trial of an independent set.",
+    "misconception": "Recomputing the six-person probability or ignoring Kim’s contribution.",
+    "why": "Independence makes the remaining five trials unchanged.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-08",
+    "topic": "indep",
+    "sub": "conditioning on at least one",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Eight independent sensors each trigger an alarm with probability 0.2 during a test. Given that <b>at least one</b> sensor triggered, what is the probability that <b>at least three</b> triggered?",
+    "data": "",
+    "answer": {
+      "value": 0.24402240617184798,
+      "display": "0.244"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.244",
+        "correct": true,
+        "why": "",
+        "v": 0.24402240617184798
+      },
+      {
+        "text": "0.2031",
+        "correct": false,
+        "why": "This is the unconditional probability of at least three triggers; it has not been divided by $P(\\ge1)$.",
+        "v": 0.2030822399999997
+      },
+      {
+        "text": "0.4032",
+        "correct": false,
+        "why": "This is the conditional probability of <i>exactly one</i> trigger.",
+        "v": 0.40318805004168107
+      },
+      {
+        "text": "0.148",
+        "correct": false,
+        "why": "This conditions on one particular sensor having triggered, which is not the information given.",
+        "v": 0.14803199999999966
+      }
+    ],
+    "solution": [
+      "$P(\\ge1) = 1-0.8^8 = 0.8322$.",
+      "$P(\\ge3) = 1-\\left[0.8^8 + 8(0.2)(0.8)^7 + 28(0.2)^2(0.8)^6\\right] = 1-[0.1678+0.3355+0.2936] = 0.2031$.",
+      "Since \"$\\ge3$\" is inside \"$\\ge1$\", $P(\\ge3\\mid\\ge1) = 0.2031/0.8322 \\approx 0.244$."
+    ],
+    "hints": [
+      "Both events are tail events of the same binomial count.",
+      "The event \"at least three\" is contained in \"at least one\".",
+      "Divide the two tail probabilities."
+    ],
+    "concept": "Conditioning on a tail event of a binomial count.",
+    "misconception": "Treating the condition as fixing one specific trial.",
+    "why": "Conditioning removes only the all-quiet outcome from the sample space.",
+    "fam": "indep:repeated-trials"
+  },
+  {
+    "id": "IND-09",
+    "topic": "indep",
+    "sub": "at least one in n trials",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Each email attachment independently contains malware with probability 0.02. How many attachments must be scanned for the probability that <b>at least one</b> contains malware to be at least 0.9?",
+    "data": "",
+    "answer": {
+      "value": 114,
+      "display": "114"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "114",
+        "correct": true,
+        "why": "",
+        "v": 114
+      },
+      {
+        "text": "45",
+        "correct": false,
+        "why": "This divides the target probability by the per-item probability, which ignores the complement structure; probabilities do not add.",
+        "v": 45
+      },
+      {
+        "text": "113",
+        "correct": false,
+        "why": "Rounding down gives a probability slightly below 0.9; round up.",
+        "v": 113
+      },
+      {
+        "text": "100",
+        "correct": false,
+        "why": "At $n=100$ the probability is $1-0.98^{100} \\approx 0.867$, still short of 0.9.",
+        "v": 100
+      }
+    ],
+    "solution": [
+      "$P(\\text{at least one}) = 1-0.98^n \\ge 0.9 \\iff 0.98^n \\le 0.1 \\iff n \\ge \\dfrac{\\ln 0.1}{\\ln 0.98} \\approx 113.97$.",
+      "The smallest integer is $n = 114$."
+    ],
+    "hints": [
+      "Express the probability of at least one as $1-(1-p)^n$.",
+      "Rearrange the inequality and take logarithms.",
+      "Dividing by $\\ln0.98<0$ reverses the inequality; then round up."
+    ],
+    "concept": "Solving for $n$ in \"at least one\" probabilities.",
+    "misconception": "Adding probabilities or rounding the wrong way.",
+    "why": "Each attachment multiplies the survival probability of the \"no malware\" event by 0.98.",
+    "fam": "indep:repeated-trials"
+  },
+  {
+    "id": "IND-11",
+    "topic": "indep",
+    "sub": "inclusion-exclusion with replacement",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A box holds 40 red, 35 blue and 25 green counters. Eight counters are drawn <b>with replacement</b>. What is the probability that <b>all three colours</b> appear?",
+    "data": "",
+    "answer": {
+      "value": 0.8521222500000001,
+      "display": "0.8521"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.8521",
+        "correct": true,
+        "why": "",
+        "v": 0.8521222500000001
+      },
+      {
+        "text": "0.8512",
+        "correct": false,
+        "why": "Outcomes missing two colours (all draws one colour) are subtracted twice in this sum; add them back.",
+        "v": 0.851226443671875
+      },
+      {
+        "text": "0.8566",
+        "correct": false,
+        "why": "This multiplies the three events \"colour appears\" as if they were independent; they are negatively dependent because the draws are shared.",
+        "v": 0.856579622720203
+      },
+      {
+        "text": "0.8829",
+        "correct": false,
+        "why": "This assumes the three colours are equally likely, but the proportions are 0.40, 0.35 and 0.25.",
+        "v": 0.88294467306813
+      }
+    ],
+    "solution": [
+      "Let $M_c$ be \"colour $c$ missing\". $P(M_{\\text{red}}) = 0.6^8$, $P(M_{\\text{blue}}) = 0.65^8$, $P(M_{\\text{green}}) = 0.75^8$.",
+      "Two colours missing means all eight draws are the third colour: $P(M_aM_b) = p_c^{\\,8}$; all three missing is impossible.",
+      "$P(\\text{some missing}) = \\sum P(M_c) - \\sum P(M_aM_b) = 0.1488-0.0009$.",
+      "$P(\\text{all appear}) = 1-0.1488+0.0009 \\approx 0.8521$."
+    ],
+    "hints": [
+      "Use the complement: some colour is missing.",
+      "Apply inclusion-exclusion to the three events \"colour $c$ missing\".",
+      "If two colours are missing, all draws have the remaining colour."
+    ],
+    "concept": "Inclusion-exclusion with independent draws.",
+    "misconception": "Subtracting overlapping missing-colour events twice.",
+    "why": "The alternating sum counts each outcome with missing colours exactly once.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-13",
+    "topic": "indep",
+    "sub": "at least one but not all",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "On a given day the three production lines of a plant are each up independently, with probabilities 0.9, 0.8 and 0.6. Find the probability that <b>some line is up but the plant is not fully operational</b>.",
+    "data": "",
+    "answer": {
+      "value": 0.5599999999999999,
+      "display": "0.56"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.56",
+        "correct": true,
+        "why": "",
+        "v": 0.5599999999999999
+      },
+      {
+        "text": "0.992",
+        "correct": false,
+        "why": "This is the probability that at least one runs; the case of all three running must be excluded.",
+        "v": 0.992
+      },
+      {
+        "text": "0.432",
+        "correct": false,
+        "why": "This is the probability that all three run.",
+        "v": 0.43200000000000005
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This subtracts a constant that has no meaning here; probabilities of independent events are combined through products.",
+        "v": 0.30000000000000027
+      }
+    ],
+    "solution": [
+      "$P(\\text{none running}) = 0.1\\cdot0.2\\cdot0.4 = 0.008$.",
+      "$P(\\text{all running}) = 0.9\\cdot0.8\\cdot0.6 = 0.432$.",
+      "The event is the complement of these two disjoint cases: $1-0.008-0.432 = 0.560$."
+    ],
+    "hints": [
+      "Which two extreme outcomes must be excluded?",
+      "Compute each by multiplying independent probabilities.",
+      "Subtract their sum from 1."
+    ],
+    "concept": "Complement of a union of extreme cases.",
+    "misconception": "Excluding only the \"none\" case.",
+    "why": "The outcomes none and all are disjoint, so their probabilities add.",
+    "fam": "indep:repeated-trials"
+  },
+  {
+    "id": "IND-15",
+    "topic": "indep",
+    "sub": "solving from conditional probabilities",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The conditional probabilities of two events satisfy $P(A\\mid B) = 0.5$ and $P(B\\mid A) = 0.25$, and the probability that at least one of them occurs is 0.7. Determine the unconditional probability of $A$.",
+    "data": "",
+    "answer": {
+      "value": 0.56,
+      "display": "0.56"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.56",
+        "correct": true,
+        "why": "",
+        "v": 0.56
+      },
+      {
+        "text": "0.28",
+        "correct": false,
+        "why": "This is $P(B) = 2x$ where $x = P(A\\cap B) = 0.14$, not $P(A)$.",
+        "v": 0.28
+      },
+      {
+        "text": "0.14",
+        "correct": false,
+        "why": "This is the intersection $P(A\\cap B)$.",
+        "v": 0.14
+      },
+      {
+        "text": "0.35",
+        "correct": false,
+        "why": "This scales $P(A\\cup B)$ by a ratio of conditional probabilities, which has no basis; $P(A)$ must be found from the intersection.",
+        "v": 0.35
+      }
+    ],
+    "solution": [
+      "Let $x = P(A\\cap B)$. Then $P(B) = x/P(A\\mid B) = 2x$ and $P(A) = x/P(B\\mid A) = 4x$.",
+      "$P(A\\cup B) = 4x + 2x - x = 5x = 0.7$, so $x = 0.14$.",
+      "$P(A) = 4x = 0.56$."
+    ],
+    "hints": [
+      "Express $P(A)$ and $P(B)$ in terms of the intersection $x$.",
+      "Insert them into the addition rule for the union.",
+      "Solve for $x$ then compute $P(A)$."
+    ],
+    "concept": "Combining conditional probabilities with the addition rule.",
+    "misconception": "Mixing up which marginal each conditional gives.",
+    "why": "Each conditional probability expresses a marginal as a multiple of the intersection.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-16",
+    "topic": "indep",
+    "sub": "independent events and unions",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Events $A$, $B$ and $C$ are mutually independent with $P(A) = 0.5$, $P(A\\cup B) = 0.7$ and $P(A\\cup C) = 0.8$. What is $P(A\\cup B\\cup C)$?",
+    "data": "",
+    "answer": {
+      "value": 0.88,
+      "display": "0.88"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.88",
+        "correct": true,
+        "why": "",
+        "v": 0.88
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "This treats the union as $P(A\\cup B)+P(A\\cup C)-P(A)$, which double counts $B$ and $C$ overlaps.",
+        "v": 1
+      },
+      {
+        "text": "0.97",
+        "correct": false,
+        "why": "The numbers 0.3 and 0.2 are $P((A\\cup B)^c)$ and $P((A\\cup C)^c)$, not $P(B^c)$ and $P(C^c)$.",
+        "v": 0.97
+      },
+      {
+        "text": "1.5",
+        "correct": false,
+        "why": "This sums the three probabilities without the overlap corrections.",
+        "v": 1.5
+      }
+    ],
+    "solution": [
+      "$1-P(A\\cup B) = P(A^c)P(B^c) = 0.5\\,P(B^c) = 0.3$, so $P(B^c) = 0.6$ and $P(B) = 0.4$.",
+      "$0.5\\,P(C^c) = 0.2$, so $P(C^c) = 0.4$, $P(C) = 0.6$.",
+      "$P(A\\cup B\\cup C) = 1 - 0.5\\cdot0.6\\cdot0.4 = 0.88$."
+    ],
+    "hints": [
+      "Use complements: $P((A\\cup B)^c) = P(A^c)P(B^c)$.",
+      "Solve for $P(B)$ and $P(C)$.",
+      "The union of independent events is the complement of the product of the complements."
+    ],
+    "concept": "Union of independent events via complements.",
+    "misconception": "Treating $P(A\\cup B)$ as $P(B)$.",
+    "why": "Independence makes $P(\\text{none occurs})$ a simple product.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-17",
+    "topic": "indep",
+    "sub": "sum of independent non-uniform variables",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two independent spinners show 1, 2 or 3. Spinner 1: $P(1)=0.5$, $P(2)=0.3$, $P(3)=0.2$. Spinner 2: $P(1)=0.2$, $P(2)=0.5$, $P(3)=0.3$. What is the probability that the <b>sum is 4</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.33999999999999997,
+      "display": "0.34"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.34",
+        "correct": true,
+        "why": "",
+        "v": 0.33999999999999997
+      },
+      {
+        "text": "0.3333",
+        "correct": false,
+        "why": "This treats the nine outcomes as equally likely.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "The pair (3, 1) also gives a sum of 4.",
+        "v": 0.3
+      },
+      {
+        "text": "0.37",
+        "correct": false,
+        "why": "The probabilities have been assigned to the wrong spinner: spinner 1 has $P(1)=0.5$, spinner 2 has $P(3)=0.3$.",
+        "v": 0.37
+      }
+    ],
+    "solution": [
+      "Sum 4 occurs for $(1,3)$, $(2,2)$, $(3,1)$:",
+      "$0.5\\cdot0.3 + 0.3\\cdot0.5 + 0.2\\cdot0.2 = 0.15+0.15+0.04 = 0.34$."
+    ],
+    "hints": [
+      "List the pairs of results with sum 4.",
+      "The spinners are independent, so multiply probabilities within a pair.",
+      "The pairs are disjoint: add."
+    ],
+    "concept": "Distribution of a sum of independent discrete variables.",
+    "misconception": "Assuming equal probabilities for all pairs.",
+    "why": "Each pair of results contributes the product of its marginal probabilities.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-18",
+    "topic": "indep",
+    "sub": "none of three independent events",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three unrelated promotions each lead to a sale, independently, with probabilities 0.6, 0.5 and 0.2. Find the chance that the customer buys <b>at least once</b>.",
+    "data": "",
+    "answer": {
+      "value": 0.84,
+      "display": "0.84"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.84",
+        "correct": true,
+        "why": "",
+        "v": 0.84
+      },
+      {
+        "text": "1.3",
+        "correct": false,
+        "why": "This sum exceeds 1; events that can co-occur are not added.",
+        "v": 1.3
+      },
+      {
+        "text": "0.16",
+        "correct": false,
+        "why": "This is the probability that none occurs.",
+        "v": 0.16000000000000003
+      },
+      {
+        "text": "0.06",
+        "correct": false,
+        "why": "This is the probability that all three occur.",
+        "v": 0.06
+      }
+    ],
+    "solution": [
+      "$P(\\text{none}) = (1-0.6)(1-0.5)(1-0.2) = 0.16$.",
+      "$P(\\text{at least one}) = 1-0.16 = 0.84$."
+    ],
+    "hints": [
+      "Use the complement of \"none occurs\".",
+      "Complements of independent events are independent.",
+      "Multiply the three non-occurrence probabilities."
+    ],
+    "concept": "Complement for the union of independent events.",
+    "misconception": "Adding probabilities.",
+    "why": "The union has one failing case: none of the events occurs.",
+    "fam": "indep:repeated-trials"
+  },
+  {
+    "id": "IND-21",
+    "topic": "indep",
+    "sub": "repeated trials: solving for p",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A bidder wins each tender independently with the same probability. The probability that she wins <b>at least one of two</b> tenders is 0.51. What is the probability that she wins at least one of <b>six</b> tenders?",
+    "data": "",
+    "answer": {
+      "value": 0.882351,
+      "display": "0.8824"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.8824",
+        "correct": true,
+        "why": "",
+        "v": 0.882351
+      },
+      {
+        "text": "1.53",
+        "correct": false,
+        "why": "Probabilities of \"at least one\" do not scale linearly with the number of tenders; the result exceeds 1.",
+        "v": 1.53
+      },
+      {
+        "text": "0.8673",
+        "correct": false,
+        "why": "This uses 0.51, the success probability of a pair, as if it were the failure probability of a pair.",
+        "v": 0.8673489999999999
+      },
+      {
+        "text": "0.2601",
+        "correct": false,
+        "why": "This is the probability that she wins at least one in each of two pairs, not at least one of six.",
+        "v": 0.2601
+      }
+    ],
+    "solution": [
+      "Let $p$ be the win probability. $1-(1-p)^2 = 0.51$ gives $(1-p)^2 = 0.49$, so $1-p = 0.7$ and $p = 0.3$.",
+      "$P(\\text{at least one of six}) = 1-0.7^6 = 1-0.1176 = 0.8824$."
+    ],
+    "hints": [
+      "Express \"at least one of two\" using $p$.",
+      "Solve for the failure probability $1-p$.",
+      "Use the complement for six tenders."
+    ],
+    "concept": "Backing out a trial probability.",
+    "misconception": "Scaling the probability linearly.",
+    "why": "Only the failure probability multiplies across independent trials.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-22",
+    "topic": "indep",
+    "sub": "first to succeed among several players",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Four players $A$, $B$, $C$, $D$ take turns, in that order and repeatedly, rolling a fair die. The first player to roll a six wins. What is the probability that <b>player $C$</b> wins?",
+    "data": "",
+    "answer": {
+      "value": 0.22354694485842033,
+      "display": "0.2235"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2235",
+        "correct": true,
+        "why": "",
+        "v": 0.22354694485842033
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "The first players have an advantage because they roll before the others; the four players are not equally likely to win.",
+        "v": 0.25
+      },
+      {
+        "text": "0.1157",
+        "correct": false,
+        "why": "This is the probability that $C$ wins in the first round only; later rounds also contribute.",
+        "v": 0.11574074074074076
+      },
+      {
+        "text": "0.1667",
+        "correct": false,
+        "why": "This is $C$’s chance of rolling a six on any one turn, not of winning the contest.",
+        "v": 0.16666666666666666
+      }
+    ],
+    "solution": [
+      "$C$ wins in round $r$ if the four players all fail in the previous $r-1$ rounds, $A$ and $B$ fail, and $C$ rolls a six: $(5/6)^{4(r-1)}(5/6)^2(1/6)$.",
+      "Sum: $P(C) = \\dfrac{(5/6)^2(1/6)}{1-(5/6)^4} = \\dfrac{25/216}{671/1296} = \\dfrac{150}{671} \\approx 0.2235$."
+    ],
+    "hints": [
+      "Write the probability that $C$ wins in the first round.",
+      "What is the probability that nobody wins in one full round of four rolls?",
+      "Sum the geometric series with that ratio."
+    ],
+    "concept": "Geometric series for turn-taking contests.",
+    "misconception": "Assuming equal chances for all players.",
+    "why": "Each unsuccessful full round returns the game to its starting state.",
+    "fam": "indep:racing"
+  },
+  {
+    "id": "IND-24",
+    "topic": "indep",
+    "sub": "smallest n for a target probability",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "In each trial a sensor fires with probability 0.2 and, independently, an alarm relay engages with probability 0.5; a trial counts as a success only if <b>both</b> happen. Trials are independent. What is the smallest number of trials for which the probability of <b>at least one success</b> exceeds 0.95?",
+    "data": "",
+    "answer": {
+      "value": 29,
+      "display": "29"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "29",
+        "correct": true,
+        "why": "",
+        "v": 29
+      },
+      {
+        "text": "28",
+        "correct": false,
+        "why": "At $n=28$ the probability is $1-0.9^{28} \\approx 0.948$, just below 0.95.",
+        "v": 28
+      },
+      {
+        "text": "10",
+        "correct": false,
+        "why": "This is $1/p$, the expected number of trials until the first success, not the number needed for 95% confidence.",
+        "v": 10
+      },
+      {
+        "text": "15",
+        "correct": false,
+        "why": "At $n=15$ the probability is $1-0.9^{15} \\approx 0.794$.",
+        "v": 15
+      }
+    ],
+    "solution": [
+      "Per-trial success: $0.2\\times0.5 = 0.1$.",
+      "$1-0.9^n > 0.95 \\iff 0.9^n < 0.05 \\iff n > \\dfrac{\\ln0.05}{\\ln0.9} \\approx 28.43$.",
+      "Smallest integer: $n=29$."
+    ],
+    "hints": [
+      "First find the success probability of one trial.",
+      "Set up $1-(1-p)^n$ and compare with 0.95.",
+      "Take logarithms and round up."
+    ],
+    "concept": "Number of independent trials needed.",
+    "misconception": "Using the expected waiting time as the answer.",
+    "why": "The failure probability shrinks by a factor 0.9 per trial.",
+    "fam": "indep:repeated-trials"
+  },
+  {
+    "id": "IND-25",
+    "topic": "indep",
+    "sub": "race between two outcomes",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two dice are thrown again and again. Find the chance that a throw totalling <b>5</b> occurs earlier than any throw totalling <b>10</b>.",
+    "data": "",
+    "answer": {
+      "value": 0.5714285714285714,
+      "display": "4/7"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "4/7",
+        "correct": true,
+        "why": "",
+        "v": 0.5714285714285714
+      },
+      {
+        "text": "1/9",
+        "correct": false,
+        "why": "This is the probability of a 5 on a single roll; the game continues until either total appears.",
+        "v": 0.1111111111111111
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The totals 5 and 10 are not equally likely: 5 can be made in four ways, 10 in three.",
+        "v": 0.5
+      },
+      {
+        "text": "3/7",
+        "correct": false,
+        "why": "This is the probability that 10 appears before 5.",
+        "v": 0.42857142857142855
+      }
+    ],
+    "solution": [
+      "Only rolls with total 5 (4 of 36) or total 10 (3 of 36) end the contest; other rolls are ignored.",
+      "$P(5\\text{ first}) = \\dfrac{4/36}{4/36+3/36} = \\dfrac47$."
+    ],
+    "hints": [
+      "Which rolls end the contest, and which can be ignored?",
+      "Among the decisive rolls, compare the number of ways of making each total.",
+      "Divide the favourable ways by the total number of decisive ways."
+    ],
+    "concept": "Competing outcomes in repeated trials.",
+    "misconception": "Counting rolls that do not decide the contest.",
+    "why": "Conditional on a decisive roll, the two totals are in proportion to their probabilities.",
+    "fam": "indep:racing"
+  },
+  {
+    "id": "IND-28",
+    "topic": "indep",
+    "sub": "matching distribution",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Customers independently choose one of three subscription plans: Basic with probability 0.5, Plus with 0.3 and Premium with 0.2. What is the probability that <b>three</b> randomly chosen customers all pick the <b>same plan</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.16,
+      "display": "0.16"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.16",
+        "correct": true,
+        "why": "",
+        "v": 0.16
+      },
+      {
+        "text": "0.38",
+        "correct": false,
+        "why": "This is the probability that <i>two</i> customers choose the same plan.",
+        "v": 0.38
+      },
+      {
+        "text": "0.18",
+        "correct": false,
+        "why": "This is the probability that all three choose <i>different</i> plans.",
+        "v": 0.18
+      },
+      {
+        "text": "0.1111",
+        "correct": false,
+        "why": "This assumes the three plans are equally likely.",
+        "v": 0.11111111111111108
+      }
+    ],
+    "solution": [
+      "The event is a union of three disjoint events: all Basic, all Plus, all Premium.",
+      "$P = 0.5^3+0.3^3+0.2^3 = 0.125+0.027+0.008 = 0.160$."
+    ],
+    "hints": [
+      "\"All the same\" splits into one event per plan.",
+      "For a given plan, the three choices are independent.",
+      "Add the three products."
+    ],
+    "concept": "Probability of agreement among independent draws.",
+    "misconception": "Assuming equal plan probabilities.",
+    "why": "The three agreement events are disjoint.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-29",
+    "topic": "indep",
+    "sub": "solving for independent probabilities",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two components $A$ and $B$ fail independently on any given day. The probability that <b>neither</b> fails is 0.56, and the probability that <b>$A$ fails but $B$ does not</b> is 0.14. What is the probability that <b>both</b> fail?",
+    "data": "",
+    "answer": {
+      "value": 0.06,
+      "display": "0.06"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.06",
+        "correct": true,
+        "why": "",
+        "v": 0.06
+      },
+      {
+        "text": "0.14",
+        "correct": false,
+        "why": "This is the probability that only $A$ fails.",
+        "v": 0.14
+      },
+      {
+        "text": "0.44",
+        "correct": false,
+        "why": "This is the probability that at least one component fails.",
+        "v": 0.44
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is $P(A)+P(B)$, not the probability that both fail.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "$P(A\\text{ fails},B\\text{ works}) + P(\\text{neither fails}) = P(B\\text{ works})$, so $P(B\\text{ works}) = 0.14+0.56 = 0.70$ and $P(B) = 0.30$.",
+      "$P(A\\text{ works}) = 0.56/0.70 = 0.80$, so $P(A) = 0.20$.",
+      "$P(\\text{both}) = 0.20\\times0.30 = 0.06$."
+    ],
+    "hints": [
+      "The two given events are the two ways in which $B$ can work. What do they add up to?",
+      "Use independence to get $P(A\\text{ works})$.",
+      "Multiply the two failure probabilities."
+    ],
+    "concept": "Recovering marginal probabilities from joint ones under independence.",
+    "misconception": "Not using independence to separate the marginals.",
+    "why": "Splitting on $A$ shows $B$’s marginal; independence gives $A$’s.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-30",
+    "topic": "indep",
+    "sub": "dependent reviewers",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Each of two reviewers detects a given error with probability 0.8. In 5% of cases <b>neither</b> reviewer detects it. What is the probability that <b>only the first</b> reviewer detects it? (Detections are not assumed to be independent.)",
+    "data": "",
+    "answer": {
+      "value": 0.1499999999999999,
+      "display": "0.15"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.15",
+        "correct": true,
+        "why": "",
+        "v": 0.1499999999999999
+      },
+      {
+        "text": "0.16",
+        "correct": false,
+        "why": "This assumes independence; the \"neither detects\" probability of 0.05 differs from $0.2\\times0.2 = 0.04$.",
+        "v": 0.16000000000000003
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the probability that the first reviewer misses the error.",
+        "v": 0.2
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "This is the probability that neither detects it.",
+        "v": 0.05
+      }
+    ],
+    "solution": [
+      "$P(\\text{at least one detects}) = 1-0.05 = 0.95$.",
+      "$P(\\text{both detect}) = 0.8+0.8-0.95 = 0.65$.",
+      "$P(\\text{only first}) = 0.8-0.65 = 0.15$.",
+      "(Under independence $P(\\text{both})$ would be $0.64$; the reviewers are slightly positively dependent.)"
+    ],
+    "hints": [
+      "Use the addition rule to find the probability that both detect the error.",
+      "The union of detections is the complement of \"neither detects\".",
+      "\"Only the first\" is the first reviewer’s event minus the intersection."
+    ],
+    "concept": "Using the addition rule when independence is not available.",
+    "misconception": "Assuming independence automatically.",
+    "why": "The given marginals and union determine the intersection without further assumptions.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-31",
+    "topic": "indep",
+    "sub": "association versus independence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "For events $A$ and $B$, $P(A) = 0.5$, $P(B) = 0.4$ and $P(A\\cup B) = 0.75$. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "They are negatively associated: $P(A\\cap B) = 0.15 < P(A)P(B) = 0.20$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "They are negatively associated: $P(A\\cap B) = 0.15 < P(A)P(B) = 0.20$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "They are independent: $P(A\\cap B) = P(A)P(B)$",
+        "correct": false,
+        "why": "The intersection computed from the union is 0.15, not 0.20."
+      },
+      {
+        "text": "They are positively associated: $P(A\\cap B) > P(A)P(B)$",
+        "correct": false,
+        "why": "Positive association needs an intersection above 0.20; here it is 0.15."
+      },
+      {
+        "text": "They are mutually exclusive: $P(A\\cap B) = 0$",
+        "correct": false,
+        "why": "Then $P(A\\cup B)$ would be 0.9, not 0.75."
+      }
+    ],
+    "solution": [
+      "$P(A\\cap B) = 0.5+0.4-0.75 = 0.15$.",
+      "Independence would give $0.5\\times0.4 = 0.20$. Since $0.15<0.20$, $P(A\\mid B) = 0.375 < P(A)$: the events are negatively associated."
+    ],
+    "hints": [
+      "Find $P(A\\cap B)$ from the union.",
+      "Compare it with $P(A)P(B)$.",
+      "Below the product means one event makes the other less likely."
+    ],
+    "concept": "Classifying dependence from marginals and a union.",
+    "misconception": "Concluding independence without checking the product.",
+    "why": "The sign of $P(A\\cap B)-P(A)P(B)$ indicates the direction of association.",
+    "fam": "indep:definition"
+  },
+  {
+    "id": "IND-32",
+    "topic": "indep",
+    "sub": "at least two of three independent events",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three independent screening systems flag a transaction with probabilities $\\tfrac15$, $\\tfrac14$ and $\\tfrac12$. What is the probability that <b>at least two</b> of them flag it?",
+    "data": "",
+    "answer": {
+      "value": 0.225,
+      "display": "0.225"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.225",
+        "correct": true,
+        "why": "",
+        "v": 0.225
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the probability of <i>exactly</i> two flags; all three also qualifies.",
+        "v": 0.2
+      },
+      {
+        "text": "0.025",
+        "correct": false,
+        "why": "This is the probability that all three flag the transaction.",
+        "v": 0.025
+      },
+      {
+        "text": "0.475",
+        "correct": false,
+        "why": "This is the probability of exactly one flag.",
+        "v": 0.4750000000000001
+      }
+    ],
+    "solution": [
+      "Exactly two: $0.2\\cdot0.25\\cdot0.5 + 0.2\\cdot0.75\\cdot0.5 + 0.8\\cdot0.25\\cdot0.5 = 0.025+0.075+0.10 = 0.20$.",
+      "All three: $0.2\\cdot0.25\\cdot0.5 = 0.025$.",
+      "At least two: $0.225$."
+    ],
+    "hints": [
+      "Separate \"exactly two\" and \"all three\".",
+      "For each pattern multiply the three independent probabilities.",
+      "Add the disjoint patterns."
+    ],
+    "concept": "Probabilities of counts for non-identical independent trials.",
+    "misconception": "Omitting the all-three case.",
+    "why": "The patterns are disjoint and exhaust the event.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-34",
+    "topic": "indep",
+    "sub": "non-transitive dice",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three six-sided dice are labelled $A$: 2, 2, 4, 4, 9, 9; $B$: 1, 1, 6, 6, 8, 8; $C$: 3, 3, 5, 5, 7, 7. Two players each choose a die and roll once, independently; the higher number wins. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Each die beats the next with probability 5/9 ($A$ beats $B$, $B$ beats $C$, $C$ beats $A$), so no die is best"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Each die beats the next with probability 5/9 ($A$ beats $B$, $B$ beats $C$, $C$ beats $A$), so no die is best",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$A$ is best: it contains the largest number, 9",
+        "correct": false,
+        "why": "A single large face does not make a die better in head-to-head comparisons; $C$ beats $A$ with probability 5/9."
+      },
+      {
+        "text": "All three dice are equally good because their average face is 5",
+        "correct": false,
+        "why": "Equal averages do not make the head-to-head probabilities equal; each die beats another with probability 5/9."
+      },
+      {
+        "text": "$B$ is best because it beats $A$",
+        "correct": false,
+        "why": "In fact $A$ beats $B$ with probability 5/9 (not the reverse)."
+      }
+    ],
+    "solution": [
+      "$P(A>B) = \\tfrac13\\left(\\tfrac13+\\tfrac13+1\\right)= \\tfrac59$ (face 2 beats B's 1s, 4 beats B's 1s, 9 beats all).",
+      "$P(B>C) = \\tfrac13\\left(0+\\tfrac23+1\\right) = \\tfrac59$.",
+      "$P(C>A) = \\tfrac13\\left(\\tfrac13+\\tfrac23+\\tfrac23\\right) = \\tfrac59$.",
+      "The \"beats\" relation is cyclic: no die is best."
+    ],
+    "hints": [
+      "Compare two dice at a time: $P(X>Y)$ for each pair.",
+      "For each face of $X$, count how often it beats a face of $Y$.",
+      "See whether the three results form a cycle."
+    ],
+    "concept": "Non-transitivity of \"is likely to beat\".",
+    "misconception": "Assuming that the die with the highest face or mean is best.",
+    "why": "Probabilistic dominance is not transitive.",
+    "fam": "indep:definition"
+  },
+  {
+    "id": "IND-35",
+    "topic": "indep",
+    "sub": "nested events and dependence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Events $A \\subset B$ with $0 < P(A) < P(B) < 1$. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$P(A\\mid B) = P(A)/P(B) > P(A)$, so $A$ and $B$ are dependent"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$P(A\\mid B) = P(A)/P(B) > P(A)$, so $A$ and $B$ are dependent",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$A$ and $B$ are independent because $A$ is part of $B$",
+        "correct": false,
+        "why": "Being contained makes them dependent: knowing $B$ occurred makes $A$ more likely."
+      },
+      {
+        "text": "$P(A\\mid B) = P(B\\mid A)$",
+        "correct": false,
+        "why": "$P(B\\mid A) = 1$ because $A\\subset B$, while $P(A\\mid B) < 1$."
+      },
+      {
+        "text": "$P(A\\mid B) < P(A)$",
+        "correct": false,
+        "why": "Dividing by $P(B) < 1$ increases the probability: $P(A\\mid B) = P(A)/P(B) > P(A)$."
+      }
+    ],
+    "solution": [
+      "Since $A\\subset B$, $A\\cap B = A$ and $P(A\\mid B) = P(A)/P(B)$, which exceeds $P(A)$ because $P(B)<1$.",
+      "Independence would require $P(A\\mid B) = P(A)$, i.e. $P(B)=1$, which is excluded."
+    ],
+    "hints": [
+      "What is $A\\cap B$ when $A\\subset B$?",
+      "Write $P(A\\mid B)$ and compare with $P(A)$.",
+      "Independence would need $P(B) = 1$."
+    ],
+    "concept": "Subset events are dependent unless trivial.",
+    "misconception": "Thinking containment implies independence.",
+    "why": "Knowing $B$ occurred makes the smaller event $A$ more likely.",
+    "fam": "indep:definition"
+  },
+  {
+    "id": "IND-36",
+    "topic": "indep",
+    "sub": "no repeated colour in a row",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A biased coin lands heads with probability 0.3. It is tossed six times, independently. What is the probability that <b>no two consecutive tosses show the same face</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.018521999999999993,
+      "display": "0.0185"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0185",
+        "correct": true,
+        "why": "",
+        "v": 0.018521999999999993
+      },
+      {
+        "text": "0.00926",
+        "correct": false,
+        "why": "This is only one of the two alternating patterns (starting with H or with T).",
+        "v": 0.009260999999999997
+      },
+      {
+        "text": "0.0313",
+        "correct": false,
+        "why": "This is the value for a fair coin.",
+        "v": 0.03125
+      },
+      {
+        "text": "0.1852",
+        "correct": false,
+        "why": "This is the probability of exactly three heads in any order, not just alternating sequences.",
+        "v": 0.18521999999999994
+      }
+    ],
+    "solution": [
+      "Only two sequences alternate: HTHTHT and THTHTH. Each has three heads and three tails: probability $0.3^3\\,0.7^3 = 0.009261$.",
+      "$P = 2\\times0.009261 = 0.0185$."
+    ],
+    "hints": [
+      "How many sequences of six tosses have no two equal neighbours?",
+      "Each such sequence contains how many heads and tails?",
+      "Add the probabilities of these sequences."
+    ],
+    "concept": "Probability of a pattern under independence.",
+    "misconception": "Counting every arrangement with three heads.",
+    "why": "Alternation forces the entire sequence once the first toss is fixed.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-38",
+    "topic": "indep",
+    "sub": "diagnose: exclusive vs independent",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A student writes: \"$P(A) = 0.3$ and $P(B) = 0.4$. The events are mutually exclusive, so they do not affect each other, i.e. they are independent. Hence $P(A\\cap B) = 0.3\\times0.4 = 0.12$.\" Where is the error?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Mutually exclusive events with positive probabilities are dependent; here $P(A\\cap B) = 0$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Mutually exclusive events with positive probabilities are dependent; here $P(A\\cap B) = 0$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The multiplication is wrong: it should be $0.3 + 0.4 - 0.12 = 0.58$",
+        "correct": false,
+        "why": "That expression is $P(A\\cup B)$ under independence, not the intersection. The error is earlier: exclusivity does not give independence."
+      },
+      {
+        "text": "Nothing is wrong: exclusive events are always independent",
+        "correct": false,
+        "why": "If $A$ occurs then $B$ certainly does not, so knowing $A$ changes $P(B)$ from 0.4 to 0: dependence."
+      },
+      {
+        "text": "The events must have the same probability to be independent",
+        "correct": false,
+        "why": "Independence concerns $P(A\\cap B)=P(A)P(B)$, not equal marginals."
+      }
+    ],
+    "solution": [
+      "Mutually exclusive means $A\\cap B = \\emptyset$, so $P(A\\cap B) = 0$.",
+      "Independence would require $P(A\\cap B) = P(A)P(B) = 0.12 \\ne 0$.",
+      "So these events cannot be independent. Disjointness is the strongest kind of dependence: one event rules out the other."
+    ],
+    "hints": [
+      "Compare what exclusivity and independence each say about $P(A\\cap B)$.",
+      "What is $P(B\\mid A)$ if $A$ and $B$ cannot occur together?",
+      "The student has used the independence formula after (wrongly) deducing independence."
+    ],
+    "concept": "Distinguishing mutually exclusive from independent events.",
+    "misconception": "\"They don’t overlap, so they don’t interact.\"",
+    "why": "Exclusive events carry information about each other: occurrence of one excludes the other.",
+    "fam": "indep:diagnose"
+  },
+  {
+    "id": "IND-39",
+    "topic": "indep",
+    "sub": "diagnose: P(A|B)=P(B|A)",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A student claims: \"If $P(A\\mid B) = P(B\\mid A)$ then $A$ and $B$ are independent.\" Which statement about the claim is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "False: the equality holds whenever $P(A) = P(B)$, even for dependent events (for example, $A = B$ with positive probability)"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "False: the equality holds whenever $P(A) = P(B)$, even for dependent events (for example, $A = B$ with positive probability)",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "True: the two conditional probabilities being equal means the events do not influence each other",
+        "correct": false,
+        "why": "Equality of the two conditionals only means $P(A\\cap B)/P(B) = P(A\\cap B)/P(A)$, i.e. $P(A)=P(B)$ when the intersection is non-empty."
+      },
+      {
+        "text": "True, but only if $P(A) + P(B) = 1$",
+        "correct": false,
+        "why": "No such condition makes the claim true."
+      },
+      {
+        "text": "False: the two conditional probabilities can never be equal for dependent events",
+        "correct": false,
+        "why": "They can be equal: take $A = B$, both conditionals equal 1."
+      }
+    ],
+    "solution": [
+      "$P(A\\mid B) = \\dfrac{P(A\\cap B)}{P(B)}$ and $P(B\\mid A) = \\dfrac{P(A\\cap B)}{P(A)}$.",
+      "When $P(A\\cap B) > 0$ these are equal exactly when $P(A) = P(B)$ — which says nothing about independence.",
+      "Counterexample: $A = B$ with $0<P(A)<1$. Then both conditionals equal 1, yet $P(A\\cap B) = P(A) \\neq P(A)^2$."
+    ],
+    "hints": [
+      "Write both conditional probabilities using $P(A\\cap B)$.",
+      "When are two fractions with the same numerator equal?",
+      "Find an example with $A = B$."
+    ],
+    "concept": "Conditional probabilities and independence are different conditions.",
+    "misconception": "Equating symmetric-looking conditions with independence.",
+    "why": "Independence needs $P(A\\mid B)=P(A)$, comparing a conditional with a marginal.",
+    "fam": "indep:diagnose"
+  },
+  {
+    "id": "IND-40",
+    "topic": "indep",
+    "sub": "pairwise versus mutual independence",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three events are <b>pairwise</b> independent: each pair satisfies $P(A_i\\cap A_j) = P(A_i)P(A_j)$. Does it follow that the three events are mutually independent, i.e. that $P(A_1\\cap A_2\\cap A_3) = P(A_1)P(A_2)P(A_3)$?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "No: pairwise independence does not guarantee the three-way product rule"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "No: pairwise independence does not guarantee the three-way product rule",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Yes: independence of every pair is the same as mutual independence",
+        "correct": false,
+        "why": "There are examples (two fair coins and the event \"same face\") where all pairs are independent but the triple product fails."
+      },
+      {
+        "text": "Yes, but only if the events have equal probabilities",
+        "correct": false,
+        "why": "Equal probabilities do not repair the failure; the standard counterexample has all probabilities equal to 1/2."
+      },
+      {
+        "text": "No: pairwise independent events must be mutually exclusive",
+        "correct": false,
+        "why": "Independent events with positive probabilities cannot be mutually exclusive."
+      }
+    ],
+    "solution": [
+      "Mutual independence requires the product rule for every subset, including the triple.",
+      "Counterexample: toss two fair coins; $A$ = first is heads, $B$ = second is heads, $C$ = both show the same face.",
+      "Each pair is independent, but $P(A\\cap B\\cap C) = \\tfrac14 \\ne \\tfrac18$."
+    ],
+    "hints": [
+      "List the product conditions that mutual independence requires.",
+      "Pairs are only some of them.",
+      "Try two fair coins with a third event defined from both."
+    ],
+    "concept": "Pairwise versus mutual independence.",
+    "misconception": "Assuming pairwise independence is enough.",
+    "why": "Mutual independence is a stronger, joint condition.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-41",
+    "topic": "indep",
+    "sub": "pairwise independent but not mutually independent",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two fair coins are tossed. Let $A$ = \"first is heads\", $B$ = \"second is heads\" and $C$ = \"both coins show the same face\". What is $P(A\\cap B\\cap C)$?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "1/4"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "$A\\cap B$ is \"two heads\", which already implies \"same face\": $A\\cap B\\cap C = A\\cap B$.",
+      "$P = 1/4$.",
+      "(The product $P(A)P(B)P(C) = 1/8$, so the events are not mutually independent even though each pair is independent.)"
+    ],
+    "hints": [
+      "Does $A\\cap B$ force $C$?",
+      "Then $A\\cap B\\cap C = A\\cap B$.",
+      "What is the probability of two heads?"
+    ],
+    "concept": "The triple intersection can differ from the product.",
+    "misconception": "Multiplying three marginal probabilities.",
+    "why": "The events are dependent as a triple through the shared tosses.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-42",
+    "topic": "indep",
+    "sub": "reliability: series-parallel network",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A system has two parallel branches. Each branch consists of two components in <b>series</b>. Every component works independently with probability 0.9, and the system works if <b>at least one branch</b> works. What is the probability that the system works?",
+    "data": "",
+    "answer": {
+      "value": 0.9639,
+      "display": "0.9639"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "A branch works with probability $0.9\\times0.9 = 0.81$.",
+      "Both branches fail with probability $(1-0.81)^2 = 0.0361$.",
+      "System reliability $= 1-0.0361 = 0.9639$."
+    ],
+    "hints": [
+      "Find the reliability of one series branch.",
+      "The branches are in parallel: use the complement of \"both fail\".",
+      "Combine the branch and complement results."
+    ],
+    "concept": "Series and parallel reliability.",
+    "misconception": "Mixing up series and parallel formulas.",
+    "why": "Series multiplies reliabilities; parallel multiplies failure probabilities.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-43",
+    "topic": "indep",
+    "sub": "reliability: parallel block in series",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A payment system needs a gateway (works with probability 0.95) <b>and</b> at least one of three identical servers (each works with probability 0.7), all independent. What is the probability that the system works?",
+    "data": "",
+    "answer": {
+      "value": 0.9243499999999999,
+      "display": "0.9243"
+    },
+    "fmt": "d",
+    "tol": 0.0006,
+    "options": [],
+    "solution": [
+      "At least one server works: $1-0.3^3 = 0.973$.",
+      "The gateway is in series with that block: $0.95\\times0.973 = 0.92435$."
+    ],
+    "hints": [
+      "Treat the three servers as one parallel block.",
+      "Find the block reliability using the complement.",
+      "The block and the gateway are in series: multiply."
+    ],
+    "concept": "Parallel block in series with another component.",
+    "misconception": "Multiplying all reliabilities.",
+    "why": "Redundancy helps only the block it is applied to.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-44",
+    "topic": "indep",
+    "sub": "reliability: 2-out-of-3 with different components",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A control system works if at least <b>2 of its 3</b> sensors work. The sensors work independently with probabilities 0.9, 0.8 and 0.7. What is the probability that the system works?",
+    "data": "",
+    "answer": {
+      "value": 0.902,
+      "display": "0.902"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Exactly two work: $0.9(0.8)(0.3)+0.9(0.2)(0.7)+0.1(0.8)(0.7) = 0.216+0.126+0.056 = 0.398$.",
+      "All three: $0.9(0.8)(0.7) = 0.504$.",
+      "Total $0.902$."
+    ],
+    "hints": [
+      "Separate \"exactly two work\" from \"all three work\".",
+      "With different probabilities each pattern must be written out.",
+      "Add the four patterns."
+    ],
+    "concept": "Majority system with unequal component reliabilities.",
+    "misconception": "Using a binomial formula with a single $p$.",
+    "why": "Non-identical components require an explicit sum over patterns.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-45",
+    "topic": "indep",
+    "sub": "testing independence of two events from a model",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two fair dice are rolled. Which pair of events is <b>independent</b>?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "\"the sum is 7\" and \"the first die shows 3\""
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "\"the sum is 7\" and \"the first die shows 3\"",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "\"the sum is 8\" and \"the first die shows 3\"",
+        "correct": false,
+        "why": "$P(\\text{both}) = 1/36$ but $P(\\text{sum 8})P(\\text{first 3}) = \\tfrac{5}{36}\\cdot\\tfrac16 = \\tfrac{5}{216}$."
+      },
+      {
+        "text": "\"the sum is 12\" and \"the first die shows 6\"",
+        "correct": false,
+        "why": "A sum of 12 forces the first die to be 6: $P(\\text{both}) = 1/36 \\ne \\tfrac1{36}\\cdot\\tfrac16$."
+      },
+      {
+        "text": "\"the sum is 2\" and \"the first die shows 1\"",
+        "correct": false,
+        "why": "A sum of 2 forces the first die to be 1, so the events are dependent."
+      }
+    ],
+    "solution": [
+      "$P(\\text{sum }7) = 6/36 = 1/6$, $P(\\text{first }3) = 1/6$, $P(\\text{both}) = P((3,4)) = 1/36 = \\tfrac16\\cdot\\tfrac16$.",
+      "The product rule holds. For the other pairs it fails."
+    ],
+    "hints": [
+      "Compute the three probabilities for each pair.",
+      "Test $P(A\\cap B) = P(A)P(B)$.",
+      "A sum of 7 can be completed from any first value."
+    ],
+    "concept": "Checking independence by the product rule.",
+    "misconception": "Judging independence by intuition.",
+    "why": "Whatever the first die shows, exactly one value of the second die gives a sum of 7.",
+    "fam": "indep:definition"
+  },
+  {
+    "id": "IND-46",
+    "topic": "indep",
+    "sub": "independence of successive draws",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two cards are drawn from a standard deck. In which scenario are the events \"first card is a heart\" and \"second card is a heart\" <b>independent</b>?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "The first card is replaced and the deck reshuffled before the second draw"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "The first card is replaced and the deck reshuffled before the second draw",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The first card is kept and the second drawn from the remaining 51",
+        "correct": false,
+        "why": "Without replacement $P(\\text{second heart}\\mid\\text{first heart}) = 12/51 \\ne 13/52$."
+      },
+      {
+        "text": "Both cards are drawn at once from the full deck",
+        "correct": false,
+        "why": "Drawing both at once is equivalent to drawing without replacement."
+      },
+      {
+        "text": "In every scenario, because the deck is shuffled",
+        "correct": false,
+        "why": "Shuffling randomises order but does not remove the dependence caused by removing a card."
+      }
+    ],
+    "solution": [
+      "With replacement and reshuffling, the second draw has the same distribution regardless of the first: $P = 13/52$ in both cases.",
+      "Without replacement, a heart first leaves 12 hearts among 51 cards."
+    ],
+    "hints": [
+      "Does the first draw change the composition for the second draw?",
+      "Compare $P(\\text{second heart}\\mid\\text{first heart})$ with $P(\\text{second heart})$.",
+      "Which scenario restores the original deck?"
+    ],
+    "concept": "Independence under sampling with replacement.",
+    "misconception": "Assuming random draws are independent.",
+    "why": "Replacement keeps the sampling distribution fixed.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-47",
+    "topic": "indep",
+    "sub": "exactly one of two independent events",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Server 1 is up with probability 0.9 and server 2 with probability 0.7, independently. What is the probability that <b>exactly one</b> server is up?",
+    "data": "",
+    "answer": {
+      "value": 0.34,
+      "display": "0.34"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Server 1 up, 2 down: $0.9\\times0.3 = 0.27$.",
+      "Server 1 down, 2 up: $0.1\\times0.7 = 0.07$.",
+      "Total $0.34$."
+    ],
+    "hints": [
+      "Two disjoint patterns give exactly one up.",
+      "Use independence within each pattern.",
+      "Add the two products."
+    ],
+    "concept": "Exactly one of two independent events.",
+    "misconception": "Adding the two up-probabilities.",
+    "why": "The patterns are disjoint and each is a product of marginals.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-48",
+    "topic": "indep",
+    "sub": "common-cause failure",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two machines share a power supply. In a given month a power shock occurs with probability 0.05 and then <b>both</b> machines fail. Otherwise each machine fails independently with probability 0.06. What is the probability that <b>both</b> fail?",
+    "data": "",
+    "answer": {
+      "value": 0.05342,
+      "display": "0.0534"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Condition on the shock: $P(\\text{both}) = 0.05\\cdot1 + 0.95\\cdot(0.06)^2 = 0.05+0.00342 = 0.0534$.",
+      "An independence assumption would give a far smaller value."
+    ],
+    "hints": [
+      "Condition on whether a shock occurs.",
+      "Given a shock both fail; otherwise the machines fail independently.",
+      "Combine with the law of total probability."
+    ],
+    "concept": "Common-cause failures make failures positively dependent.",
+    "misconception": "Assuming independence and squaring the failure probability.",
+    "why": "A shared cause raises the chance of simultaneous failure well above the independent value.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-49",
+    "topic": "indep",
+    "sub": "first success on a given trial",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Each independent call to a prospect ends in a sale with probability 0.3. What is the probability that the <b>first sale occurs on the fourth call</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.10289999999999998,
+      "display": "0.1029"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "The first three calls must fail and the fourth succeed: $0.7^3\\times0.3 = 0.1029$."
+    ],
+    "hints": [
+      "What must happen on each of the first three calls?",
+      "And on the fourth?",
+      "Multiply the independent probabilities."
+    ],
+    "concept": "Geometric probability for independent trials.",
+    "misconception": "Using $0.3^4$ or $4\\times0.3$.",
+    "why": "The pattern failure, failure, failure, success has this probability.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-50",
+    "topic": "indep",
+    "sub": "records among independent values",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A stock's weekly return is independent and identically distributed (continuous) each week. What is the probability that week 5's return is the <b>highest of the first 5 weeks</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.2,
+      "display": "1/5"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "By symmetry each of the 5 values is equally likely to be the largest.",
+      "$P = 1/5$."
+    ],
+    "hints": [
+      "Are the five returns exchangeable?",
+      "Which of the five is the largest, and how likely is each?",
+      "Ties have probability zero for a continuous distribution."
+    ],
+    "concept": "Symmetry for iid continuous variables.",
+    "misconception": "Trying to integrate with a specific distribution.",
+    "why": "All five positions are equally likely to hold the maximum.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-51",
+    "topic": "indep",
+    "sub": "functions of independent variables",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "$X$ and $Y$ are independent random variables. For which pair is independence <b>guaranteed</b>?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$X^2$ and $Y^3$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$X^2$ and $Y^3$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$X$ and $X+Y$",
+        "correct": false,
+        "why": "$X+Y$ contains $X$, so the two are generally dependent."
+      },
+      {
+        "text": "$X+Y$ and $X-Y$",
+        "correct": false,
+        "why": "These are dependent in general (they are uncorrelated only if $\\mathrm{Var}(X)=\\mathrm{Var}(Y)$, and even then not independent in general)."
+      },
+      {
+        "text": "$X$ and $\\max(X,Y)$",
+        "correct": false,
+        "why": "The maximum depends on $X$ directly."
+      }
+    ],
+    "solution": [
+      "Functions of different independent variables are independent: $g(X)$ and $h(Y)$ are independent for any functions $g, h$.",
+      "The other pairs share $X$."
+    ],
+    "hints": [
+      "Which pair uses separate variables only?",
+      "Functions of one variable alone cannot link the two.",
+      "Check whether each other pair depends on both $X$ and $Y$."
+    ],
+    "concept": "Independence is preserved under separate transformations.",
+    "misconception": "Believing that sums and differences of independent variables are independent.",
+    "why": "Different variables are fed into different functions, so no information is shared.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-52",
+    "topic": "indep",
+    "sub": "runs: no three consecutive heads",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A fair coin is tossed 10 times. What is the probability that there is <b>no run of three or more consecutive heads</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.4921875,
+      "display": "0.4922"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Let $a_n$ be the number of valid sequences of length $n$. A valid sequence ends in T, HT or HHT (preceded by a valid sequence), so $a_n = a_{n-1}+a_{n-2}+a_{n-3}$ with $a_1=2$, $a_2=4$, $a_3=7$.",
+      "Continuing: 13, 24, 44, 81, 149, 274, 504.",
+      "$P = 504/1024 \\approx 0.492$."
+    ],
+    "hints": [
+      "Classify valid sequences by how they end: T, HT or HHT.",
+      "This yields a recursion with three terms.",
+      "Compute $a_{10}$ and divide by $2^{10}$."
+    ],
+    "concept": "Runs and tribonacci-type recursion.",
+    "misconception": "Assuming independence of position windows.",
+    "why": "Every sequence of tosses is equally likely; counting valid ones gives the probability.",
+    "fam": "indep:repeated-trials"
+  },
+  {
+    "id": "IND-54",
+    "topic": "indep",
+    "sub": "complements of independent events",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "$A$ and $B$ are independent with $P(A) = 0.3$ and $P(B) = 0.6$. What is the probability that <b>neither</b> occurs?",
+    "data": "",
+    "answer": {
+      "value": 0.27999999999999997,
+      "display": "0.28"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "The complements are independent: $P(A^c\\cap B^c) = 0.7\\times0.4 = 0.28$.",
+      "Check: $1-P(A\\cup B) = 1-0.72 = 0.28$."
+    ],
+    "hints": [
+      "Complements of independent events are independent.",
+      "Find each complement’s probability.",
+      "Multiply the two complement probabilities."
+    ],
+    "concept": "Independence is preserved under complements.",
+    "misconception": "Using $1-0.3-0.6$.",
+    "why": "Neither occurring is a conjunction of two independent complements.",
+    "fam": "indep:definition"
+  },
+  {
+    "id": "IND-55",
+    "topic": "indep",
+    "sub": "equal values of independent variables",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two employees independently pick a lunch day uniformly from the 12 working days of a fortnight (Monday of week 1 to Friday of week 2, minus two holidays). What is the probability that they pick the <b>same day</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.08333333333333333,
+      "display": "1/12"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "Whatever the first picks, the second matches with probability $1/12$.",
+      "$P = 1/12$."
+    ],
+    "hints": [
+      "Condition on the first employee’s choice.",
+      "The second is independent of it.",
+      "How likely is it to pick that day?"
+    ],
+    "concept": "Probability of a match between independent uniform choices.",
+    "misconception": "Counting pairs as if unordered.",
+    "why": "The first choice is arbitrary; only the second must hit it.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-56",
+    "topic": "indep",
+    "sub": "disjoint random subsets",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two analysts each choose a random subset of the four stocks $\\{1,2,3,4\\}$, independently and uniformly among all 16 subsets. What is the probability that their chosen subsets are <b>disjoint</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.31640625,
+      "display": "0.3164"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Consider each stock separately: it can be in neither subset, only the first, or only the second ($3$ of the $4$ equally likely combinations); being in both would violate disjointness.",
+      "Independent stocks: $(3/4)^4 = 81/256 \\approx 0.316$."
+    ],
+    "hints": [
+      "Look at one stock at a time: in how many of the 4 combinations is it not in both?",
+      "The choices for different stocks are independent.",
+      "Raise to the fourth power."
+    ],
+    "concept": "Independence across elements of random sets.",
+    "misconception": "Counting subsets of fixed size.",
+    "why": "Each stock is in a subset independently with probability 1/2.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-57",
+    "topic": "indep",
+    "sub": "redundancy design: number of parallel units",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A backup system uses $n$ identical units in parallel, each working independently with probability 0.8. What is the <b>smallest $n$</b> for which the probability that at least one unit works is <b>at least 0.999</b>?",
+    "data": "",
+    "answer": {
+      "value": 5,
+      "display": "5"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Need $1-0.2^n \\ge 0.999$, i.e. $0.2^n \\le 0.001$.",
+      "$n \\ge \\dfrac{\\ln0.001}{\\ln0.2} \\approx 4.29$, so $n = 5$.",
+      "Check: $0.2^4 = 0.0016$ (too large), $0.2^5 = 0.00032$."
+    ],
+    "hints": [
+      "Write the system reliability as $1-(1-r)^n$.",
+      "Solve the inequality using logarithms.",
+      "Round up to an integer."
+    ],
+    "concept": "Number of redundant units for a reliability target.",
+    "misconception": "Rounding down.",
+    "why": "Each extra unit multiplies the failure probability by 0.2.",
+    "fam": "indep:repeated-trials"
+  },
+  {
+    "id": "IND-58",
+    "topic": "indep",
+    "sub": "comparing two designs",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Design 1 uses a single component that works with probability 0.99. Design 2 uses two <b>independent</b> components in parallel, each working with probability 0.9. Which design is more reliable?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "They are equally reliable: both work with probability 0.99"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "They are equally reliable: both work with probability 0.99",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Design 1, because one good component beats two worse ones",
+        "correct": false,
+        "why": "Two independent parallel units of reliability 0.9 give $1-0.1^2 = 0.99$."
+      },
+      {
+        "text": "Design 2: it works with probability 0.999",
+        "correct": false,
+        "why": "Design 2 fails with probability $0.1^2 = 0.01$, so it works with probability 0.99, not 0.999."
+      },
+      {
+        "text": "Cannot be compared without more information",
+        "correct": false,
+        "why": "Both reliabilities can be computed directly."
+      }
+    ],
+    "solution": [
+      "Design 2 fails only if both units fail: $0.1\\times0.1 = 0.01$, so it works with probability $0.99$.",
+      "Design 1 works with probability $0.99$. The two are equally reliable."
+    ],
+    "hints": [
+      "Compute the reliability of each design.",
+      "A parallel pair fails only if both fail.",
+      "Compare the two numbers."
+    ],
+    "concept": "Parallel redundancy replaces component quality.",
+    "misconception": "Judging by the best single component.",
+    "why": "Redundancy can substitute for reliability.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-59",
+    "topic": "indep",
+    "sub": "larger of two independent uniforms",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two independent numbers are chosen uniformly from $(0,1)$. What is the probability that the <b>larger</b> exceeds 0.9?",
+    "data": "",
+    "answer": {
+      "value": 0.18999999999999995,
+      "display": "0.19"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "The maximum is at most 0.9 only if both are: $0.9\\times0.9 = 0.81$.",
+      "$P(\\max>0.9) = 0.19$."
+    ],
+    "hints": [
+      "When is the maximum not above 0.9?",
+      "Both numbers must be below 0.9.",
+      "Take the complement."
+    ],
+    "concept": "Maximum of independent variables via the complement.",
+    "misconception": "Doubling 0.1.",
+    "why": "Both variables must be small for the maximum to be small.",
+    "fam": "indep:conditioning"
+  },
+  {
+    "id": "IND-61",
+    "topic": "indep",
+    "sub": "streaks: no two consecutive rainy days",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Each of 5 consecutive days is rainy with probability 0.3, independently. What is the probability that there are <b>two consecutive rainy days</b> at some point?",
+    "data": "",
+    "answer": {
+      "value": 0.27332999999999996,
+      "display": "0.2733"
+    },
+    "fmt": "d",
+    "tol": 0.0006,
+    "options": [],
+    "solution": [
+      "Let $f_n$ be the probability of no two consecutive rainy days in $n$ days. $f_n = 0.7f_{n-1}+0.21f_{n-2}$ (dry day, or wet day followed by a forced dry day).",
+      "$f_1 = 1$, $f_2 = 0.91$, $f_3 = 0.847$, $f_4 = 0.784$, $f_5 = 0.7267$.",
+      "Answer: $1-0.7267 = 0.2733$."
+    ],
+    "hints": [
+      "Use the complement: no two consecutive rainy days.",
+      "Condition on whether day 1 is rainy or dry.",
+      "Build up the probabilities for $n=1,\\dots,5$."
+    ],
+    "concept": "Pattern probability by recursion.",
+    "misconception": "Treating pairs of days as independent windows.",
+    "why": "Overlapping windows are dependent, so a recursion is needed.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-62",
+    "topic": "indep",
+    "sub": "diagnose: physical separation versus independence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A student argues: \"Sales on Monday and sales on Tuesday are independent because they happen on different days and nothing physically connects them.\" What is wrong with the argument?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Independence is about information: if Monday’s sales tell you anything about Tuesday’s (through demand, season, promotion), the events are dependent"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Independence is about information: if Monday’s sales tell you anything about Tuesday’s (through demand, season, promotion), the events are dependent",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Nothing: events on different days are always independent",
+        "correct": false,
+        "why": "Different time points can be strongly related through shared demand or trends."
+      },
+      {
+        "text": "Different days make the events mutually exclusive",
+        "correct": false,
+        "why": "Both days’ sales can be high at the same time; exclusivity is a different notion."
+      },
+      {
+        "text": "Independence is only defined for events on the same day",
+        "correct": false,
+        "why": "Independence is defined for any two events on the same probability space."
+      }
+    ],
+    "solution": [
+      "Independence means $P(A\\cap B) = P(A)P(B)$, equivalently that learning $A$ does not change the probability of $B$.",
+      "Day-to-day sales usually share drivers (seasonality, promotions, the economy), so one day carries information about the next."
+    ],
+    "hints": [
+      "What does independence say about learning one event’s outcome?",
+      "Would a very high Monday change your expectation for Tuesday?",
+      "Physical separation is not the criterion."
+    ],
+    "concept": "Independence is a statement about information, not separation.",
+    "misconception": "Equating \"unrelated in space or time\" with independence.",
+    "why": "Shared drivers induce dependence between separated events.",
+    "fam": "indep:diagnose"
+  },
+  {
+    "id": "IND-63",
+    "topic": "indep",
+    "sub": "AND versus OR alarm logic",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two independent sensors each give a false alarm during a night with probabilities 0.05 and 0.02. The system sounds the alarm if <b>either</b> sensor triggers. What is the probability of a false system alarm in a night?",
+    "data": "",
+    "answer": {
+      "value": 0.06900000000000006,
+      "display": "0.069"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "No false alarm requires both sensors quiet: $0.95\\times0.98 = 0.931$.",
+      "False alarm: $1-0.931 = 0.069$.",
+      "(If both had to trigger the probability would be $0.05\\times0.02 = 0.001$.)"
+    ],
+    "hints": [
+      "\"Either triggers\" is a union.",
+      "Use the complement: both quiet.",
+      "Multiply the independent quiet probabilities."
+    ],
+    "concept": "Union of independent events.",
+    "misconception": "Adding the two probabilities.",
+    "why": "The complement of \"either\" is \"neither\", a product of complements.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-64",
+    "topic": "indep",
+    "sub": "which consequences follow from independence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "$A$ and $B$ are independent events with $0<P(A)<1$ and $0<P(B)<1$. Which of the following is <b>not</b> a consequence of independence?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$P(A\\cup B) = P(A)+P(B)$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$P(A\\cup B) = P(A)+P(B)$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$P(A^c\\cap B) = P(A^c)P(B)$",
+        "correct": false,
+        "why": "This is a consequence: complements of independent events are independent."
+      },
+      {
+        "text": "$P(A\\mid B) = P(A)$",
+        "correct": false,
+        "why": "This is the defining property of independence in terms of conditional probability."
+      },
+      {
+        "text": "$P(B\\mid A^c) = P(B)$",
+        "correct": false,
+        "why": "This is a consequence: $B$ is independent of $A^c$ too."
+      }
+    ],
+    "solution": [
+      "The addition formula $P(A\\cup B) = P(A)+P(B)$ holds only when $P(A\\cap B) = 0$. For independent events with positive probabilities $P(A\\cap B) = P(A)P(B) > 0$, so it fails.",
+      "The other statements follow from independence."
+    ],
+    "hints": [
+      "Which statement is really about mutually exclusive events?",
+      "What is $P(A\\cap B)$ under independence?",
+      "Check each of the other statements against the product rule."
+    ],
+    "concept": "Consequences of independence.",
+    "misconception": "Using the exclusive-events addition rule for independent events.",
+    "why": "Independence puts probability on the intersection; exclusivity removes it.",
+    "fam": "indep:combining"
+  },
+  {
+    "id": "IND-65",
+    "topic": "indep",
+    "sub": "independent trials: at least once in repeated attempts with learning",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A job seeker applies to firms one after another. Because her application improves, the success probability of attempt $k$ is $0.1k$ ($k = 1,2,3,4$), independently across attempts. What is the probability that she gets <b>at least one</b> offer in the four attempts?",
+    "data": "",
+    "answer": {
+      "value": 0.6976,
+      "display": "0.6976"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6976",
+        "correct": true,
+        "why": "",
+        "v": 0.6976
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "This adds the probabilities; they would sum to 1.0 which is not the probability of at least one offer.",
+        "v": 1
+      },
+      {
+        "text": "0.3024",
+        "correct": false,
+        "why": "This is the probability of <i>no</i> offer.",
+        "v": 0.3024
+      },
+      {
+        "text": "0.6836",
+        "correct": false,
+        "why": "This uses the average success probability $0.25$ for every attempt; the probabilities differ by attempt.",
+        "v": 0.68359375
+      }
+    ],
+    "solution": [
+      "No offer in any attempt: $0.9\\times0.8\\times0.7\\times0.6 = 0.3024$.",
+      "At least one offer: $1-0.3024 = 0.6976$."
+    ],
+    "hints": [
+      "Use the complement: no offer at all.",
+      "The attempts are independent but have different probabilities.",
+      "Multiply the four failure probabilities."
+    ],
+    "concept": "Complement for independent non-identical trials.",
+    "misconception": "Using a common probability.",
+    "why": "Independence lets the failure probabilities multiply even when they differ.",
+    "fam": "indep:conditioning"
+  }
+]

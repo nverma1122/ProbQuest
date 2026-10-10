@@ -1,0 +1,83 @@
+[
+  {
+    "id": "space",
+    "name": "Sample spaces and events",
+    "short": "Events",
+    "pre": [],
+    "blurb": "Outcomes, events, set operations and event algebra."
+  },
+  {
+    "id": "counting",
+    "name": "Counting methods",
+    "short": "Counting",
+    "pre": [],
+    "blurb": "Multiplication principle, permutations, combinations, partitions."
+  },
+  {
+    "id": "axioms",
+    "name": "Probability rules",
+    "short": "Rules",
+    "pre": [
+      "space",
+      "counting"
+    ],
+    "blurb": "Axioms, classical probability, complements, addition and inclusion-exclusion."
+  },
+  {
+    "id": "cond",
+    "name": "Conditional probability",
+    "short": "Conditional",
+    "pre": [
+      "axioms"
+    ],
+    "blurb": "Reduced sample spaces, the multiplication rule and sequential experiments."
+  },
+  {
+    "id": "indep",
+    "name": "Independence",
+    "short": "Independence",
+    "pre": [
+      "cond"
+    ],
+    "blurb": "Independent versus mutually exclusive events; systems and repeated trials."
+  },
+  {
+    "id": "bayes",
+    "name": "Total probability and Bayes",
+    "short": "Bayes",
+    "pre": [
+      "cond",
+      "indep"
+    ],
+    "blurb": "Partitions, the law of total probability, Bayes’ theorem and base rates."
+  },
+  {
+    "id": "rv",
+    "name": "Random variables and expectation",
+    "short": "Expectation",
+    "pre": [
+      "axioms"
+    ],
+    "blurb": "Distributions, expected value, variance and linearity."
+  },
+  {
+    "id": "dist",
+    "name": "Standard distributions",
+    "short": "Distributions",
+    "pre": [
+      "rv",
+      "indep"
+    ],
+    "blurb": "Binomial, geometric, Poisson, hypergeometric and normal models."
+  },
+  {
+    "id": "joint",
+    "name": "Joint distributions",
+    "short": "Joint",
+    "pre": [
+      "rv",
+      "indep"
+    ],
+    "blurb": "Joint and marginal distributions, covariance, sums of variables."
+  }
+]

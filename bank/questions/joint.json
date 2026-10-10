@@ -1,0 +1,1194 @@
+[
+  {
+    "id": "JNT-01",
+    "topic": "joint",
+    "sub": "dependence without replacement",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two employees are chosen at random, one after the other without replacement, from a team of 9 that includes 4 managers. Let $X_i = 1$ if the $i$th chosen employee is a manager. What is $P(X_1 = 1, X_2 = 1)$?",
+    "data": "",
+    "answer": {
+      "value": 0.16666666666666666,
+      "display": "1/6"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/6",
+        "correct": true,
+        "why": "",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "16/81",
+        "correct": false,
+        "why": "This treats the two choices as independent (with replacement); without replacement the second probability is 3/8.",
+        "v": 0.19753086419753085
+      },
+      {
+        "text": "4/9",
+        "correct": false,
+        "why": "This is the marginal probability $P(X_1 = 1)$.",
+        "v": 0.4444444444444444
+      },
+      {
+        "text": "3/8",
+        "correct": false,
+        "why": "This is the conditional probability $P(X_2 = 1\\mid X_1 = 1)$.",
+        "v": 0.375
+      }
+    ],
+    "solution": [
+      "$P(X_1=1,X_2=1) = P(X_1=1)\\,P(X_2=1\\mid X_1=1) = \\dfrac49\\cdot\\dfrac38 = \\dfrac16$."
+    ],
+    "hints": [
+      "The joint probability is a product of a marginal and a conditional.",
+      "After one manager is removed, how many managers remain among how many?",
+      "Multiply the marginal by the conditional probability."
+    ],
+    "concept": "Joint probability of dependent indicators.",
+    "misconception": "Multiplying the marginals.",
+    "why": "Sampling without replacement makes the indicators dependent.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-02",
+    "topic": "joint",
+    "sub": "independence check",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two cards are drawn from the three cards numbered 1, 2, 3, one after the other without replacement. Let $X_1$ and $X_2$ be the numbers drawn. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$X_1$ and $X_2$ are dependent: $P(X_2 = 1\\mid X_1 = 1) = 0 \\ne P(X_2 = 1) = \\tfrac13$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$X_1$ and $X_2$ are dependent: $P(X_2 = 1\\mid X_1 = 1) = 0 \\ne P(X_2 = 1) = \\tfrac13$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$X_1$ and $X_2$ are independent because each card is equally likely at each draw",
+        "correct": false,
+        "why": "Equal marginal probabilities do not imply independence; the joint probability of (1, 1) is 0, not $1/9$."
+      },
+      {
+        "text": "They are independent because the draws are random",
+        "correct": false,
+        "why": "Randomness does not imply independence; the second draw depends on which card remains."
+      },
+      {
+        "text": "They are dependent only if more than three cards are used",
+        "correct": false,
+        "why": "Dependence arises whenever sampling is without replacement, whatever the size."
+      }
+    ],
+    "solution": [
+      "$P(X_1=1,X_2=1) = 0$ since a card cannot be drawn twice, but $P(X_1=1)P(X_2=1) = \\tfrac13\\cdot\\tfrac13 = \\tfrac19 \\ne 0$.",
+      "The joint probability does not factorise, so they are dependent."
+    ],
+    "hints": [
+      "Compute $P(X_1 = 1, X_2 = 1)$.",
+      "Compare it with $P(X_1=1)P(X_2=1)$.",
+      "Independence requires the joint to equal the product for every pair of values."
+    ],
+    "concept": "Testing independence of two random variables.",
+    "misconception": "Checking only the marginal distributions.",
+    "why": "One counterexample to the product rule is enough to prove dependence.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-03",
+    "topic": "joint",
+    "sub": "expectation from a density",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Random variables $X$ and $Y$ share the joint density $f(x,y)=\\tfrac65(x+y^2)$ over the unit square (zero elsewhere). Compute the mean of $X$.",
+    "data": "",
+    "answer": {
+      "value": 0.6,
+      "display": "0.6"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6",
+        "correct": true,
+        "why": "",
+        "v": 0.6
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the mean of a uniform variable on (0,1); the density puts more weight on larger $x$.",
+        "v": 0.5
+      },
+      {
+        "text": "0.4",
+        "correct": false,
+        "why": "This is $E[Y]$ or a different moment; for $X$ integrate $x f(x,y)$.",
+        "v": 0.4
+      },
+      {
+        "text": "0.8",
+        "correct": false,
+        "why": "This integrates $x^2 + xy^2$ incorrectly; the second term contributes $\\tfrac12\\cdot\\tfrac13$.",
+        "v": 0.7999999999999999
+      }
+    ],
+    "solution": [
+      "$f_X(x) = \\int_0^1\\tfrac65(x+y^2)dy = \\tfrac65\\left(x+\\tfrac13\\right)$.",
+      "$E[X] = \\int_0^1 x\\cdot\\tfrac65\\left(x+\\tfrac13\\right)dx = \\tfrac65\\left(\\tfrac13+\\tfrac16\\right) = \\tfrac65\\cdot\\tfrac12 = 0.6$."
+    ],
+    "hints": [
+      "Find the marginal density of $X$ by integrating out $y$.",
+      "Then compute $\\int x f_X(x)\\,dx$.",
+      "Or integrate $x f(x,y)$ over the square."
+    ],
+    "concept": "Expectation from a joint density.",
+    "misconception": "Integrating $f$ without the factor $x$.",
+    "why": "The marginal density of $X$ is $f_X(x) = \\int f(x,y)\\,dy$.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-04",
+    "topic": "joint",
+    "sub": "competing exponentials",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two independent waiting times $X$ and $Y$ are exponential with rates 1 and 3 respectively. What is $P(X<Y)$?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "1/4"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/4",
+        "correct": true,
+        "why": "",
+        "v": 0.25
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This would hold for equal rates; $Y$ has the larger rate and so tends to be shorter.",
+        "v": 0.5
+      },
+      {
+        "text": "3/4",
+        "correct": false,
+        "why": "This is $P(Y<X)$, the complementary probability.",
+        "v": 0.75
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This ratio of rates (1 to 3) is not the probability; the denominator is the sum of the rates.",
+        "v": 0.3333333333333333
+      }
+    ],
+    "solution": [
+      "$P(X<Y) = \\int_0^\\infty e^{-3x}\\cdot1\\cdot e^{-x}\\,dx = \\dfrac{1}{1+3} = \\dfrac14$.",
+      "(In general $P(X<Y) = \\lambda_X/(\\lambda_X+\\lambda_Y)$.)"
+    ],
+    "hints": [
+      "Condition on the value of $X$: $P(Y>x) = e^{-3x}$.",
+      "Integrate against the density of $X$.",
+      "The result is a ratio of rates."
+    ],
+    "concept": "Race between independent exponentials.",
+    "misconception": "Assuming one half.",
+    "why": "The probability that one exponential is first is proportional to its rate.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-05",
+    "topic": "joint",
+    "sub": "multinomial",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "In a survey, 50% of respondents prefer brand A, 30% brand B and 20% brand C. Among 6 independently chosen respondents, what is the probability that exactly <b>3 prefer A, 2 prefer B and 1 prefers C</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.13499999999999998,
+      "display": "0.135"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.135",
+        "correct": true,
+        "why": "",
+        "v": 0.13499999999999998
+      },
+      {
+        "text": "0.00225",
+        "correct": false,
+        "why": "This is the probability of one specific order of preferences; there are $6!/(3!2!1!) = 60$ orders.",
+        "v": 0.00225
+      },
+      {
+        "text": "0.045",
+        "correct": false,
+        "why": "The number of arrangements is $\\dfrac{6!}{3!\\,2!\\,1!} = 60$, not $\\binom63 = 20$.",
+        "v": 0.045
+      },
+      {
+        "text": "0.0823",
+        "correct": false,
+        "why": "This assumes the three brands are equally preferred.",
+        "v": 0.08230452674897117
+      }
+    ],
+    "solution": [
+      "$P = \\dfrac{6!}{3!\\,2!\\,1!}(0.5)^3(0.3)^2(0.2)^1 = 60\\times0.125\\times0.09\\times0.2 = 0.135$."
+    ],
+    "hints": [
+      "Count the arrangements of 3 A’s, 2 B’s and 1 C among 6 respondents.",
+      "Compute the probability of one arrangement.",
+      "Multiply the marginal by the conditional probability."
+    ],
+    "concept": "Multinomial probability.",
+    "misconception": "Omitting the multinomial coefficient.",
+    "why": "Each arrangement has the same probability; the coefficient counts them.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-06",
+    "topic": "joint",
+    "sub": "geometric probability of meeting",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two colleagues arrive independently at a café, each at a time uniformly distributed over one hour. Each waits up to <b>10 minutes</b> for the other. What is the probability that they meet?",
+    "data": "",
+    "answer": {
+      "value": 0.30555555555555547,
+      "display": "0.3056"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3056",
+        "correct": true,
+        "why": "",
+        "v": 0.30555555555555547
+      },
+      {
+        "text": "0.1667",
+        "correct": false,
+        "why": "This is the probability that one particular colleague arrives within 10 minutes of a fixed time; both arrival times are random.",
+        "v": 0.16666666666666666
+      },
+      {
+        "text": "0.0278",
+        "correct": false,
+        "why": "This is the area of a small square; the meeting region is a diagonal band.",
+        "v": 0.027777777777777776
+      },
+      {
+        "text": "0.3333",
+        "correct": false,
+        "why": "This treats the full waiting window (10 minutes either side) as a probability; the meeting region is a band within the square.",
+        "v": 0.3333333333333333
+      }
+    ],
+    "solution": [
+      "Let $X, Y$ be the arrival times in minutes, uniform on $(0,60)$ and independent. They meet iff $|X-Y|\\le10$.",
+      "The complement consists of two triangles with legs 50: area $2\\cdot\\tfrac12\\cdot50^2 = 2500$ of 3600.",
+      "$P = 1-\\dfrac{2500}{3600} = \\dfrac{11}{36} \\approx 0.306$."
+    ],
+    "hints": [
+      "Represent the pair of arrival times as a point in a $60\\times60$ square.",
+      "The meeting region is a band around the diagonal.",
+      "Use the complement: two triangles."
+    ],
+    "concept": "Geometric probability for two uniform variables.",
+    "misconception": "Using the marginal rather than the joint region.",
+    "why": "Independent uniforms make the pair uniform on the square.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-07",
+    "topic": "joint",
+    "sub": "symmetry of ranks",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Four independent random variables $X_1,\\dots,X_4$ have the same continuous distribution. What is the probability that $X_3$ is the <b>second smallest</b> of the four?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "1/4"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/4",
+        "correct": true,
+        "why": "",
+        "v": 0.25
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "There are four possible ranks for $X_3$, each equally likely.",
+        "v": 0.5
+      },
+      {
+        "text": "1/24",
+        "correct": false,
+        "why": "This is the probability of one specific ordering of all four variables.",
+        "v": 0.041666666666666664
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "The rank of $X_3$ takes four values, not three.",
+        "v": 0.3333333333333333
+      }
+    ],
+    "solution": [
+      "All $4!$ orderings of the four values are equally likely, so the rank of $X_3$ is uniform on $\\{1,2,3,4\\}$.",
+      "$P(\\text{rank }2) = 1/4$."
+    ],
+    "hints": [
+      "Are the four variables exchangeable?",
+      "How many possible ranks can $X_3$ have?",
+      "Are they equally likely?"
+    ],
+    "concept": "Symmetry for i.i.d. continuous variables.",
+    "misconception": "Trying to integrate.",
+    "why": "Ties have probability zero, so every ranking is equally likely.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-08",
+    "topic": "joint",
+    "sub": "dependence from a density",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "On the unit square the pair $(X,Y)$ has density $\\tfrac32(x^2+y^2)$. Find the probability that the sum of the two coordinates is below 1.",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "1/4"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/4",
+        "correct": true,
+        "why": "",
+        "v": 0.25
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The area of the triangle is $\\tfrac12$ but the density is not uniform; it puts more weight near the far corner.",
+        "v": 0.5
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This is the probability of $X<Y$... of the form $P(X+Y<1)$ under $f = x+y$, a different density.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/8",
+        "correct": false,
+        "why": "This is half of the correct value; the double integral was divided twice.",
+        "v": 0.125
+      }
+    ],
+    "solution": [
+      "$P = \\int_0^1\\int_0^{1-x}\\tfrac32(x^2+y^2)\\,dy\\,dx = \\tfrac32\\int_0^1\\left[x^2(1-x)+\\tfrac{(1-x)^3}{3}\\right]dx = \\tfrac32\\left(\\tfrac1{12}+\\tfrac1{12}\\right) = \\tfrac14$."
+    ],
+    "hints": [
+      "Describe the region $x+y<1$ in the unit square.",
+      "Set up the double integral with $y$ from 0 to $1-x$.",
+      "Evaluate the inner integral, then the outer."
+    ],
+    "concept": "Probability from a joint density over a non-rectangular region.",
+    "misconception": "Using area instead of integrating the density.",
+    "why": "The density is larger away from the origin, so the near-origin triangle has less than half the mass.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-09",
+    "topic": "joint",
+    "sub": "independence from a factorised density",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "$X$ and $Y$ have joint density $f(x,y) = 120\\,x^2(1-x)^2\\,y^3$ for $0<x<1$, $0<y<1$ (which factorises as $30x^2(1-x)^2\\times4y^3$). What is $\\mathrm{Var}(X)$?",
+    "data": "",
+    "answer": {
+      "value": 0.03571428571428571,
+      "display": "0.0357"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0357",
+        "correct": true,
+        "why": "",
+        "v": 0.03571428571428571
+      },
+      {
+        "text": "0.0833",
+        "correct": false,
+        "why": "This is the variance of a uniform variable on $(0,1)$; the density here is concentrated around the middle.",
+        "v": 0.08333333333333333
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is $E[X]$, not the variance.",
+        "v": 0.5
+      },
+      {
+        "text": "0.2857",
+        "correct": false,
+        "why": "This is $E[X^2] = 2/7$, which is not the variance; subtract $(E[X])^2$.",
+        "v": 0.2857142857142857
+      }
+    ],
+    "solution": [
+      "The density factorises, so $X$ has density $30x^2(1-x)^2$ on $(0,1)$ (symmetric about $\\tfrac12$).",
+      "$E[X] = \\tfrac12$.",
+      "$E[X^2] = \\int_0^1 30x^4(1-x)^2dx = 30\\left(\\tfrac15-\\tfrac26+\\tfrac17\\right) = \\tfrac27$.",
+      "$\\mathrm{Var}(X) = \\tfrac27-\\tfrac14 = \\tfrac1{28} \\approx 0.0357$."
+    ],
+    "hints": [
+      "A factorised joint density means independence; read off the density of $X$.",
+      "Compute $E[X]$ and $E[X^2]$.",
+      "Use $\\mathrm{Var} = E[X^2]-(E[X])^2$."
+    ],
+    "concept": "Variance from a marginal density.",
+    "misconception": "Using the joint density without factoring.",
+    "why": "Independence allows each variable to be treated separately.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-10",
+    "topic": "joint",
+    "sub": "variance of a difference",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "$R$ and $C$ are independent random variables with the same mean, with $\\mathrm{Var}(R) = 4$ and $\\mathrm{Var}(C) = 9$. What is $E\\big[(R-C)^2\\big]$?",
+    "data": "",
+    "answer": {
+      "value": 13,
+      "display": "13"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "13",
+        "correct": true,
+        "why": "",
+        "v": 13
+      },
+      {
+        "text": "-5",
+        "correct": false,
+        "why": "Variances of independent variables add even for a difference.",
+        "v": -5
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "This subtracts standard deviations; the correct combination adds variances.",
+        "v": 1
+      },
+      {
+        "text": "36",
+        "correct": false,
+        "why": "This multiplies the variances; they should be added.",
+        "v": 36
+      }
+    ],
+    "solution": [
+      "Since $E[R-C] = 0$, $E[(R-C)^2] = \\mathrm{Var}(R-C) = \\mathrm{Var}(R)+\\mathrm{Var}(C) = 4+9 = 13$."
+    ],
+    "hints": [
+      "What is the mean of $R-C$?",
+      "Then the expected square equals the variance.",
+      "Variances of independent variables add."
+    ],
+    "concept": "Variance of a difference.",
+    "misconception": "Subtracting variances.",
+    "why": "Subtracting an independent variable adds its variability.",
+    "fam": "joint:moments"
+  },
+  {
+    "id": "JNT-12",
+    "topic": "joint",
+    "sub": "marginal from a joint table",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "$X$ is the number of items ordered (0, 1 or 2) and $Y$ indicates express delivery (0 or 1). The joint probabilities are: $(0,0)$ 0.20, $(0,1)$ 0.10, $(1,0)$ 0.15, $(1,1)$ 0.25, $(2,0)$ 0.10, $(2,1)$ 0.20. What is $P(X=1)$?",
+    "data": "",
+    "answer": {
+      "value": 0.4,
+      "display": "0.4"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Sum the row: $P(X=1) = 0.15+0.25 = 0.40$."
+    ],
+    "hints": [
+      "A marginal sums the joint probabilities over the other variable.",
+      "Which cells have $X=1$?",
+      "Add those probabilities together to get the marginal."
+    ],
+    "concept": "Marginal distribution from a joint table.",
+    "misconception": "Using a single cell.",
+    "why": "Marginalise over all values of $Y$.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-13",
+    "topic": "joint",
+    "sub": "conditional distribution from a joint table",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Using the joint probabilities $(0,0)$ 0.20, $(0,1)$ 0.10, $(1,0)$ 0.15, $(1,1)$ 0.25, $(2,0)$ 0.10, $(2,1)$ 0.20 for $(X,Y)$, what is $P(X=2\\mid Y=1)$?",
+    "data": "",
+    "answer": {
+      "value": 0.36363636363636365,
+      "display": "0.3636"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(Y=1) = 0.10+0.25+0.20 = 0.55$.",
+      "$P(X=2\\mid Y=1) = 0.20/0.55 \\approx 0.364$."
+    ],
+    "hints": [
+      "Find $P(Y=1)$ by summing the column.",
+      "Take the joint probability for $X=2$, $Y=1$.",
+      "Divide the second by the first."
+    ],
+    "concept": "Conditional from a joint table.",
+    "misconception": "Dividing by the row total.",
+    "why": "Condition on the column total.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-14",
+    "topic": "joint",
+    "sub": "independence check",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "For the joint probabilities $(0,0)$ 0.20, $(0,1)$ 0.10, $(1,0)$ 0.15, $(1,1)$ 0.25, $(2,0)$ 0.10, $(2,1)$ 0.20, are $X$ and $Y$ independent?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "No: for example $P(X=0,Y=0)=0.20 \\ne P(X=0)P(Y=0)=0.30\\times0.45$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "No: for example $P(X=0,Y=0)=0.20 \\ne P(X=0)P(Y=0)=0.30\\times0.45$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Yes, because all probabilities are positive",
+        "correct": false,
+        "why": "Positivity does not imply independence."
+      },
+      {
+        "text": "Yes, because the probabilities sum to 1",
+        "correct": false,
+        "why": "Every joint pmf sums to 1."
+      },
+      {
+        "text": "Yes, since $P(X=0,Y=0) = P(X=0)P(Y=0)$",
+        "correct": false,
+        "why": "The product is 0.135, not 0.20."
+      }
+    ],
+    "solution": [
+      "$P(X=0)=0.30$ and $P(Y=0)=0.45$. Product $=0.135 \\ne 0.20$.",
+      "One failure is enough to rule out independence."
+    ],
+    "hints": [
+      "Find the two marginals for the chosen cell.",
+      "Multiply the two marginal probabilities together.",
+      "Compare with the joint cell."
+    ],
+    "concept": "Testing independence from a table.",
+    "misconception": "Checking only the sums.",
+    "why": "Independence requires all cells to factorise.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-15",
+    "topic": "joint",
+    "sub": "expectation of a sum from the joint pmf",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "With the same joint probabilities for $(X,Y)$, what is $E[X+Y]$?",
+    "data": "",
+    "answer": {
+      "value": 1.55,
+      "display": "1.55"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$E[X] = 0.35\\cdot... $ compute: $E[X] = 0(0.30)+1(0.40)+2(0.30) = 1.0$.",
+      "$E[Y] = 0.55$.",
+      "$E[X+Y] = 1.55$."
+    ],
+    "hints": [
+      "Linearity: $E[X+Y]=E[X]+E[Y]$.",
+      "Find each marginal mean.",
+      "Add the two marginal means together."
+    ],
+    "concept": "Linearity of expectation.",
+    "misconception": "Multiplying the means.",
+    "why": "Linearity holds with or without independence.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-16",
+    "topic": "joint",
+    "sub": "covariance from a table",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "With the same joint probabilities, what is $\\mathrm{Cov}(X,Y)$?",
+    "data": "",
+    "answer": {
+      "value": 0.09999999999999998,
+      "display": "0.1"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$E[XY] = 1(0.25)+2(0.20) = 0.65$.",
+      "$E[X]E[Y] = 1.0\\times0.55$.",
+      "$\\mathrm{Cov} = 0.65-0.55 = 0.10$."
+    ],
+    "hints": [
+      "Use $E[XY]-E[X]E[Y]$.",
+      "Only cells with $Y=1$ contribute to $E[XY]$.",
+      "Subtract the product of means."
+    ],
+    "concept": "Covariance via $E[XY]$.",
+    "misconception": "Using $E[X]E[Y]$ alone.",
+    "why": "Positive covariance suggests orders and express delivery move together.",
+    "fam": "joint:moments"
+  },
+  {
+    "id": "JNT-17",
+    "topic": "joint",
+    "sub": "probability of a region",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "With the same joint probabilities, what is $P(X\\ge1,\\;Y=0)$?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "0.25"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Cells $(1,0)$ and $(2,0)$: $0.15+0.10 = 0.25$."
+    ],
+    "hints": [
+      "Which cells satisfy both conditions?",
+      "List those cells explicitly before adding.",
+      "Add the probabilities."
+    ],
+    "concept": "Probability of a region in the table.",
+    "misconception": "Including the cells with $Y=1$.",
+    "why": "Both conditions must hold at once.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-18",
+    "topic": "joint",
+    "sub": "uniform on a triangle",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "$(X,Y)$ is uniformly distributed on the triangle with vertices $(0,0)$, $(2,0)$ and $(0,2)$. What is $P(X+Y\\le1)$?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "0.25"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Area of the triangle $=2$.",
+      "The region $x+y\\le1$ has area $0.5$.",
+      "$P = 0.5/2 = 0.25$."
+    ],
+    "hints": [
+      "Probability equals area ratio.",
+      "Find the area of the whole triangle.",
+      "Find the area of the smaller triangle."
+    ],
+    "concept": "Geometric probability for a joint uniform.",
+    "misconception": "Using lengths instead of areas.",
+    "why": "A triangle scaled by 1/2 has a quarter of the area.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-19",
+    "topic": "joint",
+    "sub": "marginal from a joint density",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "$(X,Y)$ has joint density $f(x,y)=x+y$ on the unit square. What is $P(X\\le0.5)$?",
+    "data": "",
+    "answer": {
+      "value": 0.375,
+      "display": "0.375"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Marginal $f_X(x) = \\int_0^1(x+y)\\,dy = x+\\tfrac12$.",
+      "$P(X\\le0.5)=\\int_0^{0.5}(x+0.5)dx = 0.125+0.25 = 0.375$."
+    ],
+    "hints": [
+      "Integrate out $y$ to get the marginal density of $X$.",
+      "The marginal is $x+\\tfrac12$.",
+      "Integrate from 0 to 0.5."
+    ],
+    "concept": "Marginal density.",
+    "misconception": "Integrating only over $x$.",
+    "why": "A marginal integrates over the other variable.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-20",
+    "topic": "joint",
+    "sub": "independence from density factorisation",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Which joint density on the unit square describes <b>independent</b> $X$ and $Y$?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$f(x,y)=4xy$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$f(x,y)=4xy$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$f(x,y)=x+y$",
+        "correct": false,
+        "why": "This does not factor into a function of $x$ times a function of $y$."
+      },
+      {
+        "text": "$f(x,y)=2(1-x)(1-y)\\cdot2\\,$ restricted to $x+y\\le1$",
+        "correct": false,
+        "why": "The restricted support (a triangle) links the variables."
+      },
+      {
+        "text": "$f(x,y)=2$ on the triangle $x+y\\le1$",
+        "correct": false,
+        "why": "The triangular support makes $X$ and $Y$ dependent."
+      }
+    ],
+    "solution": [
+      "Independence needs a product form on a rectangular support.",
+      "$4xy$ factors as $(2x)(2y)$ on $[0,1]^2$."
+    ],
+    "hints": [
+      "Look for a product of a function of $x$ and a function of $y$.",
+      "Check the support is a rectangle.",
+      "Pick the matching density."
+    ],
+    "concept": "Factorisation criterion.",
+    "misconception": "Ignoring the support.",
+    "why": "A non-rectangular support forces dependence.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-21",
+    "topic": "joint",
+    "sub": "sum of independent dice: joint reading",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "$X$ and $Y$ are the results of two fair dice. What is $P(X>Y)$?",
+    "data": "",
+    "answer": {
+      "value": 0.4166666666666667,
+      "display": "5/12"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "Ties have probability $6/36$; by symmetry the rest splits equally.",
+      "$P = (1-1/6)/2 = 5/12 = 15/36$."
+    ],
+    "hints": [
+      "Find the probability of a tie.",
+      "The remaining outcomes split symmetrically.",
+      "Halve the non-tie probability."
+    ],
+    "concept": "Symmetry in a joint distribution.",
+    "misconception": "Answering 1/2.",
+    "why": "Ties take away some probability.",
+    "fam": "joint:moments"
+  },
+  {
+    "id": "JNT-23",
+    "topic": "joint",
+    "sub": "correlation sign interpretation",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "Returns on two stocks have correlation $-0.8$. Which interpretation is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "When one is above its average the other tends to be below its average"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "When one is above its average the other tends to be below its average",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "When one rises, the other always falls by 80% as much",
+        "correct": false,
+        "why": "Correlation is a tendency, not a deterministic ratio."
+      },
+      {
+        "text": "80% of the time they move in opposite directions",
+        "correct": false,
+        "why": "Correlation is not a proportion of days."
+      },
+      {
+        "text": "The stocks are independent",
+        "correct": false,
+        "why": "Independence implies zero correlation, not $-0.8$."
+      }
+    ],
+    "solution": [
+      "A strong negative correlation means a tendency to move in opposite directions relative to their means."
+    ],
+    "hints": [
+      "What does the sign tell you?",
+      "Is correlation a probability?",
+      "Choose the statement about tendencies."
+    ],
+    "concept": "Interpreting correlation.",
+    "misconception": "Reading correlation as a percentage of days.",
+    "why": "It measures linear association strength.",
+    "fam": "joint:diagnose"
+  },
+  {
+    "id": "JNT-24",
+    "topic": "joint",
+    "sub": "zero correlation without independence",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "$X$ takes the values $-1, 0, 1$ with probability $1/3$ each, and $Y=X^2$. Which statement is true?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$X$ and $Y$ are uncorrelated but not independent"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$X$ and $Y$ are uncorrelated but not independent",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$X$ and $Y$ are independent because they are uncorrelated",
+        "correct": false,
+        "why": "Zero correlation does not imply independence."
+      },
+      {
+        "text": "$X$ and $Y$ are positively correlated",
+        "correct": false,
+        "why": "The covariance is $E[X^3]-E[X]E[X^2]=0$."
+      },
+      {
+        "text": "$X$ and $Y$ are negatively correlated",
+        "correct": false,
+        "why": "The covariance is zero, not negative."
+      }
+    ],
+    "solution": [
+      "$E[X]=0$, $E[XY]=E[X^3]=0$, so $\\mathrm{Cov}=0$.",
+      "But $Y$ is determined by $X$, so they are dependent."
+    ],
+    "hints": [
+      "Compute $E[XY]=E[X^3]$.",
+      "Find the covariance.",
+      "Does knowing $X$ determine $Y$?"
+    ],
+    "concept": "Uncorrelated does not mean independent.",
+    "misconception": "Equating zero correlation with independence.",
+    "why": "Correlation only measures linear association.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-25",
+    "topic": "joint",
+    "sub": "conditional expectation from a table",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "With joint probabilities $(0,0)$ 0.20, $(0,1)$ 0.10, $(1,0)$ 0.15, $(1,1)$ 0.25, $(2,0)$ 0.10, $(2,1)$ 0.20, what is $E[X\\mid Y=1]$?",
+    "data": "",
+    "answer": {
+      "value": 1.1818181818181817,
+      "display": "1.1818"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$P(Y=1)=0.55$.",
+      "$E[X\\mid Y=1]=(0\\cdot0.10+1\\cdot0.25+2\\cdot0.20)/0.55 = 0.65/0.55\\approx1.18$."
+    ],
+    "hints": [
+      "Restrict to the cells with $Y=1$.",
+      "Renormalise by $P(Y=1)$.",
+      "Take the weighted mean of $X$."
+    ],
+    "concept": "Conditional expectation.",
+    "misconception": "Using the unconditional mean.",
+    "why": "Given $Y=1$, larger orders are more likely.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-26",
+    "topic": "joint",
+    "sub": "min and max of two independent uniforms",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "$U$ and $V$ are independent uniform variables on $(0,1)$. What is $P(\\min(U,V)>0.3)$?",
+    "data": "",
+    "answer": {
+      "value": 0.48999999999999994,
+      "display": "0.49"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "The minimum exceeds 0.3 only if both do: $0.7\\times0.7 = 0.49$."
+    ],
+    "hints": [
+      "When is the minimum above 0.3?",
+      "Both variables must exceed 0.3.",
+      "Multiply the probabilities."
+    ],
+    "concept": "Minimum of independent variables.",
+    "misconception": "Using $0.7$ only.",
+    "why": "Both must be large for the minimum to be large.",
+    "fam": "joint:continuous"
+  },
+  {
+    "id": "JNT-27",
+    "topic": "joint",
+    "sub": "variance of a sum with dependence",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "$X$ and $Y$ each have variance 4 and covariance 1.5. What is the variance of $X-Y$?",
+    "data": "",
+    "answer": {
+      "value": 5,
+      "display": "5"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$\\mathrm{Var}(X-Y)=\\mathrm{Var}X+\\mathrm{Var}Y-2\\mathrm{Cov}(X,Y) = 8-3 = 5$."
+    ],
+    "hints": [
+      "Variance of a difference subtracts twice the covariance.",
+      "Add the two variances.",
+      "Subtract $2\\times1.5$."
+    ],
+    "concept": "Variance of a difference.",
+    "misconception": "Adding the covariance.",
+    "why": "Positive covariance makes differences less variable.",
+    "fam": "joint:moments"
+  },
+  {
+    "id": "JNT-28",
+    "topic": "joint",
+    "sub": "joint probability of ordered pair from draws",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A box has 3 red and 2 blue tokens. Two are drawn without replacement. Let $X$ = number of red tokens and $Y$ = 1 if the first token is red, 0 otherwise. What is $P(X=2,\\,Y=1)$?",
+    "data": "",
+    "answer": {
+      "value": 0.3,
+      "display": "0.3"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "First red $3/5$, second red $2/4$.",
+      "$P = 0.3$."
+    ],
+    "hints": [
+      "Two reds means both draws are red.",
+      "The first being red is then automatic.",
+      "Multiply $3/5$ and $2/4$."
+    ],
+    "concept": "Joint probability with dependence.",
+    "misconception": "Using replacement probabilities.",
+    "why": "Without replacement the second probability is $2/4$.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-29",
+    "topic": "joint",
+    "sub": "portfolio expectation and risk",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A portfolio puts weight 0.6 on asset $A$ and 0.4 on asset $B$. Their returns have standard deviations 10% and 20% and correlation 0.25. What is the portfolio standard deviation (to 1 decimal place, in %)?",
+    "data": "",
+    "answer": {
+      "value": 11.135528725660043,
+      "display": "11.1355"
+    },
+    "fmt": "d",
+    "tol": 0.1,
+    "options": [],
+    "solution": [
+      "Variance $=0.36(100)+0.16(400)+2(0.6)(0.4)(0.25)(10)(20) = 36+64+24 = 124$.",
+      "SD $\\approx11.1\\%$."
+    ],
+    "hints": [
+      "Write the variance of a weighted sum.",
+      "Include the covariance term using the correlation.",
+      "Take the square root."
+    ],
+    "concept": "Portfolio variance.",
+    "misconception": "Taking a weighted average of SDs.",
+    "why": "Imperfect correlation reduces risk below the weighted average.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-30",
+    "topic": "joint",
+    "sub": "joint table with unknown cell",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Joint probabilities for $(X,Y)$ with $X,Y\\in\\{0,1\\}$: $(0,0)$ 0.35, $(0,1)$ 0.15, $(1,0)$ 0.25 and $(1,1)$ is unknown. What is $P(X=1)$?",
+    "data": "",
+    "answer": {
+      "value": 0.5,
+      "display": "0.5"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(1,1) = 1-0.75 = 0.25$.",
+      "$P(X=1) = 0.25+0.25 = 0.50$."
+    ],
+    "hints": [
+      "All cells sum to 1.",
+      "Find the missing cell.",
+      "Add the two probabilities in the row for X equal to 1."
+    ],
+    "concept": "Completing a joint pmf.",
+    "misconception": "Not using the total of 1.",
+    "why": "The unknown cell is determined by normalisation.",
+    "fam": "joint:discrete"
+  },
+  {
+    "id": "JNT-31",
+    "topic": "joint",
+    "sub": "conditional independence versus independence",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "Two analysts’ forecasts $F_1$ and $F_2$ are independent <i>given</i> the true state, but both depend on the state. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$F_1$ and $F_2$ are generally dependent unconditionally"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$F_1$ and $F_2$ are generally dependent unconditionally",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$F_1$ and $F_2$ are independent unconditionally too",
+        "correct": false,
+        "why": "Common dependence on the state links them."
+      },
+      {
+        "text": "$F_1$ and $F_2$ are mutually exclusive",
+        "correct": false,
+        "why": "Exclusivity is a different idea."
+      },
+      {
+        "text": "Conditional independence implies zero covariance",
+        "correct": false,
+        "why": "Only within each state; overall they may covary."
+      }
+    ],
+    "solution": [
+      "Given the state they are independent, but both reflect it.",
+      "Averaging over states typically induces positive association."
+    ],
+    "hints": [
+      "Both forecasts are driven by the state.",
+      "What happens when you average over states?",
+      "Choose the matching statement."
+    ],
+    "concept": "Conditional versus unconditional independence.",
+    "misconception": "Assuming conditional independence carries over.",
+    "why": "Common causes create unconditional association.",
+    "fam": "joint:discrete"
+  }
+]

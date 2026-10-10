@@ -1,0 +1,3352 @@
+[
+  {
+    "id": "AXM-01",
+    "topic": "axioms",
+    "sub": "addition rule",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Among small manufacturers, 41% use cloud accounting software, 37% use a mobile payments app and 12% use both. What proportion use at least one of the two?",
+    "data": "",
+    "answer": {
+      "value": 0.66,
+      "display": "0.66"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.66",
+        "correct": true,
+        "why": "",
+        "v": 0.66
+      },
+      {
+        "text": "0.78",
+        "correct": false,
+        "why": "The 12% who use both are counted in each percentage and so have been counted twice.",
+        "v": 0.78
+      },
+      {
+        "text": "0.54",
+        "correct": false,
+        "why": "This is the proportion using exactly one of the two tools (the overlap subtracted twice); users of both also belong to \"at least one\".",
+        "v": 0.54
+      },
+      {
+        "text": "0.12",
+        "correct": false,
+        "why": "This is the proportion using both; the question asks for at least one.",
+        "v": 0.12
+      }
+    ],
+    "solution": [
+      "Let $C$ = cloud software and $M$ = mobile app.",
+      "$P(C\\cup M) = P(C)+P(M)-P(C\\cap M) = 0.41+0.37-0.12 = 0.66$."
+    ],
+    "hints": [
+      "\"At least one\" corresponds to a union of the two events.",
+      "Adding the two percentages counts one group twice; which group?",
+      "$P(C\\cup M)=P(C)+P(M)-P(C\\cap M)$."
+    ],
+    "concept": "Addition rule for two events.",
+    "misconception": "Adding probabilities of overlapping events.",
+    "why": "Subtracting the intersection once makes each element count exactly once.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-02",
+    "topic": "axioms",
+    "sub": "addition rule: solving for the overlap",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "In a sample of firms, 52% have adopted cloud tools and 31% have adopted AI tools. A quarter (25%) have adopted neither. What proportion have adopted <b>both</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.08000000000000007,
+      "display": "0.08"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.08",
+        "correct": true,
+        "why": "",
+        "v": 0.08000000000000007
+      },
+      {
+        "text": "0.1612",
+        "correct": false,
+        "why": "This assumes adoption of the two tools is independent, which the data do not state.",
+        "v": 0.1612
+      },
+      {
+        "text": "0.58",
+        "correct": false,
+        "why": "This subtracts the \"neither\" proportion directly from the sum; the union is $1-0.25 = 0.75$, which should be subtracted instead.",
+        "v": 0.58
+      },
+      {
+        "text": "0.75",
+        "correct": false,
+        "why": "This is the proportion adopting at least one tool, not both.",
+        "v": 0.75
+      }
+    ],
+    "solution": [
+      "$P(\\text{at least one}) = 1 - 0.25 = 0.75$.",
+      "From the addition rule, $P(\\text{both}) = P(C)+P(A)-P(C\\cup A) = 0.52+0.31-0.75 = 0.08$."
+    ],
+    "hints": [
+      "First find the probability of adopting at least one tool.",
+      "Rearrange $P(C\\cup A) = P(C)+P(A)-P(C\\cap A)$ for the intersection.",
+      "The union is the complement of \"neither\"."
+    ],
+    "concept": "Recovering an intersection from a union and the marginals.",
+    "misconception": "Assuming independence to get the intersection.",
+    "why": "Given the union and the marginals, the addition rule determines the intersection.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-03",
+    "topic": "axioms",
+    "sub": "difference of events",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "For a randomly chosen household, $P(\\text{owns a car}) = 0.58$ and $P(\\text{owns a car or a motorbike}) = 0.89$. What is the probability that the household owns a motorbike but <b>not</b> a car?",
+    "data": "",
+    "answer": {
+      "value": 0.31000000000000005,
+      "display": "0.31"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.31",
+        "correct": true,
+        "why": "",
+        "v": 0.31000000000000005
+      },
+      {
+        "text": "0.89",
+        "correct": false,
+        "why": "This adds the car probability to the answer; the union already contains it.",
+        "v": 0.8899999999999999
+      },
+      {
+        "text": "0.42",
+        "correct": false,
+        "why": "This is the probability of owning no car, which includes households with neither vehicle.",
+        "v": 0.42000000000000004
+      },
+      {
+        "text": "0.2436",
+        "correct": false,
+        "why": "This assumes independence and applies a product that the information does not justify.",
+        "v": 0.24359999999999998
+      }
+    ],
+    "solution": [
+      "The union splits into \"car\" and \"motorbike but no car\", which are disjoint:",
+      "$P(C\\cup M) = P(C) + P(M\\cap C^c)$.",
+      "$P(M\\cap C^c) = 0.89 - 0.58 = 0.31$."
+    ],
+    "hints": [
+      "Write $C\\cup M$ as the union of two disjoint events involving $C$.",
+      "Which event remains after removing all of $C$ from the union?",
+      "Subtract $P(C)$ from $P(C\\cup M)$."
+    ],
+    "concept": "Decomposing a union into disjoint parts.",
+    "misconception": "Looking for the overlap that is not needed.",
+    "why": "The portion of the union outside $C$ is exactly the event asked for.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-04",
+    "topic": "axioms",
+    "sub": "three-event regions",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Of 200 economics students, 80 take microeconomics, 70 take macroeconomics and 60 take econometrics. 30 take micro and macro, 25 take micro and econometrics, 20 take macro and econometrics, and 10 take all three. A student is chosen at random. What is the probability that the student takes <b>exactly two</b> of the three courses?",
+    "data": "",
+    "answer": {
+      "value": 0.225,
+      "display": "0.225"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.225",
+        "correct": true,
+        "why": "",
+        "v": 0.225
+      },
+      {
+        "text": "0.375",
+        "correct": false,
+        "why": "The pairwise counts include the 10 students who take all three; each pair’s \"only\" part is smaller by 10.",
+        "v": 0.375
+      },
+      {
+        "text": "0.325",
+        "correct": false,
+        "why": "Only one copy of the triple overlap was removed; it sits in all three pairwise counts.",
+        "v": 0.325
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "This is the probability of taking all three courses.",
+        "v": 0.05
+      }
+    ],
+    "solution": [
+      "Each pairwise count includes the students taking all three. The number taking exactly that pair is:",
+      "micro and macro only: $30-10 = 20$; micro and econometrics only: $25-10 = 15$; macro and econometrics only: $20-10 = 10$.",
+      "Exactly two courses: $20+15+10 = 45$, so $P = 45/200 = 0.225$."
+    ],
+    "hints": [
+      "Each pairwise count includes students who take the third course as well.",
+      "Subtract the all-three group from each pairwise count to get \"exactly this pair\".",
+      "Add the three exact-pair counts and divide by 200."
+    ],
+    "concept": "Regions of a three-set Venn diagram.",
+    "misconception": "Using pairwise intersections as if they excluded the third event.",
+    "why": "The three exact-pair regions and the triple region are disjoint and partition \"at least two\".",
+    "fam": "axioms:inclusion-exclusion"
+  },
+  {
+    "id": "AXM-05",
+    "topic": "axioms",
+    "sub": "inclusion-exclusion then sampling",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A firm has 60 staff. 25 use Excel, 20 use Python and 15 use Stata. 8 use Excel and Python, 5 use Excel and Stata, 6 use Python and Stata, and 3 use all three tools. Two staff are chosen at random without replacement. What is the probability that <b>neither</b> uses any of the three tools?",
+    "data": "",
+    "answer": {
+      "value": 0.06779661016949153,
+      "display": "0.0678"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0678",
+        "correct": true,
+        "why": "",
+        "v": 0.06779661016949153
+      },
+      {
+        "text": "0.0711",
+        "correct": false,
+        "why": "The second choice is made without replacement from 59 staff, 15 of whom use no tool.",
+        "v": 0.07111111111111111
+      },
+      {
+        "text": "0.5345",
+        "correct": false,
+        "why": "This is the probability that both use at least one tool.",
+        "v": 0.5344632768361582
+      },
+      {
+        "text": "0.0966",
+        "correct": false,
+        "why": "The all-three group was left out of the union (41 instead of 44 users), overstating the number who use no tool.",
+        "v": 0.09661016949152543
+      }
+    ],
+    "solution": [
+      "Users of at least one tool: $25+20+15-8-5-6+3 = 44$, so 16 staff use none.",
+      "$P(\\text{both none}) = \\dfrac{16}{60}\\cdot\\dfrac{15}{59} = \\dfrac{\\binom{16}{2}}{\\binom{60}{2}} = \\dfrac{120}{1770} \\approx 0.0678$."
+    ],
+    "hints": [
+      "First find how many staff use none of the tools, using inclusion-exclusion.",
+      "Then the two chosen staff must both come from that group.",
+      "Sampling is without replacement: $\\binom{16}{2}/\\binom{60}{2}$."
+    ],
+    "concept": "Combining inclusion-exclusion with hypergeometric sampling.",
+    "misconception": "Subtracting overlapping counts incorrectly, or sampling with replacement.",
+    "why": "The union size feeds directly into the sampling probability.",
+    "fam": "axioms:inclusion-exclusion"
+  },
+  {
+    "id": "AXM-07",
+    "topic": "axioms",
+    "sub": "consistency of data",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A report on 500 firms states: 220 export, 180 invest in R&D and 150 are family-owned; 90 both export and invest in R&D, 15 both export and are family-owned, 70 both invest in R&D and are family-owned; and 20 do all three. Can all of these figures be correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "No: the 20 firms doing all three are a subset of the 15 that export and are family-owned, which is impossible"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "No: the 20 firms doing all three are a subset of the 15 that export and are family-owned, which is impossible",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Yes: inclusion-exclusion gives 395 firms in the union, which does not exceed 500",
+        "correct": false,
+        "why": "The union size is within bounds, but a triple overlap can never exceed any of its pairwise overlaps; the figures fail that earlier test."
+      },
+      {
+        "text": "No: the three pairwise figures sum to more than any single total",
+        "correct": false,
+        "why": "There is no such requirement; the pairwise figures are subsets of different sets."
+      },
+      {
+        "text": "Yes: a count of 20 for all three is smaller than each single-set total",
+        "correct": false,
+        "why": "The relevant bound is the pairwise count (15), not the single-set totals."
+      }
+    ],
+    "solution": [
+      "The firms that export, invest in R&D and are family-owned are, in particular, firms that export and are family-owned. Hence the triple count cannot exceed that pairwise count: $20 \\le 15$ is false.",
+      "The union size ($220+180+150-90-15-70+20 = 395\\le500$) is fine, so a check of the union alone would miss the inconsistency."
+    ],
+    "hints": [
+      "Does any subset-relationship between the reported groups fail?",
+      "The triple intersection is a subset of each pairwise intersection.",
+      "Compare 20 with the smallest pairwise figure."
+    ],
+    "concept": "Consistency checks using monotonicity of counts and probabilities.",
+    "misconception": "Testing only the total union and overlooking subset relations.",
+    "why": "If $A\\cap B\\cap C\\subset A\\cap C$ then $P(A\\cap B\\cap C)\\le P(A\\cap C)$.",
+    "fam": "axioms:inclusion-exclusion"
+  },
+  {
+    "id": "AXM-08",
+    "topic": "axioms",
+    "sub": "repeated-digit patterns",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A four-digit PIN is generated by choosing each digit independently and uniformly from 0 to 9. What is the probability that the PIN contains <b>exactly one pair</b> of equal digits, with the other two digits different from the pair and from each other (pattern $a,a,b,c$ with $a,b,c$ distinct)?",
+    "data": "",
+    "answer": {
+      "value": 0.432,
+      "display": "0.432"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.432",
+        "correct": true,
+        "why": "",
+        "v": 0.432
+      },
+      {
+        "text": "0.072",
+        "correct": false,
+        "why": "The positions of the pair among the four places have not been counted: $\\binom42 = 6$ choices.",
+        "v": 0.072
+      },
+      {
+        "text": "0.486",
+        "correct": false,
+        "why": "The two remaining digits must also differ from each other: $9\\cdot8$, not $9\\cdot9$.",
+        "v": 0.486
+      },
+      {
+        "text": "0.06",
+        "correct": false,
+        "why": "This counts PINs in which two particular positions match with no condition on the other digits.",
+        "v": 0.06
+      }
+    ],
+    "solution": [
+      "Digit for the pair: 10 choices. Positions of the pair among 4: $\\binom{4}{2} = 6$.",
+      "The other two positions: first from the 9 remaining digits, second from the 8 that differ from both: $9\\cdot8 = 72$.",
+      "Favourable: $10\\cdot6\\cdot72 = 4320$; total $10^4$. $P = 0.432$."
+    ],
+    "hints": [
+      "Count the PINs of the pattern $a,a,b,c$ by choosing the pair digit, its positions, then the other digits.",
+      "The other two digits must differ from $a$ and from each other.",
+      "Divide by $10^4$ equally likely PINs."
+    ],
+    "concept": "Pattern counting under classical probability.",
+    "misconception": "Forgetting position choices or distinctness constraints.",
+    "why": "Every PIN of this pattern is generated once by the staged construction.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-10",
+    "topic": "axioms",
+    "sub": "classical probability with unequal outcomes",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two spinners are spun once each. Spinner 1 lands on red, blue or green with probabilities $\\tfrac12$, $\\tfrac13$, $\\tfrac16$. Spinner 2 lands on red, blue or green with probabilities $\\tfrac14$, $\\tfrac14$, $\\tfrac12$. What is the probability that both show the <b>same colour</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.29166666666666663,
+      "display": "7/24"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "7/24",
+        "correct": true,
+        "why": "",
+        "v": 0.29166666666666663
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This would be the answer if each spinner were uniform over the three colours.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "This adds the probabilities of one spinner and is always 1.",
+        "v": 0.9999999999999999
+      },
+      {
+        "text": "5/24",
+        "correct": false,
+        "why": "The green-green case was left out; any colour shared by both spinners contributes.",
+        "v": 0.20833333333333331
+      }
+    ],
+    "solution": [
+      "The spinners are independent. For each colour multiply the two probabilities and add:",
+      "$\\tfrac12\\cdot\\tfrac14 + \\tfrac13\\cdot\\tfrac14 + \\tfrac16\\cdot\\tfrac12 = \\tfrac18+\\tfrac1{12}+\\tfrac1{12} = \\tfrac{7}{24}$."
+    ],
+    "hints": [
+      "\"Same colour\" is a union of three disjoint events, one per colour.",
+      "For a given colour, the spins are independent: multiply.",
+      "Add the three products."
+    ],
+    "concept": "Probability of a match between independent random outcomes.",
+    "misconception": "Assuming equal colour probabilities.",
+    "why": "The three matching events are disjoint, so their probabilities add.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-11",
+    "topic": "axioms",
+    "sub": "classical probability on dice",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two fair eight-sided dice are rolled. What is the probability that the larger number exceeds the smaller number by <b>exactly 3</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.15625,
+      "display": "5/32"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "5/32",
+        "correct": true,
+        "why": "",
+        "v": 0.15625
+      },
+      {
+        "text": "5/64",
+        "correct": false,
+        "why": "Each pair of values can occur in two orders; this counts only one.",
+        "v": 0.078125
+      },
+      {
+        "text": "5/28",
+        "correct": false,
+        "why": "This divides by the 56 ordered pairs of different values; the dice may also show equal numbers, so the sample space has 64 outcomes.",
+        "v": 0.17857142857142858
+      },
+      {
+        "text": "1/8",
+        "correct": false,
+        "why": "This is the probability of any particular value for the second die; it does not use the difference condition.",
+        "v": 0.125
+      }
+    ],
+    "solution": [
+      "Pairs $(a,b)$ with $b = a+3$: $a = 1,\\dots,5$, so 5 pairs. The same number with $a = b+3$: 5 more.",
+      "$P = 10/64 = 5/32$."
+    ],
+    "hints": [
+      "How many ordered pairs have the second die exactly 3 above the first?",
+      "The pairs can also occur with the dice reversed.",
+      "Divide the count of favourable ordered pairs by 64."
+    ],
+    "concept": "Classical probability by counting ordered outcomes.",
+    "misconception": "Ignoring order.",
+    "why": "Equally likely ordered pairs make the probability a ratio of counts.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-12",
+    "topic": "axioms",
+    "sub": "at most k categories",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A drawer holds 4 black, 5 white and 6 grey socks. Three socks are drawn at random. What is the probability that <b>at most two colours</b> appear among them?",
+    "data": "",
+    "answer": {
+      "value": 0.7362637362637363,
+      "display": "0.7363"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.7363",
+        "correct": true,
+        "why": "",
+        "v": 0.7362637362637363
+      },
+      {
+        "text": "0.0747",
+        "correct": false,
+        "why": "This is the probability that all three socks have the same colour only.",
+        "v": 0.07472527472527472
+      },
+      {
+        "text": "0.2637",
+        "correct": false,
+        "why": "This is the probability that all three colours appear, the complement of the event asked for.",
+        "v": 0.26373626373626374
+      },
+      {
+        "text": "0.2088",
+        "correct": false,
+        "why": "The number of ways to take one sock of each colour is $4\\cdot5\\cdot6$ once; it should not be multiplied by 3.",
+        "v": 0.20879120879120883
+      }
+    ],
+    "solution": [
+      "Total selections: $\\binom{15}{3} = 455$.",
+      "All three colours: $4\\cdot5\\cdot6 = 120$.",
+      "$P(\\text{at most two colours}) = 1-\\dfrac{120}{455} = \\dfrac{335}{455} \\approx 0.736$."
+    ],
+    "hints": [
+      "\"At most two colours\" fails only when a very specific pattern occurs. Which?",
+      "Count the selections with one sock of each colour.",
+      "Subtract that probability from 1."
+    ],
+    "concept": "Complement in sampling without replacement.",
+    "misconception": "Counting the allowed patterns piece by piece and missing some.",
+    "why": "Exactly one pattern violates the event, so the complement is a single product count.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-13",
+    "topic": "axioms",
+    "sub": "with replacement: all different",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A spinner lands on red, green, blue or yellow with probabilities $0.4, 0.3, 0.2, 0.1$. It is spun three times independently. What is the probability that the three spins show <b>three different colours</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.30000000000000004,
+      "display": "0.3"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3",
+        "correct": true,
+        "why": "",
+        "v": 0.30000000000000004
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "This is the probability of one specific order for each set of colours; the three spins can show the colours in $3! = 6$ orders.",
+        "v": 0.05
+      },
+      {
+        "text": "0.375",
+        "correct": false,
+        "why": "This assumes the four colours are equally likely.",
+        "v": 0.375
+      },
+      {
+        "text": "0.144",
+        "correct": false,
+        "why": "Only the set {red, green, blue} was counted; other sets of three colours are also possible.",
+        "v": 0.14400000000000002
+      }
+    ],
+    "solution": [
+      "Choose a set of three colours and multiply their probabilities. The sets and products: $0.4\\cdot0.3\\cdot0.2 = 0.024$, $0.4\\cdot0.3\\cdot0.1 = 0.012$, $0.4\\cdot0.2\\cdot0.1 = 0.008$, $0.3\\cdot0.2\\cdot0.1 = 0.006$; sum $0.050$.",
+      "Each set can appear in $3! = 6$ orders: $6\\times0.050 = 0.30$."
+    ],
+    "hints": [
+      "List the possible sets of three different colours.",
+      "For each set, how many orders can the spins take?",
+      "Multiply the set probability by $3!$ and add over sets."
+    ],
+    "concept": "Probability of distinct outcomes under unequal probabilities.",
+    "misconception": "Using equal probabilities or ignoring order.",
+    "why": "Orderings of a set are disjoint events with equal probability.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-14",
+    "topic": "axioms",
+    "sub": "hypergeometric",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "An examiner will choose 4 of 12 case studies at random for an exam. A student has prepared 8 of the 12. What is the probability that she has prepared <b>at least 3</b> of the 4 chosen?",
+    "data": "",
+    "answer": {
+      "value": 0.593939393939394,
+      "display": "0.5939"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.5939",
+        "correct": true,
+        "why": "",
+        "v": 0.593939393939394
+      },
+      {
+        "text": "0.4525",
+        "correct": false,
+        "why": "This is the probability of <i>exactly</i> 3 prepared case studies; \"at least 3\" also includes 4.",
+        "v": 0.45252525252525255
+      },
+      {
+        "text": "0.2963",
+        "correct": false,
+        "why": "This treats the selections as independent with probability $8/12$ each.",
+        "v": 0.2962962962962962
+      },
+      {
+        "text": "0.2545",
+        "correct": false,
+        "why": "When exactly 3 are prepared the fourth is chosen from the 4 unprepared ones; that factor is missing.",
+        "v": 0.2545454545454545
+      }
+    ],
+    "solution": [
+      "Total: $\\binom{12}{4} = 495$.",
+      "Exactly 3 prepared: $\\binom83\\binom41 = 56\\cdot4 = 224$. All 4 prepared: $\\binom84 = 70$.",
+      "$P = \\dfrac{224+70}{495} = \\dfrac{294}{495} \\approx 0.594$."
+    ],
+    "hints": [
+      "Split \"at least 3\" into exactly 3 and exactly 4.",
+      "For exactly $k$ prepared, choose $k$ from the prepared and $4-k$ from the others.",
+      "Divide by $\\binom{12}{4}$."
+    ],
+    "concept": "Hypergeometric tail probability.",
+    "misconception": "Using binomial probabilities for sampling without replacement.",
+    "why": "Cases are exclusive and the count of selections is the product of two combinations.",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-15",
+    "topic": "axioms",
+    "sub": "complement of at least one",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A trader makes 5 independent trades; each is profitable with probability 0.4. What is the probability that <b>at least one</b> trade is profitable?",
+    "data": "",
+    "answer": {
+      "value": 0.9222400000000001,
+      "display": "0.9222"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.9222",
+        "correct": true,
+        "why": "",
+        "v": 0.9222400000000001
+      },
+      {
+        "text": "2",
+        "correct": false,
+        "why": "Adding the five probabilities exceeds 1 and double counts outcomes with several profitable trades.",
+        "v": 2
+      },
+      {
+        "text": "0.0778",
+        "correct": false,
+        "why": "This is the probability of no profitable trade, the complement.",
+        "v": 0.07775999999999998
+      },
+      {
+        "text": "0.0102",
+        "correct": false,
+        "why": "This is the probability that all five trades are profitable.",
+        "v": 0.010240000000000003
+      }
+    ],
+    "solution": [
+      "$P(\\text{none profitable}) = 0.6^5 = 0.07776$.",
+      "$P(\\text{at least one}) = 1-0.07776 = 0.92224$."
+    ],
+    "hints": [
+      "What is the opposite of \"at least one profitable\"?",
+      "Independent trades: multiply their loss probabilities.",
+      "Subtract from 1."
+    ],
+    "concept": "Complement rule for \"at least one\".",
+    "misconception": "Adding probabilities of non-disjoint events.",
+    "why": "The complement is a single product, which is easy to compute.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-16",
+    "topic": "axioms",
+    "sub": "positions in a random order",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Six speakers are scheduled in a uniformly random order. What is the probability that there are exactly <b>three</b> speakers between speaker $X$ and speaker $Y$?",
+    "data": "",
+    "answer": {
+      "value": 0.13333333333333333,
+      "display": "2/15"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "2/15",
+        "correct": true,
+        "why": "",
+        "v": 0.13333333333333333
+      },
+      {
+        "text": "1/15",
+        "correct": false,
+        "why": "Each pair of positions has two orderings of $X$ and $Y$; only one has been counted.",
+        "v": 0.06666666666666667
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This does not correspond to the count of position pairs with a gap of three speakers.",
+        "v": 0.5
+      },
+      {
+        "text": "1/9",
+        "correct": false,
+        "why": "The two speakers cannot occupy the same slot: there are $6\\cdot5 = 30$ ordered position pairs, not 36.",
+        "v": 0.1111111111111111
+      }
+    ],
+    "solution": [
+      "The positions of $X$ and $Y$ are equally likely to be any of the $6\\cdot5 = 30$ ordered pairs of different slots.",
+      "Three speakers between them means the slots differ by 4: pairs $(1,5),(2,6)$ and their reverses: 4 ordered pairs.",
+      "$P = 4/30 = 2/15$."
+    ],
+    "hints": [
+      "Only the slots of $X$ and $Y$ matter; how many ordered pairs of slots are there?",
+      "What must the difference of the slot numbers be for exactly three between them?",
+      "Count favourable ordered pairs."
+    ],
+    "concept": "Counting position patterns in a random order.",
+    "misconception": "Not accounting for the two orders of the two speakers.",
+    "why": "All ordered slot pairs are equally likely under a uniform random schedule.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-17",
+    "topic": "axioms",
+    "sub": "birthday-type problem",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Each person independently has a favourite weekday, equally likely to be any of the 7 days. What is the smallest group size for which the probability that <b>at least two people share a favourite day</b> is at least $\\tfrac12$?",
+    "data": "",
+    "answer": {
+      "value": 4,
+      "display": "4"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "4",
+        "correct": true,
+        "why": "",
+        "v": 4
+      },
+      {
+        "text": "3",
+        "correct": false,
+        "why": "For $n=3$ the probability of a shared day is $1-\\frac{7\\cdot6\\cdot5}{343} \\approx 0.388$, below one half.",
+        "v": 3
+      },
+      {
+        "text": "5",
+        "correct": false,
+        "why": "The probability already exceeds one half at $n=4$ (about 0.650), so 5 is not the smallest.",
+        "v": 5
+      },
+      {
+        "text": "7",
+        "correct": false,
+        "why": "Seven people guarantee a match only at 8; the probability passes 1/2 much earlier.",
+        "v": 7
+      }
+    ],
+    "solution": [
+      "$P(\\text{no shared day}) = \\dfrac{7}{7}\\cdot\\dfrac{6}{7}\\cdots$.",
+      "$n=3$: $\\frac{7\\cdot6\\cdot5}{7^3} = 0.612$, so $P(\\text{share}) = 0.388$.",
+      "$n=4$: $\\frac{7\\cdot6\\cdot5\\cdot4}{7^4} = 0.350$, so $P(\\text{share}) = 0.650\\ge0.5$.",
+      "Smallest $n = 4$."
+    ],
+    "hints": [
+      "Compute the probability that all favourite days are different.",
+      "Subtract it from 1 and test small group sizes.",
+      "Find the first $n$ for which the shared-day probability is at least $0.5$."
+    ],
+    "concept": "Birthday problem via the complement.",
+    "misconception": "Expecting a group about half the number of categories.",
+    "why": "The number of pairs grows quickly, so repeats appear earlier than intuition suggests.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-18",
+    "topic": "axioms",
+    "sub": "random split of a group",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Ten colleagues, four of them women, are allocated at random to two teams of five. Find the chance that each team contains the <b>same number of women</b>.",
+    "data": "",
+    "answer": {
+      "value": 0.47619047619047616,
+      "display": "0.4762"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.4762",
+        "correct": true,
+        "why": "",
+        "v": 0.47619047619047616
+      },
+      {
+        "text": "0.2381",
+        "correct": false,
+        "why": "The first team is the reference team; there is no further division by 2.",
+        "v": 0.23809523809523808
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "There is no reason for the answer to be one half: equal numbers (2 and 2) is only one of several splits.",
+        "v": 0.5
+      },
+      {
+        "text": "0.0238",
+        "correct": false,
+        "why": "The numbers of men in the team must be chosen too: $\\binom{6}{3}$ ways.",
+        "v": 0.023809523809523808
+      }
+    ],
+    "solution": [
+      "Equal numbers of women means 2 women (and 3 men) in the first team; then the second team also has 2 women.",
+      "$P = \\dfrac{\\binom42\\binom63}{\\binom{10}{5}} = \\dfrac{6\\cdot20}{252} = \\dfrac{10}{21} \\approx 0.476$."
+    ],
+    "hints": [
+      "Focus on one team; what composition makes both teams equal in women?",
+      "With 4 women in total, the first team has exactly how many women?",
+      "Use hypergeometric counts for that team."
+    ],
+    "concept": "Hypergeometric probability for a random split.",
+    "misconception": "Dividing by 2 unnecessarily or ignoring one gender.",
+    "why": "Choosing the first team determines the second.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-19",
+    "topic": "axioms",
+    "sub": "exactly one of three",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A visitor to a store buys a jacket with probability 0.50, shoes with probability 0.40 and a bag with probability 0.30. Jacket and shoes: 0.20; jacket and bag: 0.15; shoes and bag: 0.10; all three: 0.05. What is the probability that the visitor buys <b>exactly one</b> of the three items?",
+    "data": "",
+    "answer": {
+      "value": 0.45000000000000007,
+      "display": "0.45"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.45",
+        "correct": true,
+        "why": "",
+        "v": 0.45000000000000007
+      },
+      {
+        "text": "1.2",
+        "correct": false,
+        "why": "The sum of marginals counts customers buying several items more than once.",
+        "v": 1.2
+      },
+      {
+        "text": "0.8",
+        "correct": false,
+        "why": "This is the probability of at least one item, not exactly one.",
+        "v": 0.8
+      },
+      {
+        "text": "0.75",
+        "correct": false,
+        "why": "Customers who buy two items are counted once here but should not be counted at all; subtract each pair twice and add back three times the triple.",
+        "v": 0.75
+      }
+    ],
+    "solution": [
+      "Jacket only: $0.50-0.20-0.15+0.05 = 0.20$.",
+      "Shoes only: $0.40-0.20-0.10+0.05 = 0.15$.",
+      "Bag only: $0.30-0.15-0.10+0.05 = 0.10$.",
+      "Exactly one: $0.20+0.15+0.10 = 0.45$."
+    ],
+    "hints": [
+      "Compute the probability of buying only each item.",
+      "\"Jacket only\" removes the pairs with shoes and with bag but must restore the triple once.",
+      "Add the three \"only\" probabilities."
+    ],
+    "concept": "Exactly-one regions in a three-event Venn diagram.",
+    "misconception": "Mistaking at least one for exactly one.",
+    "why": "The three \"only\" regions are disjoint and form the event \"exactly one\".",
+    "fam": "axioms:inclusion-exclusion"
+  },
+  {
+    "id": "AXM-20",
+    "topic": "axioms",
+    "sub": "symmetry",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Cards from a thoroughly mixed pack are turned over one by one. Find the probability that <b>card number 30</b> is either a heart or a king.",
+    "data": "",
+    "answer": {
+      "value": 0.3076923076923077,
+      "display": "4/13"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "4/13",
+        "correct": true,
+        "why": "",
+        "v": 0.3076923076923077
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the probability of a heart only; the three kings that are not hearts were left out.",
+        "v": 0.25
+      },
+      {
+        "text": "581/2652",
+        "correct": false,
+        "why": "The answer does not depend on the position: by symmetry every card is equally likely to be in the 30th place.",
+        "v": 0.21907993966817496
+      },
+      {
+        "text": "17/52",
+        "correct": false,
+        "why": "The king of hearts is a heart and a king; there are $13+4-1 = 16$ qualifying cards, not 17.",
+        "v": 0.3269230769230769
+      }
+    ],
+    "solution": [
+      "By symmetry the 30th card is equally likely to be any of the 52 cards.",
+      "Qualifying cards: 13 hearts plus 3 kings that are not hearts: 16.",
+      "$P = 16/52 = 4/13$."
+    ],
+    "hints": [
+      "Does the position in the deck change which cards are possible?",
+      "Count cards that are hearts or kings, taking care of the overlap.",
+      "Divide the number of qualifying cards by 52."
+    ],
+    "concept": "Symmetry in random orderings.",
+    "misconception": "Conditioning on irrelevant earlier cards.",
+    "why": "Every card is equally likely to be at any given position.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-21",
+    "topic": "axioms",
+    "sub": "first success in a sequence",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A pack is thoroughly mixed and its cards are revealed one at a time. What is the chance that the <b>very first heart</b> is revealed at the fifth card?",
+    "data": "",
+    "answer": {
+      "value": 0.08228391356542616,
+      "display": "0.0823"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0823",
+        "correct": true,
+        "why": "",
+        "v": 0.08228391356542616
+      },
+      {
+        "text": "0.0791",
+        "correct": false,
+        "why": "With replacement the factors would not change; here each non-heart removed lowers both the numerator and denominator.",
+        "v": 0.0791015625
+      },
+      {
+        "text": "0.3038",
+        "correct": false,
+        "why": "This is the probability that the first four cards are not hearts; the fifth must also be a heart.",
+        "v": 0.30381752701080433
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is the probability that a particular card is a heart; the first heart arriving on the 5th card requires four non-hearts first.",
+        "v": 0.25
+      }
+    ],
+    "solution": [
+      "The first four cards are non-hearts: $\\dfrac{39}{52}\\cdot\\dfrac{38}{51}\\cdot\\dfrac{37}{50}\\cdot\\dfrac{36}{49}$. The fifth is a heart given 48 cards remain, 13 of them hearts: $\\dfrac{13}{48}$.",
+      "$P = \\dfrac{39\\cdot38\\cdot37\\cdot36\\cdot13}{52\\cdot51\\cdot50\\cdot49\\cdot48} = \\dfrac{25\\,662\\,312}{311\\,875\\,200} \\approx 0.0823$."
+    ],
+    "hints": [
+      "What must happen on each of the first four cards, and then on the fifth?",
+      "Use the multiplication rule with the shrinking deck.",
+      "The fifth card is a heart out of the 48 remaining cards."
+    ],
+    "concept": "Sequential probabilities without replacement.",
+    "misconception": "Using fixed probabilities across draws.",
+    "why": "Each factor conditions on all earlier cards.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-22",
+    "topic": "axioms",
+    "sub": "sequential selection",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The top three cards of a mixed pack are turned over. Find the probability that <b>no two of them share a suit</b>.",
+    "data": "",
+    "answer": {
+      "value": 0.3976470588235294,
+      "display": "0.3976"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3976",
+        "correct": true,
+        "why": "",
+        "v": 0.3976470588235294
+      },
+      {
+        "text": "0.375",
+        "correct": false,
+        "why": "Without replacement the denominators fall to 51 and 50 and the numerators count remaining cards of unused suits.",
+        "v": 0.375
+      },
+      {
+        "text": "0.3899",
+        "correct": false,
+        "why": "After two cards have been dealt only 50 cards remain, so the last denominator should be 50.",
+        "v": 0.3898500576701268
+      },
+      {
+        "text": "0.0166",
+        "correct": false,
+        "why": "This is the probability of three cards of specified suits in a fixed order, not any three different suits.",
+        "v": 0.01656862745098039
+      }
+    ],
+    "solution": [
+      "First card: any (probability 1). Second: must be in one of the other 3 suits: $39/51$. Third: one of the 2 unused suits: $26/50$.",
+      "$P = \\dfrac{39}{51}\\cdot\\dfrac{26}{50} = \\dfrac{169}{425} \\approx 0.398$."
+    ],
+    "hints": [
+      "Does the first card impose any condition?",
+      "Given the suits already used, how many cards remain in unused suits?",
+      "Multiply the conditional probabilities."
+    ],
+    "concept": "Multiplication rule for sequential distinctness.",
+    "misconception": "Using $52$ in every denominator.",
+    "why": "After each card the deck shrinks and the unused-suit cards are counted afresh.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-24",
+    "topic": "axioms",
+    "sub": "committees: at least one of each",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A panel of 5 is chosen at random from 4 economists, 5 statisticians and 3 sociologists. What is the probability that the panel contains <b>at least one economist and at least one statistician</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.9027777777777778,
+      "display": "0.9028"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.9028",
+        "correct": true,
+        "why": "",
+        "v": 0.9027777777777778
+      },
+      {
+        "text": "0.9293",
+        "correct": false,
+        "why": "This excludes only panels with no economist; panels with no statistician also fail the requirement.",
+        "v": 0.9292929292929293
+      },
+      {
+        "text": "0.0972",
+        "correct": false,
+        "why": "This is the probability of the opposite: the panel lacks economists or lacks statisticians.",
+        "v": 0.09722222222222222
+      },
+      {
+        "text": "0.1389",
+        "correct": false,
+        "why": "This treats two members as independently chosen from the whole group and ignores the panel size.",
+        "v": 0.1388888888888889
+      }
+    ],
+    "solution": [
+      "Total: $\\binom{12}{5} = 792$. No economist: $\\binom{8}{5} = 56$. No statistician: $\\binom{7}{5} = 21$. Neither (all sociologists, only 3): $\\binom35 = 0$.",
+      "Lacking at least one: $56+21-0 = 77$.",
+      "$P = 1-\\dfrac{77}{792} \\approx 0.903$."
+    ],
+    "hints": [
+      "Use the complement: the panel lacks economists or lacks statisticians.",
+      "Apply inclusion-exclusion to those two \"lacks\" events.",
+      "A panel with neither is impossible because only 3 sociologists exist."
+    ],
+    "concept": "Complement with inclusion-exclusion in sampling.",
+    "misconception": "Adding unwanted cases without removing the overlap.",
+    "why": "The complement of \"both present\" is the union of two \"absent\" events.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-25",
+    "topic": "axioms",
+    "sub": "matching letters",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "One tile is picked blindly from a set bearing the ten letters of STATISTICS, and another from a different set bearing the twelve letters of ECONOMETRICS. Find the probability that both tiles show the same letter.",
+    "data": "",
+    "answer": {
+      "value": 0.08333333333333333,
+      "display": "1/12"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/12",
+        "correct": true,
+        "why": "",
+        "v": 0.08333333333333333
+      },
+      {
+        "text": "1/26",
+        "correct": false,
+        "why": "This is the probability that two letters from a uniformly random alphabet match; the words have unequal letter frequencies.",
+        "v": 0.038461538461538464
+      },
+      {
+        "text": "5/12",
+        "correct": false,
+        "why": "This is the share of ECONOMETRICS letters that appear in STATISTICS; it is not a probability of matching one specific draw.",
+        "v": 0.4166666666666667
+      },
+      {
+        "text": "7/40",
+        "correct": false,
+        "why": "Letters that appear in both words are S, T, I, C; each contributes the product of its two frequencies.",
+        "v": 0.175
+      }
+    ],
+    "solution": [
+      "Letter frequencies: STATISTICS has S:3, T:3, I:2, C:1, A:1; ECONOMETRICS has E:2, C:2, O:2, N:1, M:1, T:1, R:1, I:1, S:1.",
+      "Common letters S, T, I, C: $\\frac{3}{10}\\frac1{12}+\\frac{3}{10}\\frac1{12}+\\frac{2}{10}\\frac1{12}+\\frac{1}{10}\\frac{2}{12} = \\frac{10}{120} = \\frac1{12}$."
+    ],
+    "hints": [
+      "Which letters appear in both words, and how often in each?",
+      "For each common letter multiply its probabilities in the two words.",
+      "Add the products."
+    ],
+    "concept": "Probability of a match between independent draws from different populations.",
+    "misconception": "Using unconditional alphabet probabilities.",
+    "why": "The matching events for different letters are disjoint.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-26",
+    "topic": "axioms",
+    "sub": "symmetry: last item",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A box holds 15 white and 5 black marbles. They are removed one at a time in a uniformly random order until the box is empty. What is the probability that <b>all black marbles are removed before the last white marble</b>, i.e. that the last marble removed is white?",
+    "data": "",
+    "answer": {
+      "value": 0.75,
+      "display": "3/4"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "3/4",
+        "correct": true,
+        "why": "",
+        "v": 0.75
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the probability that the last marble is black.",
+        "v": 0.25
+      },
+      {
+        "text": "21/38",
+        "correct": false,
+        "why": "Only the last two marbles have been considered; the question concerns only the last one.",
+        "v": 0.5526315789473684
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The proportions of white and black marbles are not equal, so the last marble is not equally likely to be either colour.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "All 20 orderings are equally likely, so each marble is equally likely to be last.",
+      "The last marble is white with probability $15/20 = 3/4$, which is exactly the event that all black marbles have been removed before the last white one."
+    ],
+    "hints": [
+      "Which single marble position decides the event?",
+      "By symmetry, which marbles are equally likely to be last?",
+      "Count white marbles among 20."
+    ],
+    "concept": "Symmetry argument for the last element in a random order.",
+    "misconception": "Trying to condition on the entire removal sequence.",
+    "why": "The last position is occupied by a uniformly random marble.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-27",
+    "topic": "axioms",
+    "sub": "complement of a union",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The probability that stock $X$ rises on a given day is 0.50, that stock $Y$ rises is 0.30, and that both rise is 0.10. What is the probability that <b>neither</b> rises?",
+    "data": "",
+    "answer": {
+      "value": 0.29999999999999993,
+      "display": "0.3"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3",
+        "correct": true,
+        "why": "",
+        "v": 0.29999999999999993
+      },
+      {
+        "text": "0.35",
+        "correct": false,
+        "why": "This multiplies the two \"does not rise\" probabilities, which assumes independence; the data give $P(X\\cap Y)=0.10 \\ne 0.5\\times0.3$.",
+        "v": 0.35
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "Days on which both stocks rise were subtracted twice; the overlap must be added back.",
+        "v": 0.2
+      },
+      {
+        "text": "0.7",
+        "correct": false,
+        "why": "This is the probability that at least one stock rises.",
+        "v": 0.7
+      }
+    ],
+    "solution": [
+      "$P(X\\cup Y) = 0.50+0.30-0.10 = 0.70$.",
+      "$P(\\text{neither}) = 1-0.70 = 0.30$."
+    ],
+    "hints": [
+      "\"Neither rises\" is the complement of \"at least one rises\".",
+      "Find the probability of at least one using the addition rule.",
+      "Subtract from 1."
+    ],
+    "concept": "Complement of a union.",
+    "misconception": "Subtracting marginals without adding back the intersection.",
+    "why": "Every day belongs either to the union or to its complement.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-28",
+    "topic": "axioms",
+    "sub": "exactly one of two",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "In a given quarter, a company wins contract $A$ with probability 0.45 and contract $B$ with probability 0.35. It wins both with probability 0.20. What is the probability that it wins <b>exactly one</b> of the two contracts?",
+    "data": "",
+    "answer": {
+      "value": 0.4,
+      "display": "0.4"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.4",
+        "correct": true,
+        "why": "",
+        "v": 0.4
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This is the probability of winning at least one contract, including the case of winning both.",
+        "v": 0.6000000000000001
+      },
+      {
+        "text": "0.8",
+        "correct": false,
+        "why": "This counts the \"both\" outcome twice and includes it.",
+        "v": 0.8
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the probability of winning both contracts.",
+        "v": 0.2
+      }
+    ],
+    "solution": [
+      "Only $A$: $0.45-0.20 = 0.25$. Only $B$: $0.35-0.20 = 0.15$.",
+      "Exactly one: $0.25+0.15 = 0.40$."
+    ],
+    "hints": [
+      "Exactly one means $A$ only or $B$ only.",
+      "Remove the overlap from each marginal probability.",
+      "Add the two \"only\" probabilities."
+    ],
+    "concept": "Exactly-one events from marginals and the intersection.",
+    "misconception": "Using the union probability for \"exactly one\".",
+    "why": "The \"only\" regions are disjoint.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-29",
+    "topic": "axioms",
+    "sub": "bounds on probabilities",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Suppose $P(A)=0.7$ and $P(B)=0.8$, and nothing else is known about how the two events relate. Over all admissible joint distributions, what is the greatest probability that $A$ occurs while $B$ does not?",
+    "data": "",
+    "answer": {
+      "value": 0.19999999999999996,
+      "display": "0.2"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2",
+        "correct": true,
+        "why": "",
+        "v": 0.19999999999999996
+      },
+      {
+        "text": "0.7",
+        "correct": false,
+        "why": "This would require $A$ and $B$ to be disjoint, but $P(A)+P(B) = 1.5 > 1$ rules that out.",
+        "v": 0.7
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is $1-P(A)$, unrelated to the maximum of $P(A\\cap B^c)$.",
+        "v": 0.3
+      },
+      {
+        "text": "0.14",
+        "correct": false,
+        "why": "This assumes independence; the maximum over all possible dependence structures is larger.",
+        "v": 0.13999999999999999
+      }
+    ],
+    "solution": [
+      "$A\\cap B^c$ is contained in $B^c$, so $P(A\\cap B^c)\\le P(B^c) = 0.2$. It is also contained in $A$, so $\\le 0.7$. The binding bound is $0.2$.",
+      "It is attained when $B^c\\subset A$: then $P(A\\cap B^c)=0.2$ and $P(A\\cap B) = 0.5$, which is consistent."
+    ],
+    "hints": [
+      "An event inside two events has probability at most either one.",
+      "What is $P(B^c)$?",
+      "Check that the bound can be attained with a valid $P(A\\cap B)$."
+    ],
+    "concept": "Upper bounds using monotonicity.",
+    "misconception": "Using only $P(A)$ as the bound.",
+    "why": "A subset has probability no larger than its superset.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-30",
+    "topic": "axioms",
+    "sub": "partition of a sample space",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Firms in a registry are classed as Small, Medium, Large or Multinational. A random firm is Small with probability 0.55, Medium with 0.30 and Large with 0.10. Foreign-trade documents are required for Large and Multinational firms. What is the probability that a randomly chosen firm needs them?",
+    "data": "",
+    "answer": {
+      "value": 0.14999999999999997,
+      "display": "0.15"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.15",
+        "correct": true,
+        "why": "",
+        "v": 0.14999999999999997
+      },
+      {
+        "text": "0.1",
+        "correct": false,
+        "why": "This is the probability of Large firms only; Multinational firms also need documents.",
+        "v": 0.1
+      },
+      {
+        "text": "0.85",
+        "correct": false,
+        "why": "This is the probability of Small or Medium firms, who do not need them.",
+        "v": 0.8500000000000001
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "This is the probability of Multinational firms only; Large firms need documents too.",
+        "v": 0.05
+      }
+    ],
+    "solution": [
+      "The four classes partition the registry, so $P(\\text{Multinational}) = 1-0.55-0.30-0.10 = 0.05$.",
+      "Large and Multinational are disjoint: $0.10+0.05 = 0.15$.",
+      "(Equivalently $1-P(\\text{Small}\\cup\\text{Medium}) = 0.15$.)"
+    ],
+    "hints": [
+      "The probabilities of all four classes must sum to 1.",
+      "Find the missing class probability.",
+      "Add the two classes that need documents."
+    ],
+    "concept": "Using a partition summing to 1.",
+    "misconception": "Forgetting the unstated class.",
+    "why": "Disjoint classes covering the space sum to probability 1.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-31",
+    "topic": "axioms",
+    "sub": "geometric probability",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A point is chosen uniformly at random in the unit square $0\\le x\\le1$, $0\\le y\\le1$. What is the probability that it lies <b>below the line $y = 1-x$ and above the curve $y = x^2/2$</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.39871747423554393,
+      "display": "0.3987"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3987",
+        "correct": true,
+        "why": "",
+        "v": 0.39871747423554393
+      },
+      {
+        "text": "0.3333",
+        "correct": false,
+        "why": "This would be the area between the curves if they met at $x=1$; they actually intersect at $x \\approx 0.732$.",
+        "v": 0.33333333333333337
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This is the area below the line $y=1-x$ alone, ignoring the curve.",
+        "v": 0.5
+      },
+      {
+        "text": "0.732",
+        "correct": false,
+        "why": "This is the intersection abscissa, not the area.",
+        "v": 0.732
+      }
+    ],
+    "solution": [
+      "The curves meet where $x^2/2 = 1-x$, i.e. $x^2+2x-2=0$, so $x = \\sqrt3-1 \\approx 0.732$.",
+      "Area $= \\int_0^{0.732}\\left(1-x-\\dfrac{x^2}{2}\\right)dx = x - \\dfrac{x^2}{2}-\\dfrac{x^3}{6}\\Big|_{0.732} \\approx 0.3987$.",
+      "With a uniform distribution on the unit square, probability equals area."
+    ],
+    "hints": [
+      "Find where the line and the curve intersect.",
+      "The region lies between the curve (below) and the line (above) for $x$ from 0 to that point.",
+      "Integrate $1-x-x^2/2$."
+    ],
+    "concept": "Geometric probability via integration.",
+    "misconception": "Using the wrong integration limits.",
+    "why": "For a uniform distribution, probability is area divided by total area (here 1).",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-32",
+    "topic": "axioms",
+    "sub": "three-event union",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "In a survey, 50% of respondents use bank $A$, 40% use bank $B$ and 30% use bank $C$; 20% use both $A$ and $B$, 10% use $A$ and $C$, 15% use $B$ and $C$, and 5% use all three. What proportion use <b>none</b> of the three banks?",
+    "data": "",
+    "answer": {
+      "value": 0.19999999999999996,
+      "display": "0.2"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2",
+        "correct": true,
+        "why": "",
+        "v": 0.19999999999999996
+      },
+      {
+        "text": "0.8",
+        "correct": false,
+        "why": "This is the proportion using at least one bank, not none.",
+        "v": 0.8
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "The triple intersection must be added back when computing the union.",
+        "v": 0.25
+      },
+      {
+        "text": "-0.2",
+        "correct": false,
+        "why": "This is negative; summing the marginals double counts overlapping customers.",
+        "v": -0.19999999999999996
+      }
+    ],
+    "solution": [
+      "$P(A\\cup B\\cup C) = 0.5+0.4+0.3-0.2-0.1-0.15+0.05 = 0.80$.",
+      "$P(\\text{none}) = 1-0.80 = 0.20$."
+    ],
+    "hints": [
+      "\"None\" is the complement of the union.",
+      "Use the three-event inclusion-exclusion formula.",
+      "Remember the triple term has a plus sign."
+    ],
+    "concept": "Inclusion-exclusion for three events.",
+    "misconception": "Omitting the triple intersection.",
+    "why": "The alternating signs correct for multiple counting.",
+    "fam": "axioms:inclusion-exclusion"
+  },
+  {
+    "id": "AXM-33",
+    "topic": "axioms",
+    "sub": "matching problem",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Five employees each receive, at random, one of five labelled parcels (each parcel to exactly one employee, all assignments equally likely). What is the probability that <b>no employee</b> receives the parcel labelled with their own name?",
+    "data": "",
+    "answer": {
+      "value": 0.36666666666666664,
+      "display": "0.3667"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3667",
+        "correct": true,
+        "why": "",
+        "v": 0.36666666666666664
+      },
+      {
+        "text": "0.9917",
+        "correct": false,
+        "why": "This is the probability that not everybody gets their own parcel; \"no one\" is much stronger.",
+        "v": 0.9916666666666667
+      },
+      {
+        "text": "0.8",
+        "correct": false,
+        "why": "This treats each employee independently, ignoring that the assignments are a permutation.",
+        "v": 0.8
+      },
+      {
+        "text": "0.3679",
+        "correct": false,
+        "why": "This is the limiting value as the number of employees grows; for 5 the exact value is $44/120$.",
+        "v": 0.36787944117144233
+      }
+    ],
+    "solution": [
+      "By inclusion-exclusion, the number of permutations with no fixed point is",
+      "$5!\\left(1-1+\\tfrac1{2!}-\\tfrac1{3!}+\\tfrac1{4!}-\\tfrac1{5!}\\right) = 120-120+60-20+5-1 = 44$.",
+      "$P = 44/120 = 11/30 \\approx 0.367$."
+    ],
+    "hints": [
+      "\"No one receives their own parcel\": use inclusion-exclusion over the events \"employee $i$ gets their own parcel\".",
+      "The number of permutations fixing $k$ specified employees is $(5-k)!$.",
+      "Alternate signs: $120 - 5\\cdot24 + 10\\cdot6 - 10\\cdot2 + 5\\cdot1 - 1$."
+    ],
+    "concept": "Derangements via inclusion-exclusion.",
+    "misconception": "Treating the matches as independent events.",
+    "why": "The alternating sum counts permutations by the number of forced matches.",
+    "fam": "axioms:matching"
+  },
+  {
+    "id": "AXM-34",
+    "topic": "axioms",
+    "sub": "matching problem: comparing sizes",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Let $q_n$ be the probability that none of $n$ people receives their own item when $n$ items are handed back at random. For which of $n = 5, 8, 13, 24$ is $q_n$ <b>largest</b>? (Recall $q_n = \\sum_{k=0}^{n}(-1)^k/k!$.)",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "n = 8"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "n = 8",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "n = 5",
+        "correct": false,
+        "why": "$q_5 = 44/120 \\approx 0.3667$ lies below $e^{-1} = 0.3679$ because $n$ is odd."
+      },
+      {
+        "text": "n = 13",
+        "correct": false,
+        "why": "$q_{13}$ lies below $e^{-1}$ (odd $n$) by about $1/14!$."
+      },
+      {
+        "text": "n = 24",
+        "correct": false,
+        "why": "$q_{24}$ is above $e^{-1}$ but only by about $1/25!$, far less than for $n=8$."
+      }
+    ],
+    "solution": [
+      "$q_n$ is a partial sum of an alternating series for $e^{-1}$, so it lies above $e^{-1}$ when the first omitted term, $k=n+1$, is negative, i.e. when $n$ is even, and below it when $n$ is odd.",
+      "Odd $n$ (5, 13) give values below $e^{-1}$. Among the even values 8 and 24 the excess is about $1/(n+1)!$, which is larger for $n=8$ ($1/9!$).",
+      "Therefore $q_8$ is largest."
+    ],
+    "hints": [
+      "Consider the sign of $q_n - e^{-1}$ in terms of the first omitted term of the series.",
+      "Which of the four $n$ have $q_n$ above $e^{-1}$?",
+      "Among those, the excess is of size about $1/(n+1)!$."
+    ],
+    "concept": "Alternating series and the behaviour of $q_n$.",
+    "misconception": "Assuming $q_n$ is monotone in $n$.",
+    "why": "The partial sums oscillate around the limit with shrinking amplitude.",
+    "fam": "axioms:matching"
+  },
+  {
+    "id": "AXM-35",
+    "topic": "axioms",
+    "sub": "matching problem: exactly k matches",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Four candidates are randomly assigned to four interview rooms, one candidate per room, each assignment equally likely. Each candidate has been told one \"home\" room. What is the probability that <b>exactly two</b> candidates are placed in their own home room?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "0.25"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.25",
+        "correct": true,
+        "why": "",
+        "v": 0.25
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "After fixing two candidates in place, the other two must both be misplaced: only one arrangement (swap) works, not two.",
+        "v": 0.5
+      },
+      {
+        "text": "0.0417",
+        "correct": false,
+        "why": "This is the probability that all four are in their own room.",
+        "v": 0.041666666666666664
+      },
+      {
+        "text": "0.3333",
+        "correct": false,
+        "why": "This is the probability of exactly one candidate in the home room: 4 choices for that candidate and 2 ways to misplace the other three.",
+        "v": 0.3333333333333333
+      }
+    ],
+    "solution": [
+      "Choose which 2 candidates are in their home room: $\\binom42 = 6$.",
+      "The other two must both be in the wrong room: with only two rooms left that means swapping, which is 1 way.",
+      "$P = 6/24 = 1/4$."
+    ],
+    "hints": [
+      "Choose the two candidates in the correct rooms.",
+      "How many ways can the other two be placed so that both are wrong?",
+      "Divide by $4! = 24$."
+    ],
+    "concept": "Counting permutations with exactly $k$ fixed points.",
+    "misconception": "Not requiring the remaining candidates to be misplaced.",
+    "why": "Fixed-point patterns partition the permutations.",
+    "fam": "axioms:matching"
+  },
+  {
+    "id": "AXM-36",
+    "topic": "axioms",
+    "sub": "sampling without replacement",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A card is dealt from a freshly shuffled pack and kept aside; then a second and a third card are dealt. Find the probability that the first is a heart and the second and third are both black.",
+    "data": "",
+    "answer": {
+      "value": 0.06372549019607843,
+      "display": "0.0637"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0637",
+        "correct": true,
+        "why": "",
+        "v": 0.06372549019607843
+      },
+      {
+        "text": "0.0625",
+        "correct": false,
+        "why": "Without replacement the denominators fall to 51 and 50 and the black count drops after the first black card.",
+        "v": 0.0625
+      },
+      {
+        "text": "0.0663",
+        "correct": false,
+        "why": "After the second card (black) is removed, only 25 black cards remain.",
+        "v": 0.06627450980392156
+      },
+      {
+        "text": "0.3824",
+        "correct": false,
+        "why": "The cards are drawn in a specified order, so the denominator is $52\\cdot51\\cdot50$, not $\\binom{52}{3}$.",
+        "v": 0.38235294117647056
+      }
+    ],
+    "solution": [
+      "$P(\\text{heart}) = 13/52$. Given that, 26 black cards among 51: $26/51$. Then 25 black among 50: $25/50$.",
+      "$P = \\dfrac{13}{52}\\cdot\\dfrac{26}{51}\\cdot\\dfrac{25}{50} \\approx 0.0637$."
+    ],
+    "hints": [
+      "The order is specified, so apply the chain rule.",
+      "After each draw, how many cards and how many black cards remain?",
+      "Multiply the three conditional probabilities."
+    ],
+    "concept": "Chain rule for sequential draws.",
+    "misconception": "Using the original deck size each time.",
+    "why": "Each conditional probability reflects the cards removed so far.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-37",
+    "topic": "axioms",
+    "sub": "complement of an intersection",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A stock fund beats its benchmark in a year with probability 0.60 and a bond fund beats its own with probability 0.30. Both beat their benchmarks in the same year with probability 0.20. What is the probability that <b>at least one</b> of the two funds fails to beat its benchmark?",
+    "data": "",
+    "answer": {
+      "value": 0.8,
+      "display": "0.8"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.8",
+        "correct": true,
+        "why": "",
+        "v": 0.8
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is the probability that neither fund beats its benchmark.",
+        "v": 0.30000000000000004
+      },
+      {
+        "text": "1.1",
+        "correct": false,
+        "why": "Adding the failure probabilities counts years when both fail twice and exceeds 1.",
+        "v": 1.1
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the probability that both succeed, the complement of the event asked for.",
+        "v": 0.2
+      }
+    ],
+    "solution": [
+      "\"At least one fails\" is the complement of \"both succeed\". $P = 1 - 0.20 = 0.80$.",
+      "Check via the union of failures: $0.40+0.70-P(\\text{both fail}) = 1.10-0.30 = 0.80$."
+    ],
+    "hints": [
+      "What is the opposite of \"at least one fails\"?",
+      "Use $(A^c\\cup B^c)=(A\\cap B)^c$.",
+      "Subtract the probability of both succeeding from 1."
+    ],
+    "concept": "De Morgan’s law for probabilities.",
+    "misconception": "Confusing \"at least one fails\" with \"neither succeeds\".",
+    "why": "The union of the complements is the complement of the intersection.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-38",
+    "topic": "axioms",
+    "sub": "classical probability on two dice",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A fair four-sided die (faces 1 to 4) and a fair six-sided die are rolled. What is the probability that the sum is <b>at most 5</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.4166666666666667,
+      "display": "5/12"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "5/12",
+        "correct": true,
+        "why": "",
+        "v": 0.4166666666666667
+      },
+      {
+        "text": "5/18",
+        "correct": false,
+        "why": "The sample space has $4\\times6 = 24$ outcomes, not 36.",
+        "v": 0.2777777777777778
+      },
+      {
+        "text": "7/12",
+        "correct": false,
+        "why": "This is the probability that the sum is at least 6.",
+        "v": 0.5833333333333334
+      },
+      {
+        "text": "5/24",
+        "correct": false,
+        "why": "This counts only combinations that sum to 5; sums of 2, 3 and 4 are also at most 5.",
+        "v": 0.20833333333333334
+      }
+    ],
+    "solution": [
+      "The 24 outcomes are equally likely. For the four-sided die value $a$, the six-sided die must be at most $5-a$: $a=1$: 4 values; $a=2$: 3; $a=3$: 2; $a=4$: 1.",
+      "$P = 10/24 = 5/12$."
+    ],
+    "hints": [
+      "How many equally likely outcomes are there for these two different dice?",
+      "For each value of the first die, how many values of the second keep the sum at most 5?",
+      "Add and divide."
+    ],
+    "concept": "Classical probability with unequal dice.",
+    "misconception": "Using a 6-by-6 grid.",
+    "why": "Counting favourable pairs over the actual sample space gives the probability.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-42",
+    "topic": "axioms",
+    "sub": "joint table",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Firms are classified by revenue growth (rows) and cost growth (columns) into Low (L), Medium (M) and High (H). The joint probabilities are:<table class=\"jt\"><tr><th></th><th>cost L</th><th>cost M</th><th>cost H</th></tr><tr><th>revenue L</th><td>.08</td><td>.06</td><td>.02</td></tr><tr><th>revenue M</th><td>.10</td><td>.20</td><td>.09</td></tr><tr><th>revenue H</th><td>.05</td><td>.15</td><td>.25</td></tr></table>What is the probability that a randomly selected firm's revenue growth category is <b>strictly higher</b> than its cost growth category?",
+    "data": "",
+    "answer": {
+      "value": 0.30000000000000004,
+      "display": "0.3"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3",
+        "correct": true,
+        "why": "",
+        "v": 0.30000000000000004
+      },
+      {
+        "text": "0.53",
+        "correct": false,
+        "why": "These are the cells where revenue and cost categories are equal (the diagonal).",
+        "v": 0.53
+      },
+      {
+        "text": "0.17",
+        "correct": false,
+        "why": "These are the cells where revenue is strictly lower than cost.",
+        "v": 0.16999999999999998
+      },
+      {
+        "text": "0.83",
+        "correct": false,
+        "why": "The diagonal (equal categories) has been added although \"strictly higher\" excludes it.",
+        "v": 0.8300000000000001
+      }
+    ],
+    "solution": [
+      "Revenue strictly higher than cost: (M,L)=0.10, (H,L)=0.05, (H,M)=0.15.",
+      "Sum: $0.30$."
+    ],
+    "hints": [
+      "Mark the cells in which the row category exceeds the column category.",
+      "These cells are mutually exclusive outcomes.",
+      "Add their probabilities."
+    ],
+    "concept": "Reading probabilities from a joint table.",
+    "misconception": "Including the equal-category cells.",
+    "why": "Cells are disjoint, so the probability of a union of cells is the sum.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-43",
+    "topic": "axioms",
+    "sub": "dependent failures",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A data centre runs two identical servers in parallel. On a given day <b>exactly one</b> of them fails with probability 0.10, and <b>both</b> fail with probability 0.02. What is the probability that server 1 fails that day?",
+    "data": "",
+    "answer": {
+      "value": 0.07,
+      "display": "0.07"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.07",
+        "correct": true,
+        "why": "",
+        "v": 0.07
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "Half of the \"exactly one\" probability is the chance that server 1 fails <i>alone</i>; the case where both fail must be added.",
+        "v": 0.05
+      },
+      {
+        "text": "0.12",
+        "correct": false,
+        "why": "This is $P(\\text{at least one fails})$, not the probability for one particular server.",
+        "v": 0.12
+      },
+      {
+        "text": "0.1",
+        "correct": false,
+        "why": "This is the probability that exactly one server fails, not the marginal probability for server 1.",
+        "v": 0.1
+      }
+    ],
+    "solution": [
+      "Let $F_1, F_2$ be the failures. By symmetry the servers are identical: $P(F_1\\cap F_2^c) = P(F_1^c\\cap F_2) = 0.10/2 = 0.05$.",
+      "$P(F_1) = P(F_1\\cap F_2^c) + P(F_1\\cap F_2) = 0.05+0.02 = 0.07$."
+    ],
+    "hints": [
+      "Split \"exactly one fails\" into two events using the identical servers.",
+      "Server 1 fails either alone or together with server 2.",
+      "Add the probability of failing alone to the probability of both failing."
+    ],
+    "concept": "Using symmetry to split an event.",
+    "misconception": "Reporting the \"alone\" probability as the marginal.",
+    "why": "Server 1’s failures are partitioned by whether server 2 also fails.",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-44",
+    "topic": "axioms",
+    "sub": "solving for an unknown composition",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Jar 1 holds 3 red and 7 blue marbles. Jar 2 holds $r$ red and 4 blue marbles. One marble is drawn at random from each jar. The probability that the two marbles have the <b>same colour</b> is 0.40. How many red marbles are in jar 2?",
+    "data": "",
+    "answer": {
+      "value": 12,
+      "display": "12"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "12",
+        "correct": true,
+        "why": "",
+        "v": 12
+      },
+      {
+        "text": "10",
+        "correct": false,
+        "why": "With $r=10$ the probability is $(0.3\\cdot10+2.8)/14 \\approx 0.414$, not 0.40.",
+        "v": 10
+      },
+      {
+        "text": "16",
+        "correct": false,
+        "why": "With $r=16$ the probability is $(4.8+2.8)/20 = 0.38$, not 0.40.",
+        "v": 16
+      },
+      {
+        "text": "4",
+        "correct": false,
+        "why": "With $r=4$ the probability is $(1.2+2.8)/8 = 0.50$, not 0.40.",
+        "v": 4
+      }
+    ],
+    "solution": [
+      "$P(\\text{same}) = \\dfrac{3}{10}\\cdot\\dfrac{r}{r+4} + \\dfrac{7}{10}\\cdot\\dfrac{4}{r+4} = \\dfrac{0.3r+2.8}{r+4}$.",
+      "Set equal to 0.40: $0.3r+2.8 = 0.4r+1.6$, so $0.1r = 1.2$ and $r = 12$."
+    ],
+    "hints": [
+      "Write $P(\\text{same colour})$ as a sum over the two colours.",
+      "Express the probabilities for jar 2 in terms of $r$.",
+      "Set the expression equal to 0.40 and solve the linear equation."
+    ],
+    "concept": "Using a probability equation to find an unknown count.",
+    "misconception": "Leaving $r$ out of the denominator.",
+    "why": "The same-colour probability is a rational function of $r$; equating it to a value fixes $r$.",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-45",
+    "topic": "axioms",
+    "sub": "problem of points",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two firms $A$ and $B$ compete in a series in which the first to win 5 contests takes the prize; each contest is won by either firm with probability $\\tfrac12$, independently. The series is cancelled when $A$ has won 3 and $B$ has won 2. What fraction of the prize should go to $A$ so that the division matches each firm's chance of winning the series?",
+    "data": "",
+    "answer": {
+      "value": 0.6875,
+      "display": "11/16"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "11/16",
+        "correct": true,
+        "why": "",
+        "v": 0.6875
+      },
+      {
+        "text": "3/5",
+        "correct": false,
+        "why": "This divides in proportion to contests already won; it ignores how many more each firm needs.",
+        "v": 0.6
+      },
+      {
+        "text": "7/8",
+        "correct": false,
+        "why": "This would be the answer if $B$ needed three more wins and $A$ needed only one.",
+        "v": 0.875
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The firms are symmetric in strength, but $A$ is closer to the target and has a better chance.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "$A$ needs 2 more wins, $B$ needs 3. Play out 4 more contests (enough to decide). $B$ wins the series only if it wins at least 3 of the 4.",
+      "$P(B) = \\dfrac{\\binom43+\\binom44}{16} = \\dfrac{5}{16}$, so $P(A) = \\dfrac{11}{16}$."
+    ],
+    "hints": [
+      "How many more contests would settle the series at most?",
+      "B wins the series only if it wins 3 or more of those contests.",
+      "Use binomial counts with $p = 1/2$."
+    ],
+    "concept": "Problem of points via binomial probabilities.",
+    "misconception": "Dividing in proportion to wins so far.",
+    "why": "A fair division awards each side its probability of winning had play continued.",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-46",
+    "topic": "axioms",
+    "sub": "diagnose: adding overlapping events",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "\"A fair die is rolled three times. The probability of a six on each roll is $1/6$, so the probability of at least one six is $3\\times\\frac16 = \\frac12$.\" Which statement identifies the error and gives the correct value?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "The events \"six on roll $i$\" overlap, so their probabilities cannot be added; the correct value is $1-(5/6)^3\\approx0.421$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "The events \"six on roll $i$\" overlap, so their probabilities cannot be added; the correct value is $1-(5/6)^3\\approx0.421$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The error is that the rolls are dependent; the correct value is $1/6$",
+        "correct": false,
+        "why": "The rolls are independent; the error is in adding overlapping events."
+      },
+      {
+        "text": "There is no error: the three events are disjoint",
+        "correct": false,
+        "why": "They are not disjoint: a six on roll 1 and a six on roll 2 can both occur."
+      },
+      {
+        "text": "The correct value is $(1/6)^3 = 1/216$",
+        "correct": false,
+        "why": "That is the probability of three sixes, not at least one."
+      }
+    ],
+    "solution": [
+      "Addition of probabilities is valid only for mutually exclusive events. Sixes on different rolls can occur together.",
+      "Use the complement: $P(\\text{no six}) = (5/6)^3 = 0.5787$, so $P(\\text{at least one}) = 0.4213$."
+    ],
+    "hints": [
+      "Are the events \"six on roll 1\", \"six on roll 2\", \"six on roll 3\" mutually exclusive?",
+      "What happens to the sum $3\\times\\frac16$ if you ask the same question with 6 rolls?",
+      "Use the complement of \"no sixes\"."
+    ],
+    "concept": "The addition rule requires disjointness; use the complement for \"at least one\".",
+    "misconception": "Adding probabilities of events that can co-occur.",
+    "why": "With six rolls the false method would give probability 1, which is clearly absurd.",
+    "fam": "axioms:diagnose"
+  },
+  {
+    "id": "AXM-47",
+    "topic": "axioms",
+    "sub": "diagnose: complement of a product",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A fair coin is tossed twice. A student says: \"The probability of <i>not</i> getting two heads is $1 - \\frac12\\cdot\\frac12 = \\frac34$\" and then writes \"so the probability of getting <i>at most one</i> head is $\\frac12\\cdot\\frac12 = \\frac14$.\" What is the correct probability of at most one head?",
+    "data": "",
+    "answer": {
+      "value": 0.75,
+      "display": "3/4"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "3/4",
+        "correct": true,
+        "why": "",
+        "v": 0.75
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the probability of two heads (or two tails) only. \"At most one head\" is the complement of \"two heads\".",
+        "v": 0.25
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This is the probability of exactly one head.",
+        "v": 0.5
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "At most one head can fail (outcome HH), so the probability is below 1.",
+        "v": 1
+      }
+    ],
+    "solution": [
+      "\"At most one head\" is the complement of \"two heads\".",
+      "$P = 1 - P(HH) = 1 - \\frac14 = \\frac34$.",
+      "The student’s first line is correct and the second line contradicts it."
+    ],
+    "hints": [
+      "Is \"at most one head\" the same event as \"not two heads\"?",
+      "The student’s first line already contains the answer.",
+      "Compute $1 - P(HH)$."
+    ],
+    "concept": "Complement rule; consistency of reasoning.",
+    "misconception": "Using the product $P(A)P(B)$ for a complement.",
+    "why": "Listing the outcomes {HH, HT, TH, TT} confirms 3 of 4.",
+    "fam": "axioms:diagnose"
+  },
+  {
+    "id": "AXM-48",
+    "topic": "axioms",
+    "sub": "bounds: Boole’s inequality",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A project can fail through a technical fault ($A$, probability 0.2), a funding shortfall ($B$, probability 0.3) or a regulatory delay ($C$, probability 0.1). Nothing is known about how these events relate. What is the <b>best upper bound</b> on the probability that the project fails through at least one of them that follows from the axioms?",
+    "data": "",
+    "answer": {
+      "value": 0.6,
+      "display": "0.6"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6",
+        "correct": true,
+        "why": "",
+        "v": 0.6
+      },
+      {
+        "text": "0.006",
+        "correct": false,
+        "why": "This is the probability that all three occur if they were independent; the union is at least as large as each event.",
+        "v": 0.006
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "This is a valid bound but not the best one available.",
+        "v": 1
+      },
+      {
+        "text": "0.4",
+        "correct": false,
+        "why": "No rule produces 0.4 here; the union of events cannot be bounded by a quantity smaller than its largest member, but the sum is the available upper bound.",
+        "v": 0.4
+      }
+    ],
+    "solution": [
+      "For any events, $P(A\\cup B\\cup C) \\le P(A)+P(B)+P(C)$ (Boole's inequality).",
+      "The bound is $0.2+0.3+0.1 = 0.6$; it is attained when the events are mutually exclusive."
+    ],
+    "hints": [
+      "Without information on overlap, what is the largest value a union can take?",
+      "Overlapping outcomes are counted more than once in a sum.",
+      "Add the three probabilities."
+    ],
+    "concept": "Subadditivity of probability.",
+    "misconception": "Multiplying probabilities without any independence information.",
+    "why": "Adding probabilities can only over-count overlaps, never under-count.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-49",
+    "topic": "axioms",
+    "sub": "bounds: smallest possible union",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "$P(A) = 0.6$ and $P(B) = 0.5$, and nothing else is known about how $A$ and $B$ are related. What is the <b>smallest possible</b> value of $P(A\\cup B)$?",
+    "data": "",
+    "answer": {
+      "value": 0.6,
+      "display": "0.6"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6",
+        "correct": true,
+        "why": "",
+        "v": 0.6
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "The union contains $A$, so it cannot be smaller than $P(A) = 0.6$.",
+        "v": 0.5
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is the product $P(A)P(B)$, which is the intersection only under independence and is not a union.",
+        "v": 0.3
+      },
+      {
+        "text": "1.1",
+        "correct": false,
+        "why": "This is $P(A)+P(B)$, which exceeds 1 and is not even a probability.",
+        "v": 1.1
+      }
+    ],
+    "solution": [
+      "$A\\subset A\\cup B$ and $B\\subset A\\cup B$, so $P(A\\cup B)\\ge\\max\\{P(A),P(B)\\} = 0.6$.",
+      "The minimum is reached when $B\\subset A$, which is consistent with the given probabilities."
+    ],
+    "hints": [
+      "Is the union ever smaller than one of its members?",
+      "When is the union as small as possible: when $A$ and $B$ overlap as much as they can.",
+      "Take the larger of the two probabilities."
+    ],
+    "concept": "Lower bound for a union through monotonicity.",
+    "misconception": "Confusing the smallest union with the intersection.",
+    "why": "Complete overlap makes the union equal to the larger event.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-50",
+    "topic": "axioms",
+    "sub": "inclusion-exclusion with four events",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Four equally reliable sensors raise an alarm independently of the labelling of the sensors in the following symmetric way: each sensor alone has probability 0.30; each pair of sensors both alarming has probability 0.10; each triple 0.04; all four together 0.01. What is the probability that <b>at least one</b> sensor raises the alarm?",
+    "data": "",
+    "answer": {
+      "value": 0.7499999999999999,
+      "display": "0.75"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(\\text{union}) = \\sum P(A_i) - \\sum P(A_iA_j) + \\sum P(A_iA_jA_k) - P(A_1A_2A_3A_4)$.",
+      "There are 4 singles, $\\binom42 = 6$ pairs, $\\binom43 = 4$ triples.",
+      "$= 1.20-0.60+0.16-0.01 = 0.75$."
+    ],
+    "hints": [
+      "How many singles, pairs and triples are there among four events?",
+      "Signs alternate: plus, minus, plus, minus.",
+      "Compute $4(0.30)-6(0.10)+4(0.04)-0.01$."
+    ],
+    "concept": "Inclusion-exclusion with four events.",
+    "misconception": "Using the wrong number of pairs or triples.",
+    "why": "Each outcome in several events is counted once by the alternating sum.",
+    "fam": "axioms:inclusion-exclusion"
+  },
+  {
+    "id": "AXM-51",
+    "topic": "axioms",
+    "sub": "number theory probability: two divisors",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A whole number is chosen at random from 1 to 100, all equally likely. What is the probability that it is divisible by 2 <b>or</b> by 3?",
+    "data": "",
+    "answer": {
+      "value": 0.67,
+      "display": "0.67"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Multiples of 2: 50. Multiples of 3: 33. Multiples of 6 (both): 16.",
+      "$50+33-16 = 67$, so $P = 0.67$."
+    ],
+    "hints": [
+      "Count multiples of 2, multiples of 3, and multiples of both.",
+      "Both means divisible by 6.",
+      "Add and subtract the overlap."
+    ],
+    "concept": "Addition rule on counted outcomes.",
+    "misconception": "Adding $50+33$ without removing the multiples of 6.",
+    "why": "Numbers divisible by both are counted in each list.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-52",
+    "topic": "axioms",
+    "sub": "number theory probability: three divisors",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A whole number is chosen at random from 1 to 100. What is the probability that it is divisible by <b>at least one</b> of 2, 3 and 5?",
+    "data": "",
+    "answer": {
+      "value": 0.74,
+      "display": "0.74"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.74",
+        "correct": true,
+        "why": "",
+        "v": 0.74
+      },
+      {
+        "text": "0.71",
+        "correct": false,
+        "why": "The numbers divisible by all three (multiples of 30: 30, 60, 90) must be added back.",
+        "v": 0.71
+      },
+      {
+        "text": "0.7333",
+        "correct": false,
+        "why": "This treats divisibility by 2, 3 and 5 as independent, which is only approximately true in 1 to 100.",
+        "v": 0.7333333333333334
+      },
+      {
+        "text": "1.03",
+        "correct": false,
+        "why": "This sums the three counts; numbers divisible by more than one are counted repeatedly (and the result exceeds 1).",
+        "v": 1.03
+      }
+    ],
+    "solution": [
+      "Singles: $50+33+20 = 103$. Pairs (multiples of 6, 10, 15): $16+10+6 = 32$. Triple (multiples of 30): 3.",
+      "$103-32+3 = 74$, so $P = 0.74$."
+    ],
+    "hints": [
+      "Count multiples of each divisor, then of each pair of divisors, then of all three.",
+      "Pairs are multiples of 6, 10 and 15; the triple is multiples of 30.",
+      "Singles minus pairs plus triple."
+    ],
+    "concept": "Inclusion-exclusion with three events on counted outcomes.",
+    "misconception": "Omitting the triple intersection.",
+    "why": "Inclusion-exclusion corrects every multiple counting.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-53",
+    "topic": "axioms",
+    "sub": "geometric probability: product",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two numbers $X$ and $Y$ are chosen independently and uniformly from $(0,1)$. What is the probability that their <b>product is less than $\\tfrac12$</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.8465735902799727,
+      "display": "0.8466"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.8466",
+        "correct": true,
+        "why": "",
+        "v": 0.8465735902799727
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "The region $xy<\\tfrac12$ includes more than half the square: above the line $x=\\tfrac12$ the curve $y<1/(2x)$ still keeps a large part.",
+        "v": 0.5
+      },
+      {
+        "text": "0.6931",
+        "correct": false,
+        "why": "This is only part of the area (the integral of $1/(2x)$ times 2); the strip $x<\\tfrac12$ contributes area $\\tfrac12$ as well.",
+        "v": 0.6931471805599453
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is the area of the square $[0,\\tfrac12]^2$, a small part of the region $xy<\\tfrac12$.",
+        "v": 0.25
+      }
+    ],
+    "solution": [
+      "For $x\\le\\tfrac12$ every $y\\in(0,1)$ works: area $\\tfrac12$.",
+      "For $x>\\tfrac12$ we need $y<\\dfrac{1}{2x}$: area $\\int_{1/2}^{1}\\dfrac{1}{2x}dx = \\tfrac12\\ln2$.",
+      "$P = \\tfrac12+\\tfrac12\\ln2 \\approx 0.847$."
+    ],
+    "hints": [
+      "Represent the pair as a point in the unit square and shade $xy<\\tfrac12$.",
+      "Split the region at $x=\\tfrac12$.",
+      "For $x>\\tfrac12$ the boundary is the curve $y = 1/(2x)$."
+    ],
+    "concept": "Geometric probability with a non-linear boundary.",
+    "misconception": "Assuming the region is half the square.",
+    "why": "The probability equals the area of the region because the distribution is uniform on the unit square.",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-54",
+    "topic": "axioms",
+    "sub": "geometric probability: triangle from a broken stick",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A stick of length 1 is broken at two independent random points. What is the probability that the three pieces can form a <b>triangle</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.25,
+      "display": "1/4"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/4",
+        "correct": true,
+        "why": "",
+        "v": 0.25
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The triangle condition (each piece below $\\tfrac12$) fails on a larger region than this; the feasible area is a quarter of the square.",
+        "v": 0.5
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This is not the area of the feasible region in the unit square.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/8",
+        "correct": false,
+        "why": "This is half of the correct feasible area.",
+        "v": 0.125
+      }
+    ],
+    "solution": [
+      "Pieces $a, b-a, 1-b$ (with $a<b$) form a triangle iff each is shorter than $\\tfrac12$.",
+      "In the $(a,b)$ triangle $0<a<b<1$ (area $\\tfrac12$) the condition defines a smaller triangle of area $\\tfrac18$.",
+      "By symmetry $P = \\dfrac{1/8}{1/2} = \\dfrac14$."
+    ],
+    "hints": [
+      "What condition must three lengths satisfy to form a triangle?",
+      "With total length 1, that means every piece is shorter than $\\tfrac12$.",
+      "Describe the allowed region of cut points in the unit square."
+    ],
+    "concept": "Geometric probability for a classic region.",
+    "misconception": "Guessing 1/2 by symmetry.",
+    "why": "Triangle inequality becomes three linear constraints on the cut points.",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-55",
+    "topic": "axioms",
+    "sub": "geometric probability: closeness",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two numbers $X$ and $Y$ are chosen independently and uniformly from $(0,1)$. What is the probability that they differ by <b>less than 0.2</b>, i.e. $|X-Y|<0.2$?",
+    "data": "",
+    "answer": {
+      "value": 0.3599999999999999,
+      "display": "0.36"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "The region $|x-y|\\ge0.2$ consists of two right triangles with legs $0.8$.",
+      "Their total area is $2\\cdot\\tfrac12(0.8)^2 = 0.64$.",
+      "$P(|X-Y|<0.2) = 1-0.64 = 0.36$."
+    ],
+    "hints": [
+      "Picture the unit square and the band around the diagonal.",
+      "The complement is two triangles in the corners.",
+      "Each triangle has legs of length $1-0.2$."
+    ],
+    "concept": "Geometric probability using complementary triangles.",
+    "misconception": "Using $0.2$ or $0.4$ directly as the probability.",
+    "why": "Area of the band equals 1 minus the area of the two corner triangles.",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-56",
+    "topic": "axioms",
+    "sub": "exclusive events with a ratio",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Events $A$ and $B$ are mutually exclusive with $P(A\\cup B) = 0.9$ and $P(A) = 2P(B)$. Find $P(B)$.",
+    "data": "",
+    "answer": {
+      "value": 0.3,
+      "display": "0.3"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "For exclusive events $P(A\\cup B) = P(A)+P(B) = 3P(B) = 0.9$.",
+      "$P(B) = 0.3$."
+    ],
+    "hints": [
+      "What does mutual exclusivity say about $P(A\\cup B)$?",
+      "Write $P(A)$ in terms of $P(B)$.",
+      "Solve the linear equation."
+    ],
+    "concept": "Additivity of disjoint events.",
+    "misconception": "Subtracting an intersection that is zero.",
+    "why": "Disjoint events share no outcomes, so probabilities add.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-57",
+    "topic": "axioms",
+    "sub": "sequences with a restriction: no two consecutive heads",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A fair coin is tossed 5 times. What is the probability that <b>no two consecutive tosses are both heads</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.40625,
+      "display": "13/32"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "13/32",
+        "correct": true,
+        "why": "",
+        "v": 0.40625
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "Half of the sequences would be allowed only if the restriction were trivial; many sequences contain adjacent heads.",
+        "v": 0.5
+      },
+      {
+        "text": "11/32",
+        "correct": false,
+        "why": "This miscounts the valid sequences by two; the Fibonacci recursion gives 13.",
+        "v": 0.34375
+      },
+      {
+        "text": "19/32",
+        "correct": false,
+        "why": "This is the probability that at least two consecutive heads occur.",
+        "v": 0.59375
+      }
+    ],
+    "solution": [
+      "Count valid sequences: lengths 1, 2, 3, 4, 5 give 2, 3, 5, 8, 13 (each is the sum of the previous two).",
+      "$P = 13/32$."
+    ],
+    "hints": [
+      "Count the sequences of length $n$ with no \"HH\" by looking at how they end.",
+      "The counts follow $a_n = a_{n-1}+a_{n-2}$.",
+      "Divide $a_5$ by $2^5$."
+    ],
+    "concept": "Probability via counting restricted sequences.",
+    "misconception": "Assuming independence between the restriction and sequence length.",
+    "why": "All $2^5$ sequences are equally likely.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-58",
+    "topic": "axioms",
+    "sub": "symmetry: ranking",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Six applicants are ranked in a uniformly random order. What is the probability that applicant $X$ is ranked <b>above both</b> applicant $Y$ and applicant $Z$?",
+    "data": "",
+    "answer": {
+      "value": 0.3333333333333333,
+      "display": "1/3"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "Only the relative order of $X, Y, Z$ matters, and all $3! = 6$ relative orders are equally likely.",
+      "$X$ is first in 2 of them: $P = 2/6 = 1/3$."
+    ],
+    "hints": [
+      "Does the position of the other three applicants matter?",
+      "How many equally likely relative orders do $X, Y, Z$ have?",
+      "In how many of them is $X$ first?"
+    ],
+    "concept": "Symmetry for random rankings.",
+    "misconception": "Counting all six applicants.",
+    "why": "Restricting attention to three items keeps the orders equally likely.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-59",
+    "topic": "axioms",
+    "sub": "bounds: smallest triple intersection",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three events have $P(A) = 0.6$, $P(B) = 0.7$ and $P(C) = 0.8$, with no other information. What is the <b>smallest possible</b> value of $P(A\\cap B\\cap C)$?",
+    "data": "",
+    "answer": {
+      "value": 0.09999999999999964,
+      "display": "0.1"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1",
+        "correct": true,
+        "why": "",
+        "v": 0.09999999999999964
+      },
+      {
+        "text": "0.336",
+        "correct": false,
+        "why": "This is the value under independence, not the minimum over all dependence structures.",
+        "v": 0.336
+      },
+      {
+        "text": "0",
+        "correct": false,
+        "why": "The three events are so likely that they must overlap: the failures have total probability $0.4+0.3+0.2 = 0.9<1$.",
+        "v": 0
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This is the largest value possible, $\\min P$, not the smallest.",
+        "v": 0.6
+      }
+    ],
+    "solution": [
+      "$P((A\\cap B\\cap C)^c) = P(A^c\\cup B^c\\cup C^c) \\le 0.4+0.3+0.2 = 0.9$.",
+      "So $P(A\\cap B\\cap C) \\ge 1-0.9 = 0.1$."
+    ],
+    "hints": [
+      "Work with the complements: each has a small probability.",
+      "Apply Boole’s inequality to the union of the complements.",
+      "The intersection is the complement of that union."
+    ],
+    "concept": "Lower bound for an intersection via complements.",
+    "misconception": "Using the independence value.",
+    "why": "If failures are unlikely, success of all is forced to have probability at least $1-\\sum P(\\text{failure})$.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-60",
+    "topic": "axioms",
+    "sub": "statements that must hold",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "For arbitrary events $A$ and $B$ in the same sample space, which statement is <b>always</b> true?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$P(A\\cap B) \\le \\min\\{P(A), P(B)\\}$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$P(A\\cap B) \\le \\min\\{P(A), P(B)\\}$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$P(A\\cup B) \\ge P(A)+P(B)$",
+        "correct": false,
+        "why": "The union is at most the sum: overlapping outcomes are counted twice in the sum."
+      },
+      {
+        "text": "$P(A\\cap B) = P(A)P(B)$",
+        "correct": false,
+        "why": "This holds only for independent events."
+      },
+      {
+        "text": "$P(A)+P(B)\\le1$",
+        "correct": false,
+        "why": "This holds only when the events are mutually exclusive (or for small probabilities); for example $P(A) = P(B) = 0.8$ is allowed."
+      }
+    ],
+    "solution": [
+      "$A\\cap B\\subset A$ and $A\\cap B\\subset B$, so by monotonicity $P(A\\cap B)\\le P(A)$ and $\\le P(B)$.",
+      "The other statements fail for suitable events."
+    ],
+    "hints": [
+      "Test each statement with a simple example, such as $A = B$.",
+      "Which statement follows from set inclusion alone?",
+      "Monotonicity: a subset is not more probable than its superset."
+    ],
+    "concept": "Properties that hold for all events.",
+    "misconception": "Applying independence formulas or exclusivity facts universally.",
+    "why": "Only facts derived from the axioms hold for every pair of events.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-61",
+    "topic": "axioms",
+    "sub": "inconsistent probability statements",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Which pair of statements <b>cannot</b> both be true for the same events?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$P(A) = 0.3$ and $P(A\\cap B) = 0.4$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$P(A) = 0.3$ and $P(A\\cap B) = 0.4$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$P(A) = 0.3$ and $P(A\\cup B) = 0.8$",
+        "correct": false,
+        "why": "Possible: $P(B)$ could be 0.5 with no overlap."
+      },
+      {
+        "text": "$P(A) = 0.6$ and $P(A^c) = 0.4$",
+        "correct": false,
+        "why": "These sum to 1 as required."
+      },
+      {
+        "text": "$P(A) = 0.7$ and $P(B) = 0.6$ with $P(A\\cup B)=1$",
+        "correct": false,
+        "why": "Possible: this implies $P(A\\cap B) = 0.3$."
+      }
+    ],
+    "solution": [
+      "$A\\cap B\\subset A$ forces $P(A\\cap B)\\le P(A)$. A value of 0.4 for the intersection with $P(A)=0.3$ violates this.",
+      "The other pairs can be realised."
+    ],
+    "hints": [
+      "Which statement involves an event and a subset of it?",
+      "Can a subset have a larger probability than the whole?",
+      "Check the other pairs by finding an example."
+    ],
+    "concept": "Consistency of probability statements.",
+    "misconception": "Only checking whether the numbers lie between 0 and 1.",
+    "why": "Probabilities must respect set inclusion, not just lie in [0, 1].",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-62",
+    "topic": "axioms",
+    "sub": "digit strings: strictly increasing",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A 3-digit code is generated by choosing each digit independently and uniformly from 0 to 9 (leading zeros allowed). What is the probability that the digits are <b>strictly increasing</b> from left to right?",
+    "data": "",
+    "answer": {
+      "value": 0.12,
+      "display": "0.12"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "A strictly increasing code is determined by its set of three distinct digits: $\\binom{10}{3} = 120$ codes.",
+      "$P = 120/1000 = 0.12$."
+    ],
+    "hints": [
+      "If three distinct digits are chosen, how many orders are increasing?",
+      "So count sets of 3 distinct digits.",
+      "Divide by $10^3$."
+    ],
+    "concept": "Counting increasing sequences by combinations.",
+    "misconception": "Using $10\\cdot9\\cdot8$.",
+    "why": "Each 3-subset of digits has exactly one increasing arrangement.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-63",
+    "topic": "axioms",
+    "sub": "complement: the larger of two dice",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two fair ten-sided dice (faces 1 to 10) are rolled. What is the probability that the <b>larger</b> of the two results is at least 8?",
+    "data": "",
+    "answer": {
+      "value": 0.51,
+      "display": "0.51"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.51",
+        "correct": true,
+        "why": "",
+        "v": 0.51
+      },
+      {
+        "text": "0.3",
+        "correct": false,
+        "why": "This is the probability that one particular die shows at least 8.",
+        "v": 0.3
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This adds the two probabilities and counts the outcomes where both dice are high twice.",
+        "v": 0.6
+      },
+      {
+        "text": "0.09",
+        "correct": false,
+        "why": "This is the probability that both dice show at least 8.",
+        "v": 0.09
+      }
+    ],
+    "solution": [
+      "The maximum is below 8 only if both dice are at most 7: $0.7\\times0.7 = 0.49$.",
+      "$P(\\max\\ge8) = 1-0.49 = 0.51$."
+    ],
+    "hints": [
+      "When is the larger result below 8?",
+      "Both dice must be at most 7.",
+      "Take the complement."
+    ],
+    "concept": "Complement for \"at least one is large\".",
+    "misconception": "Adding the single-die probabilities.",
+    "why": "The maximum exceeds a threshold iff at least one die does.",
+    "fam": "axioms:two-event-rules"
+  },
+  {
+    "id": "AXM-64",
+    "topic": "axioms",
+    "sub": "certain events: pigeonhole in probability",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three people each have a blood-pressure status that is either \"normal\" or \"elevated\". What is the probability that at least two of them have the <b>same</b> status?",
+    "data": "",
+    "answer": {
+      "value": 1,
+      "display": "1"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1",
+        "correct": true,
+        "why": "",
+        "v": 1
+      },
+      {
+        "text": "0.75",
+        "correct": false,
+        "why": "This is the probability of two particular people matching if the statuses are equally likely; with three people a match is unavoidable.",
+        "v": 0.75
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "Equal chance does not enter: only two statuses exist, so among three people a match is certain.",
+        "v": 0.5
+      },
+      {
+        "text": "0.875",
+        "correct": false,
+        "why": "This would be the probability that not all three are the same; a match between two is certain.",
+        "v": 0.875
+      }
+    ],
+    "solution": [
+      "With only two possible statuses and three people, three different statuses are impossible.",
+      "So at least two share a status with certainty: $P = 1$."
+    ],
+    "hints": [
+      "How many different statuses can three people have at most?",
+      "Can all three be different?",
+      "What is the probability of an event that cannot fail?"
+    ],
+    "concept": "Certain events from a pigeonhole argument.",
+    "misconception": "Computing a probability when the event is certain.",
+    "why": "The complement \"all different\" is impossible.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-65",
+    "topic": "axioms",
+    "sub": "classical probability: poker dice",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Five fair six-sided dice are rolled. What is the probability of a <b>full house</b>: three dice show one value and the other two show a different, matching value?",
+    "data": "",
+    "answer": {
+      "value": 0.038580246913580245,
+      "display": "0.0386"
+    },
+    "fmt": "d",
+    "tol": 0.0006,
+    "options": [],
+    "solution": [
+      "Choose the value that appears three times (6 ways) and the value that appears twice (5 ways), then choose which 3 of the 5 dice show the first value: $\\binom53 = 10$.",
+      "Favourable: $6\\cdot5\\cdot10 = 300$ of $6^5 = 7776$.",
+      "$P = 300/7776 \\approx 0.0386$."
+    ],
+    "hints": [
+      "Choose the two values involved, in order of role.",
+      "Then choose the dice that show the triple value.",
+      "Divide by $6^5$."
+    ],
+    "concept": "Pattern counting for dice.",
+    "misconception": "Not distinguishing the triple value from the pair value.",
+    "why": "Each full house is generated once by choosing roles and positions.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-66",
+    "topic": "axioms",
+    "sub": "classical probability: product parity",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two fair dice are rolled. What is the probability that the <b>product</b> of the two numbers is even?",
+    "data": "",
+    "answer": {
+      "value": 0.75,
+      "display": "3/4"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "The product is odd only if both numbers are odd: $\\tfrac12\\cdot\\tfrac12 = \\tfrac14$.",
+      "$P(\\text{even}) = 1-\\tfrac14 = \\tfrac34$."
+    ],
+    "hints": [
+      "When is a product odd?",
+      "Both dice must be odd.",
+      "Take the complement."
+    ],
+    "concept": "Complement with a parity argument.",
+    "misconception": "Adding probabilities of \"first even\" and \"second even\".",
+    "why": "A product is even iff at least one factor is even.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-67",
+    "topic": "axioms",
+    "sub": "geometric series: first success on an even trial",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A fair coin is tossed repeatedly until the first head appears. What is the probability that the first head occurs on an <b>even-numbered</b> toss?",
+    "data": "",
+    "answer": {
+      "value": 0.3333333333333333,
+      "display": "1/3"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/3",
+        "correct": true,
+        "why": "",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The first toss is a head with probability $\\tfrac12$, so odd tosses are more likely than even ones.",
+        "v": 0.5
+      },
+      {
+        "text": "2/5",
+        "correct": false,
+        "why": "This is not the sum of the geometric series $\\tfrac14+\\tfrac1{16}+\\cdots$.",
+        "v": 0.4
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is only the probability that the first head is on toss 2.",
+        "v": 0.25
+      }
+    ],
+    "solution": [
+      "$P(\\text{first head on toss }2k) = (\\tfrac12)^{2k}$.",
+      "$\\sum_{k\\ge1}\\left(\\tfrac14\\right)^k = \\dfrac{1/4}{1-1/4} = \\dfrac13$."
+    ],
+    "hints": [
+      "Write the probability that the first head is on toss $2k$.",
+      "Add over $k=1,2,3,\\dots$.",
+      "Use $\\sum r^k = r/(1-r)$ for $r<1$."
+    ],
+    "concept": "Countable additivity with a geometric series.",
+    "misconception": "Assuming odd and even tosses are equally likely.",
+    "why": "The first toss is a head with probability one half, so odd positions carry more mass.",
+    "fam": "axioms:special"
+  },
+  {
+    "id": "AXM-68",
+    "topic": "axioms",
+    "sub": "symmetry: subsets of even size",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A random subset of $\\{1,2,3,4,5\\}$ is chosen so that all $2^5$ subsets are equally likely (the empty set included). What is the probability that it has an <b>even number</b> of elements?",
+    "data": "",
+    "answer": {
+      "value": 0.5,
+      "display": "1/2"
+    },
+    "fmt": "p",
+    "options": [],
+    "solution": [
+      "Toggling the membership of element 1 maps each subset of even size to a subset of odd size and back.",
+      "So exactly half the $2^5 = 32$ subsets have even size: $P = 16/32 = 1/2$.",
+      "Check: $1+10+5 = 16$."
+    ],
+    "hints": [
+      "Is there a one-to-one map between even and odd subsets?",
+      "Toggle one fixed element.",
+      "Check by counting: $\\binom50+\\binom52+\\binom54$."
+    ],
+    "concept": "Symmetry argument for counting.",
+    "misconception": "Computing from scratch without noticing the pairing.",
+    "why": "The toggle is a bijection, so the two classes have the same size.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-69",
+    "topic": "axioms",
+    "sub": "coprime numbers: probability by inclusion-exclusion",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A whole number $N$ is chosen at random from 1 to 60. What is the probability that $N$ has <b>no common factor</b> with 60 other than 1, i.e. is divisible by none of 2, 3 and 5?",
+    "data": "",
+    "answer": {
+      "value": 0.26666666666666666,
+      "display": "4/15"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "4/15",
+        "correct": true,
+        "why": "",
+        "v": 0.26666666666666666
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This is the probability of not being divisible by 2 only.",
+        "v": 0.5
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This ignores the prime 5; numbers divisible by 5 but not by 2 or 3 are also excluded.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "2/15",
+        "correct": false,
+        "why": "This is $\\tfrac12\\cdot\\tfrac13\\cdot\\tfrac15$, the probability of being divisible by all three.",
+        "v": 0.13333333333333333
+      }
+    ],
+    "solution": [
+      "Divisible by at least one of 2, 3, 5: $30+20+12-10-6-4+2 = 44$.",
+      "Coprime to 60: $60-44 = 16$, so $P = 16/60 = 4/15$.",
+      "(Equivalently $\\tfrac12\\cdot\\tfrac23\\cdot\\tfrac45\\cdot60$.)"
+    ],
+    "hints": [
+      "\"No common factor with 60\" means not divisible by 2, 3 or 5.",
+      "Count numbers divisible by at least one with inclusion-exclusion.",
+      "Subtract from 60."
+    ],
+    "concept": "Inclusion-exclusion for divisibility.",
+    "misconception": "Excluding only multiples of 2.",
+    "why": "The count of coprime residues is $60(1-\\tfrac12)(1-\\tfrac13)(1-\\tfrac15)$.",
+    "fam": "axioms:inclusion-exclusion"
+  },
+  {
+    "id": "AXM-70",
+    "topic": "axioms",
+    "sub": "classical probability: digit sum",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A two-digit number from 10 to 99 is chosen at random. What is the probability that its digits <b>add up to 9</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.1,
+      "display": "0.1"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Numbers with digit sum 9: 18, 27, 36, 45, 54, 63, 72, 81, 90: 9 numbers.",
+      "$P = 9/90 = 0.1$."
+    ],
+    "hints": [
+      "How many two-digit numbers are there?",
+      "List those whose digits sum to 9.",
+      "Divide the number of such numbers by the number of two-digit numbers."
+    ],
+    "concept": "Counting favourable outcomes.",
+    "misconception": "Using 100 outcomes.",
+    "why": "All 90 numbers are equally likely.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-71",
+    "topic": "axioms",
+    "sub": "classical probability: bit strings",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A random 8-bit string is generated with each bit independently 0 or 1 with equal probability. What is the probability that it has <b>exactly four 1s</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.2734375,
+      "display": "0.2734"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Number of strings with four 1s: $\\binom84 = 70$.",
+      "$P = 70/256 \\approx 0.2734$."
+    ],
+    "hints": [
+      "How many strings have their four 1s in specified positions?",
+      "How many ways to choose those positions?",
+      "Divide by $2^8$."
+    ],
+    "concept": "Classical probability with combinations.",
+    "misconception": "Using $1/2^4$.",
+    "why": "All $2^8$ strings are equally likely.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-72",
+    "topic": "axioms",
+    "sub": "arrangement probability: repeated letters adjacent",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The five letters A, A, B, B, C are arranged in a random order (all distinguishable arrangements equally likely). What is the probability that the two A's are <b>next to each other</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.4,
+      "display": "2/5"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "2/5",
+        "correct": true,
+        "why": "",
+        "v": 0.4
+      },
+      {
+        "text": "1/5",
+        "correct": false,
+        "why": "Forming the block $AA$ and arranging four units gives $4!/2! = 12$ arrangements, not $4!/5! $ of all orders.",
+        "v": 0.2
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "This is not the ratio of block arrangements to total distinguishable arrangements.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "3/5",
+        "correct": false,
+        "why": "This is the probability that the A’s are <i>not</i> adjacent.",
+        "v": 0.6
+      }
+    ],
+    "solution": [
+      "Distinguishable arrangements: $\\dfrac{5!}{2!\\,2!} = 30$.",
+      "With AA as a block: the units AA, B, B, C give $\\dfrac{4!}{2!} = 12$ arrangements.",
+      "$P = 12/30 = 2/5$."
+    ],
+    "hints": [
+      "Count all distinguishable arrangements of the five letters.",
+      "Glue the two A’s together and count arrangements of the four units.",
+      "Divide the block arrangements by the total number of arrangements."
+    ],
+    "concept": "Block method for repeated letters.",
+    "misconception": "Using $5!$ for the total.",
+    "why": "Blocks reduce the problem to a smaller arrangement count.",
+    "fam": "axioms:classical"
+  },
+  {
+    "id": "AXM-73",
+    "topic": "axioms",
+    "sub": "classical probability: two independent draws with ties",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two independent fair eight-sided dice are rolled. What is the probability that the first die shows a <b>strictly larger</b> number than the second?",
+    "data": "",
+    "answer": {
+      "value": 0.4375,
+      "display": "7/16"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "7/16",
+        "correct": true,
+        "why": "",
+        "v": 0.4375
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "The two dice show equal numbers with probability $8/64$, so \"first larger\" is less than one half.",
+        "v": 0.5
+      },
+      {
+        "text": "9/16",
+        "correct": false,
+        "why": "This is the probability that the first die is larger <i>or equal</i>.",
+        "v": 0.5625
+      },
+      {
+        "text": "1/8",
+        "correct": false,
+        "why": "This is the probability of a tie.",
+        "v": 0.125
+      }
+    ],
+    "solution": [
+      "By symmetry $P(\\text{first}>\\text{second}) = P(\\text{second}>\\text{first})$.",
+      "Ties: $8/64$. So $2P = 1-8/64 = 56/64$ and $P = 28/64 = 7/16$."
+    ],
+    "hints": [
+      "Is \"first larger\" as likely as \"second larger\"?",
+      "What is the probability of a tie?",
+      "Split the remaining probability equally."
+    ],
+    "concept": "Symmetry with ties.",
+    "misconception": "Answering one half.",
+    "why": "The three events (first larger, second larger, tie) partition the sample space.",
+    "fam": "axioms:classical"
+  }
+]

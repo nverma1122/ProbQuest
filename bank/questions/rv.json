@@ -1,0 +1,2531 @@
+[
+  {
+    "id": "RVX-01",
+    "topic": "rv",
+    "sub": "probability mass function",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A fair four-sided die (faces 1 to 4) and a fair five-sided die (faces 1 to 5) are rolled, and $X$ is the <b>larger</b> of the two results (either one if they tie). What is $P(X = 4)$?",
+    "data": "",
+    "answer": {
+      "value": 0.35,
+      "display": "7/20"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "7/20",
+        "correct": true,
+        "why": "",
+        "v": 0.35
+      },
+      {
+        "text": "1/5",
+        "correct": false,
+        "why": "This counts only the outcomes where the four-sided die shows 4; a 4 on the five-sided die with a smaller value on the other die also gives a maximum of 4.",
+        "v": 0.2
+      },
+      {
+        "text": "4/5",
+        "correct": false,
+        "why": "This is $P(X\\le4)$, the probability that the maximum does not exceed 4.",
+        "v": 0.8
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the probability that the four-sided die shows 4, not the probability that the maximum is 4.",
+        "v": 0.25
+      }
+    ],
+    "solution": [
+      "Maximum at most 4: both dice at most 4: $4\\times4 = 16$ outcomes. Maximum at most 3: $3\\times3 = 9$ outcomes.",
+      "$P(X=4) = \\dfrac{16-9}{20} = \\dfrac{7}{20}$."
+    ],
+    "hints": [
+      "Count the outcomes where the maximum equals 4 exactly.",
+      "Use $P(X\\le4)-P(X\\le3)$.",
+      "The sample space has $4\\times5 = 20$ equally likely outcomes."
+    ],
+    "concept": "Probability mass function of a maximum.",
+    "misconception": "Counting only one die.",
+    "why": "The event $\\{X=4\\}$ is the difference of two nested \"at most\" events.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-02",
+    "topic": "rv",
+    "sub": "rank of the best of a group",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two senior and two junior analysts are ranked by a panel; all $4! = 24$ rankings are equally likely. Let $X$ be the <b>rank of the best-placed junior</b> (rank 1 is best). What is $P(X = 2)$?",
+    "data": "",
+    "answer": {
+      "value": 0.3333333333333333,
+      "display": "1/3"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/3",
+        "correct": true,
+        "why": "",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "This is $P(X=1)$, the probability that a junior is top ranked.",
+        "v": 0.5
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This is the probability that the second-ranked person is a junior given a senior is first; it must be multiplied by the probability that a senior is first.",
+        "v": 0.6666666666666666
+      },
+      {
+        "text": "1/6",
+        "correct": false,
+        "why": "This is $P(X=3)$: both seniors fill ranks 1 and 2.",
+        "v": 0.16666666666666666
+      }
+    ],
+    "solution": [
+      "$X=2$ means rank 1 is a senior and rank 2 is a junior.",
+      "$P = \\dfrac24\\cdot\\dfrac23 = \\dfrac13$."
+    ],
+    "hints": [
+      "What must be true of ranks 1 and 2 for the best junior to be second?",
+      "Multiply conditional probabilities for the first two ranks.",
+      "After a senior is first, 2 juniors remain among 3 people."
+    ],
+    "concept": "Distribution of the position of the first success in random order.",
+    "misconception": "Omitting the conditioning on the first rank.",
+    "why": "The event is a specific sequence of types in the first two positions.",
+    "fam": "rv:indicators"
+  },
+  {
+    "id": "RVX-03",
+    "topic": "rv",
+    "sub": "mass function of a sum",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A broker makes two independent trades. The first is profitable with probability 0.5, the second with probability 0.4. A profitable trade yields \\$100 or \\$200 with equal probability; an unprofitable trade yields \\$0. Let $X$ be the total gain. What is $P(X = 200)$?",
+    "data": "",
+    "answer": {
+      "value": 0.3,
+      "display": "0.3"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3",
+        "correct": true,
+        "why": "",
+        "v": 0.3
+      },
+      {
+        "text": "0.05",
+        "correct": false,
+        "why": "This is only the case in which both trades are profitable with \\$100 each.",
+        "v": 0.05
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This includes the single-profit cases only; both trades yielding \\$100 also gives \\$200.",
+        "v": 0.25
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the probability that both trades are profitable, which includes totals of 200, 300 and 400.",
+        "v": 0.2
+      }
+    ],
+    "solution": [
+      "Total \\$200 can arise in three disjoint ways:",
+      "first only, \\$200: $0.5\\cdot0.5\\cdot0.6 = 0.15$;",
+      "second only, \\$200: $0.5\\cdot0.5\\cdot0.4 = 0.10$;",
+      "both, \\$100 each: $(0.5\\cdot0.5)(0.4\\cdot0.5) = 0.05$.",
+      "$P(X=200) = 0.30$."
+    ],
+    "hints": [
+      "List the ways in which the two gains can sum to \\$200.",
+      "Include the cases in which one trade is unprofitable.",
+      "Multiply independent probabilities within each case and add the cases."
+    ],
+    "concept": "Distribution of a sum of independent discrete gains.",
+    "misconception": "Missing some combinations of gains.",
+    "why": "The three cases are disjoint, so their probabilities add.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-04",
+    "topic": "rv",
+    "sub": "size-biased sampling",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A university has three lecture sections with 20, 30 and 70 students. A student is chosen at random from all 120 students and $X$ is the size of that student's section. What is $E[X]$?",
+    "data": "",
+    "answer": {
+      "value": 51.666666666666664,
+      "display": "51.6667"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "51.6667",
+        "correct": true,
+        "why": "",
+        "v": 51.666666666666664
+      },
+      {
+        "text": "40",
+        "correct": false,
+        "why": "This averages over sections (a randomly chosen section), not over students.",
+        "v": 40
+      },
+      {
+        "text": "70",
+        "correct": false,
+        "why": "This is the size of the largest section; students are spread over all three sections.",
+        "v": 70
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "This divides the number of students by the number of students and has no relation to the average section size seen by a student.",
+        "v": 1
+      }
+    ],
+    "solution": [
+      "$P(X=20) = 20/120$, $P(X=30) = 30/120$, $P(X=70) = 70/120$.",
+      "$E[X] = \\dfrac{20^2+30^2+70^2}{120} = \\dfrac{6200}{120} \\approx 51.7$."
+    ],
+    "hints": [
+      "Which is chosen at random: a section or a student?",
+      "A section is selected with probability proportional to its size.",
+      "Weight each section size by its share of students."
+    ],
+    "concept": "Size-biased expectation.",
+    "misconception": "Averaging section sizes with equal weights.",
+    "why": "Large sections hold more students, so a random student is more likely to be in one.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-06",
+    "topic": "rv",
+    "sub": "insurance pricing",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "An insurer pays \\$80,000 if a claim occurs within a year; the claim probability is 0.015. The premium $P$ is set so that the insurer's expected profit equals <b>20% of the premium</b>. What premium should be charged?",
+    "data": "",
+    "answer": {
+      "value": 1500,
+      "display": "1,500"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "1,500",
+        "correct": true,
+        "why": "",
+        "v": 1500
+      },
+      {
+        "text": "1,200",
+        "correct": false,
+        "why": "This premium covers the expected payout only and leaves zero expected profit.",
+        "v": 1200
+      },
+      {
+        "text": "1,440",
+        "correct": false,
+        "why": "This adds 20% of the expected payout as profit, but the profit must be 20% of the <i>premium</i>.",
+        "v": 1440
+      },
+      {
+        "text": "960",
+        "correct": false,
+        "why": "This reduces the expected payout, which gives an expected loss.",
+        "v": 960
+      }
+    ],
+    "solution": [
+      "Expected profit $= P - 0.015(80000) = P-1200$. Set this equal to $0.2P$: $0.8P = 1200$, so $P = 1500$."
+    ],
+    "hints": [
+      "Write the expected profit in terms of the premium.",
+      "The target is 20% of the premium, not of the claim cost.",
+      "Solve the linear equation."
+    ],
+    "concept": "Expected value pricing.",
+    "misconception": "Taking a percentage of the wrong base.",
+    "why": "The premium appears on both sides of the profit equation.",
+    "fam": "rv:decisions"
+  },
+  {
+    "id": "RVX-07",
+    "topic": "rv",
+    "sub": "indicator method",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A committee of 5 is chosen at random from 12 employees, 4 of whom are women. What is the expected number of women on the committee?",
+    "data": "",
+    "answer": {
+      "value": 1.6666666666666667,
+      "display": "1.6667"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "1.6667",
+        "correct": true,
+        "why": "",
+        "v": 1.6666666666666667
+      },
+      {
+        "text": "0.3333",
+        "correct": false,
+        "why": "This is the proportion of women, not the expected count for a committee of 5.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1.8182",
+        "correct": false,
+        "why": "The probability that a given member is a woman is $4/12$, not $4/11$.",
+        "v": 1.8181818181818181
+      },
+      {
+        "text": "2.5",
+        "correct": false,
+        "why": "This assumes half the committee are women.",
+        "v": 2.5
+      }
+    ],
+    "solution": [
+      "Each of the 5 seats is held by a woman with probability $4/12$ (by symmetry).",
+      "$E = 5\\times\\dfrac{4}{12} = \\dfrac{5}{3} \\approx 1.67$."
+    ],
+    "hints": [
+      "Use an indicator for each committee member.",
+      "What is the probability that a given committee member is a woman?",
+      "Add the expectations."
+    ],
+    "concept": "Expectation of a hypergeometric count by linearity.",
+    "misconception": "Using a binomial formula with the wrong probability.",
+    "why": "Each position is equally likely to be any employee.",
+    "fam": "rv:indicators"
+  },
+  {
+    "id": "RVX-08",
+    "topic": "rv",
+    "sub": "expected value of a betting strategy",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A gambler bets on an event of probability 0.45 at even odds. Strategy: stake \\$1; if it wins, stop. If it loses, stake \\$2; if that wins, stop. If that loses, stake \\$4 and then stop whatever happens. Let $X$ be the net gain. What is $E[X]$?",
+    "data": "",
+    "answer": {
+      "value": -0.3310000000000004,
+      "display": "-0.331"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "-0.331",
+        "correct": true,
+        "why": "",
+        "v": -0.3310000000000004
+      },
+      {
+        "text": "0",
+        "correct": false,
+        "why": "Even odds would give zero expectation only if the event had probability 0.5.",
+        "v": 0
+      },
+      {
+        "text": "0.6673",
+        "correct": false,
+        "why": "The final loss is \\$7 (1+2+4), not \\$1.",
+        "v": 0.66725
+      },
+      {
+        "text": "-0.1",
+        "correct": false,
+        "why": "This is the expectation of a single \\$1 bet; the strategy has several stages.",
+        "v": -0.10000000000000003
+      }
+    ],
+    "solution": [
+      "Wins: stage 1: $+1$ with prob $0.45$; stage 2: $-1+2 = +1$ with prob $0.55\\cdot0.45$; stage 3: $-1-2+4 = +1$ with prob $0.55^2\\cdot0.45$. All three lost: $-1-2-4 = -7$ with prob $0.55^3 = 0.1664$.",
+      "$E[X] = (0.45+0.2475+0.1361)(1) + 0.1664(-7) = 0.8336-1.1647 = -0.331$."
+    ],
+    "hints": [
+      "Enumerate the four outcomes of the strategy and the gain in each.",
+      "Compute the probability of each branch.",
+      "Weight the gains and add."
+    ],
+    "concept": "Expectation over a decision tree.",
+    "misconception": "Assuming a staking system beats an unfavourable game.",
+    "why": "Frequent small wins are offset by rare large losses; expectation stays negative.",
+    "fam": "rv:decisions"
+  },
+  {
+    "id": "RVX-09",
+    "topic": "rv",
+    "sub": "expected search effort",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A prize is hidden in one of 12 boxes, each equally likely. Boxes are opened one at a time in a fixed order until the prize is found. What is the <b>expected number of boxes opened</b>?",
+    "data": "",
+    "answer": {
+      "value": 6.5,
+      "display": "6.5"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "6.5",
+        "correct": true,
+        "why": "",
+        "v": 6.5
+      },
+      {
+        "text": "6",
+        "correct": false,
+        "why": "This is the midpoint of 0 to 12; the first box is box number 1, so the mean is $(1+12)/2$.",
+        "v": 6
+      },
+      {
+        "text": "12",
+        "correct": false,
+        "why": "This is the worst case, when the prize is in the last box.",
+        "v": 12
+      },
+      {
+        "text": "0.0833",
+        "correct": false,
+        "why": "This is the probability that the prize is in any particular box.",
+        "v": 0.08333333333333333
+      }
+    ],
+    "solution": [
+      "The number of boxes opened equals the position $K$ of the prize, uniform on $1,\\dots,12$.",
+      "$E[K] = \\dfrac{1+2+\\cdots+12}{12} = \\dfrac{78}{12} = 6.5$."
+    ],
+    "hints": [
+      "What is the distribution of the position of the prize?",
+      "Use the sum $1+2+\\cdots+n = n(n+1)/2$.",
+      "Divide the sum of the positions by 12."
+    ],
+    "concept": "Expectation of a discrete uniform variable.",
+    "misconception": "Using $n/2$ for a variable starting at 1.",
+    "why": "The mean of a discrete uniform variable on $1..n$ is $(n+1)/2$.",
+    "fam": "rv:indicators"
+  },
+  {
+    "id": "RVX-10",
+    "topic": "rv",
+    "sub": "group testing",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Sixty blood samples are split into ten batches of six and each batch is mixed and tested once. A mixed batch tests positive if any of its samples is positive, and each sample is independently positive with probability 0.05. Positive batches are then re-tested sample by sample (six more tests); negative batches need nothing more. What is the <b>expected total number of tests</b>?",
+    "data": "",
+    "answer": {
+      "value": 25.89448656250001,
+      "display": "25.8945"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "25.8945",
+        "correct": true,
+        "why": "",
+        "v": 25.89448656250001
+      },
+      {
+        "text": "10",
+        "correct": false,
+        "why": "This counts only the pooled tests; positive pools require 6 additional tests.",
+        "v": 10
+      },
+      {
+        "text": "60",
+        "correct": false,
+        "why": "This is the number of tests with no pooling.",
+        "v": 60
+      },
+      {
+        "text": "28",
+        "correct": false,
+        "why": "The probability that a pool is positive is $1-0.95^6$, not $6\\times0.05$ scaled again.",
+        "v": 28.000000000000004
+      }
+    ],
+    "solution": [
+      "Each pool needs 1 test, plus 6 more if positive. $P(\\text{positive}) = 1-0.95^6 \\approx 0.2649$.",
+      "Expected tests per pool: $1+6(0.2649) = 2.589$.",
+      "Ten pools: $25.9$ tests."
+    ],
+    "hints": [
+      "How many tests does a single pool need in each case?",
+      "What is the probability that a pool of 6 is positive?",
+      "Multiply the expected tests per pool by 10."
+    ],
+    "concept": "Expected cost of a conditional procedure.",
+    "misconception": "Using $np$ for the positive probability.",
+    "why": "Pooling pays off when positives are rare.",
+    "fam": "rv:indicators"
+  },
+  {
+    "id": "RVX-11",
+    "topic": "rv",
+    "sub": "newsvendor decision",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A bakery bakes $k$ loaves each morning at a cost of \\$2 each and sells them at \\$5; unsold loaves are worthless. Daily demand is equally likely to be 1, 2, 3, 4, 5 or 6 loaves. How many loaves should it bake to <b>maximise expected profit</b>?",
+    "data": "",
+    "answer": {
+      "value": 4,
+      "display": "4"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "4",
+        "correct": true,
+        "why": "",
+        "v": 4
+      },
+      {
+        "text": "3",
+        "correct": false,
+        "why": "At $k=3$ the expected profit is 6.5, below the 7.0 obtained with 4 loaves.",
+        "v": 3
+      },
+      {
+        "text": "6",
+        "correct": false,
+        "why": "Baking for the maximum demand wastes loaves on low-demand days: the expected profit is 5.5, below the optimum.",
+        "v": 6
+      },
+      {
+        "text": "2",
+        "correct": false,
+        "why": "At $k=2$ the expected profit is about 5.17, well below the optimum.",
+        "v": 2
+      }
+    ],
+    "solution": [
+      "Profit for $k$ loaves and demand $d$ is $5\\min(d,k)-2k$. Averaging over $d=1,\\dots,6$ gives expected profits $k=1$: 3.00; $k=2$: 5.17; $k=3$: 6.50; $k=4$: 7.00; $k=5$: 6.67; $k=6$: 5.50.",
+      "Equivalently, loaf number $k$ sells with probability $(7-k)/6$ and is worth baking while $5(7-k)/6 > 2$, i.e. $k\\le4$.",
+      "Bake 4 loaves."
+    ],
+    "hints": [
+      "Compute the expected profit for each order quantity $k$.",
+      "Think about the marginal loaf: probability it sells times \\$5 minus its \\$2 cost.",
+      "Order while the marginal expected gain is positive."
+    ],
+    "concept": "Optimising expected profit over a discrete decision.",
+    "misconception": "Ordering for the average or maximum demand.",
+    "why": "The optimum balances the cost of unsold loaves against forgone sales.",
+    "fam": "rv:decisions"
+  },
+  {
+    "id": "RVX-12",
+    "topic": "rv",
+    "sub": "expected winnings",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A box holds 4 red and 6 blue marbles. Two are drawn without replacement. You win \\$3 if they are the <b>same colour</b> and lose \\$2 if they differ. What is your expected winning?",
+    "data": "",
+    "answer": {
+      "value": 0.33333333333333326,
+      "display": "0.3333"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3333",
+        "correct": true,
+        "why": "",
+        "v": 0.33333333333333326
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "The probability of the same colour is $21/45$, not 0.52.",
+        "v": 0.6000000000000001
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This averages the two prizes with equal weights; the outcomes are not equally likely.",
+        "v": 0.5
+      },
+      {
+        "text": "1.4",
+        "correct": false,
+        "why": "This ignores the loss on the differing-colour outcomes.",
+        "v": 1.4
+      }
+    ],
+    "solution": [
+      "$P(\\text{same}) = \\dfrac{\\binom42+\\binom62}{\\binom{10}2} = \\dfrac{6+15}{45} = \\dfrac{21}{45}$; $P(\\text{differ}) = \\dfrac{24}{45}$.",
+      "$E = 3\\cdot\\dfrac{21}{45} - 2\\cdot\\dfrac{24}{45} = \\dfrac{15}{45} = \\dfrac13$."
+    ],
+    "hints": [
+      "Find the probability of two marbles of the same colour.",
+      "The complement is \"different colours\".",
+      "Weight the gain and the loss by these probabilities."
+    ],
+    "concept": "Expected value of a two-outcome game.",
+    "misconception": "Using equal weights.",
+    "why": "Expected value weights each payoff by its probability.",
+    "fam": "rv:decisions"
+  },
+  {
+    "id": "RVX-13",
+    "topic": "rv",
+    "sub": "variance of a population value",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A bank has four branches with 12, 18, 30 and 40 staff. One branch is chosen at random (each with probability $\\tfrac14$) and $Y$ is its staff count. What is $\\mathrm{Var}(Y)$?",
+    "data": "",
+    "answer": {
+      "value": 117,
+      "display": "117"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "117",
+        "correct": true,
+        "why": "",
+        "v": 117
+      },
+      {
+        "text": "10.8167",
+        "correct": false,
+        "why": "This is the standard deviation, not the variance.",
+        "v": 10.816653826391969
+      },
+      {
+        "text": "742",
+        "correct": false,
+        "why": "This is $E[Y^2]$; the square of the mean must be subtracted.",
+        "v": 742
+      },
+      {
+        "text": "156",
+        "correct": false,
+        "why": "This divides by 3 as for a sample variance; here the four branches are the whole distribution.",
+        "v": 156
+      }
+    ],
+    "solution": [
+      "$E[Y] = (12+18+30+40)/4 = 25$.",
+      "$E[Y^2] = (144+324+900+1600)/4 = 742$.",
+      "$\\mathrm{Var}(Y) = 742-625 = 117$."
+    ],
+    "hints": [
+      "Find the mean of $Y$ first.",
+      "Then compute $E[Y^2]$.",
+      "Use $\\mathrm{Var}(Y) = E[Y^2]-(E[Y])^2$."
+    ],
+    "concept": "Variance from a pmf.",
+    "misconception": "Reporting $E[Y^2]$ or the standard deviation.",
+    "why": "The shortcut formula reduces variance to two expectations.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-14",
+    "topic": "rv",
+    "sub": "expectation of a quadratic",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A random variable $X$ has $E[X] = 2$ and $\\mathrm{Var}(X) = 3$. Find $E\\big[(X-1)(X+3)\\big]$.",
+    "data": "",
+    "answer": {
+      "value": 8,
+      "display": "8"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "8",
+        "correct": true,
+        "why": "",
+        "v": 8
+      },
+      {
+        "text": "5",
+        "correct": false,
+        "why": "This substitutes the mean into the product; $E[g(X)]\\ne g(E[X])$ for a quadratic.",
+        "v": 5
+      },
+      {
+        "text": "4",
+        "correct": false,
+        "why": "The linear term $2X$ was dropped when expanding $(X-1)(X+3) = X^2+2X-3$.",
+        "v": 4
+      },
+      {
+        "text": "14",
+        "correct": false,
+        "why": "The constant term has the wrong sign: $(X-1)(X+3)$ expands with $-3$, not $+3$.",
+        "v": 14
+      }
+    ],
+    "solution": [
+      "$(X-1)(X+3) = X^2+2X-3$.",
+      "$E[X^2] = \\mathrm{Var}(X)+(E[X])^2 = 3+4 = 7$.",
+      "$E = 7+2(2)-3 = 8$."
+    ],
+    "hints": [
+      "Expand the product.",
+      "Find $E[X^2]$ from the variance and the mean.",
+      "Use linearity of expectation on the expanded form."
+    ],
+    "concept": "Using $E[X^2] = \\mathrm{Var}(X)+(E[X])^2$.",
+    "misconception": "Plugging the mean into a nonlinear expression.",
+    "why": "Variance is exactly the gap between $E[X^2]$ and $(E[X])^2$.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-15",
+    "topic": "rv",
+    "sub": "expected value with two sources",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "In a promotion a customer rolls a fair six-sided die and, separately, spins a fair two-sided token. The prize in dollars is <b>three times</b> the die value if the token lands on gold and <b>half</b> the die value if it lands on silver. What is the expected prize?",
+    "data": "",
+    "answer": {
+      "value": 6.125,
+      "display": "6.125"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "6.125",
+        "correct": true,
+        "why": "",
+        "v": 6.125
+      },
+      {
+        "text": "3.5",
+        "correct": false,
+        "why": "This is the expected die value alone, without the multipliers.",
+        "v": 3.5
+      },
+      {
+        "text": "12.25",
+        "correct": false,
+        "why": "The multipliers must be weighted by the coin probabilities $\\frac12$ each.",
+        "v": 12.25
+      },
+      {
+        "text": "1.75",
+        "correct": false,
+        "why": "The expected multiplier is 1.75; it still has to be multiplied by the expected die value 3.5.",
+        "v": 1.75
+      }
+    ],
+    "solution": [
+      "The coin and die are independent: $E[\\text{winnings}] = E[\\text{multiplier}]\\,E[\\text{die}] = (0.5\\cdot3+0.5\\cdot0.5)(3.5) = 1.75\\times3.5 = 6.125$."
+    ],
+    "hints": [
+      "Find the expected multiplier from the coin.",
+      "The die value has expectation 3.5.",
+      "Independence lets you multiply the two expectations."
+    ],
+    "concept": "Expectation of a product of independent variables.",
+    "misconception": "Ignoring one of the two sources of randomness.",
+    "why": "For independent factors $E[XY] = E[X]E[Y]$.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-16",
+    "topic": "rv",
+    "sub": "indicator method",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two reviewers each independently pick 4 of 15 papers at random. What is the <b>expected number of papers picked by both</b> reviewers?",
+    "data": "",
+    "answer": {
+      "value": 1.0666666666666667,
+      "display": "1.0667"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "1.0667",
+        "correct": true,
+        "why": "",
+        "v": 1.0666666666666667
+      },
+      {
+        "text": "0.2667",
+        "correct": false,
+        "why": "This is one reviewer’s probability of picking a given paper, not the expected size of the overlap.",
+        "v": 0.26666666666666666
+      },
+      {
+        "text": "4",
+        "correct": false,
+        "why": "This is the expected number of papers picked by one reviewer.",
+        "v": 4
+      },
+      {
+        "text": "0.0711",
+        "correct": false,
+        "why": "This is the probability that one particular paper is picked by both reviewers; the expected count sums it over all 15 papers.",
+        "v": 0.07111111111111111
+      }
+    ],
+    "solution": [
+      "For a given paper, $P(\\text{picked by both}) = \\dfrac4{15}\\cdot\\dfrac4{15}$ by independence.",
+      "Summing 15 indicators: $15\\cdot\\dfrac{16}{225} = \\dfrac{16}{15} \\approx 1.07$."
+    ],
+    "hints": [
+      "Define an indicator for each paper.",
+      "The two reviewers choose independently: multiply their selection probabilities.",
+      "Add over the 15 papers."
+    ],
+    "concept": "Linearity with indicators.",
+    "misconception": "Counting papers rather than using probabilities.",
+    "why": "Linearity avoids any need for the joint distribution of the count.",
+    "fam": "rv:indicators"
+  },
+  {
+    "id": "RVX-17",
+    "topic": "rv",
+    "sub": "expected number of distinct categories",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "25 colleagues each independently pick one of the 12 calendar months at random for a holiday. What is the <b>expected number of different months</b> that are chosen?",
+    "data": "",
+    "answer": {
+      "value": 10.637089856448267,
+      "display": "10.6371"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "10.6371",
+        "correct": true,
+        "why": "",
+        "v": 10.637089856448267
+      },
+      {
+        "text": "12",
+        "correct": false,
+        "why": "With 25 people it is very likely, but not certain, that every month appears; the expectation is slightly below 12.",
+        "v": 12
+      },
+      {
+        "text": "1.3629",
+        "correct": false,
+        "why": "This is the expected number of months that nobody chooses.",
+        "v": 1.3629101435517332
+      },
+      {
+        "text": "2.0833",
+        "correct": false,
+        "why": "This is the expected number of people per month, not the number of months chosen.",
+        "v": 2.0833333333333335
+      }
+    ],
+    "solution": [
+      "For each month define an indicator that at least one person chooses it. $P = 1-(11/12)^{25} \\approx 0.8866$.",
+      "By linearity $E = 12\\times0.8866 \\approx 10.64$."
+    ],
+    "hints": [
+      "Define an indicator for each month.",
+      "The probability that nobody picks a given month is $(11/12)^{25}$.",
+      "Add the 12 expectations."
+    ],
+    "concept": "Expected number of occupied categories via indicators.",
+    "misconception": "Trying to find the full distribution.",
+    "why": "Linearity makes the dependence between months irrelevant.",
+    "fam": "rv:indicators"
+  },
+  {
+    "id": "RVX-18",
+    "topic": "rv",
+    "sub": "collecting all types",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A cereal brand includes one of 5 different collectible cards in every box, each type equally likely and independently of earlier boxes. What is the <b>expected number of boxes</b> needed to complete the set?",
+    "data": "",
+    "answer": {
+      "value": 11.416666666666666,
+      "display": "11.4167"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "11.4167",
+        "correct": true,
+        "why": "",
+        "v": 11.416666666666666
+      },
+      {
+        "text": "5",
+        "correct": false,
+        "why": "This is the number of different cards; repeats are expected before the set is complete.",
+        "v": 5
+      },
+      {
+        "text": "10.4167",
+        "correct": false,
+        "why": "The last card needs an expected $5/1 = 5$ boxes, which was left out of the sum.",
+        "v": 10.416666666666664
+      },
+      {
+        "text": "25",
+        "correct": false,
+        "why": "This is $5^2$; the expected number is smaller because later stages need fewer cards.",
+        "v": 25
+      }
+    ],
+    "solution": [
+      "After $k$ distinct cards, each box yields a new one with probability $(5-k)/5$, so the wait is geometric with mean $5/(5-k)$.",
+      "Sum over $k=0,\\dots,4$: $5(1+\\tfrac12+\\tfrac13+\\tfrac14+\\tfrac15) = 11.42$."
+    ],
+    "hints": [
+      "Split the collection into stages: waiting for the first new card, the second, and so on.",
+      "Each stage is a geometric waiting time.",
+      "Add the expected waiting times."
+    ],
+    "concept": "Coupon-collector expectation.",
+    "misconception": "Assuming the number of boxes equals the number of cards.",
+    "why": "The final cards take longest because few new types remain.",
+    "fam": "rv:indicators"
+  },
+  {
+    "id": "RVX-19",
+    "topic": "rv",
+    "sub": "variance of a sum",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Twelve independent rolls are made of a fair die with faces numbered 1 to 4, and the face values are added. Find the <b>variance of this total</b>.",
+    "data": "",
+    "answer": {
+      "value": 15,
+      "display": "15"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "15",
+        "correct": true,
+        "why": "",
+        "v": 15
+      },
+      {
+        "text": "1.25",
+        "correct": false,
+        "why": "This is the variance of one roll; the 12 independent variances add.",
+        "v": 1.25
+      },
+      {
+        "text": "90",
+        "correct": false,
+        "why": "This is the sum of second moments, $12E[X^2]$, not the variance.",
+        "v": 90
+      },
+      {
+        "text": "180",
+        "correct": false,
+        "why": "This would be the variance of 12 times a single roll (perfect dependence), not of a sum of 12 independent rolls.",
+        "v": 180
+      }
+    ],
+    "solution": [
+      "One roll: $E[X]=2.5$, $E[X^2] = (1+4+9+16)/4 = 7.5$, so $\\mathrm{Var}(X) = 7.5-6.25 = 1.25$.",
+      "For independent rolls variances add: $12\\times1.25 = 15$."
+    ],
+    "hints": [
+      "Find the variance of one roll first.",
+      "Are the rolls independent?",
+      "Add 12 equal variances."
+    ],
+    "concept": "Variance of a sum of independent variables.",
+    "misconception": "Using $n^2$ times the variance.",
+    "why": "Independence removes covariances so only variances remain.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-20",
+    "topic": "rv",
+    "sub": "density normalisation",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A continuous variable has density $f(x) = c\\,(4-x^2)$ for $-2<x<2$ and 0 elsewhere. What is $c$?",
+    "data": "",
+    "answer": {
+      "value": 0.09375,
+      "display": "0.0938"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0938",
+        "correct": true,
+        "why": "",
+        "v": 0.09375
+      },
+      {
+        "text": "0.1875",
+        "correct": false,
+        "why": "This integrates only over $(0,2)$, which is half the support.",
+        "v": 0.1875
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This would normalise a constant density on $(-2,2)$; the $x^2$ term is ignored.",
+        "v": 0.25
+      },
+      {
+        "text": "0.0469",
+        "correct": false,
+        "why": "The integral is $32/3$, not $64/3$.",
+        "v": 0.046875
+      }
+    ],
+    "solution": [
+      "$\\int_{-2}^{2}(4-x^2)\\,dx = \\left[4x-\\dfrac{x^3}{3}\\right]_{-2}^{2} = 2\\left(8-\\dfrac83\\right) = \\dfrac{32}{3}$.",
+      "Setting $c\\cdot\\dfrac{32}{3} = 1$ gives $c = \\dfrac{3}{32} = 0.09375$."
+    ],
+    "hints": [
+      "A density must integrate to 1 over its support.",
+      "Integrate $4-x^2$ from $-2$ to $2$.",
+      "Divide 1 by the integral to solve for $c$."
+    ],
+    "concept": "Normalising a density.",
+    "misconception": "Integrating over only half the support.",
+    "why": "The constant $c$ scales the area under the curve to 1.",
+    "fam": "rv:density"
+  },
+  {
+    "id": "RVX-21",
+    "topic": "rv",
+    "sub": "existence of moments",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A variable has density $f(x) = 2/x^3$ for $x>1$ and 0 otherwise. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$E[X] = 2$ is finite, but $E[X^2]$ is infinite, so $\\mathrm{Var}(X)$ does not exist"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$E[X] = 2$ is finite, but $E[X^2]$ is infinite, so $\\mathrm{Var}(X)$ does not exist",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Both $E[X]$ and $\\mathrm{Var}(X)$ are finite",
+        "correct": false,
+        "why": "$E[X^2] = \\int_1^\\infty 2/x\\,dx$ diverges logarithmically."
+      },
+      {
+        "text": "$E[X]$ does not exist",
+        "correct": false,
+        "why": "$E[X] = \\int_1^\\infty 2/x^2\\,dx = 2$, which is finite."
+      },
+      {
+        "text": "$E[X]=1$ and $\\mathrm{Var}(X)=1$",
+        "correct": false,
+        "why": "The mean of this density is 2, and the variance is not finite."
+      }
+    ],
+    "solution": [
+      "$\\int_1^\\infty \\dfrac{2}{x^3}dx = 1$, so it is a density.",
+      "$E[X] = \\int_1^\\infty x\\cdot\\dfrac{2}{x^3}dx = \\int_1^\\infty \\dfrac{2}{x^2}dx = 2$.",
+      "$E[X^2] = \\int_1^\\infty \\dfrac{2}{x}dx = \\infty$, so the variance does not exist."
+    ],
+    "hints": [
+      "Compute $E[X]$ by integrating $x f(x)$.",
+      "Then check $E[X^2]$ by integrating $x^2 f(x)$.",
+      "Does $\\int_1^\\infty 1/x\\,dx$ converge?"
+    ],
+    "concept": "Mean may exist while variance does not.",
+    "misconception": "Assuming that a finite mean implies a finite variance.",
+    "why": "The heavier the tail, the lower the highest moment that exists.",
+    "fam": "rv:density"
+  },
+  {
+    "id": "RVX-22",
+    "topic": "rv",
+    "sub": "solving for density parameters",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A waiting time $X$ (in minutes) is described by a linear density $f(x) = a+bx$ on $0\\le x\\le2$ and zero elsewhere, and its mean is known to be $1.2$ minutes. Find the probability that the wait exceeds one minute.",
+    "data": "",
+    "answer": {
+      "value": 0.6499999999999999,
+      "display": "0.65"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.65",
+        "correct": true,
+        "why": "",
+        "v": 0.6499999999999999
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "This would hold for a symmetric density; here the mean 1.2 exceeds 1 but the density is not constant.",
+        "v": 0.5
+      },
+      {
+        "text": "0.35",
+        "correct": false,
+        "why": "This is $P(X<1) = a + b/2$, the complement of the probability asked for.",
+        "v": 0.35
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This is $E[X]/2$, not a tail probability.",
+        "v": 0.6
+      }
+    ],
+    "solution": [
+      "Normalisation: $\\int_0^2(a+bx)dx = 2a+2b = 1$.",
+      "Mean: $\\int_0^2 x(a+bx)dx = 2a+\\tfrac83 b = 1.2$.",
+      "Subtract twice the first from... solving gives $b = 0.3$, $a = 0.2$.",
+      "$P(X>1) = \\int_1^2(a+bx)dx = a + 1.5b = 0.65$."
+    ],
+    "hints": [
+      "Use two conditions: total probability 1 and the given mean.",
+      "Solve the two linear equations for $a$ and $b$.",
+      "Integrate the density from 1 to 2."
+    ],
+    "concept": "Determining a density from moment conditions.",
+    "misconception": "Forgetting one of the two conditions.",
+    "why": "Two unknown parameters need two conditions.",
+    "fam": "rv:density"
+  },
+  {
+    "id": "RVX-23",
+    "topic": "rv",
+    "sub": "expected lifetime",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The lifetime (in years) of a component has density $f(x) = \\dfrac{x}{4}\\,e^{-x/2}$ for $x\\ge0$. What is its expected lifetime?",
+    "data": "",
+    "answer": {
+      "value": 4,
+      "display": "4"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "4",
+        "correct": true,
+        "why": "",
+        "v": 4
+      },
+      {
+        "text": "2",
+        "correct": false,
+        "why": "This is the mean of the density $x e^{-x}$, which has a different scale.",
+        "v": 2
+      },
+      {
+        "text": "8",
+        "correct": false,
+        "why": "This is $2\\times$ the mean; the scale parameter is 2 and the shape is 2, giving a mean of 4.",
+        "v": 8
+      },
+      {
+        "text": "1",
+        "correct": false,
+        "why": "This is not obtained from the integral of $x f(x)$.",
+        "v": 1
+      }
+    ],
+    "solution": [
+      "$E[X] = \\int_0^\\infty \\dfrac{x^2}{4}e^{-x/2}dx$. Put $x = 2u$: $= \\dfrac{1}{4}\\cdot8\\int_0^\\infty u^2e^{-u}du = 2\\cdot2! = 4$.",
+      "(This is a gamma distribution with shape 2 and scale 2: mean $2\\times2 = 4$.)"
+    ],
+    "hints": [
+      "Set up $\\int_0^\\infty x f(x)\\,dx$.",
+      "Substitute $x = 2u$ to reach a standard gamma integral.",
+      "Use $\\int_0^\\infty u^n e^{-u}du = n!$."
+    ],
+    "concept": "Mean of a continuous distribution by integration.",
+    "misconception": "Mis-scaling after substitution.",
+    "why": "Rescaling the variable multiplies the mean by the scale.",
+    "fam": "rv:density"
+  },
+  {
+    "id": "RVX-25",
+    "topic": "rv",
+    "sub": "decision under expectation",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Option $A$ pays \\$0, \\$3 or \\$12 with probabilities 0.5, 0.3 and 0.2. Option $B$ pays \\$0, \\$1 or \\$15 with probabilities 0.6, 0.25 and 0.15. Which option has the higher expected payoff?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Option $A$: expected payoff \\$3.30 versus \\$2.50"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Option $A$: expected payoff \\$3.30 versus \\$2.50",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Option $B$: it offers the largest single prize, \\$15",
+        "correct": false,
+        "why": "The expected payoff of $B$ is $0.25+2.25 = \\$2.50$, below $A$’s \\$3.30."
+      },
+      {
+        "text": "They are equal, since both have a 50% to 60% chance of paying nothing",
+        "correct": false,
+        "why": "The chance of paying nothing is different, and so are the expected payoffs."
+      },
+      {
+        "text": "Option $A$: expected payoff \\$4.00 versus \\$2.50",
+        "correct": false,
+        "why": "The payoff of $A$ is $0.9+2.4 = \\$3.30$, not \\$4.00."
+      }
+    ],
+    "solution": [
+      "$E_A = 0.3(3)+0.2(12) = 0.9+2.4 = 3.30$.",
+      "$E_B = 0.25(1)+0.15(15) = 0.25+2.25 = 2.50$.",
+      "Option $A$ has the higher expected payoff."
+    ],
+    "hints": [
+      "Compute the expected payoff of each option separately.",
+      "A zero payoff contributes nothing to the expectation.",
+      "Compare the two values."
+    ],
+    "concept": "Using expected value to compare options.",
+    "misconception": "Choosing on the maximum prize.",
+    "why": "Expectation summarises each distribution with a single number weighted by probability.",
+    "fam": "rv:decisions"
+  },
+  {
+    "id": "RVX-26",
+    "topic": "rv",
+    "sub": "expected count",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A call centre expects 340 calls on a given day. 15% of calls are complaints and 20% of complaints are escalated to a manager. About how many calls are expected to be escalated?",
+    "data": "",
+    "answer": {
+      "value": 10.200000000000001,
+      "display": "10.2"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "10.2",
+        "correct": true,
+        "why": "",
+        "v": 10.200000000000001
+      },
+      {
+        "text": "51",
+        "correct": false,
+        "why": "This is the expected number of complaints, not the escalated ones.",
+        "v": 51
+      },
+      {
+        "text": "68",
+        "correct": false,
+        "why": "The 20% applies only to complaints, not to all calls.",
+        "v": 68
+      },
+      {
+        "text": "119",
+        "correct": false,
+        "why": "The proportions are applied in sequence (multiplied), not added.",
+        "v": 118.99999999999999
+      }
+    ],
+    "solution": [
+      "Complaints: $340\\times0.15 = 51$. Escalated: $51\\times0.20 = 10.2$."
+    ],
+    "hints": [
+      "How many of the calls are complaints?",
+      "The escalation rate applies to complaints only.",
+      "Multiply the proportions."
+    ],
+    "concept": "Expected counts from chained proportions.",
+    "misconception": "Adding proportions.",
+    "why": "Each proportion is a conditional rate applied in turn.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-27",
+    "topic": "rv",
+    "sub": "reading a pmf",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The number $X$ of defects found on a circuit board has pmf $p(0)=0.30$, $p(1)=0.30$, $p(2)=0.20$, $p(3)=0.12$, $p(4)=0.08$. What is $P(1\\le X\\le3)$?",
+    "data": "",
+    "answer": {
+      "value": 0.62,
+      "display": "0.62"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.62",
+        "correct": true,
+        "why": "",
+        "v": 0.62
+      },
+      {
+        "text": "0.92",
+        "correct": false,
+        "why": "The value $X=0$ (probability 0.30) is not in the interval.",
+        "v": 0.9199999999999999
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is $P(1<X<3) = P(X=2)$; the end values 1 and 3 are included.",
+        "v": 0.2
+      },
+      {
+        "text": "0.7",
+        "correct": false,
+        "why": "The value $X=4$ lies outside the interval.",
+        "v": 0.7
+      }
+    ],
+    "solution": [
+      "$P(1\\le X\\le3) = p(1)+p(2)+p(3) = 0.30+0.20+0.12 = 0.62$."
+    ],
+    "hints": [
+      "Which values of $X$ satisfy $1\\le X\\le3$?",
+      "The end points are included.",
+      "Add their probabilities."
+    ],
+    "concept": "Probabilities of events defined by a discrete variable.",
+    "misconception": "Excluding or including the wrong end points.",
+    "why": "A discrete event’s probability is the sum of the pmf over its values.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-28",
+    "topic": "rv",
+    "sub": "valid pmf",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Which of the following is a <b>valid</b> probability mass function?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$p(x) = (6-x)/15$ for $x = 1,2,3,4,5$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$p(x) = (6-x)/15$ for $x = 1,2,3,4,5$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$p(x) = x/10$ for $x = 1,2,3,4,5$",
+        "correct": false,
+        "why": "The probabilities sum to $15/10 = 1.5 > 1$."
+      },
+      {
+        "text": "$p(x) = (x-2)/6$ for $x = 1,2,3,4$",
+        "correct": false,
+        "why": "$p(1) = -1/6$ is negative."
+      },
+      {
+        "text": "$p(x) = x^2/50$ for $x = 1,2,3,4,5$",
+        "correct": false,
+        "why": "The probabilities sum to $55/50 > 1$."
+      }
+    ],
+    "solution": [
+      "A pmf needs $p(x)\\ge0$ and $\\sum p(x) = 1$.",
+      "$(6-x)/15$ for $x=1,\\dots,5$ gives $5,4,3,2,1$ over 15: all non-negative and summing to $15/15 = 1$.",
+      "The other candidates violate non-negativity or sum to more than 1."
+    ],
+    "hints": [
+      "Check non-negativity for each candidate.",
+      "Then check whether the probabilities sum to 1.",
+      "Only one candidate satisfies both."
+    ],
+    "concept": "Conditions for a pmf.",
+    "misconception": "Checking only one condition.",
+    "why": "Probabilities must be non-negative and total 1.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-31",
+    "topic": "rv",
+    "sub": "deductible pricing",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The annual loss from a fire is \\$0, \\$2,000 or \\$8,000 with probabilities 0.85, 0.10 and 0.05. An insurer pays the loss in excess of a \\$1,000 deductible. What premium gives the insurer an <b>expected profit of \\$150</b>?",
+    "data": "",
+    "answer": {
+      "value": 600,
+      "display": "600"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "600",
+        "correct": true,
+        "why": "",
+        "v": 600
+      },
+      {
+        "text": "750",
+        "correct": false,
+        "why": "This ignores the deductible and prices as if the insurer paid the whole loss.",
+        "v": 750
+      },
+      {
+        "text": "450",
+        "correct": false,
+        "why": "This is the expected payout; the target profit of \\$150 has not been added.",
+        "v": 450
+      },
+      {
+        "text": "300",
+        "correct": false,
+        "why": "The profit must be added to, not subtracted from, the expected payout.",
+        "v": 300
+      }
+    ],
+    "solution": [
+      "Payout: \\$1,000 with probability 0.10 and \\$7,000 with probability 0.05.",
+      "Expected payout $= 100+350 = 450$.",
+      "Premium $= 450+150 = 600$."
+    ],
+    "hints": [
+      "What does the insurer pay in each loss case after the deductible?",
+      "Compute the expected payout.",
+      "Add the required expected profit."
+    ],
+    "concept": "Expected value of a policy payout.",
+    "misconception": "Ignoring the deductible.",
+    "why": "Expected profit is premium minus expected payout.",
+    "fam": "rv:decisions"
+  },
+  {
+    "id": "RVX-33",
+    "topic": "rv",
+    "sub": "linear transformation of a variance",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A warehouse holds 100 units and ships them in crates of 4. The number of crates $X$ ordered has variance $\\mathrm{Var}(X) = 2.25$. What is the variance of the number of units <b>left</b> after the order, $Y = 100-4X$?",
+    "data": "",
+    "answer": {
+      "value": 36,
+      "display": "36"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "36",
+        "correct": true,
+        "why": "",
+        "v": 36
+      },
+      {
+        "text": "9",
+        "correct": false,
+        "why": "The coefficient must be squared when scaling a variance: $a^2\\mathrm{Var}(X)$.",
+        "v": 9
+      },
+      {
+        "text": "2",
+        "correct": false,
+        "why": "Multiplying by 4 scales the variance by 16; only the constant 100 leaves it unchanged.",
+        "v": 2.25
+      },
+      {
+        "text": "216",
+        "correct": false,
+        "why": "The constant 100 does not multiply the variance; it has no effect on it.",
+        "v": 216
+      }
+    ],
+    "solution": [
+      "$\\mathrm{Var}(a+bX) = b^2\\mathrm{Var}(X)$.",
+      "$\\mathrm{Var}(100-4X) = (-4)^2(2.25) = 36$."
+    ],
+    "hints": [
+      "Which part of $100-4X$ affects the variance?",
+      "The coefficient is squared.",
+      "Multiply $(-4)^2$ by 2.25."
+    ],
+    "concept": "Variance of a linear transformation.",
+    "misconception": "Not squaring the coefficient.",
+    "why": "Shifts change location, not spread; scalings change spread quadratically.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-34",
+    "topic": "rv",
+    "sub": "expected maximum",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two fair four-sided dice (faces 1 to 4) are rolled and $M$ is the <b>larger</b> of the two results. What is $E[M]$?",
+    "data": "",
+    "answer": {
+      "value": 3.125,
+      "display": "3.125"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "3.125",
+        "correct": true,
+        "why": "",
+        "v": 3.125
+      },
+      {
+        "text": "2.5",
+        "correct": false,
+        "why": "This is the mean of a single die; the maximum of two is larger on average.",
+        "v": 2.5
+      },
+      {
+        "text": "1.875",
+        "correct": false,
+        "why": "This is $E[\\min]$, the expected smaller value.",
+        "v": 1.875
+      },
+      {
+        "text": "4",
+        "correct": false,
+        "why": "This is the largest possible value of the maximum, not its expectation.",
+        "v": 4
+      }
+    ],
+    "solution": [
+      "$P(M=k) = \\dfrac{k^2-(k-1)^2}{16} = \\dfrac{2k-1}{16}$ for $k=1,\\dots,4$: $\\tfrac1{16},\\tfrac3{16},\\tfrac5{16},\\tfrac7{16}$.",
+      "$E[M] = \\dfrac{1+6+15+28}{16} = \\dfrac{50}{16} = 3.125$."
+    ],
+    "hints": [
+      "Find $P(M\\le k)$ for each $k$ and difference them.",
+      "Write the pmf of $M$.",
+      "Compute $\\sum k\\,P(M=k)$."
+    ],
+    "concept": "Expectation of a maximum.",
+    "misconception": "Assuming the maximum has the same mean as one die.",
+    "why": "Taking a maximum shifts probability towards large values.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-35",
+    "topic": "rv",
+    "sub": "sum of two discrete variables",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "$X$ is uniform on $\\{1,3,5\\}$ and $Y$ is uniform on $\\{0,2,4\\}$, independently. What is $P(X+Y\\ge7)$?",
+    "data": "",
+    "answer": {
+      "value": 0.3333333333333333,
+      "display": "1/3"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/3",
+        "correct": true,
+        "why": "",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This is $P(X+Y\\ge5)$, which includes the sums 5.",
+        "v": 0.6666666666666666
+      },
+      {
+        "text": "1/9",
+        "correct": false,
+        "why": "This is only the sum 9; the sums 7 also qualify.",
+        "v": 0.1111111111111111
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "There are 9 equally likely pairs; 3 give a sum of at least 7.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "The nine pairs are equally likely. Sums $\\ge7$: $(3,4)\\to7$, $(5,2)\\to7$, $(5,4)\\to9$: 3 pairs.",
+      "$P = 3/9 = 1/3$."
+    ],
+    "hints": [
+      "How many equally likely pairs are there?",
+      "List the pairs with sum at least 7.",
+      "Divide the favourable count by the nine equally likely pairs."
+    ],
+    "concept": "Probability of an event defined by a sum.",
+    "misconception": "Missing pairs.",
+    "why": "Independence and uniformity make the pairs equally likely.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-36",
+    "topic": "rv",
+    "sub": "telescoping pmf",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The number of failures in a week has pmf $f(x) = \\dfrac{2}{(x+2)(x+3)}$ for $x = 0,1,2,\\dots$ Find $P(X\\ge3\\mid X\\ge1)$.",
+    "data": "",
+    "answer": {
+      "value": 0.6000000000000001,
+      "display": "3/5"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "3/5",
+        "correct": true,
+        "why": "",
+        "v": 0.6000000000000001
+      },
+      {
+        "text": "2/5",
+        "correct": false,
+        "why": "This is $P(X\\ge3)$, which has not been divided by $P(X\\ge1)$.",
+        "v": 0.4
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This is $P(X\\ge1)$, the probability of the conditioning event.",
+        "v": 0.6666666666666666
+      },
+      {
+        "text": "1/2",
+        "correct": false,
+        "why": "There is no reason for the conditional probability to be one half.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "Write $f(x) = 2\\left[\\dfrac1{x+2}-\\dfrac1{x+3}\\right]$. The tail sum telescopes: $P(X\\ge k) = \\dfrac{2}{k+2}$.",
+      "$P(X\\ge3) = 2/5$ and $P(X\\ge1) = 2/3$.",
+      "$P(X\\ge3\\mid X\\ge1) = \\dfrac{2/5}{2/3} = \\dfrac35$."
+    ],
+    "hints": [
+      "Use partial fractions on $f(x)$.",
+      "Sum the tail $\\sum_{x\\ge k}f(x)$: most terms cancel.",
+      "Since $\\{X\\ge3\\}\\subset\\{X\\ge1\\}$, divide the two tail probabilities."
+    ],
+    "concept": "Tail probabilities by telescoping.",
+    "misconception": "Not dividing by the conditioning probability.",
+    "why": "The partial-fraction form turns the infinite sum into one remaining term.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-38",
+    "topic": "rv",
+    "sub": "diagnose: expectation of a nonlinear function",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A firm’s monthly demand $X$ is equally likely to be 10 or 30 units. Revenue is $R = X^2$ (in thousands). A student says: \"$E[X]=20$, so $E[R] = 20^2 = 400$.\" What is the error and the correct expected revenue?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$E[X^2] \\neq (E[X])^2$: $E[R] = \\tfrac12(100)+\\tfrac12(900) = 500$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$E[X^2] \\neq (E[X])^2$: $E[R] = \\tfrac12(100)+\\tfrac12(900) = 500$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "There is no error: $E[R] = (E[X])^2 = 400$",
+        "correct": false,
+        "why": "For a nonlinear function, $E[g(X)] \\neq g(E[X])$ in general; here $E[X^2] = \\text{Var}(X) + (E[X])^2 = 100 + 400 = 500$."
+      },
+      {
+        "text": "The correct value is $E[R] = 2E[X] = 40$",
+        "correct": false,
+        "why": "Squaring is not linear; doubling is not the same as squaring."
+      },
+      {
+        "text": "The correct value is $\\sqrt{400}=20$",
+        "correct": false,
+        "why": "Taking a square root reverses a square on the mean but does not give $E[X^2]$."
+      }
+    ],
+    "solution": [
+      "$E[X^2] = \\frac12(10^2)+\\frac12(30^2) = 50+450 = 500$.",
+      "Also $E[X^2] = \\mathrm{Var}(X)+(E[X])^2 = 100 + 400$. The difference from 400 is the variance."
+    ],
+    "hints": [
+      "Is squaring a linear operation?",
+      "Compute $E[X^2]$ directly from the two possible values.",
+      "How is $E[X^2]$ related to $\\mathrm{Var}(X)$ and $(E[X])^2$?"
+    ],
+    "concept": "Expectation of a function of a random variable; variance as the gap.",
+    "misconception": "Plugging the mean into a nonlinear function.",
+    "why": "Variability raises the expected value of a convex function.",
+    "fam": "rv:diagnose"
+  },
+  {
+    "id": "RVX-39",
+    "topic": "rv",
+    "sub": "expected value from a table",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Daily demand for a bakery’s special loaf has the distribution: 0 loaves (0.1), 10 (0.3), 20 (0.4), 30 (0.2). What is the expected daily demand?",
+    "data": "",
+    "answer": {
+      "value": 17,
+      "display": "17"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$E = 0(0.1)+10(0.3)+20(0.4)+30(0.2) = 3+8+6 = 17$ loaves."
+    ],
+    "hints": [
+      "Multiply each demand by its probability.",
+      "Do not average the four demand values equally.",
+      "Add the four products."
+    ],
+    "concept": "Expectation as a probability-weighted average.",
+    "misconception": "Taking the plain average of the values.",
+    "why": "Likelier values carry more weight.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-40",
+    "topic": "rv",
+    "sub": "variance from a table",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Using the demand distribution 0 (0.1), 10 (0.3), 20 (0.4), 30 (0.2), what is the variance of daily demand?",
+    "data": "",
+    "answer": {
+      "value": 81,
+      "display": "81"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$E[X^2] = 0+30+160+180 = 370$.",
+      "$\\mathrm{Var} = 370-17^2 = 81$."
+    ],
+    "hints": [
+      "Compute $E[X^2]$ with the same probabilities.",
+      "Subtract the square of the mean.",
+      "The mean is 17."
+    ],
+    "concept": "Variance via $E[X^2]-(E[X])^2$.",
+    "misconception": "Squaring the expected value of $X$ only.",
+    "why": "Variance is the mean square minus the squared mean.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-41",
+    "topic": "rv",
+    "sub": "linear transformation of mean and variance",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Weekly cost $C$ (in thousands) has mean 12 and standard deviation 3. Cost in rupees is $Y = 1000\\,C + 5000$. What is the standard deviation of $Y$?",
+    "data": "",
+    "answer": {
+      "value": 3000,
+      "display": "3000"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Adding a constant does not change spread; scaling by 1000 multiplies the standard deviation by 1000.",
+      "$\\mathrm{SD}(Y) = 3000$."
+    ],
+    "hints": [
+      "Does adding 5000 change variability?",
+      "How does multiplying by 1000 change the SD?",
+      "Combine the effect of the shift and the scale."
+    ],
+    "concept": "Shifts do not change spread; scales multiply it.",
+    "misconception": "Adding 5000 to the SD.",
+    "why": "The SD scales by the absolute value of the multiplier.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-42",
+    "topic": "rv",
+    "sub": "indicator sum",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A shop has 8 customers waiting. Each independently buys with probability 0.35. Each purchase earns ₹120. What is the expected revenue?",
+    "data": "",
+    "answer": {
+      "value": 336,
+      "display": "336"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Expected number of purchases $=8(0.35)=2.8$.",
+      "Revenue $=2.8\\times120 = 336$."
+    ],
+    "hints": [
+      "Write the count of purchases as a sum of indicators.",
+      "Expectation of a sum is the sum of expectations.",
+      "Multiply by the revenue per purchase."
+    ],
+    "concept": "Linearity of expectation.",
+    "misconception": "Computing a full distribution unnecessarily.",
+    "why": "Each customer contributes $0.35\\times120$ on average.",
+    "fam": "rv:indicators"
+  },
+  {
+    "id": "RVX-43",
+    "topic": "rv",
+    "sub": "expected number of matches",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Ten employees each draw a name at random from a hat (without replacement) in a gift swap. What is the expected number of employees who draw their own name?",
+    "data": "",
+    "answer": {
+      "value": 1,
+      "display": "1"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Each person draws their own name with probability $1/10$.",
+      "By linearity (dependence does not matter) the expected count is $10\\times1/10 = 1$."
+    ],
+    "hints": [
+      "Define an indicator for each person.",
+      "What is each indicator’s probability?",
+      "Linearity does not need independence."
+    ],
+    "concept": "Linearity holds under dependence.",
+    "misconception": "Trying to compute the full derangement distribution.",
+    "why": "The answer 1 does not depend on the number of people.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-44",
+    "topic": "rv",
+    "sub": "variance of sum of independent",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two independent project costs have standard deviations 4 and 3 (in lakhs). What is the standard deviation of the total cost?",
+    "data": "",
+    "answer": {
+      "value": 5,
+      "display": "5"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Variances add: $16+9=25$.",
+      "SD $=5$ (not $4+3=7$)."
+    ],
+    "hints": [
+      "Variances, not standard deviations, add for independent variables.",
+      "Square each SD first.",
+      "Take the square root of the sum."
+    ],
+    "concept": "Additivity of variance.",
+    "misconception": "Adding standard deviations.",
+    "why": "Independent variability combines as a Pythagorean sum.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-45",
+    "topic": "rv",
+    "sub": "covariance effect",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Returns $X$ and $Y$ have $\\mathrm{Var}(X)=0.04$, $\\mathrm{Var}(Y)=0.09$ and correlation $\\rho=-0.5$. What is the variance of the portfolio $X+Y$?",
+    "data": "",
+    "answer": {
+      "value": 0.07,
+      "display": "0.07"
+    },
+    "fmt": "d",
+    "tol": 0.0005,
+    "options": [],
+    "solution": [
+      "$\\mathrm{Cov} = \\rho\\sigma_X\\sigma_Y = -0.5(0.2)(0.3) = -0.03$.",
+      "$\\mathrm{Var}(X+Y) = 0.04+0.09+2(-0.03) = 0.07$."
+    ],
+    "hints": [
+      "Find the covariance from the correlation and SDs.",
+      "Use $\\mathrm{Var}(X+Y)$ with the covariance term.",
+      "Negative correlation reduces the total."
+    ],
+    "concept": "Diversification lowers variance.",
+    "misconception": "Ignoring the covariance term.",
+    "why": "Negative covariance subtracts from the sum of variances.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-46",
+    "topic": "rv",
+    "sub": "expected value of a bet",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A raffle ticket costs ₹50. There is one prize of ₹5 000, two of ₹500 and the rest nothing; 200 tickets are sold. What is the expected net gain of one ticket?",
+    "data": "",
+    "answer": {
+      "value": -20,
+      "display": "-20"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Expected prize $=(5000+2\\cdot500)/200 = 30$.",
+      "Net $=30-50 = -20$."
+    ],
+    "hints": [
+      "Total prize money divided by tickets gives the expected prize.",
+      "Subtract the ticket price.",
+      "A negative value means an expected loss."
+    ],
+    "concept": "Expected net gain.",
+    "misconception": "Ignoring the ticket price.",
+    "why": "The expected prize is below the ticket price.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-47",
+    "topic": "rv",
+    "sub": "newsvendor-type decision",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A vendor buys papers at ₹4 and sells at ₹7; unsold ones are worth nothing. Demand is 40 with probability 0.4 and 60 with probability 0.6. Which stock level (40 or 60) gives the higher expected profit?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "60 papers (expected profit ₹132 against ₹120 for 40)"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "60 papers (expected profit ₹132 against ₹120 for 40)",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "40 papers, because it never leaves unsold stock",
+        "correct": false,
+        "why": "Stock 40 gives a certain 120, which is lower than 132."
+      },
+      {
+        "text": "They give the same expected profit",
+        "correct": false,
+        "why": "Calculate: 120 against 132."
+      },
+      {
+        "text": "Neither: profit is negative either way",
+        "correct": false,
+        "why": "Both profits are positive."
+      }
+    ],
+    "solution": [
+      "Stock 40: always sells 40, profit $40\\times3 = 120$.",
+      "Stock 60: demand 40 gives $280-240 = 40$; demand 60 gives $180$.",
+      "Expected $0.4(40)+0.6(180) = 124$."
+    ],
+    "hints": [
+      "Compute profit for each demand under each stock level.",
+      "Weight by the demand probabilities.",
+      "Compare the expected profits."
+    ],
+    "concept": "Choosing an order quantity by expected profit.",
+    "misconception": "Choosing the safe option without computing.",
+    "why": "The extra upside outweighs the cost of unsold stock.",
+    "fam": "rv:decisions"
+  },
+  {
+    "id": "RVX-48",
+    "topic": "rv",
+    "sub": "tail sum for expectation",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A non-negative integer variable $N$ has $P(N\\ge1)=0.9$, $P(N\\ge2)=0.5$, $P(N\\ge3)=0.2$ and $P(N\\ge4)=0$. What is $E[N]$?",
+    "data": "",
+    "answer": {
+      "value": 1.5999999999999999,
+      "display": "1.6"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$E[N] = \\sum_{k\\ge1}P(N\\ge k) = 0.9+0.5+0.2 = 1.6$.",
+      "Check by the pmf: $P(N{=}0)=0.1$, $1\\!:0.4$, $2\\!:0.3$, $3\\!:0.2$."
+    ],
+    "hints": [
+      "For non-negative integers, add up the tail probabilities.",
+      "Start the sum at $k=1$.",
+      "Add the three given values."
+    ],
+    "concept": "Tail-sum formula.",
+    "misconception": "Adding the pmf values.",
+    "why": "Each $k$ contributes $P(N\\ge k)$.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-49",
+    "topic": "rv",
+    "sub": "conditional expectation by total expectation",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Customers are Retail (70%) with mean spend ₹800, or Corporate (30%) with mean spend ₹4 000. What is the overall mean spend per customer?",
+    "data": "",
+    "answer": {
+      "value": 1760,
+      "display": "1760"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$E = 0.7(800)+0.3(4000) = 560+1200 = 1760$."
+    ],
+    "hints": [
+      "Condition on the customer type.",
+      "Weight each mean by the type share.",
+      "Add the two weighted means together."
+    ],
+    "concept": "Law of total expectation.",
+    "misconception": "Averaging the two means equally.",
+    "why": "The rarer group has a large effect because of its high mean.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-50",
+    "topic": "rv",
+    "sub": "variance by conditioning",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A variable is $N(0,\\,1)$ with probability 0.5 and $N(4,\\,1)$ with probability 0.5 (mean, variance). What is its overall variance?",
+    "data": "",
+    "answer": {
+      "value": 5,
+      "display": "5"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Average within-group variance $=1$.",
+      "Mean $=2$; between-group variance $=0.5(4)+0.5(4)=4$.",
+      "Total $=1+4 = 5$."
+    ],
+    "hints": [
+      "Average the within-group variances.",
+      "Add the variance of the group means.",
+      "Group means are 0 and 4 with mean 2."
+    ],
+    "concept": "Total variance = within + between.",
+    "misconception": "Reporting only the within-group variance.",
+    "why": "Mixtures are more spread out than their components.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-51",
+    "topic": "rv",
+    "sub": "LOTUS on a squared variable",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "$X$ takes the values $-1, 0, 2$ with probabilities $0.3, 0.2, 0.5$. What is $E[X^2]$?",
+    "data": "",
+    "answer": {
+      "value": 2.3,
+      "display": "2.3"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$E[X^2] = (-1)^2(0.3)+0+2^2(0.5) = 0.3+2 = 2.3$."
+    ],
+    "hints": [
+      "Square each value first, then weight.",
+      "Do not square $E[X]$.",
+      "Add the weighted squares."
+    ],
+    "concept": "Expectation of a function of $X$.",
+    "misconception": "Computing $(E[X])^2$.",
+    "why": "$E[X^2]\\ne(E[X])^2$ unless the variance is zero.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-52",
+    "topic": "rv",
+    "sub": "standard deviation interpretation",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "Two investments have the same mean annual return of 8%. Investment A has standard deviation 2%, B has 10%. What does this tell us?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "B’s returns are more spread out, so B is riskier in the sense of variability"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "B’s returns are more spread out, so B is riskier in the sense of variability",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "A has the higher average return",
+        "correct": false,
+        "why": "Both have the same mean of 8%."
+      },
+      {
+        "text": "B always returns more than A",
+        "correct": false,
+        "why": "Spread does not mean B is always higher."
+      },
+      {
+        "text": "The standard deviation says nothing about risk",
+        "correct": false,
+        "why": "It is a standard measure of variability."
+      }
+    ],
+    "solution": [
+      "The mean describes the centre, the SD describes spread.",
+      "Same mean with a larger SD means more variability."
+    ],
+    "hints": [
+      "Which number measures centre?",
+      "Which number measures spread?",
+      "Compare the SDs."
+    ],
+    "concept": "Mean versus spread.",
+    "misconception": "Equating a high SD with a high mean.",
+    "why": "SD measures variability, not level.",
+    "fam": "rv:diagnose"
+  },
+  {
+    "id": "RVX-53",
+    "topic": "rv",
+    "sub": "probability from a pmf with unknown constant",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A variable takes the values 1, 2, 3, 4 with probabilities proportional to $k$, $2k$, $3k$, $4k$ for a constant $c$ such that $P(X=k)=ck$. What is $E[X]$?",
+    "data": "",
+    "answer": {
+      "value": 3,
+      "display": "3"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Total $c(1+2+3+4)=1$, so $c=0.1$.",
+      "$E=0.1(1+4+9+16) = 3$."
+    ],
+    "hints": [
+      "Find $c$ so that the probabilities sum to 1.",
+      "Then weight each value.",
+      "Compute $0.1\\times(1+4+9+16)$."
+    ],
+    "concept": "Normalising a pmf.",
+    "misconception": "Forgetting to find $c$.",
+    "why": "The pmf must sum to 1.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-54",
+    "topic": "rv",
+    "sub": "median vs mean",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Monthly claims are mostly small, but a few are very large. Which relationship is typical?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "The mean exceeds the median"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "The mean exceeds the median",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The mean is below the median",
+        "correct": false,
+        "why": "Large claims pull the mean upward, not downward."
+      },
+      {
+        "text": "The mean equals the median",
+        "correct": false,
+        "why": "That holds for symmetric distributions."
+      },
+      {
+        "text": "The mode is the largest value",
+        "correct": false,
+        "why": "The mode is the most common value, here a small one."
+      }
+    ],
+    "solution": [
+      "Right skew pulls the mean toward the tail while the median stays near the bulk.",
+      "So mean $>$ median."
+    ],
+    "hints": [
+      "Which measure is sensitive to extreme values?",
+      "Large claims pull in which direction?",
+      "Compare the two measures."
+    ],
+    "concept": "Skewness and the mean.",
+    "misconception": "Assuming mean and median coincide.",
+    "why": "Heavy right tails raise the mean more than the median.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-55",
+    "topic": "rv",
+    "sub": "risk-neutral comparison",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Project A pays ₹100 000 with probability 0.6 and loses ₹20 000 otherwise. Project B pays ₹50 000 for certain. By how much does the expected payoff of A exceed that of B?",
+    "data": "",
+    "answer": {
+      "value": 2000,
+      "display": "2000"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$E[A]=60\\,000-8\\,000 = 52\\,000$.",
+      "Difference from B: $2\\,000$."
+    ],
+    "hints": [
+      "Compute the expected payoff of A.",
+      "B is certain, so its expectation is 50 000.",
+      "Take the difference."
+    ],
+    "concept": "Comparing expected payoffs.",
+    "misconception": "Forgetting the loss branch.",
+    "why": "The loss has probability 0.4.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-56",
+    "topic": "rv",
+    "sub": "standardising",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Exam scores have mean 62 and standard deviation 8. A student scores 78. How many standard deviations above the mean is that?",
+    "data": "",
+    "answer": {
+      "value": 2,
+      "display": "2"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$z = (78-62)/8 = 2$."
+    ],
+    "hints": [
+      "Subtract the mean from the score.",
+      "Divide by the standard deviation.",
+      "Interpret in SD units."
+    ],
+    "concept": "Standardisation.",
+    "misconception": "Dividing by the mean.",
+    "why": "A z-score of 2 means 2 SDs above the mean.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-57",
+    "topic": "rv",
+    "sub": "geometric mean waiting",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Each loan application is approved with probability 0.25, independently. What is the expected number of applications needed until the first approval (counting the successful one)?",
+    "data": "",
+    "answer": {
+      "value": 4,
+      "display": "4"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "For a geometric waiting time with success probability $p$, $E = 1/p = 4$."
+    ],
+    "hints": [
+      "This is a geometric waiting time.",
+      "Recall the mean of a geometric variable.",
+      "Take the reciprocal of $p$."
+    ],
+    "concept": "Mean of a geometric variable.",
+    "misconception": "Using $p$ itself.",
+    "why": "Rarer success means longer waits.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-58",
+    "topic": "rv",
+    "sub": "maximum of two dice",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two fair dice are rolled. What is the expected value of the larger of the two numbers?",
+    "data": "",
+    "answer": {
+      "value": 4.472222222222222,
+      "display": "4.4722"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(\\max = m) = (2m-1)/36$.",
+      "$E = \\sum m(2m-1)/36 = (1+6+15+28+45+66)/36 = 161/36 \\approx 4.47$."
+    ],
+    "hints": [
+      "Count the ordered pairs for which the maximum is $m$.",
+      "There are $2m-1$ such pairs.",
+      "Weight and add."
+    ],
+    "concept": "Expectation of an order statistic.",
+    "misconception": "Answering 3.5 or 4.",
+    "why": "The maximum is above the single-die mean of 3.5.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-59",
+    "topic": "rv",
+    "sub": "variance of a Bernoulli sum",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Of 50 independent customers, each defaults with probability 0.08. What is the variance of the number of defaults?",
+    "data": "",
+    "answer": {
+      "value": 3.68,
+      "display": "3.68"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Each indicator has variance $0.08\\times0.92 = 0.0736$.",
+      "Independent sum: $50\\times0.0736 = 3.68$."
+    ],
+    "hints": [
+      "Variance of one Bernoulli indicator is $p(1-p)$.",
+      "Independent variances add.",
+      "Multiply by 50."
+    ],
+    "concept": "Variance of a count.",
+    "misconception": "Using $np$ as the variance.",
+    "why": "Variance is $np(1-p)$.",
+    "fam": "rv:variance"
+  },
+  {
+    "id": "RVX-60",
+    "topic": "rv",
+    "sub": "Chebyshev bound",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Daily sales have mean 500 and standard deviation 40, with an unknown distribution. What is the Chebyshev <b>upper bound</b> on the probability that sales differ from the mean by 100 or more?",
+    "data": "",
+    "answer": {
+      "value": 0.16,
+      "display": "0.16"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(|X-\\mu|\\ge k\\sigma) \\le 1/k^2$ with $k = 100/40 = 2.5$.",
+      "Bound $=1/6.25 = 0.16$."
+    ],
+    "hints": [
+      "Express 100 in standard deviations.",
+      "Chebyshev: bound $=1/k^2$.",
+      "Compute $1/2.5^2$."
+    ],
+    "concept": "Chebyshev bound.",
+    "misconception": "Using $1/k$.",
+    "why": "Chebyshev is conservative but needs no distribution.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-61",
+    "topic": "rv",
+    "sub": "expectation does not imply a typical outcome",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A lottery has expected winnings of ₹250 per ticket. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Over many tickets the average winning per ticket tends toward ₹250, though a single ticket will rarely pay exactly that"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Over many tickets the average winning per ticket tends toward ₹250, though a single ticket will rarely pay exactly that",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "A single ticket will usually pay about ₹250",
+        "correct": false,
+        "why": "Individual outcomes can be far from the mean."
+      },
+      {
+        "text": "Every ticket pays exactly ₹250",
+        "correct": false,
+        "why": "The mean is not a guaranteed payment."
+      },
+      {
+        "text": "You win ₹250 at least half the time",
+        "correct": false,
+        "why": "The mean is not the median or a threshold."
+      }
+    ],
+    "solution": [
+      "Expectation is a long-run average, not a typical single outcome.",
+      "It may not even be a possible value."
+    ],
+    "hints": [
+      "Think of the long-run average.",
+      "Is the expected value always attainable?",
+      "Pick the statement about many tickets."
+    ],
+    "concept": "Meaning of expected value.",
+    "misconception": "Reading the mean as a typical single outcome.",
+    "why": "The mean summarises many repetitions.",
+    "fam": "rv:pmf-expectation"
+  },
+  {
+    "id": "RVX-62",
+    "topic": "rv",
+    "sub": "expected cost with fixed and variable parts",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A call centre has a fixed cost of ₹5 000 per day plus ₹20 per call. Calls per day have mean 300 and standard deviation 30. What are the mean and standard deviation of daily cost? Give the <b>standard deviation</b>.",
+    "data": "",
+    "answer": {
+      "value": 600,
+      "display": "600"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Cost $=5000+20N$.",
+      "$E = 11\\,000$; $\\mathrm{SD} = 20\\times30 = 600$."
+    ],
+    "hints": [
+      "Write cost as a linear function of calls.",
+      "The fixed cost does not affect spread.",
+      "Multiply the SD by 20."
+    ],
+    "concept": "Linear cost transformation.",
+    "misconception": "Adding the fixed cost to the SD.",
+    "why": "Only the variable part scales the spread.",
+    "fam": "rv:decisions"
+  },
+  {
+    "id": "RVX-63",
+    "topic": "rv",
+    "sub": "expected maximum of sensors",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two independent components each last 1, 2 or 3 months with equal probability. The system fails when the <b>first</b> component fails. What is the expected lifetime of the system in months?",
+    "data": "",
+    "answer": {
+      "value": 1.5555555555555556,
+      "display": "1.5556"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P(\\min=1)=5/9$, $P(\\min=2)=3/9$, $P(\\min=3)=1/9$.",
+      "$E = (5+6+3)/9 = 14/9 \\approx 1.56$."
+    ],
+    "hints": [
+      "Count the pairs for each possible minimum.",
+      "Weight each minimum by its probability.",
+      "Add the three terms."
+    ],
+    "concept": "Expectation of a minimum.",
+    "misconception": "Answering the single-component mean of 2.",
+    "why": "The first failure is earlier than a typical component.",
+    "fam": "rv:pmf-expectation"
+  }
+]

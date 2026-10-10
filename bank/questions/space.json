@@ -1,0 +1,1095 @@
+[
+  {
+    "id": "SPC-01",
+    "topic": "space",
+    "sub": "set operations on a product space",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A retailer sells gift cards in 4 colours (red, green, blue, gold) and 6 denominations (\\$10, \\$20, \\$30, \\$40, \\$50, \\$60), so there are 24 distinct cards. Let $A$ = \"denomination is at least \\$40\", $B$ = \"the card is gold\" and $C$ = \"the denomination is a multiple of \\$20\". How many of the 24 cards belong to $A\\cup B\\cup C$?",
+    "data": "",
+    "answer": {
+      "value": 18,
+      "display": "18"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "18",
+        "correct": true,
+        "why": "",
+        "v": 18
+      },
+      {
+        "text": "30",
+        "correct": false,
+        "why": "This adds $|A|+|B|+|C| = 12+6+12$ and ignores that many cards belong to two or three of the events.",
+        "v": 30
+      },
+      {
+        "text": "6",
+        "correct": false,
+        "why": "This is the number of cards in the <i>complement</i> of the union, not in the union itself.",
+        "v": 6
+      },
+      {
+        "text": "12",
+        "correct": false,
+        "why": "This is the size of $A$ (or $C$) alone; $B$ and $C$ contribute further cards.",
+        "v": 12
+      }
+    ],
+    "solution": [
+      "The union is awkward to count directly, so count its complement: $(A\\cup B\\cup C)^c = A^c\\cap B^c\\cap C^c$.",
+      "A card in the complement is not gold (3 colours), has a denomination below \\$40 (10, 20, 30) and is not a multiple of \\$20 (so 10 or 30 only): $3\\times 2 = 6$ cards.",
+      "$|A\\cup B\\cup C| = 24 - 6 = 18$."
+    ],
+    "hints": [
+      "Counting cards that fail all three conditions at once is easier than listing the union.",
+      "The complement of a union is the intersection of the complements (De Morgan).",
+      "Non-gold: 3 colours. Below \\$40 and not a multiple of \\$20: which denominations remain?"
+    ],
+    "concept": "Counting a union through the complement of an intersection of complements.",
+    "misconception": "Adding the sizes of overlapping events.",
+    "why": "Every card is in the union or in its complement exactly once, so the two counts sum to 24.",
+    "fam": "space:count-events"
+  },
+  {
+    "id": "SPC-03",
+    "topic": "space",
+    "sub": "event algebra in words",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three regional warehouses may each run out of stock in a given week. Let $A$, $B$ and $C$ be the events that warehouse 1, 2 and 3 runs out. Which expression describes \"<b>exactly one</b> warehouse runs out of stock\"?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$(A\\cap B^c\\cap C^c)\\cup(A^c\\cap B\\cap C^c)\\cup(A^c\\cap B^c\\cap C)$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$(A\\cap B^c\\cap C^c)\\cup(A^c\\cap B\\cap C^c)\\cup(A^c\\cap B^c\\cap C)$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$A\\cup B\\cup C$",
+        "correct": false,
+        "why": "This is \"at least one runs out\"; it also includes weeks when two or three run out."
+      },
+      {
+        "text": "$(A\\cap B)\\cup(A\\cap C)\\cup(B\\cap C)$",
+        "correct": false,
+        "why": "This describes \"at least two run out\", the opposite end of the scale."
+      },
+      {
+        "text": "$A^c\\cup B^c\\cup C^c$",
+        "correct": false,
+        "why": "This is \"at least one has stock\", i.e. at most two run out; it includes the case where none runs out."
+      }
+    ],
+    "solution": [
+      "\"Exactly one\" means one warehouse is out of stock while the other two are not. Warehouse 1 alone: $A\\cap B^c\\cap C^c$; warehouse 2 alone: $A^c\\cap B\\cap C^c$; warehouse 3 alone: $A^c\\cap B^c\\cap C$.",
+      "These three cases are disjoint and together cover the event, so the event is their union."
+    ],
+    "hints": [
+      "Translate \"exactly one\" into: which warehouse is the only one out?",
+      "For each choice of that warehouse, the other two must be in the complement of their events.",
+      "Combine the three disjoint cases with a union."
+    ],
+    "concept": "Translating verbal conditions into set expressions.",
+    "misconception": "Confusing \"exactly one\" with \"at least one\".",
+    "why": "Each outcome of the three-warehouse experiment falls in exactly one of the three single-failure cases.",
+    "fam": "space:event-algebra"
+  },
+  {
+    "id": "SPC-04",
+    "topic": "space",
+    "sub": "counting event outcomes",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A spinner with 5 equal sectors numbered 1 to 5 and a second spinner with 4 equal sectors numbered 1 to 4 are spun once each, giving 20 equally likely outcomes. Let $E$ = \"the sum is even\" and $F$ = \"at least one spinner shows 4\". How many outcomes lie in $E\\cup F$?",
+    "data": "",
+    "answer": {
+      "value": 15,
+      "display": "15"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "15",
+        "correct": true,
+        "why": "",
+        "v": 15
+      },
+      {
+        "text": "18",
+        "correct": false,
+        "why": "This is $|E|+|F| = 10+8$; outcomes in both events (such as (4,2) and (2,4)) were counted twice.",
+        "v": 18
+      },
+      {
+        "text": "10",
+        "correct": false,
+        "why": "This is $|E|$ only; the outcomes that contain a 4 but have an odd sum are also in the union.",
+        "v": 10
+      },
+      {
+        "text": "12",
+        "correct": false,
+        "why": "This subtracts too much; the overlap $E\\cap F$ has 3 outcomes, not 6.",
+        "v": 12
+      }
+    ],
+    "solution": [
+      "$|E|$: first spinner odd (1,3,5) with second odd (1,3): 6; first even (2,4) with second even (2,4): 4. So $|E| = 10$.",
+      "$|F|$: first = 4 gives 4 outcomes, second = 4 gives 5, minus the shared (4,4): $|F| = 8$.",
+      "$E\\cap F$: (4,2), (4,4), (2,4): 3 outcomes.",
+      "$|E\\cup F| = 10+8-3 = 15$."
+    ],
+    "hints": [
+      "Use $|E\\cup F| = |E|+|F|-|E\\cap F|$ and count each piece separately.",
+      "How many spinner pairs have an even sum when the spinners have 3 odd and 2 even values, and 2 odd and 2 even values?",
+      "The overlap needs a 4 on at least one spinner and an even sum: list them."
+    ],
+    "concept": "Inclusion-exclusion for counting outcomes in a union of two events.",
+    "misconception": "Not subtracting the overlap of two events.",
+    "why": "An outcome in both events appears once in each count, so the overlap must be removed once.",
+    "fam": "space:count-events"
+  },
+  {
+    "id": "SPC-05",
+    "topic": "space",
+    "sub": "system reliability events",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A payment gateway has five independent modules $a, b, c, d, e$, each either up (1) or down (0), giving 32 possible states. The gateway is operational if modules $a$ and $b$ are both up, <b>or</b> modules $c$, $d$ and $e$ are all up, <b>or</b> modules $a$ and $e$ are both up. In how many of the 32 states is the gateway operational?",
+    "data": "",
+    "answer": {
+      "value": 14,
+      "display": "14"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "14",
+        "correct": true,
+        "why": "",
+        "v": 14
+      },
+      {
+        "text": "20",
+        "correct": false,
+        "why": "This adds the three single-path counts $8+4+8$ without correcting for states that satisfy more than one path.",
+        "v": 20
+      },
+      {
+        "text": "13",
+        "correct": false,
+        "why": "The triple overlap has been left out of the inclusion-exclusion sum: the last term $+|ABC|$ is missing.",
+        "v": 13
+      },
+      {
+        "text": "18",
+        "correct": false,
+        "why": "This is the number of states in which the gateway is <i>not</i> operational ($32-14$).",
+        "v": 18
+      }
+    ],
+    "solution": [
+      "Let $P_1$: $a,b$ up (8 states), $P_2$: $c,d,e$ up (4 states), $P_3$: $a,e$ up (8 states).",
+      "Pairs: $P_1P_2$ forces all five up (1); $P_1P_3$ needs $a,b,e$ up and leaves $c,d$ free (4); $P_2P_3$ needs $a,c,d,e$ up and leaves $b$ free (2). Triple: 1.",
+      "$|P_1\\cup P_2\\cup P_3| = 20 - (1+4+2) + 1 = 14$."
+    ],
+    "hints": [
+      "Define one event per route and use inclusion-exclusion on three events.",
+      "To intersect two routes, take all modules required by either route; the remaining modules are free.",
+      "Singles: 8, 4, 8. Pairs: 1, 4, 2. Triple: 1."
+    ],
+    "concept": "Inclusion-exclusion over three overlapping events.",
+    "misconception": "Summing the counts of overlapping events.",
+    "why": "Each state satisfying several routes is counted once by the alternating sum.",
+    "fam": "space:system-states"
+  },
+  {
+    "id": "SPC-06",
+    "topic": "space",
+    "sub": "event algebra with probabilities",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Three suppliers $X$, $Y$, $Z$ each may deliver late in a month. $P(X)=0.40$, $P(Y)=0.30$, $P(Z)=0.25$; $P(X\\cap Y)=0.12$, $P(X\\cap Z)=0.08$, $P(Y\\cap Z)=0.06$ and $P(X\\cap Y\\cap Z)=0.03$. What is the probability that <b>at least one of $X$ and $Y$ is late but $Z$ is not</b>, i.e. $P\\big((X\\cup Y)\\cap Z^c\\big)$?",
+    "data": "",
+    "answer": {
+      "value": 0.47,
+      "display": "0.47"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.47",
+        "correct": true,
+        "why": "",
+        "v": 0.47
+      },
+      {
+        "text": "0.33",
+        "correct": false,
+        "why": "This subtracts $P(Z)$ instead of $P\\big((X\\cup Y)\\cap Z\\big)$: late deliveries by $Z$ outside $X\\cup Y$ were never in the event.",
+        "v": 0.32999999999999996
+      },
+      {
+        "text": "0.58",
+        "correct": false,
+        "why": "This is $P(X\\cup Y)$; it still includes months when $Z$ is also late.",
+        "v": 0.58
+      },
+      {
+        "text": "0.49",
+        "correct": false,
+        "why": "This assumes $Z$ is independent of both and also ignores the overlap of $X$ and $Y$.",
+        "v": 0.49
+      }
+    ],
+    "solution": [
+      "$P(X\\cup Y) = 0.40+0.30-0.12 = 0.58$.",
+      "The part of $X\\cup Y$ in which $Z$ is late is $(X\\cap Z)\\cup(Y\\cap Z)$, with probability $0.08+0.06-0.03 = 0.11$.",
+      "$P\\big((X\\cup Y)\\cap Z^c\\big) = 0.58-0.11 = 0.47$."
+    ],
+    "hints": [
+      "Split $X\\cup Y$ into the part where $Z$ is late and the part where $Z$ is not.",
+      "Use $P(A\\cap Z^c)=P(A)-P(A\\cap Z)$ with $A = X\\cup Y$.",
+      "$A\\cap Z = (X\\cap Z)\\cup(Y\\cap Z)$; apply the addition rule to that union."
+    ],
+    "concept": "Evaluating a composite event by partitioning on a third event.",
+    "misconception": "Subtracting $P(Z)$ rather than the intersection with the union.",
+    "why": "Partitioning $A$ into $A\\cap Z$ and $A\\cap Z^c$ is valid for any events.",
+    "fam": "space:event-algebra"
+  },
+  {
+    "id": "SPC-07",
+    "topic": "space",
+    "sub": "non-uniform outcomes",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A juice bar offers five flavours. Mango sells three times as many cups as each of the other four flavours, which all sell equally. A cup sold is picked at random from the day's sales. What is the probability that it is mango or lemon?",
+    "data": "",
+    "answer": {
+      "value": 0.5714285714285714,
+      "display": "4/7"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "4/7",
+        "correct": true,
+        "why": "",
+        "v": 0.5714285714285714
+      },
+      {
+        "text": "2/5",
+        "correct": false,
+        "why": "This treats the five flavours as equally likely; mango sells three times as often.",
+        "v": 0.4
+      },
+      {
+        "text": "3/7",
+        "correct": false,
+        "why": "This is the probability of mango alone; lemon must be added.",
+        "v": 0.42857142857142855
+      },
+      {
+        "text": "1/7",
+        "correct": false,
+        "why": "This is the probability of one of the ordinary flavours (lemon) alone.",
+        "v": 0.14285714285714285
+      }
+    ],
+    "solution": [
+      "Let each ordinary flavour account for 1 unit of sales; mango has 3 units. Total: $3+4 = 7$ units.",
+      "$P(\\text{mango or lemon}) = \\dfrac{3+1}{7} = \\dfrac47$."
+    ],
+    "hints": [
+      "The outcomes are not equally likely; give each flavour a weight.",
+      "Take one ordinary flavour as 1 unit. How many units is the total?",
+      "Add the weights of the two flavours named and divide by the total."
+    ],
+    "concept": "Assigning probabilities in proportion to weights.",
+    "misconception": "Assuming all outcomes are equally likely.",
+    "why": "Probabilities are the weights divided by their total so that they sum to 1.",
+    "fam": "space:weighted-outcomes"
+  },
+  {
+    "id": "SPC-09",
+    "topic": "space",
+    "sub": "diagnose: equally likely outcomes",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "Two fair coins are tossed. A student lists the outcomes \"0 heads, 1 head, 2 heads\" and says each has probability $1/3$. What is the correct probability of <b>exactly one head</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.5,
+      "display": "1/2"
+    },
+    "fmt": "p",
+    "options": [
+      {
+        "text": "1/2",
+        "correct": true,
+        "why": "",
+        "v": 0.5
+      },
+      {
+        "text": "1/3",
+        "correct": false,
+        "why": "These three outcomes are not equally likely. The equally likely outcomes are HH, HT, TH, TT.",
+        "v": 0.3333333333333333
+      },
+      {
+        "text": "1/4",
+        "correct": false,
+        "why": "This is the probability of one specific outcome such as HT.",
+        "v": 0.25
+      },
+      {
+        "text": "2/3",
+        "correct": false,
+        "why": "This has no basis in the sample space.",
+        "v": 0.6666666666666666
+      }
+    ],
+    "solution": [
+      "Equally likely outcomes: HH, HT, TH, TT. \"1 head\" is {HT, TH}: $2/4 = 1/2$.",
+      "Counting the <i>number</i> of heads merges two equally likely outcomes into one category."
+    ],
+    "hints": [
+      "Are \"0 heads\", \"1 head\" and \"2 heads\" all equally likely?",
+      "List the outcomes with the two coins distinguished.",
+      "Count outcomes with exactly one head."
+    ],
+    "concept": "Equally likely outcomes in a fine-grained sample space.",
+    "misconception": "Applying the classical formula to categories that are not equally likely.",
+    "why": "Events defined by a count combine different numbers of elementary outcomes.",
+    "fam": "space:diagnose"
+  },
+  {
+    "id": "SPC-10",
+    "topic": "space",
+    "sub": "event algebra in words: partition check",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A customer's complaint to a bank is logged as relating to a card ($C$), a loan ($L$) or an account ($A$); some complaints involve more than one product, and every complaint involves at least one. Which pair of events is a <b>partition</b> of the sample space (mutually exclusive and exhaustive)?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$C$ and $C^c$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$C$ and $C^c$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$C$ and $L$",
+        "correct": false,
+        "why": "A complaint can involve both a card and a loan, so these events are not mutually exclusive, and a complaint about only an account is in neither."
+      },
+      {
+        "text": "$C\\cap L$ and $C\\cup L$",
+        "correct": false,
+        "why": "These overlap: $C\\cap L\\subset C\\cup L$. They are neither disjoint nor exhaustive."
+      },
+      {
+        "text": "$A$ and $L\\cup C$",
+        "correct": false,
+        "why": "Complaints about an account and a loan are in both, so the events are not disjoint."
+      }
+    ],
+    "solution": [
+      "A partition needs events that cannot both occur and that together cover every outcome.",
+      "$C$ and $C^c$ satisfy both requirements by definition.",
+      "The other pairs overlap (complaints can involve several products) or miss outcomes."
+    ],
+    "hints": [
+      "Test each pair for overlap: can both events occur together?",
+      "Then test whether their union is the whole sample space.",
+      "Only a pair built from an event and its complement is guaranteed to be both."
+    ],
+    "concept": "Partitions: mutually exclusive and exhaustive events.",
+    "misconception": "Treating \"different categories\" as mutually exclusive when outcomes can belong to several.",
+    "why": "An event and its complement always split the sample space cleanly.",
+    "fam": "space:event-algebra"
+  },
+  {
+    "id": "SPC-11",
+    "topic": "space",
+    "sub": "event relations: subset in words",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Every small business that qualifies for a government grant ($G$) is also registered for VAT ($V$). Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$G\\subset V$, so $P(G)\\le P(V)$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$G\\subset V$, so $P(G)\\le P(V)$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$V\\subset G$, so $P(V)\\le P(G)$",
+        "correct": false,
+        "why": "The implication runs the other way: a grant implies VAT registration, not the reverse."
+      },
+      {
+        "text": "$G$ and $V$ are mutually exclusive",
+        "correct": false,
+        "why": "If every grant firm is VAT registered, the events overlap completely on $G$."
+      },
+      {
+        "text": "$P(G)=P(V)$",
+        "correct": false,
+        "why": "There can be VAT-registered businesses without a grant, so $V$ may be larger."
+      }
+    ],
+    "solution": [
+      "\"Every $G$ is a $V$\" means each outcome in $G$ is also in $V$: $G\\subset V$.",
+      "Monotonicity of probability then gives $P(G)\\le P(V)$."
+    ],
+    "hints": [
+      "Read \"every $G$ is also $V$\" as a statement about which set sits inside which.",
+      "If $G$ lies inside $V$, which has the larger probability?",
+      "Check the statements that claim exclusivity."
+    ],
+    "concept": "Subset relations and monotonicity.",
+    "misconception": "Reversing the direction of an implication.",
+    "why": "A subset cannot be more probable than its superset.",
+    "fam": "space:event-algebra"
+  },
+  {
+    "id": "SPC-12",
+    "topic": "space",
+    "sub": "choosing the correct sample space",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two fair dice are rolled. A student takes as the sample space the 21 unordered pairs $\\{1,1\\},\\{1,2\\},\\dots,\\{6,6\\}$ and says each is equally likely, so $P(\\text{a 1 and a 2}) = 1/21$. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "The 21 pairs are not equally likely; $P(\\text{a 1 and a 2}) = 2/36 = 1/18$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "The 21 pairs are not equally likely; $P(\\text{a 1 and a 2}) = 2/36 = 1/18$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The student is right: unordered pairs are the natural outcomes, so $1/21$",
+        "correct": false,
+        "why": "The pair $\\{1,2\\}$ can arise two ways (1 then 2, or 2 then 1) but $\\{1,1\\}$ only one way, so the 21 pairs have unequal probabilities."
+      },
+      {
+        "text": "The correct value is $1/36$, since each ordered pair has probability $1/36$ and $(1,2)$ is one pair",
+        "correct": false,
+        "why": "Both $(1,2)$ and $(2,1)$ give \"a 1 and a 2\", so two ordered outcomes count."
+      },
+      {
+        "text": "The correct value is $1/6$",
+        "correct": false,
+        "why": "This is the probability that the first die shows a 1, ignoring the second die."
+      }
+    ],
+    "solution": [
+      "Use the 36 ordered pairs, which are equally likely for two fair dice.",
+      "\"A 1 and a 2\" consists of $(1,2)$ and $(2,1)$: 2 outcomes.",
+      "$P = 2/36 = 1/18$. The pair $\\{1,1\\}$ has probability $1/36$, half that of $\\{1,2\\}$."
+    ],
+    "hints": [
+      "Which representation gives outcomes of equal probability?",
+      "In how many ordered ways can a 1 and a 2 appear?",
+      "Divide the count of favourable ordered pairs by 36."
+    ],
+    "concept": "Equally likely outcomes require the right sample space.",
+    "misconception": "Using unordered pairs as equally likely outcomes.",
+    "why": "The probability model comes from the physical process, which distinguishes the dice.",
+    "fam": "space:count-events"
+  },
+  {
+    "id": "SPC-13",
+    "topic": "space",
+    "sub": "counting outcomes of a sequential experiment",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A support ticket is first classified as <i>urgent</i> or <i>routine</i>. Urgent tickets are then sent to one of 3 senior agents; routine tickets are sent to one of 5 junior agents and then flagged either <i>resolved</i> or <i>open</i>. How many distinct outcomes does this process have?",
+    "data": "",
+    "answer": {
+      "value": 13,
+      "display": "13"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Urgent branch: 3 outcomes (one per senior agent).",
+      "Routine branch: $5\\times2 = 10$ outcomes (agent, then status).",
+      "The branches are exclusive: $3+10 = 13$."
+    ],
+    "hints": [
+      "Draw the tree: how does it split after the first classification?",
+      "The branches have different numbers of stages; count each branch separately.",
+      "Add the branch counts, multiply within a branch."
+    ],
+    "concept": "Counting outcomes of a tree with branches of different shape.",
+    "misconception": "Multiplying all the numbers together as if every branch had the same stages.",
+    "why": "Alternatives add; successive stages multiply.",
+    "fam": "space:count-events"
+  },
+  {
+    "id": "SPC-14",
+    "topic": "space",
+    "sub": "valid probability assignments",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A sample space has four outcomes $a,b,c,d$. Which assignment of probabilities is <b>valid</b>?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$P(a)=0.1,\\ P(b)=0.4,\\ P(c)=0.3,\\ P(d)=0.2$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$P(a)=0.1,\\ P(b)=0.4,\\ P(c)=0.3,\\ P(d)=0.2$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$P(a)=0.5,\\ P(b)=0.3,\\ P(c)=0.3,\\ P(d)=0.1$",
+        "correct": false,
+        "why": "The values sum to 1.2, which exceeds 1."
+      },
+      {
+        "text": "$P(a)=0.6,\\ P(b)=0.5,\\ P(c)=-0.2,\\ P(d)=0.1$",
+        "correct": false,
+        "why": "A probability cannot be negative, even though the values sum to 1."
+      },
+      {
+        "text": "$P(a)=0.2,\\ P(b)=0.2,\\ P(c)=0.2,\\ P(d)=0.2$",
+        "correct": false,
+        "why": "The values sum to 0.8, not 1."
+      }
+    ],
+    "solution": [
+      "A valid assignment needs every probability in $[0,1]$ and a total of exactly 1.",
+      "$0.1+0.4+0.3+0.2 = 1$ with all values non-negative.",
+      "The others break one of these rules."
+    ],
+    "hints": [
+      "State the two requirements for probabilities on a finite sample space.",
+      "Add the four values for each candidate.",
+      "Check for negative entries."
+    ],
+    "concept": "Axioms of probability on a finite sample space.",
+    "misconception": "Checking the sum but not the sign, or the reverse.",
+    "why": "Non-negativity and total probability one are the axioms that all other rules follow from.",
+    "fam": "space:regions"
+  },
+  {
+    "id": "SPC-15",
+    "topic": "space",
+    "sub": "odds and probability: representation",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A forecaster states that the odds <b>in favour</b> of the central bank raising rates next month are 3 to 2. What probability does this correspond to?",
+    "data": "",
+    "answer": {
+      "value": 0.6,
+      "display": "0.6"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Odds in favour of $a$ to $b$ correspond to probability $a/(a+b)$.",
+      "$P = 3/(3+2) = 3/5 = 0.6$."
+    ],
+    "hints": [
+      "Odds compare \"for\" with \"against\", not \"for\" with \"total\".",
+      "How many equally weighted parts are there in total?",
+      "Probability = favourable parts / all parts."
+    ],
+    "concept": "Converting odds to probability.",
+    "misconception": "Reading 3 to 2 as a probability of 3/2 or 2/3.",
+    "why": "Odds of $a:b$ split probability mass into $a$ parts for and $b$ parts against.",
+    "fam": "space:regions"
+  },
+  {
+    "id": "SPC-16",
+    "topic": "space",
+    "sub": "event algebra in words: De Morgan",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A delivery is \"problem-free\" if it is neither late nor damaged. With $L$ = \"late\" and $D$ = \"damaged\", which expression describes \"problem-free\"?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$L^c\\cap D^c$, which equals $(L\\cup D)^c$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$L^c\\cap D^c$, which equals $(L\\cup D)^c$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$L^c\\cup D^c$",
+        "correct": false,
+        "why": "This is \"not late or not damaged\", which holds even for a delivery that is late but undamaged."
+      },
+      {
+        "text": "$(L\\cap D)^c$",
+        "correct": false,
+        "why": "This is \"not both late and damaged\", which allows a delivery that is late or damaged alone."
+      },
+      {
+        "text": "$L\\cap D$",
+        "correct": false,
+        "why": "This is \"late and damaged\", the opposite extreme."
+      }
+    ],
+    "solution": [
+      "Problem-free means no late and no damage: $L^c\\cap D^c$.",
+      "By De Morgan's law $(L\\cup D)^c = L^c\\cap D^c$.",
+      "The other expressions allow one of the problems to occur."
+    ],
+    "hints": [
+      "Translate \"neither ... nor\" into a statement about each event separately.",
+      "Both complements must hold at once: which set operation?",
+      "De Morgan: the complement of a union is an intersection of complements."
+    ],
+    "concept": "De Morgan’s laws in words.",
+    "misconception": "Converting \"neither\" into a union of complements.",
+    "why": "To avoid a union you must avoid every member of it.",
+    "fam": "space:event-algebra"
+  },
+  {
+    "id": "SPC-17",
+    "topic": "space",
+    "sub": "sample space size: paths",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A stock's closing price moves up (U) or down (D) on each of 8 consecutive days. How many of the $2^8$ possible up-down sequences have <b>exactly 5 up days</b>?",
+    "data": "",
+    "answer": {
+      "value": 56,
+      "display": "56"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Choosing which 5 of the 8 days are up days determines the sequence.",
+      "Number of sequences $=\\binom85 = 56$."
+    ],
+    "hints": [
+      "A sequence is determined by the set of days on which the price rises.",
+      "How many ways are there to choose 5 days out of 8?",
+      "Use the binomial coefficient."
+    ],
+    "concept": "Number of sequences with a given count of successes.",
+    "misconception": "Using $5!$ or $2^5$.",
+    "why": "Each qualifying sequence corresponds to exactly one 5-element subset of days.",
+    "fam": "space:count-events"
+  },
+  {
+    "id": "SPC-18",
+    "topic": "space",
+    "sub": "equally likely fallacy",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A student says: \"A new product either succeeds or fails, so there are two outcomes and the probability of success is 1/2.\" What is wrong with this reasoning?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Two possible outcomes does not make them equally likely; the success probability has to come from evidence or a model"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Two possible outcomes does not make them equally likely; the success probability has to come from evidence or a model",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Nothing is wrong: with two outcomes each has probability 1/2",
+        "correct": false,
+        "why": "The classical formula needs <i>equally likely</i> outcomes; success and failure rarely are."
+      },
+      {
+        "text": "The student should have used 1/3 to allow for a partial success",
+        "correct": false,
+        "why": "Adding a third category does not make probabilities equal either."
+      },
+      {
+        "text": "The probability of success must be below 1/2 for any new product",
+        "correct": false,
+        "why": "There is no such rule; the probability depends on the product and the market."
+      }
+    ],
+    "solution": [
+      "Classical probability = favourable / total only when all outcomes are equally likely.",
+      "Success and failure are two outcomes but not necessarily equally likely. The probability must come from data, a model or judgement."
+    ],
+    "hints": [
+      "What condition must hold before counting outcomes gives probabilities?",
+      "Are \"succeeds\" and \"fails\" equally likely here?",
+      "Where else can a probability come from?"
+    ],
+    "concept": "Limits of the classical definition of probability.",
+    "misconception": "Assuming equal likelihood from the number of outcomes.",
+    "why": "Probabilities describe uncertainty, not just a count of possibilities.",
+    "fam": "space:diagnose"
+  },
+  {
+    "id": "SPC-19",
+    "topic": "space",
+    "sub": "regions of a Venn diagram: missing probability",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A survey classifies respondents by whether they hold savings ($S$) and whether they hold a loan ($L$). The four regions have probabilities $P(S\\cap L) = 0.18$, $P(S\\cap L^c) = 0.42$ and $P(S^c\\cap L) = 0.13$. What is $P(S^c\\cap L^c)$, the probability of holding neither?",
+    "data": "",
+    "answer": {
+      "value": 0.2700000000000001,
+      "display": "0.27"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "The four regions partition the sample space, so their probabilities sum to 1.",
+      "$P(S^c\\cap L^c) = 1-0.18-0.42-0.13 = 0.27$."
+    ],
+    "hints": [
+      "How many disjoint regions does the Venn diagram of two events have?",
+      "The regions together make up the entire sample space.",
+      "Subtract the known regions from 1."
+    ],
+    "concept": "Probabilities of Venn regions sum to one.",
+    "misconception": "Using the marginals instead of the regions.",
+    "why": "The regions are mutually exclusive and exhaustive.",
+    "fam": "space:regions"
+  },
+  {
+    "id": "SPC-20",
+    "topic": "space",
+    "sub": "events defined by a random variable",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two fair coins are tossed and $X$ is the number of heads. Which of the following events is the same as \"$X \\ge 1$\"?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "\"at least one head\", whose probability is $3/4$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "\"at least one head\", whose probability is $3/4$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "\"exactly one head\", whose probability is $1/2$",
+        "correct": false,
+        "why": "The event $X\\ge1$ also includes the outcome with two heads."
+      },
+      {
+        "text": "\"the first coin shows a head\", whose probability is $1/2$",
+        "correct": false,
+        "why": "The outcome (tails, heads) has $X=1$ but the first coin is a tail."
+      },
+      {
+        "text": "\"two heads\", whose probability is $1/4$",
+        "correct": false,
+        "why": "That is $X=2$; the event $X\\ge1$ contains $X=1$ as well."
+      }
+    ],
+    "solution": [
+      "$X\\ge1$ means $X=1$ or $X=2$: outcomes HT, TH, HH.",
+      "$P = 3/4$, equivalently $1-P(TT) = 1-\\tfrac14$."
+    ],
+    "hints": [
+      "List the outcomes of the two tosses and the value of $X$ on each.",
+      "Which outcomes have $X\\ge1$?",
+      "Count them or use the complement of $X=0$."
+    ],
+    "concept": "Describing an event through a random variable.",
+    "misconception": "Confusing \"at least\" with \"exactly\".",
+    "why": "The event is a set of outcomes; naming it by $X$ does not change which outcomes it contains.",
+    "fam": "space:count-events"
+  },
+  {
+    "id": "SPC-21",
+    "topic": "space",
+    "sub": "event algebra: distributive law",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Which expression is equal to $(A\\cup B)\\cap C$?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$(A\\cap C)\\cup(B\\cap C)$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$(A\\cap C)\\cup(B\\cap C)$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$(A\\cap B)\\cup C$",
+        "correct": false,
+        "why": "This contains all of $C$, even outcomes of $C$ outside $A\\cup B$."
+      },
+      {
+        "text": "$A\\cup(B\\cap C)$",
+        "correct": false,
+        "why": "This contains all of $A$, including outcomes of $A$ outside $C$."
+      },
+      {
+        "text": "$(A\\cup C)\\cap(B\\cup C)$",
+        "correct": false,
+        "why": "This equals $(A\\cap B)\\cup C$ by the other distributive law, not $(A\\cup B)\\cap C$."
+      }
+    ],
+    "solution": [
+      "Intersection distributes over union: $(A\\cup B)\\cap C = (A\\cap C)\\cup(B\\cap C)$.",
+      "An outcome is in the left side iff it is in $C$ and in $A$ or $B$, i.e. in $A\\cap C$ or in $B\\cap C$."
+    ],
+    "hints": [
+      "Check membership of a single outcome: what must be true for it to belong to the left side?",
+      "It must be in $C$ and in at least one of $A$, $B$.",
+      "Which candidate expresses exactly that?"
+    ],
+    "concept": "Distributive laws of sets.",
+    "misconception": "Mixing up which operation distributes over which.",
+    "why": "Both operations distribute over each other; the correct form comes from checking membership.",
+    "fam": "space:event-algebra"
+  },
+  {
+    "id": "SPC-22",
+    "topic": "space",
+    "sub": "multi-select survey coding",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A survey asks which of 5 payment methods a respondent has used in the past month; each respondent may tick any number of methods, including none. How many different responses tick <b>at least one</b> method?",
+    "data": "",
+    "answer": {
+      "value": 31,
+      "display": "31"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Each method is ticked or not: $2^5 = 32$ possible responses.",
+      "Excluding the empty response leaves $32-1 = 31$."
+    ],
+    "hints": [
+      "Each method has two possible states.",
+      "The choices for different methods are independent: multiply.",
+      "Remove the single response in which nothing is ticked."
+    ],
+    "concept": "Counting subsets: $2^n$.",
+    "misconception": "Counting only responses with exactly one method ticked.",
+    "why": "Subsets correspond to binary vectors of length $n$.",
+    "fam": "space:count-events"
+  },
+  {
+    "id": "SPC-23",
+    "topic": "space",
+    "sub": "long-run frequency interpretation",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A weather service says \"there is a 30% chance of rain tomorrow\". Which statement best matches this probability in the frequency interpretation?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "On about 30% of days with conditions like tomorrow’s, it rains"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "On about 30% of days with conditions like tomorrow’s, it rains",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "It will rain in 30% of the region tomorrow",
+        "correct": false,
+        "why": "That would be an area proportion; the probability is about occurrence of rain, not coverage."
+      },
+      {
+        "text": "It will rain for 30% of the day",
+        "correct": false,
+        "why": "That is a statement about duration, not about the chance that rain occurs at all."
+      },
+      {
+        "text": "The forecaster is 30% sure that she is correct",
+        "correct": false,
+        "why": "The probability refers to the event \"rain\", not to the correctness of the forecast."
+      }
+    ],
+    "solution": [
+      "In the frequency interpretation, a probability of 0.3 means that in a long series of similar situations the event occurs in about 30% of them.",
+      "It does not describe the area covered or the duration of rain."
+    ],
+    "hints": [
+      "What would you observe over many days with the same forecast?",
+      "Is the probability about where, how long, or whether?",
+      "Pick the statement about the long-run proportion of such days."
+    ],
+    "concept": "Frequency interpretation of probability.",
+    "misconception": "Reading a probability as a proportion of area or time.",
+    "why": "A probability is a statement about uncertainty of occurrence.",
+    "fam": "space:diagnose"
+  },
+  {
+    "id": "SPC-24",
+    "topic": "space",
+    "sub": "regions: count with three sets and none",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Of 120 customers, 55 bought product $X$, 48 bought $Y$ and 40 bought $Z$. 20 bought both $X$ and $Y$, 15 both $X$ and $Z$, 12 both $Y$ and $Z$, and 6 bought all three. How many customers bought <b>none</b> of the three products?",
+    "data": "",
+    "answer": {
+      "value": 18,
+      "display": "18"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Customers buying at least one product: $55+48+40-20-15-12+6 = 102$.",
+      "None: $120-102 = 18$."
+    ],
+    "hints": [
+      "First find how many bought at least one product.",
+      "Use inclusion-exclusion: add singles, subtract pairs, add the triple.",
+      "Subtract from 120."
+    ],
+    "concept": "Inclusion-exclusion for three sets.",
+    "misconception": "Forgetting to add back the triple intersection.",
+    "why": "The alternating sum counts each customer exactly once.",
+    "fam": "space:regions"
+  },
+  {
+    "id": "SPC-25",
+    "topic": "space",
+    "sub": "event algebra with probabilities: symmetric difference",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "For events $A$ and $B$, $P(A)=0.45$, $P(B)=0.50$ and $P(A\\cup B)=0.70$. What is the probability that <b>exactly one</b> of $A$ and $B$ occurs?",
+    "data": "",
+    "answer": {
+      "value": 0.44999999999999996,
+      "display": "0.45"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.45",
+        "correct": true,
+        "why": "",
+        "v": 0.44999999999999996
+      },
+      {
+        "text": "0.7",
+        "correct": false,
+        "why": "This is the probability that at least one occurs, which includes the case of both.",
+        "v": 0.7
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is $P(A\\cap B)$, the probability that both occur.",
+        "v": 0.25
+      },
+      {
+        "text": "0.2",
+        "correct": false,
+        "why": "This is the probability of A without B only; B without A must be added.",
+        "v": 0.2
+      }
+    ],
+    "solution": [
+      "$P(A\\cap B) = 0.45+0.50-0.70 = 0.25$.",
+      "Exactly one: $(0.45-0.25)+(0.50-0.25) = 0.45$.",
+      "Equivalently $P(A\\cup B)-P(A\\cap B) = 0.70-0.25 = 0.45$."
+    ],
+    "hints": [
+      "Find $P(A\\cap B)$ from the addition rule.",
+      "Exactly one = at least one minus both.",
+      "Compute $0.70 - P(A\\cap B)$."
+    ],
+    "concept": "Exactly-one events from union and intersection.",
+    "misconception": "Reporting the union.",
+    "why": "The union splits into \"exactly one\" and \"both\".",
+    "fam": "space:event-algebra"
+  },
+  {
+    "id": "SPC-26",
+    "topic": "space",
+    "sub": "sample space: no two consecutive",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A trader records each of 6 days as a gain (G) or a loss (L). How many of the $2^6$ records contain <b>no two consecutive losses</b>?",
+    "data": "",
+    "answer": {
+      "value": 21,
+      "display": "21"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Let $a_n$ be the number of valid records of length $n$. A valid record ends in G (preceded by any valid record of length $n-1$, so $a_{n-1}$ ways) or in L, in which case the previous day must be G (preceded by a valid record of length $n-2$, so $a_{n-2}$ ways).",
+      "$a_n = a_{n-1}+a_{n-2}$ with $a_1 = 2$, $a_2 = 3$: $5, 8, 13, 21$.",
+      "$a_6 = 21$."
+    ],
+    "hints": [
+      "Think about how a valid record of length $n$ can end.",
+      "If it ends in a loss, what must the day before be?",
+      "This gives a Fibonacci-type recursion; start with $a_1 = 2$, $a_2 = 3$."
+    ],
+    "concept": "Counting restricted sequences by recursion.",
+    "misconception": "Subtracting arrangement counts without a systematic scheme.",
+    "why": "The recursion splits valid records by their last symbol.",
+    "fam": "space:count-events"
+  }
+]

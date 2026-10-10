@@ -1,0 +1,3136 @@
+[
+  {
+    "id": "DST-01",
+    "topic": "dist",
+    "sub": "binomial",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A call-centre agent resolves each call independently with probability 0.7. What is the probability that <b>exactly 3 of the next 5 calls</b> are resolved?",
+    "data": "",
+    "answer": {
+      "value": 0.30870000000000003,
+      "display": "0.3087"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3087",
+        "correct": true,
+        "why": "",
+        "v": 0.30870000000000003
+      },
+      {
+        "text": "0.0309",
+        "correct": false,
+        "why": "This is the probability of one specific arrangement of three resolved and two unresolved calls; there are $\\binom53 = 10$ arrangements.",
+        "v": 0.03086999999999999
+      },
+      {
+        "text": "0.1323",
+        "correct": false,
+        "why": "This is the probability of exactly 2 resolved calls.",
+        "v": 0.13230000000000006
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This is the observed proportion, not a probability.",
+        "v": 0.6
+      }
+    ],
+    "solution": [
+      "The number resolved is binomial$(5, 0.7)$.",
+      "$P(X=3) = \\binom53(0.7)^3(0.3)^2 = 10\\times0.343\\times0.09 = 0.3087$."
+    ],
+    "hints": [
+      "Identify $n$, $p$ and the number of successes.",
+      "Count the arrangements of 3 successes among 5 calls.",
+      "Multiply the count by $p^3(1-p)^2$."
+    ],
+    "concept": "Binomial probability mass function.",
+    "misconception": "Omitting the binomial coefficient.",
+    "why": "Each arrangement is equally likely and mutually exclusive.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-03",
+    "topic": "dist",
+    "sub": "binomial tail as evidence",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A trader claims she can predict the daily direction of an index. Over 12 days she is right on <b>9 days</b>. If she were guessing (probability 0.5 each day), what is the probability of doing <b>at least this well</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.072998046875,
+      "display": "0.073"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.073",
+        "correct": true,
+        "why": "",
+        "v": 0.072998046875
+      },
+      {
+        "text": "0.0537",
+        "correct": false,
+        "why": "This is the probability of exactly 9 correct, not at least 9.",
+        "v": 0.0537109375
+      },
+      {
+        "text": "0.1938",
+        "correct": false,
+        "why": "This is the probability of at least 8 correct.",
+        "v": 0.19384765625
+      },
+      {
+        "text": "0.75",
+        "correct": false,
+        "why": "This is the success proportion, not a probability under guessing.",
+        "v": 0.75
+      }
+    ],
+    "solution": [
+      "$P(X\\ge9) = \\dfrac{\\binom{12}9+\\binom{12}{10}+\\binom{12}{11}+\\binom{12}{12}}{2^{12}} = \\dfrac{220+66+12+1}{4096} \\approx 0.073$."
+    ],
+    "hints": [
+      "Under guessing the number correct is binomial$(12, 0.5)$.",
+      "\"At least this well\" means 9, 10, 11 or 12 correct.",
+      "Sum the four probabilities."
+    ],
+    "concept": "Tail probability under a null model.",
+    "misconception": "Using the exact probability of 9.",
+    "why": "The tail probability measures how surprising the result is under guessing.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-04",
+    "topic": "dist",
+    "sub": "majority decoding",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A sensor sends each status bit 7 times. Each copy is received wrongly with probability 0.25, independently, and the receiver takes the majority. What is the probability that a bit is <b>decoded wrongly</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.070556640625,
+      "display": "0.0706"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0706",
+        "correct": true,
+        "why": "",
+        "v": 0.070556640625
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "Repeating the bit and taking a majority reduces the error probability below a single copy’s 0.25.",
+        "v": 0.25
+      },
+      {
+        "text": "0.2436",
+        "correct": false,
+        "why": "A majority of 7 needs at least 4 wrong copies; 3 wrong copies still gives the right majority.",
+        "v": 0.24359130859375
+      },
+      {
+        "text": "0.0577",
+        "correct": false,
+        "why": "This counts only exactly 4 wrong copies; 5, 6 or 7 wrong copies also give a wrong decision.",
+        "v": 0.05767822265625
+      }
+    ],
+    "solution": [
+      "The majority is wrong if at least 4 of the 7 copies are wrong.",
+      "$P = \\sum_{k=4}^{7}\\binom7k(0.25)^k(0.75)^{7-k} \\approx 0.0577+0.0115+0.0013+0.0001 = 0.0706$."
+    ],
+    "hints": [
+      "How many wrong copies are needed for the majority to be wrong?",
+      "The number of wrong copies is binomial$(7, 0.25)$.",
+      "Sum the tail from 4 to 7."
+    ],
+    "concept": "Majority rule via a binomial tail.",
+    "misconception": "Using only the exact count.",
+    "why": "Redundancy converts per-copy error into a smaller tail probability.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-05",
+    "topic": "dist",
+    "sub": "comparing reliability designs",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A module works with probability $p$, independently of others. A triple-module system works if <b>at least 2 of 3</b> modules work. For which values of $p$ is the triple system <b>more reliable than a single module</b>?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$p > \\tfrac12$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$p > \\tfrac12$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$p < \\tfrac12$",
+        "correct": false,
+        "why": "For $p<\\tfrac12$ the triple system is less reliable: $3p^2-2p^3 < p$."
+      },
+      {
+        "text": "For all $p$",
+        "correct": false,
+        "why": "The system is better only when modules are more likely to work than not."
+      },
+      {
+        "text": "$p > \\tfrac23$",
+        "correct": false,
+        "why": "The crossing point is 1/2: $3p^2-2p^3 - p = p(1-p)(2p-1)$."
+      }
+    ],
+    "solution": [
+      "$P(\\text{system works}) = 3p^2(1-p)+p^3 = 3p^2-2p^3$.",
+      "$3p^2-2p^3 > p \\iff 3p-2p^2 > 1 \\iff 2p^2-3p+1 < 0 \\iff (2p-1)(p-1) < 0$, i.e. $\\tfrac12 < p < 1$."
+    ],
+    "hints": [
+      "Write the system reliability as a function of $p$.",
+      "Set up the inequality \"system reliability > $p$\".",
+      "Factor the quadratic."
+    ],
+    "concept": "Comparing a redundant system with a single unit.",
+    "misconception": "Assuming redundancy always helps.",
+    "why": "Majority rule amplifies whichever side of 1/2 the units are on.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-06",
+    "topic": "dist",
+    "sub": "Poisson",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Customers arrive at a service counter as a Poisson process with a mean of 1.5 arrivals per minute. What is the probability that <b>at least 3</b> customers arrive in a given minute?",
+    "data": "",
+    "answer": {
+      "value": 0.19115316946194194,
+      "display": "0.1912"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1912",
+        "correct": true,
+        "why": "",
+        "v": 0.19115316946194194
+      },
+      {
+        "text": "0.1255",
+        "correct": false,
+        "why": "This is the probability of <i>exactly</i> 3 arrivals.",
+        "v": 0.12551071508349176
+      },
+      {
+        "text": "0.4422",
+        "correct": false,
+        "why": "This is the probability of at least 2 arrivals.",
+        "v": 0.44217459962892547
+      },
+      {
+        "text": "0.8745",
+        "correct": false,
+        "why": "This subtracts only the probability of exactly 3; the terms for 0, 1 and 2 are the ones to remove.",
+        "v": 0.8744892849165082
+      }
+    ],
+    "solution": [
+      "$P(X=0) = e^{-1.5} = 0.2231$, $P(X=1) = 0.3347$, $P(X=2) = 0.2510$.",
+      "$P(X\\ge3) = 1-0.8088 = 0.1912$."
+    ],
+    "hints": [
+      "Use the complement of \"0, 1 or 2 arrivals\".",
+      "Evaluate $e^{-\\lambda}\\lambda^k/k!$ with $\\lambda = 1.5$.",
+      "Subtract the three terms from 1."
+    ],
+    "concept": "Poisson tail via the complement.",
+    "misconception": "Computing only a single Poisson term.",
+    "why": "The infinite upper tail is easier as 1 minus a finite sum.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-07",
+    "topic": "dist",
+    "sub": "Poisson approximation to rare events",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A system generates 12,000 independent five-digit codes. Each code consists of one digit repeated five times (such as 33333) with probability $10/10^5 = 10^{-4}$. Using a Poisson approximation, what is the probability that <b>at least one</b> of the 12,000 codes is of this type?",
+    "data": "",
+    "answer": {
+      "value": 0.6988057880877979,
+      "display": "0.6988"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6988",
+        "correct": true,
+        "why": "",
+        "v": 0.6988057880877979
+      },
+      {
+        "text": "1.2",
+        "correct": false,
+        "why": "A probability cannot exceed 1; 1.2 is the expected number of such codes, not a probability.",
+        "v": 1.2
+      },
+      {
+        "text": "0.3012",
+        "correct": false,
+        "why": "This is the probability that none of the codes is of this type.",
+        "v": 0.3011942119122021
+      },
+      {
+        "text": "0.3614",
+        "correct": false,
+        "why": "This is the probability of <i>exactly one</i> such code.",
+        "v": 0.3614330542946425
+      }
+    ],
+    "solution": [
+      "The number of such codes is approximately Poisson with $\\lambda = 12\\,000\\times10^{-4} = 1.2$.",
+      "$P(\\ge1) = 1-e^{-1.2} \\approx 0.699$."
+    ],
+    "hints": [
+      "Find the expected number of such codes.",
+      "For rare independent events the count is approximately Poisson.",
+      "Use the complement: one minus the probability of zero such codes."
+    ],
+    "concept": "Poisson approximation for a rare event over many trials.",
+    "misconception": "Reporting the expected count as a probability.",
+    "why": "$\\lambda = np$ summarises the rarity and the number of trials.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-09",
+    "topic": "dist",
+    "sub": "conditional Poisson",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Weekly outages at a data centre follow a Poisson law with mean 2. This week is known not to have been outage-free. Find the chance that it saw <b>three or more</b> outages.",
+    "data": "",
+    "answer": {
+      "value": 0.37392942900133735,
+      "display": "0.3739"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3739",
+        "correct": true,
+        "why": "",
+        "v": 0.37392942900133735
+      },
+      {
+        "text": "0.3233",
+        "correct": false,
+        "why": "This is the unconditional probability of three or more outages; it must be divided by $P(\\ge1)$.",
+        "v": 0.3233235838169365
+      },
+      {
+        "text": "0.687",
+        "correct": false,
+        "why": "This is the conditional probability of <i>two or more</i>.",
+        "v": 0.6869647145006686
+      },
+      {
+        "text": "0.2087",
+        "correct": false,
+        "why": "This is the conditional probability of exactly 3.",
+        "v": 0.20869019033288758
+      }
+    ],
+    "solution": [
+      "$P(X\\ge1) = 1-e^{-2} = 0.8647$. $P(X\\ge3) = 1-e^{-2}(1+2+2) = 0.3233$.",
+      "$P(X\\ge3\\mid X\\ge1) = 0.3233/0.8647 \\approx 0.374$."
+    ],
+    "hints": [
+      "Find $P(X\\ge3)$ and $P(X\\ge1)$.",
+      "$\\{X\\ge3\\}\\subset\\{X\\ge1\\}$.",
+      "Divide the larger tail probability by the smaller one."
+    ],
+    "concept": "Conditioning a Poisson variable on a tail event.",
+    "misconception": "Not dividing by the conditioning probability.",
+    "why": "Conditioning removes the zero-outage outcome.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-10",
+    "topic": "dist",
+    "sub": "Poisson approximation",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A factory's items are independently defective with probability 0.004. In a batch of 400 items, use the Poisson approximation to find the probability of <b>at least 2</b> defective items.",
+    "data": "",
+    "answer": {
+      "value": 0.47506905321389603,
+      "display": "0.4751"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.4751",
+        "correct": true,
+        "why": "",
+        "v": 0.47506905321389603
+      },
+      {
+        "text": "0.323",
+        "correct": false,
+        "why": "This is the probability of exactly one defective item.",
+        "v": 0.3230344287914486
+      },
+      {
+        "text": "0.7981",
+        "correct": false,
+        "why": "This is the probability of at least one defective item.",
+        "v": 0.7981034820053446
+      },
+      {
+        "text": "0.2166",
+        "correct": false,
+        "why": "This is the probability of at least 3 defective items.",
+        "v": 0.21664151018073718
+      }
+    ],
+    "solution": [
+      "$\\lambda = 400\\times0.004 = 1.6$.",
+      "$P(X\\ge2) = 1-e^{-1.6}(1+1.6) = 1-0.2019\\times2.6 = 0.475$."
+    ],
+    "hints": [
+      "Find $\\lambda = np$.",
+      "Use the complement of \"0 or 1\".",
+      "Compute $e^{-1.6}$."
+    ],
+    "concept": "Poisson approximation to a binomial tail.",
+    "misconception": "Miscounting the excluded terms.",
+    "why": "For small $p$ and large $n$ the binomial is close to Poisson.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-11",
+    "topic": "dist",
+    "sub": "Poisson process",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Orders arrive at a warehouse as a Poisson process at a rate of 3 per hour. What is the probability that <b>no order</b> arrives in the next 20 minutes?",
+    "data": "",
+    "answer": {
+      "value": 0.36787944117144233,
+      "display": "0.3679"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3679",
+        "correct": true,
+        "why": "",
+        "v": 0.36787944117144233
+      },
+      {
+        "text": "0.0498",
+        "correct": false,
+        "why": "This uses a full hour rather than 20 minutes.",
+        "v": 0.049787068367863944
+      },
+      {
+        "text": "0.6321",
+        "correct": false,
+        "why": "This is the probability that at least one order arrives.",
+        "v": 0.6321205588285577
+      },
+      {
+        "text": "2.06e-9",
+        "correct": false,
+        "why": "This treats the number of minutes as the mean number of arrivals.",
+        "v": 2.061153622438558e-9
+      }
+    ],
+    "solution": [
+      "In 20 minutes the mean number of orders is $3\\times\\tfrac13 = 1$.",
+      "$P(\\text{none}) = e^{-1} \\approx 0.368$."
+    ],
+    "hints": [
+      "Convert the rate to the 20-minute interval.",
+      "The count in the interval is Poisson with that mean.",
+      "Evaluate $P(0) = e^{-\\lambda}$."
+    ],
+    "concept": "Poisson process counts over an interval.",
+    "misconception": "Not rescaling the rate to the interval.",
+    "why": "The mean count is rate times time.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-12",
+    "topic": "dist",
+    "sub": "series of games",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "In a best-of-five playoff, one franchise is the stronger side and takes any single game with probability 0.65, independently of the other games. Find the chance that it is the franchise that wins the playoff.",
+    "data": "",
+    "answer": {
+      "value": 0.764830625,
+      "display": "0.7648"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.7648",
+        "correct": true,
+        "why": "",
+        "v": 0.764830625
+      },
+      {
+        "text": "0.65",
+        "correct": false,
+        "why": "This is the probability of winning a single game; the series has several games.",
+        "v": 0.65
+      },
+      {
+        "text": "0.3364",
+        "correct": false,
+        "why": "This is the probability of exactly 3 wins in 5 games; 4 or 5 wins also give the series.",
+        "v": 0.33641562499999994
+      },
+      {
+        "text": "0.2746",
+        "correct": false,
+        "why": "This is the probability of winning 3 straight games only; the series can last longer.",
+        "v": 0.27462500000000006
+      }
+    ],
+    "solution": [
+      "Imagine all five games are played. The stronger team wins the series iff it wins at least 3.",
+      "$P = \\binom53(0.65)^3(0.35)^2+\\binom54(0.65)^4(0.35)+(0.65)^5 = 0.3364+0.3124+0.1160 = 0.7648$."
+    ],
+    "hints": [
+      "Pretend all five games are played regardless of the result.",
+      "The series is won exactly when at least 3 of the 5 games are won.",
+      "Sum the binomial terms for 3, 4 and 5 wins."
+    ],
+    "concept": "Series probability via a binomial tail.",
+    "misconception": "Considering only the games actually played.",
+    "why": "Playing \"extra\" games after the series is decided does not change who has more wins.",
+    "fam": "dist:waiting"
+  },
+  {
+    "id": "DST-13",
+    "topic": "dist",
+    "sub": "expected duration",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Two teams of equal strength meet in a best-of-five series. Find the <b>average number of games</b> such a series lasts.",
+    "data": "",
+    "answer": {
+      "value": 4.125,
+      "display": "4.125"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "4.125",
+        "correct": true,
+        "why": "",
+        "v": 4.125
+      },
+      {
+        "text": "4",
+        "correct": false,
+        "why": "The series is not equally likely to end after 4 games; 3-0 and 4-1 outcomes have different probabilities.",
+        "v": 4
+      },
+      {
+        "text": "5",
+        "correct": false,
+        "why": "This is the maximum length of the series.",
+        "v": 5
+      },
+      {
+        "text": "4.25",
+        "correct": false,
+        "why": "The probabilities of lengths 3, 4, 5 are $0.25, 0.375, 0.375$; a 4-game series is as likely as a 5-game one.",
+        "v": 4.25
+      }
+    ],
+    "solution": [
+      "The series ends in 3 games with probability $2(\\tfrac12)^3 = 0.25$.",
+      "In 4 games: $2\\binom32(\\tfrac12)^4 = 0.375$. In 5 games: $2\\binom42(\\tfrac12)^5 = 0.375$.",
+      "$E = 3(0.25)+4(0.375)+5(0.375) = 4.125$."
+    ],
+    "hints": [
+      "What are the possible lengths of the series?",
+      "For length $n$, the winner takes the last game and 2 of the previous $n-1$.",
+      "Multiply by 2 for either team and weight each length."
+    ],
+    "concept": "Expected length of a first-to-$k$ series.",
+    "misconception": "Assuming lengths are equally likely.",
+    "why": "Longer series require both teams to win games, which is more probable.",
+    "fam": "dist:waiting"
+  },
+  {
+    "id": "DST-14",
+    "topic": "dist",
+    "sub": "negative binomial",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A recruiter needs 3 candidates to accept an offer. Each candidate accepts independently with probability 0.4. What is the probability that the <b>third acceptance comes on exactly the 7th offer</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.12441600000000001,
+      "display": "0.1244"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1244",
+        "correct": true,
+        "why": "",
+        "v": 0.12441600000000001
+      },
+      {
+        "text": "0.2903",
+        "correct": false,
+        "why": "This is the probability of exactly 3 acceptances in 7 offers; the 7th offer must itself be an acceptance.",
+        "v": 0.29030400000000006
+      },
+      {
+        "text": "0.1161",
+        "correct": false,
+        "why": "This counts too many arrangements; the last offer is fixed as an acceptance.",
+        "v": 0.11612160000000003
+      },
+      {
+        "text": "0.00829",
+        "correct": false,
+        "why": "This is one specific arrangement; the two earlier acceptances can be placed in $\\binom62 = 15$ ways.",
+        "v": 0.008294400000000002
+      }
+    ],
+    "solution": [
+      "The 7th offer must be the 3rd acceptance, so exactly 2 acceptances occur among the first 6 offers.",
+      "$P = \\binom62(0.4)^2(0.6)^4\\times0.4 = 15\\times0.16\\times0.1296\\times0.4 \\approx 0.1244$."
+    ],
+    "hints": [
+      "What must happen on offer 7?",
+      "In how many ways can 2 acceptances be placed among the first 6 offers?",
+      "Multiply by the probability of one arrangement."
+    ],
+    "concept": "Negative binomial probability.",
+    "misconception": "Using the plain binomial formula.",
+    "why": "Fixing the last trial as a success makes the count of arrangements $\\binom{n-1}{r-1}$.",
+    "fam": "dist:waiting"
+  },
+  {
+    "id": "DST-16",
+    "topic": "dist",
+    "sub": "sum of Poisson variables",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Defects on three independent panels are Poisson with means 0.4, 1.1 and 0.8. What is the probability that the three panels together have <b>no defects at all</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.10025884372280375,
+      "display": "0.1003"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1003",
+        "correct": true,
+        "why": "",
+        "v": 0.10025884372280375
+      },
+      {
+        "text": "1.4525",
+        "correct": false,
+        "why": "This adds probabilities that should be multiplied for independent panels (and exceeds 1).",
+        "v": 1.4525200938509404
+      },
+      {
+        "text": "0.4493",
+        "correct": false,
+        "why": "This is the probability that only the third panel has no defects.",
+        "v": 0.44932896411722156
+      },
+      {
+        "text": "0.8997",
+        "correct": false,
+        "why": "This is the probability of at least one defect.",
+        "v": 0.8997411562771962
+      }
+    ],
+    "solution": [
+      "The total number of defects is Poisson with mean $0.4+1.1+0.8 = 2.3$.",
+      "$P(0) = e^{-2.3} \\approx 0.1003$."
+    ],
+    "hints": [
+      "The sum of independent Poisson variables is Poisson.",
+      "Add the three means to get the mean of the total.",
+      "Evaluate $e^{-\\lambda}$."
+    ],
+    "concept": "Sum of independent Poisson variables.",
+    "misconception": "Adding probabilities.",
+    "why": "Independent zero-defect events multiply: $e^{-0.4}e^{-1.1}e^{-0.8}$.",
+    "fam": "dist:clt"
+  },
+  {
+    "id": "DST-17",
+    "topic": "dist",
+    "sub": "continuous tail probability",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The delay $X$ (in days) of a shipment has density $f(x) = 3/x^4$ for $x>1$ and 0 otherwise. What is $P(X>2)$?",
+    "data": "",
+    "answer": {
+      "value": 0.125,
+      "display": "0.125"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.125",
+        "correct": true,
+        "why": "",
+        "v": 0.125
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is $P(X>2)$ for the density $2/x^3$; the integral of $3/x^4$ is $1/x^3$.",
+        "v": 0.25
+      },
+      {
+        "text": "0.1875",
+        "correct": false,
+        "why": "This is $f(2)$, the density at 2, not the tail probability.",
+        "v": 0.1875
+      },
+      {
+        "text": "0.875",
+        "correct": false,
+        "why": "This is $P(1<X<2)$, the complementary probability.",
+        "v": 0.875
+      }
+    ],
+    "solution": [
+      "$P(X>2) = \\int_2^\\infty 3x^{-4}dx = \\left[-x^{-3}\\right]_2^\\infty = \\dfrac{1}{8}$."
+    ],
+    "hints": [
+      "Integrate the density from 2 to infinity.",
+      "An antiderivative of $3x^{-4}$ is $-x^{-3}$.",
+      "Evaluate at the limits."
+    ],
+    "concept": "Tail probability from a density.",
+    "misconception": "Evaluating the density instead of integrating.",
+    "why": "Probability is area under the density.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-19",
+    "topic": "dist",
+    "sub": "normal probability",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Monthly sales are normal with mean 250 and standard deviation 40 (units). What is the probability that sales exceed 300?",
+    "data": "",
+    "answer": {
+      "value": 0.10564983896265612,
+      "display": "0.1056"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1056",
+        "correct": true,
+        "why": "",
+        "v": 0.10564983896265612
+      },
+      {
+        "text": "0.8944",
+        "correct": false,
+        "why": "This is $P(X<300)$, the complementary probability.",
+        "v": 0.8943501610373439
+      },
+      {
+        "text": "0.3773",
+        "correct": false,
+        "why": "The standard deviation is 40, not 160: $z = 50/40$.",
+        "v": 0.37733034626444617
+      },
+      {
+        "text": "0.5",
+        "correct": false,
+        "why": "The mean is 250, so 300 is above the mean and the probability is below one half.",
+        "v": 0.5
+      }
+    ],
+    "solution": [
+      "$z = \\dfrac{300-250}{40} = 1.25$.",
+      "$P(X>300) = 1-\\Phi(1.25) = 1-0.8944 = 0.1056$."
+    ],
+    "hints": [
+      "Standardise 300.",
+      "Look up $\\Phi(1.25)$.",
+      "Take the upper tail."
+    ],
+    "concept": "Normal upper-tail probability.",
+    "misconception": "Reporting the lower tail.",
+    "why": "The $z$-score measures how many standard deviations above the mean 300 lies.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-20",
+    "topic": "dist",
+    "sub": "normal and geometric",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The annual peak level of a river is normal with mean 5.0 m and standard deviation 0.8 m, independently from year to year. A flood occurs when the peak exceeds 6.5 m. What is the probability that <b>no flood occurs in the next 20 years</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.5393681620729962,
+      "display": "0.5394"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.5394",
+        "correct": true,
+        "why": "",
+        "v": 0.5393681620729962
+      },
+      {
+        "text": "0.0304",
+        "correct": false,
+        "why": "This is the probability of a flood in a single year.",
+        "v": 0.030396297157620156
+      },
+      {
+        "text": "0.4606",
+        "correct": false,
+        "why": "This is the probability of at least one flood in 20 years.",
+        "v": 0.4606318379270038
+      },
+      {
+        "text": "0.6079",
+        "correct": false,
+        "why": "This adds the yearly flood probabilities, which is the expected number of floods, not a probability of none.",
+        "v": 0.6079259431524031
+      }
+    ],
+    "solution": [
+      "$P(\\text{flood in a year}) = 1-\\Phi\\left(\\dfrac{6.5-5.0}{0.8}\\right) = 1-\\Phi(1.875) = 0.0304$.",
+      "The years are independent: $P(\\text{none in 20}) = (1-0.0304)^{20} \\approx 0.537$."
+    ],
+    "hints": [
+      "Find the probability of a flood in one year using the normal distribution.",
+      "Years are independent.",
+      "Raise the no-flood probability to the 20th power."
+    ],
+    "concept": "Combining a normal tail with independent trials.",
+    "misconception": "Adding yearly probabilities.",
+    "why": "No flood in 20 years requires no flood in each year.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-21",
+    "topic": "dist",
+    "sub": "normal quantile",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Delivery times are normal with mean 45 minutes and standard deviation 6 minutes. Find the time $t$ such that <b>95%</b> of deliveries are completed within $t$ minutes.",
+    "data": "",
+    "answer": {
+      "value": 54.8694,
+      "display": "54.8694"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "54.8694",
+        "correct": true,
+        "why": "",
+        "v": 54.8694
+      },
+      {
+        "text": "56.76",
+        "correct": false,
+        "why": "The value 1.96 is the 97.5% point; the 95% point is 1.645.",
+        "v": 56.76
+      },
+      {
+        "text": "52.68",
+        "correct": false,
+        "why": "The value 1.28 is the 90% point.",
+        "v": 52.68
+      },
+      {
+        "text": "51",
+        "correct": false,
+        "why": "One standard deviation above the mean covers only about 84% of deliveries.",
+        "v": 51
+      }
+    ],
+    "solution": [
+      "The 95% point of the standard normal is $z = 1.645$.",
+      "$t = 45+1.645\\times6 \\approx 54.9$ minutes."
+    ],
+    "hints": [
+      "Find $z$ with $\\Phi(z) = 0.95$.",
+      "Convert back with $t = \\mu + z\\sigma$.",
+      "Round to a sensible number of decimals."
+    ],
+    "concept": "Using the normal quantile.",
+    "misconception": "Using the 97.5% point for a one-sided 95%.",
+    "why": "A one-sided 95% limit uses $z = 1.645$.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-22",
+    "topic": "dist",
+    "sub": "normal approximation to binomial",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A market-research firm knows that 40% of buyers prefer option A. Among 150 independently sampled buyers, approximately what is the probability that <b>55 to 65 of them (both counts included)</b> prefer A? Use the normal approximation with a continuity correction.",
+    "data": "",
+    "answer": {
+      "value": 0.6406827166030551,
+      "display": "0.6407"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6407",
+        "correct": true,
+        "why": "",
+        "v": 0.6406827166030551
+      },
+      {
+        "text": "0.5953",
+        "correct": false,
+        "why": "Without the continuity correction the interval is too narrow; use 54.5 and 65.5.",
+        "v": 0.5953433508289963
+      },
+      {
+        "text": "0.1214",
+        "correct": false,
+        "why": "The standard deviation is $\\sqrt{150(0.4)(0.6)} = 6$, not the variance 36.",
+        "v": 0.12142651194979409
+      },
+      {
+        "text": "0.9199",
+        "correct": false,
+        "why": "The window is 55 to 65, not 50 to 70.",
+        "v": 0.919881772949275
+      }
+    ],
+    "solution": [
+      "$\\mu = 150(0.4) = 60$, $\\sigma = \\sqrt{150(0.4)(0.6)} = 6$.",
+      "$P(55\\le X\\le65) \\approx \\Phi\\left(\\dfrac{65.5-60}{6}\\right)-\\Phi\\left(\\dfrac{54.5-60}{6}\\right) = 2\\Phi(0.917)-1 \\approx 0.640$."
+    ],
+    "hints": [
+      "Find the mean and standard deviation of the binomial count.",
+      "Apply the continuity correction: use 54.5 and 65.5.",
+      "Standardise and subtract the cumulative probabilities."
+    ],
+    "concept": "Normal approximation with continuity correction.",
+    "misconception": "Using the variance as the standard deviation.",
+    "why": "The continuity correction accounts for approximating a discrete distribution by a continuous one.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-23",
+    "topic": "dist",
+    "sub": "two-sided normal probability",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Bolt diameters are normal with mean 12.00 mm and standard deviation 0.04 mm. Bolts must be within $\\pm0.06$ mm of 12.00 mm. What proportion of bolts is <b>within tolerance</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.8663855425594584,
+      "display": "0.8664"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.8664",
+        "correct": true,
+        "why": "",
+        "v": 0.8663855425594584
+      },
+      {
+        "text": "0.1336",
+        "correct": false,
+        "why": "This is the proportion outside the tolerance (defective).",
+        "v": 0.13361445744054157
+      },
+      {
+        "text": "0.9332",
+        "correct": false,
+        "why": "This is the probability of being below the upper limit; the lower limit must also be respected.",
+        "v": 0.9331927712797292
+      },
+      {
+        "text": "0.0478",
+        "correct": false,
+        "why": "The deviation must be standardised: $z = 0.06/0.04 = 1.5$.",
+        "v": 0.047844506633004436
+      }
+    ],
+    "solution": [
+      "$z = \\pm\\dfrac{0.06}{0.04} = \\pm1.5$.",
+      "$P = \\Phi(1.5)-\\Phi(-1.5) = 2(0.9332)-1 = 0.8664$."
+    ],
+    "hints": [
+      "Express the tolerance limits as $z$-scores.",
+      "By symmetry $\\Phi(-z) = 1-\\Phi(z)$.",
+      "Compute $2\\Phi(1.5)-1$."
+    ],
+    "concept": "Probability within a symmetric interval.",
+    "misconception": "Forgetting to standardise.",
+    "why": "The central region between $\\pm z$ has probability $2\\Phi(z)-1$.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-25",
+    "topic": "dist",
+    "sub": "error probabilities of a test",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A tester suspects a coin favours heads. He tosses it 400 times and will announce \"biased\" once heads reach <b>220 or more</b>. Suppose the coin is in fact fair. What is the chance he announces \"biased\"? Use a normal approximation with continuity correction.",
+    "data": "",
+    "answer": {
+      "value": 0.025587989770653463,
+      "display": "0.0256"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0256",
+        "correct": true,
+        "why": "",
+        "v": 0.025587989770653463
+      },
+      {
+        "text": "0.0228",
+        "correct": false,
+        "why": "Without the continuity correction the boundary is at 220 rather than 219.5.",
+        "v": 0.022750062014251893
+      },
+      {
+        "text": "0.4227",
+        "correct": false,
+        "why": "The standard deviation is $\\sqrt{400\\cdot0.25} = 10$, not 100.",
+        "v": 0.4226964917132092
+      },
+      {
+        "text": "0.9744",
+        "correct": false,
+        "why": "This is the probability of fewer than 220 heads, the correct decision.",
+        "v": 0.9744120102293465
+      }
+    ],
+    "solution": [
+      "For a fair coin, $\\mu = 200$ and $\\sigma = \\sqrt{400(0.5)(0.5)} = 10$.",
+      "$P(X\\ge220) \\approx 1-\\Phi\\left(\\dfrac{219.5-200}{10}\\right) = 1-\\Phi(1.95) \\approx 0.0256$."
+    ],
+    "hints": [
+      "Under the fair-coin assumption, find $\\mu$ and $\\sigma$.",
+      "The rejection region starts at 220; use 219.5.",
+      "Take the upper tail."
+    ],
+    "concept": "Type I error probability through the normal approximation.",
+    "misconception": "Reporting the correct-decision probability.",
+    "why": "The probability of a false alarm is the probability of the rejection region under the null.",
+    "fam": "dist:diagnose"
+  },
+  {
+    "id": "DST-26",
+    "topic": "dist",
+    "sub": "normal approximation to binomial",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "8% of items from a line are non-conforming, independently. Use the normal approximation (with continuity correction) to find the probability that a batch of 300 contains <b>at most 15</b> non-conforming items.",
+    "data": "",
+    "answer": {
+      "value": 0.0352316512261864,
+      "display": "0.0352"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0352",
+        "correct": true,
+        "why": "",
+        "v": 0.0352316512261864
+      },
+      {
+        "text": "0.0277",
+        "correct": false,
+        "why": "The continuity correction uses 15.5 for an \"at most 15\" event.",
+        "v": 0.027725326697493568
+      },
+      {
+        "text": "0.9648",
+        "correct": false,
+        "why": "This is the probability of more than 15 non-conforming items.",
+        "v": 0.9647683487738136
+      },
+      {
+        "text": "0.3501",
+        "correct": false,
+        "why": "The standard deviation is the square root of the variance 22.08.",
+        "v": 0.3501321802362262
+      }
+    ],
+    "solution": [
+      "$\\mu = 300(0.08) = 24$, $\\sigma^2 = 300(0.08)(0.92) = 22.08$, $\\sigma = 4.70$.",
+      "$P(X\\le15) \\approx \\Phi\\left(\\dfrac{15.5-24}{4.70}\\right) = \\Phi(-1.81) \\approx 0.035$."
+    ],
+    "hints": [
+      "Find the mean and standard deviation of the count.",
+      "For \"at most 15\" use 15.5.",
+      "Standardise and read $\\Phi$."
+    ],
+    "concept": "Normal approximation lower tail.",
+    "misconception": "Omitting the continuity correction.",
+    "why": "A count of at most 15 corresponds to the continuous region below 15.5.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-27",
+    "topic": "dist",
+    "sub": "exponential memorylessness",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The length of a phone call is exponential with mean 4 minutes. A call has already been going for <b>over 6 minutes</b>. What is the chance it continues for <b>at least another 9 minutes</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.10539922456186433,
+      "display": "0.1054"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1054",
+        "correct": true,
+        "why": "",
+        "v": 0.10539922456186433
+      },
+      {
+        "text": "0.0235",
+        "correct": false,
+        "why": "This is the unconditional probability that the call lasts more than 15 minutes.",
+        "v": 0.02351774585600911
+      },
+      {
+        "text": "0.2231",
+        "correct": false,
+        "why": "This is the probability of having lasted more than 6 minutes.",
+        "v": 0.22313016014842982
+      },
+      {
+        "text": "0.8946",
+        "correct": false,
+        "why": "This is the probability that it ends within the next 9 minutes.",
+        "v": 0.8946007754381357
+      }
+    ],
+    "solution": [
+      "By the memoryless property the remaining duration is again exponential with mean 4.",
+      "$P(\\text{at least 9 more}) = e^{-9/4} \\approx 0.105$.",
+      "Check: $e^{-15/4}/e^{-6/4} = e^{-9/4}$."
+    ],
+    "hints": [
+      "What does the memoryless property say about the remaining time?",
+      "The rate is $1/4$ per minute.",
+      "Evaluate $e^{-\\lambda t}$ for $t = 9$."
+    ],
+    "concept": "Memorylessness of the exponential distribution.",
+    "misconception": "Thinking the elapsed time matters.",
+    "why": "The exponential distribution forgets its past.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-28",
+    "topic": "dist",
+    "sub": "uniform lifetime: conditional survival",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The total lifetime of a battery is uniformly distributed between 0 and 60 hours. It has already lasted 20 hours. What is the probability that it lasts <b>at least 25 more hours</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.375,
+      "display": "0.375"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.375",
+        "correct": true,
+        "why": "",
+        "v": 0.375
+      },
+      {
+        "text": "0.5353",
+        "correct": false,
+        "why": "This is the answer for an exponential lifetime; for a uniform lifetime the age matters.",
+        "v": 0.5352614285189903
+      },
+      {
+        "text": "0.5833",
+        "correct": false,
+        "why": "This ignores the information that the battery has already lasted 20 hours.",
+        "v": 0.5833333333333334
+      },
+      {
+        "text": "0.625",
+        "correct": false,
+        "why": "This is the probability that the battery fails within the next 25 hours.",
+        "v": 0.625
+      }
+    ],
+    "solution": [
+      "Given $T>20$, $T$ is uniform on $(20,60)$, a length of 40.",
+      "$P(T\\ge45\\mid T>20) = \\dfrac{60-45}{40} = \\dfrac{15}{40} = 0.375$."
+    ],
+    "hints": [
+      "What is the conditional distribution of $T$ given $T>20$?",
+      "Lasting 25 more hours means $T\\ge45$.",
+      "Divide the favourable length by the remaining length."
+    ],
+    "concept": "Conditional survival for a uniform lifetime.",
+    "misconception": "Applying the memoryless property where it does not hold.",
+    "why": "A uniform lifetime has an increasing failure rate.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-29",
+    "topic": "dist",
+    "sub": "Chebyshev",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A random variable has mean 50 and variance 25. What lower bound does Chebyshev's inequality give for $P(40<X<60)$?",
+    "data": "",
+    "answer": {
+      "value": 0.75,
+      "display": "0.75"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.75",
+        "correct": true,
+        "why": "",
+        "v": 0.75
+      },
+      {
+        "text": "-1.5",
+        "correct": false,
+        "why": "The bound is $\\sigma^2/\\varepsilon^2 = 25/100$; here $\\varepsilon = 10$, not $\\sqrt{10}$.",
+        "v": -1.5
+      },
+      {
+        "text": "0.95",
+        "correct": false,
+        "why": "The 95% figure comes from a normal distribution, which is not assumed.",
+        "v": 0.95
+      },
+      {
+        "text": "0.25",
+        "correct": false,
+        "why": "This is the upper bound on the probability of being at least 10 away from the mean.",
+        "v": 0.25
+      }
+    ],
+    "solution": [
+      "$P(|X-50|\\ge10) \\le \\dfrac{\\sigma^2}{10^2} = \\dfrac{25}{100} = 0.25$.",
+      "So $P(40<X<60) \\ge 1-0.25 = 0.75$."
+    ],
+    "hints": [
+      "Express the event as $|X-\\mu|<10$.",
+      "Apply $P(|X-\\mu|\\ge\\varepsilon)\\le\\sigma^2/\\varepsilon^2$.",
+      "Take the complement."
+    ],
+    "concept": "Chebyshev bound.",
+    "misconception": "Using normal-distribution values.",
+    "why": "Chebyshev holds for any distribution with finite variance.",
+    "fam": "dist:bounds"
+  },
+  {
+    "id": "DST-30",
+    "topic": "dist",
+    "sub": "Markov",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "The waiting time at a clinic is non-negative with a mean of 12 minutes. What is the best bound that Markov's inequality gives for the probability that a patient waits <b>at least 30 minutes</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.4,
+      "display": "0.4"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.4",
+        "correct": true,
+        "why": "",
+        "v": 0.4
+      },
+      {
+        "text": "2.5",
+        "correct": false,
+        "why": "This inverts the ratio; Markov’s bound is $E[X]/a$.",
+        "v": 2.5
+      },
+      {
+        "text": "0.6",
+        "correct": false,
+        "why": "This is a lower bound for waiting less than 30 minutes, not an upper bound for waiting at least 30.",
+        "v": 0.6
+      },
+      {
+        "text": "0.0133",
+        "correct": false,
+        "why": "The bound is $E[X]/a$ with no further division.",
+        "v": 0.013333333333333334
+      }
+    ],
+    "solution": [
+      "For a non-negative variable, $P(X\\ge a) \\le E[X]/a$.",
+      "$P(X\\ge30) \\le 12/30 = 0.4$."
+    ],
+    "hints": [
+      "Is the variable non-negative with a known mean?",
+      "Markov: $P(X\\ge a)\\le E[X]/a$.",
+      "Substitute the mean and the threshold into the bound."
+    ],
+    "concept": "Markov’s inequality.",
+    "misconception": "Inverting the ratio.",
+    "why": "A non-negative variable with a small mean cannot be large too often.",
+    "fam": "dist:bounds"
+  },
+  {
+    "id": "DST-31",
+    "topic": "dist",
+    "sub": "Chebyshev sample size",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Daily revenue has a standard deviation of 8 (thousand) and an unknown mean. How many independent days of data are needed so that, by Chebyshev's inequality, the sample mean is within 3 of the true mean with probability <b>at least 0.95</b>?",
+    "data": "",
+    "answer": {
+      "value": 143,
+      "display": "143"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "143",
+        "correct": true,
+        "why": "",
+        "v": 143
+      },
+      {
+        "text": "142",
+        "correct": false,
+        "why": "Rounding down gives a bound slightly above 0.05; the sample size must be rounded up.",
+        "v": 142
+      },
+      {
+        "text": "427",
+        "correct": false,
+        "why": "The deviation must be squared: $\\sigma^2/(n\\varepsilon^2)$.",
+        "v": 427
+      },
+      {
+        "text": "28",
+        "correct": false,
+        "why": "This is the central-limit-theorem answer; Chebyshev is more conservative.",
+        "v": 28
+      }
+    ],
+    "solution": [
+      "$P(|\\bar X-\\mu|\\ge3) \\le \\dfrac{\\sigma^2}{n\\cdot3^2} = \\dfrac{64}{9n}$.",
+      "Require $\\dfrac{64}{9n} \\le 0.05$, so $n \\ge \\dfrac{64}{0.45} = 142.2$.",
+      "$n = 143$."
+    ],
+    "hints": [
+      "The variance of the sample mean is $\\sigma^2/n$.",
+      "Apply Chebyshev with $\\varepsilon = 3$.",
+      "Solve $64/(9n)\\le0.05$ and round up."
+    ],
+    "concept": "Sample size from Chebyshev’s inequality.",
+    "misconception": "Using $\\varepsilon$ instead of $\\varepsilon^2$.",
+    "why": "Chebyshev needs no distributional assumption but gives larger samples than the CLT.",
+    "fam": "dist:bounds"
+  },
+  {
+    "id": "DST-32",
+    "topic": "dist",
+    "sub": "central limit theorem for Poisson sums",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Thirty independent random counts each have a Poisson distribution with mean 2. Approximate the probability that their <b>total exceeds 70</b>, using the normal approximation with a continuity correction.",
+    "data": "",
+    "answer": {
+      "value": 0.08762218212366724,
+      "display": "0.0876"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0876",
+        "correct": true,
+        "why": "",
+        "v": 0.08762218212366724
+      },
+      {
+        "text": "0.0984",
+        "correct": false,
+        "why": "For \"greater than 70\" with integers the boundary is 70.5, not 70.",
+        "v": 0.09835286643476349
+      },
+      {
+        "text": "0.4305",
+        "correct": false,
+        "why": "The standard deviation is $\\sqrt{60}\\approx7.75$, not 60.",
+        "v": 0.43053981859031265
+      },
+      {
+        "text": "0",
+        "correct": false,
+        "why": "The mean and variance of the sum are $30\\times2 = 60$.",
+        "v": 0
+      }
+    ],
+    "solution": [
+      "The sum has mean $30\\times2 = 60$ and variance $60$ (so $\\sigma = 7.75$).",
+      "$P(S>70) = P(S\\ge71) \\approx 1-\\Phi\\left(\\dfrac{70.5-60}{7.75}\\right) = 1-\\Phi(1.355) \\approx 0.088$."
+    ],
+    "hints": [
+      "Find the mean and variance of the sum.",
+      "$S>70$ means $S\\ge71$; use 70.5.",
+      "Standardise and take the upper tail."
+    ],
+    "concept": "CLT with continuity correction.",
+    "misconception": "Using the wrong boundary or variance.",
+    "why": "A sum of independent Poisson variables is itself Poisson; the CLT approximates it by a normal.",
+    "fam": "dist:clt"
+  },
+  {
+    "id": "DST-33",
+    "topic": "dist",
+    "sub": "central limit theorem for rounding errors",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "100 weights are each rounded to the nearest gram, and the rounding errors are independent and uniform on $(-0.5, 0.5)$. Approximate the probability that the total rounding error exceeds 2 grams <b>in absolute value</b>.",
+    "data": "",
+    "answer": {
+      "value": 0.48842216943309724,
+      "display": "0.4884"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.4884",
+        "correct": true,
+        "why": "",
+        "v": 0.48842216943309724
+      },
+      {
+        "text": "0.2442",
+        "correct": false,
+        "why": "This is a one-sided tail; \"in absolute value\" needs both tails.",
+        "v": 0.24421108471654862
+      },
+      {
+        "text": "0.8103",
+        "correct": false,
+        "why": "The standard deviation of the sum is $\\sqrt{100/12} \\approx 2.89$, not $100/12$.",
+        "v": 0.8103303499623684
+      },
+      {
+        "text": "4.29e-12",
+        "correct": false,
+        "why": "The sum of 100 errors has variance $100/12$, not $1/12$.",
+        "v": 4.28879154412698e-12
+      }
+    ],
+    "solution": [
+      "Each error has variance $1/12$, so the sum has variance $100/12 = 8.33$ and $\\sigma = 2.89$.",
+      "$P(|S|>2) \\approx 2\\left[1-\\Phi\\left(\\dfrac{2}{2.89}\\right)\\right] = 2(1-0.7557) \\approx 0.489$."
+    ],
+    "hints": [
+      "The variance of a uniform variable on $(a,b)$ is $(b-a)^2/12$.",
+      "Add 100 variances and take the square root.",
+      "Include both tails."
+    ],
+    "concept": "CLT for a sum of uniform errors.",
+    "misconception": "Using one tail.",
+    "why": "Independent rounding errors accumulate like a random walk with standard deviation growing as $\\sqrt n$.",
+    "fam": "dist:diagnose"
+  },
+  {
+    "id": "DST-34",
+    "topic": "dist",
+    "sub": "central limit theorem for a running total",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Rolls of a fair four-faced die (faces 1 to 4) are added up one by one, stopping the moment the total passes 120. Estimate the chance that the stopping takes <b>50 or more rolls</b>.",
+    "data": "",
+    "answer": {
+      "value": 0.3991489772767204,
+      "display": "0.3991"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.3991",
+        "correct": true,
+        "why": "",
+        "v": 0.3991489772767204
+      },
+      {
+        "text": "0.6009",
+        "correct": false,
+        "why": "This is the probability that fewer than 50 rolls are needed; the event asked for needs the total after 49 rolls to be at most 120.",
+        "v": 0.6008510227232796
+      },
+      {
+        "text": "0.2846",
+        "correct": false,
+        "why": "At least 50 rolls are needed iff the total after <i>49</i> rolls is still at most 120.",
+        "v": 0.2846067838139715
+      },
+      {
+        "text": "0.3747",
+        "correct": false,
+        "why": "The continuity correction uses 120.5 for the event \"total at most 120\".",
+        "v": 0.37469715709789175
+      }
+    ],
+    "solution": [
+      "At least 50 rolls are needed iff $S_{49} \\le 120$.",
+      "$S_{49}$ has mean $49(2.5) = 122.5$ and variance $49(1.25) = 61.25$ ($\\sigma = 7.83$).",
+      "$P(S_{49}\\le120) \\approx \\Phi\\left(\\dfrac{120.5-122.5}{7.83}\\right) = \\Phi(-0.256) \\approx 0.399$."
+    ],
+    "hints": [
+      "Translate \"at least 50 rolls needed\" into a statement about the sum of 49 rolls.",
+      "Find the mean and variance of $S_{49}$.",
+      "Apply the normal approximation with a continuity correction."
+    ],
+    "concept": "Relating a stopping count to a partial sum.",
+    "misconception": "Using $S_{50}$ instead of $S_{49}$.",
+    "why": "The number of rolls exceeds 49 exactly when the first 49 rolls have not yet passed the threshold.",
+    "fam": "dist:clt"
+  },
+  {
+    "id": "DST-35",
+    "topic": "dist",
+    "sub": "CLT for stock levels",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A part with a lifetime of mean 80 hours and standard deviation 20 hours is swapped for a new one whenever it fails. How many spares should be kept so that, with probability at least <b>0.95</b>, the machine can run 1,500 hours? Use the central limit theorem.",
+    "data": "",
+    "answer": {
+      "value": 21,
+      "display": "21"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "21",
+        "correct": true,
+        "why": "",
+        "v": 21
+      },
+      {
+        "text": "19",
+        "correct": false,
+        "why": "This is the number needed on average; a 95% guarantee needs a safety margin.",
+        "v": 19
+      },
+      {
+        "text": "20",
+        "correct": false,
+        "why": "At $n=20$ the probability of lasting 1,500 hours is only about 0.89.",
+        "v": 20
+      },
+      {
+        "text": "30",
+        "correct": false,
+        "why": "This is more than necessary: $n=21$ already gives a probability above 0.95.",
+        "v": 30
+      }
+    ],
+    "solution": [
+      "With $n$ parts the total lifetime has mean $80n$ and standard deviation $20\\sqrt n$.",
+      "Require $P(S_n\\ge1500) \\ge 0.95 \\iff \\dfrac{80n-1500}{20\\sqrt n} \\ge 1.645$.",
+      "Testing: $n=20$: $z = 100/89.4 = 1.12$; $n=21$: $z = 180/91.65 = 1.96$, so $n = 21$."
+    ],
+    "hints": [
+      "The total lifetime of $n$ parts has mean $80n$ and sd $20\\sqrt n$.",
+      "Set up $P(S_n\\ge1500)\\ge0.95$ with $z = 1.645$.",
+      "Try integer values of $n$ near $1500/80$."
+    ],
+    "concept": "Choosing a stock size with the CLT.",
+    "misconception": "Ignoring variability.",
+    "why": "Safety stock covers the variability of the total lifetime.",
+    "fam": "dist:clt"
+  },
+  {
+    "id": "DST-37",
+    "topic": "dist",
+    "sub": "random walk",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A price moves up one unit with probability 0.4 and down one unit with probability 0.6 each day, independently. What is the probability that after <b>six days</b> the price is back at its starting level?",
+    "data": "",
+    "answer": {
+      "value": 0.27648,
+      "display": "0.2765"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2765",
+        "correct": true,
+        "why": "",
+        "v": 0.27648
+      },
+      {
+        "text": "0.0138",
+        "correct": false,
+        "why": "This is the probability of one specific order of three ups and three downs; there are $\\binom63 = 20$.",
+        "v": 0.013824000000000001
+      },
+      {
+        "text": "0.3125",
+        "correct": false,
+        "why": "This uses probability $1/2$ for each move; here up has probability 0.4.",
+        "v": 0.3125
+      },
+      {
+        "text": "0.4",
+        "correct": false,
+        "why": "This is the probability of a single up move.",
+        "v": 0.4
+      }
+    ],
+    "solution": [
+      "Returning to the start requires 3 ups and 3 downs in 6 days.",
+      "$P = \\binom63(0.4)^3(0.6)^3 = 20\\times0.064\\times0.216 = 0.2765$."
+    ],
+    "hints": [
+      "How many up moves are needed to end at zero net change?",
+      "The number of up moves is binomial.",
+      "Compute $P(X=3)$."
+    ],
+    "concept": "Binomial model for a random walk.",
+    "misconception": "Using probability 1/2.",
+    "why": "Net change is the number of ups minus the number of downs.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-39",
+    "topic": "dist",
+    "sub": "binomial tail",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Ten fair dice are rolled. What is the probability that <b>at least three</b> of them show a 6?",
+    "data": "",
+    "answer": {
+      "value": 0.2247732021287403,
+      "display": "0.2248"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.2248",
+        "correct": true,
+        "why": "",
+        "v": 0.2247732021287403
+      },
+      {
+        "text": "0.155",
+        "correct": false,
+        "why": "This is the probability of exactly three sixes.",
+        "v": 0.15504535957425192
+      },
+      {
+        "text": "0.5155",
+        "correct": false,
+        "why": "This is the probability of at least two sixes.",
+        "v": 0.5154832513304626
+      },
+      {
+        "text": "0.8385",
+        "correct": false,
+        "why": "This is the probability of at least one six.",
+        "v": 0.8384944171101543
+      }
+    ],
+    "solution": [
+      "$P(X\\le2) = (5/6)^{10}+10(1/6)(5/6)^{9}+45(1/6)^2(5/6)^{8} = 0.1615+0.3230+0.2907 = 0.7752$.",
+      "$P(X\\ge3) = 0.2248$."
+    ],
+    "hints": [
+      "Use the complement of 0, 1 or 2 sixes.",
+      "Compute the three binomial terms with $n=10$, $p=1/6$.",
+      "Subtract from 1."
+    ],
+    "concept": "Binomial tail via the complement.",
+    "misconception": "Using only one term.",
+    "why": "The upper tail has many terms; the lower tail only three.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-41",
+    "topic": "dist",
+    "sub": "design with a probability target",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "How large should the on-call roster be so that, with probability at least <b>0.90</b>, three or more of the rostered nurses can come in? Each rostered nurse is independently available with probability 0.7.",
+    "data": "",
+    "answer": {
+      "value": 6,
+      "display": "6"
+    },
+    "fmt": "i",
+    "options": [
+      {
+        "text": "6",
+        "correct": true,
+        "why": "",
+        "v": 6
+      },
+      {
+        "text": "5",
+        "correct": false,
+        "why": "With 5 nurses $P(\\ge3) = 0.837$, below 0.90.",
+        "v": 5
+      },
+      {
+        "text": "3",
+        "correct": false,
+        "why": "With exactly 3 nurses all must be available: $0.7^3 = 0.343$.",
+        "v": 3
+      },
+      {
+        "text": "7",
+        "correct": false,
+        "why": "This is more than needed: with 6 nurses the probability is already about 0.930.",
+        "v": 7
+      }
+    ],
+    "solution": [
+      "$n=4$: $P(\\ge3) = 4(0.7)^3(0.3)+0.7^4 = 0.652$.",
+      "$n=5$: $0.837$.",
+      "$n=6$: $P(\\ge3) = 1-[0.3^6+6(0.7)(0.3)^5+15(0.49)(0.3)^4] = 1-0.0705 = 0.930$.",
+      "The smallest pool is 6."
+    ],
+    "hints": [
+      "For each pool size $n$ compute $P(X\\ge3)$ with $p=0.7$.",
+      "Use the complement: $1-P(X\\le2)$.",
+      "Increase $n$ until the probability reaches 0.90."
+    ],
+    "concept": "Sizing a pool with a binomial reliability target.",
+    "misconception": "Using the expected availability only.",
+    "why": "More on-call staff raise the chance that at least three are free.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-42",
+    "topic": "dist",
+    "sub": "comparing events with uniform numbers",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Ten numbers are drawn independently and uniformly from $(0,1)$. Which is more likely: (a) <b>exactly five</b> of them exceed $\\tfrac12$, or (b) <b>at least two</b> of them exceed 0.9?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "(b): about 0.264 compared with 0.246"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "(b): about 0.264 compared with 0.246",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "(a): about 0.264 compared with 0.246",
+        "correct": false,
+        "why": "The values are swapped: $P(a) = 252/1024 = 0.246$."
+      },
+      {
+        "text": "They are equally likely",
+        "correct": false,
+        "why": "The two probabilities are 0.246 and 0.264."
+      },
+      {
+        "text": "(a), because five of ten is the most likely count",
+        "correct": false,
+        "why": "It is the most likely count for event (a), but event (b) has probability 0.264, slightly higher."
+      }
+    ],
+    "solution": [
+      "Each number exceeds $\\tfrac12$ with probability $\\tfrac12$: $P(a) = \\binom{10}5/2^{10} = 252/1024 = 0.246$.",
+      "Each exceeds 0.9 with probability 0.1: $P(b) = 1-0.9^{10}-10(0.1)(0.9)^9 = 1-0.3487-0.3874 = 0.264$."
+    ],
+    "hints": [
+      "Turn each number into a success/failure for the event in question.",
+      "Event (a) has $p = 1/2$; event (b) has $p = 0.1$.",
+      "Compute the two binomial probabilities."
+    ],
+    "concept": "Binomial reasoning for events defined by uniform variables.",
+    "misconception": "Choosing by intuition.",
+    "why": "Each number independently exceeds the cutoff with probability $1-$cutoff.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-45",
+    "topic": "dist",
+    "sub": "normal approximation to a tail count",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A cinema has 9,000 members. Each member's birthday month is equally likely to be any of the 12 months, independently. What is the approximate probability that <b>at least 780</b> members have a July birthday? (Use the normal approximation with continuity correction.)",
+    "data": "",
+    "answer": {
+      "value": 0.13027637447306484,
+      "display": "0.1303"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.1303",
+        "correct": true,
+        "why": "",
+        "v": 0.13027637447306484
+      },
+      {
+        "text": "0.1263",
+        "correct": false,
+        "why": "For \"at least 780\" the continuity-corrected boundary is 779.5.",
+        "v": 0.12627971029450324
+      },
+      {
+        "text": "0.8697",
+        "correct": false,
+        "why": "This is the probability of fewer than 780 July birthdays.",
+        "v": 0.8697236255269352
+      },
+      {
+        "text": "0.4843",
+        "correct": false,
+        "why": "The standard deviation is $\\sqrt{687.5} \\approx 26.2$, not 750.",
+        "v": 0.4843122532399372
+      }
+    ],
+    "solution": [
+      "The number of July birthdays is binomial$(9000, 1/12)$: $\\mu = 750$, $\\sigma^2 = 9000\\cdot\\tfrac1{12}\\cdot\\tfrac{11}{12} = 687.5$, $\\sigma = 26.2$.",
+      "$P(X\\ge780) \\approx 1-\\Phi\\left(\\dfrac{779.5-750}{26.2}\\right) = 1-\\Phi(1.125) \\approx 0.130$."
+    ],
+    "hints": [
+      "Identify the binomial parameters.",
+      "For \"at least 780\" use the boundary 779.5.",
+      "Standardise and take the upper tail."
+    ],
+    "concept": "Upper-tail normal approximation.",
+    "misconception": "Using the wrong standard deviation.",
+    "why": "Large $n$ with moderate $np$ makes the normal approximation accurate.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-47",
+    "topic": "dist",
+    "sub": "geometric",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A firm is inspected in any given year with probability 0.15, independently across years. What is the probability that its <b>first inspection occurs in year 4 or later</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.6141249999999999,
+      "display": "0.6141"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6141",
+        "correct": true,
+        "why": "",
+        "v": 0.6141249999999999
+      },
+      {
+        "text": "0.522",
+        "correct": false,
+        "why": "This is the probability of no inspection in years 1 to 4; \"year 4 or later\" needs only years 1 to 3 to be clear.",
+        "v": 0.5220062499999999
+      },
+      {
+        "text": "0.0921",
+        "correct": false,
+        "why": "This is the probability that the first inspection occurs exactly in year 4.",
+        "v": 0.09211874999999999
+      },
+      {
+        "text": "0.3859",
+        "correct": false,
+        "why": "This is the probability of an inspection within the first three years.",
+        "v": 0.3858750000000001
+      }
+    ],
+    "solution": [
+      "The first inspection is in year 4 or later iff there is no inspection in years 1, 2 and 3.",
+      "$P = 0.85^3 = 0.6141$."
+    ],
+    "hints": [
+      "What must happen in the first three years?",
+      "Years are independent.",
+      "Multiply the three no-inspection probabilities."
+    ],
+    "concept": "Geometric survival probability.",
+    "misconception": "Including year 4 in the no-inspection run.",
+    "why": "$P(T\\ge k) = (1-p)^{k-1}$.",
+    "fam": "dist:waiting"
+  },
+  {
+    "id": "DST-48",
+    "topic": "dist",
+    "sub": "geometric spread",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Each application succeeds independently with probability 0.2, and applications continue until the first success. What is the <b>standard deviation</b> of the number of applications?",
+    "data": "",
+    "answer": {
+      "value": 4.472135954999579,
+      "display": "4.4721"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "4.4721",
+        "correct": true,
+        "why": "",
+        "v": 4.472135954999579
+      },
+      {
+        "text": "5",
+        "correct": false,
+        "why": "This is the mean number of applications, 5.",
+        "v": 5
+      },
+      {
+        "text": "20",
+        "correct": false,
+        "why": "This is the variance $(1-p)/p^2 = 20$, not the standard deviation.",
+        "v": 20
+      },
+      {
+        "text": "0.4",
+        "correct": false,
+        "why": "This is the standard deviation of a single Bernoulli trial.",
+        "v": 0.4
+      }
+    ],
+    "solution": [
+      "For a geometric variable with success probability $p$: $\\mathrm{Var} = \\dfrac{1-p}{p^2} = \\dfrac{0.8}{0.04} = 20$.",
+      "Standard deviation $= \\sqrt{20} \\approx 4.47$."
+    ],
+    "hints": [
+      "Recall the variance of a geometric variable.",
+      "Substitute $p = 0.2$.",
+      "Take the square root."
+    ],
+    "concept": "Variance and standard deviation of a geometric variable.",
+    "misconception": "Reporting the mean or the variance.",
+    "why": "Waiting times for rare successes are very variable.",
+    "fam": "dist:waiting"
+  },
+  {
+    "id": "DST-51",
+    "topic": "dist",
+    "sub": "binomial standard deviation",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "30% of website visitors click an advertisement, independently. For 40 visitors, what is the <b>standard deviation</b> of the number who click?",
+    "data": "",
+    "answer": {
+      "value": 2.8982753492378874,
+      "display": "2.8983"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "2.8983",
+        "correct": true,
+        "why": "",
+        "v": 2.8982753492378874
+      },
+      {
+        "text": "8.4",
+        "correct": false,
+        "why": "This is the variance $np(1-p) = 8.4$, not the standard deviation.",
+        "v": 8.399999999999999
+      },
+      {
+        "text": "12",
+        "correct": false,
+        "why": "This is the mean number of clicks, 12.",
+        "v": 12
+      },
+      {
+        "text": "3.4641",
+        "correct": false,
+        "why": "This omits the factor $(1-p)$ in the variance.",
+        "v": 3.4641016151377544
+      }
+    ],
+    "solution": [
+      "$\\mathrm{Var}(X) = np(1-p) = 40(0.3)(0.7) = 8.4$.",
+      "$\\mathrm{SD} = \\sqrt{8.4} \\approx 2.90$."
+    ],
+    "hints": [
+      "Recall the variance of a binomial variable.",
+      "Substitute $n=40$, $p=0.3$.",
+      "Take the square root."
+    ],
+    "concept": "Binomial variance.",
+    "misconception": "Reporting variance.",
+    "why": "Variance is largest when $p$ is near $1/2$.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-52",
+    "topic": "dist",
+    "sub": "compound probabilities",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "15% of online orders are returned, and 60% of returned items are restocked (the rest are scrapped). Among 12 independent orders, what is the probability that <b>exactly 3</b> are returned <b>and restocked</b>?",
+    "data": "",
+    "answer": {
+      "value": 0.06863138134481549,
+      "display": "0.0686"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.0686",
+        "correct": true,
+        "why": "",
+        "v": 0.06863138134481549
+      },
+      {
+        "text": "0.172",
+        "correct": false,
+        "why": "This is the probability that exactly 3 orders are returned, not returned and restocked.",
+        "v": 0.17197558261527826
+      },
+      {
+        "text": "0.0125",
+        "correct": false,
+        "why": "This applies the restocking probability directly to all orders.",
+        "v": 0.012457082880000005
+      },
+      {
+        "text": "0.000354",
+        "correct": false,
+        "why": "The probabilities should be multiplied (returned and then restocked), not added.",
+        "v": 0.0003540515899658203
+      }
+    ],
+    "solution": [
+      "An order is \"returned and restocked\" with probability $0.15\\times0.6 = 0.09$.",
+      "The number of such orders is binomial$(12, 0.09)$.",
+      "$P(X=3) = \\binom{12}{3}(0.09)^3(0.91)^9 \\approx 0.0686$."
+    ],
+    "hints": [
+      "What is the probability that a single order is returned and restocked?",
+      "Treat that event as one Bernoulli trial.",
+      "Use the binomial pmf with $n=12$."
+    ],
+    "concept": "Binomial model with a compound event.",
+    "misconception": "Adding probabilities.",
+    "why": "Conditional steps multiply along a branch.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-53",
+    "topic": "dist",
+    "sub": "system reliability",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A circuit board works only if all 3 of its independent components work, each with probability 0.95. Among 8 independent boards, what is the probability that <b>at least 7</b> work?",
+    "data": "",
+    "answer": {
+      "value": 0.6805698399335117,
+      "display": "0.6806"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.6806",
+        "correct": true,
+        "why": "",
+        "v": 0.6805698399335117
+      },
+      {
+        "text": "0.9428",
+        "correct": false,
+        "why": "This uses the probability of a single component working for the whole board.",
+        "v": 0.9427553497265624
+      },
+      {
+        "text": "0.3886",
+        "correct": false,
+        "why": "This is the probability of exactly 7 working boards; 8 working also qualifies.",
+        "v": 0.38858081559473934
+      },
+      {
+        "text": "0.8574",
+        "correct": false,
+        "why": "This is the probability that one board works.",
+        "v": 0.8573749999999999
+      }
+    ],
+    "solution": [
+      "A board works with probability $0.95^3 = 0.8574$.",
+      "$P(X\\ge7) = 8(0.8574)^7(0.1426)+(0.8574)^8 = 0.3873+0.2921 = 0.680$."
+    ],
+    "hints": [
+      "Find the probability that one board works.",
+      "The number of working boards is binomial$(8, 0.8574)$.",
+      "Add the terms for 7 and 8."
+    ],
+    "concept": "Two-level reliability model.",
+    "misconception": "Using the component probability for boards.",
+    "why": "Reliability multiplies within a series system and then enters a binomial count.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-54",
+    "topic": "dist",
+    "sub": "error probability of a decision rule",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A buyer samples 25 items from a shipment and rejects the supplier's claim that \"at least 90% conform\" if <b>at most 20</b> sampled items conform. If exactly 90% of the shipment actually conforms, what is the probability that the claim is wrongly rejected? (Use the binomial distribution with $p=0.9$.)",
+    "data": "",
+    "answer": {
+      "value": 0.09799362119546465,
+      "display": "0.098"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "0.098",
+        "correct": true,
+        "why": "",
+        "v": 0.09799362119546465
+      },
+      {
+        "text": "0.902",
+        "correct": false,
+        "why": "This is the probability that 21 or more conform, i.e. the claim is not rejected.",
+        "v": 0.9020063788045354
+      },
+      {
+        "text": "0.0334",
+        "correct": false,
+        "why": "The rejection region includes 20 conforming items; 20 must be included.",
+        "v": 0.03339994461149522
+      },
+      {
+        "text": "0.0646",
+        "correct": false,
+        "why": "This is the probability of exactly 20 conforming items; the rejection region is $\\le 20$.",
+        "v": 0.06459367658396943
+      }
+    ],
+    "solution": [
+      "The number conforming is binomial$(25, 0.9)$. The claim is rejected when $X\\le20$.",
+      "$P(X\\le20) = 1-P(X\\ge21) \\approx 1-0.9020 = 0.098$."
+    ],
+    "hints": [
+      "What is the distribution of the number of conforming items when $p = 0.9$?",
+      "The rejection region is $X\\le20$.",
+      "Use the complement of $X\\ge21$."
+    ],
+    "concept": "Probability of a wrong decision.",
+    "misconception": "Using the complement incorrectly.",
+    "why": "A decision rule has a false-rejection probability determined by the sampling distribution under the claim.",
+    "fam": "dist:diagnose"
+  },
+  {
+    "id": "DST-55",
+    "topic": "dist",
+    "sub": "binomial: exactly k",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A call-centre agent resolves 70% of calls on the first contact, independently. Out of 6 calls, what is the probability that exactly 4 are resolved on the first contact?",
+    "data": "",
+    "answer": {
+      "value": 0.324135,
+      "display": "0.3241"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$P = \\binom64(0.7)^4(0.3)^2 = 15(0.2401)(0.09) \\approx 0.324$."
+    ],
+    "hints": [
+      "Identify $n$, $p$ and $k$.",
+      "Count arrangements with $\\binom{6}{4}$.",
+      "Multiply by $0.7^4\\times0.3^2$."
+    ],
+    "concept": "Binomial probability mass function.",
+    "misconception": "Omitting the number of arrangements.",
+    "why": "The binomial coefficient counts the ways to place the 4 successes.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-56",
+    "topic": "dist",
+    "sub": "binomial: at least one",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A marketing email is opened with probability 0.15 by each recipient independently. If it is sent to 10 recipients, what is the probability that at least one opens it?",
+    "data": "",
+    "answer": {
+      "value": 0.8031255956592774,
+      "display": "0.8031"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$1-0.85^{10} \\approx 1-0.1969 = 0.803$."
+    ],
+    "hints": [
+      "Use the complement: nobody opens it.",
+      "Raise 0.85 to the tenth power.",
+      "Subtract from 1."
+    ],
+    "concept": "At least one via the complement.",
+    "misconception": "Multiplying $10\\times0.15$.",
+    "why": "10 recipients do not guarantee an opening: $10\\times0.15=1.5>1$ is not a probability.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-57",
+    "topic": "dist",
+    "sub": "binomial: tail with a cutoff",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A quality plan accepts a batch of 20 items if at most 1 is defective. Each item is defective independently with probability 0.05. What is the probability the batch is accepted?",
+    "data": "",
+    "answer": {
+      "value": 0.7358395249438492,
+      "display": "0.7358"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$P(0)+P(1) = 0.95^{20}+20(0.05)(0.95)^{19} \\approx 0.3585+0.3774 = 0.736$."
+    ],
+    "hints": [
+      "\"At most 1\" means 0 or 1 defectives.",
+      "Compute each binomial term.",
+      "Add the two probabilities together."
+    ],
+    "concept": "Cumulative binomial probability.",
+    "misconception": "Using only $P(1)$.",
+    "why": "Acceptance includes the no-defect case.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-58",
+    "topic": "dist",
+    "sub": "binomial: mean and SD",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A bank approves 40% of loan applications independently. Among 50 applications, what is the standard deviation of the number approved? (Give to 2 decimals.)",
+    "data": "",
+    "answer": {
+      "value": 3.4641016151377544,
+      "display": "3.4641"
+    },
+    "fmt": "d",
+    "tol": 0.01,
+    "options": [],
+    "solution": [
+      "$\\mathrm{Var} = np(1-p) = 50(0.4)(0.6) = 12$.",
+      "$\\mathrm{SD} = \\sqrt{12} \\approx 3.46$."
+    ],
+    "hints": [
+      "Variance of a binomial is $np(1-p)$.",
+      "Compute the variance first.",
+      "Take the square root."
+    ],
+    "concept": "Spread of a binomial count.",
+    "misconception": "Reporting the variance or $np$.",
+    "why": "The SD is the square root of the variance.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-59",
+    "topic": "dist",
+    "sub": "binomial: most likely count",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Each of 25 independent trials succeeds with probability 0.4. What is the most likely number of successes?",
+    "data": "",
+    "answer": {
+      "value": 10,
+      "display": "10"
+    },
+    "fmt": "i",
+    "options": [],
+    "solution": [
+      "Mode $=\\lfloor(n+1)p\\rfloor = \\lfloor26\\times0.4\\rfloor = 10$.",
+      "Here $np = 10$ exactly."
+    ],
+    "hints": [
+      "The mode is near $np$.",
+      "Use $\\lfloor(n+1)p\\rfloor$.",
+      "Compute $26\\times0.4$."
+    ],
+    "concept": "Mode of a binomial.",
+    "misconception": "Assuming the mode is always 0.",
+    "why": "Probabilities rise until the count passes $np$.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-60",
+    "topic": "dist",
+    "sub": "Poisson: exactly",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "Customer complaints arrive at an average rate of 3 per day (Poisson). What is the probability of exactly 2 complaints on a given day?",
+    "data": "",
+    "answer": {
+      "value": 0.22404180765538775,
+      "display": "0.224"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$P = e^{-3}3^2/2! = 4.5e^{-3} \\approx 0.224$."
+    ],
+    "hints": [
+      "Use $e^{-\\lambda}\\lambda^k/k!$.",
+      "Set $\\lambda=3$ and $k=2$.",
+      "Evaluate the resulting expression numerically."
+    ],
+    "concept": "Poisson pmf.",
+    "misconception": "Forgetting the factorial.",
+    "why": "The factorial arises from unordered arrivals.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-61",
+    "topic": "dist",
+    "sub": "Poisson: rate rescaling",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A help desk receives tickets at a rate of 12 per hour (Poisson). What is the probability of no tickets in a 10-minute period?",
+    "data": "",
+    "answer": {
+      "value": 0.1353352832366127,
+      "display": "0.1353"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "For 10 minutes $\\lambda = 12\\times\\tfrac{10}{60} = 2$.",
+      "$P(0) = e^{-2} \\approx 0.135$."
+    ],
+    "hints": [
+      "Rescale the rate to the 10-minute window.",
+      "Ten minutes is one sixth of an hour, so scale 12 accordingly.",
+      "The zero-count probability is $e^{-\\lambda}$."
+    ],
+    "concept": "Poisson rate scales with time.",
+    "misconception": "Using $\\lambda = 12$.",
+    "why": "The Poisson parameter is the mean count in the window.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-62",
+    "topic": "dist",
+    "sub": "Poisson: at least",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A server logs an average of 1.5 failures per week (Poisson). What is the probability of at least 2 failures in a week?",
+    "data": "",
+    "answer": {
+      "value": 0.44217459962892547,
+      "display": "0.4422"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$1-P(0)-P(1) = 1-e^{-1.5}(1+1.5) = 1-0.5578 = 0.442$."
+    ],
+    "hints": [
+      "Use the complement of 0 or 1 failures.",
+      "Compute $P(0)$ and $P(1)$.",
+      "Subtract their sum from 1."
+    ],
+    "concept": "Poisson tail via the complement.",
+    "misconception": "Using only $P(2)$.",
+    "why": "\"At least 2\" includes all larger counts.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-63",
+    "topic": "dist",
+    "sub": "Poisson: sum of independent",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Online orders arrive as Poisson with mean 4 per hour and phone orders as Poisson with mean 2 per hour, independently. What is the probability of exactly 5 orders in total in one hour?",
+    "data": "",
+    "answer": {
+      "value": 0.16062314104798003,
+      "display": "0.1606"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "The sum is Poisson with mean 6.",
+      "$P(5)=e^{-6}6^5/120 \\approx 0.161$."
+    ],
+    "hints": [
+      "Independent Poisson variables add.",
+      "What is the mean of the total?",
+      "Apply the pmf with $\\lambda=6$."
+    ],
+    "concept": "Sum of Poisson variables.",
+    "misconception": "Multiplying the means.",
+    "why": "The combined stream is Poisson with the sum of rates.",
+    "fam": "dist:clt"
+  },
+  {
+    "id": "DST-64",
+    "topic": "dist",
+    "sub": "Poisson approximation to binomial",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A bank processes 500 transactions a day, each independently fraudulent with probability 0.004. Use the Poisson approximation to estimate the probability of no fraudulent transaction.",
+    "data": "",
+    "answer": {
+      "value": 0.1353352832366127,
+      "display": "0.1353"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$\\lambda = np = 2$.",
+      "$P(0) \\approx e^{-2} \\approx 0.135$ (exact binomial 0.134)."
+    ],
+    "hints": [
+      "Compute $\\lambda = np$.",
+      "Zero events has probability $e^{-\\lambda}$.",
+      "Evaluate $e^{-2}$."
+    ],
+    "concept": "Poisson approximation.",
+    "misconception": "Using $\\lambda = p$.",
+    "why": "Many trials, small $p$: use $\\lambda=np$.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-65",
+    "topic": "dist",
+    "sub": "geometric: at most",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Each sales pitch succeeds with probability 0.2, independently. What is the probability that the first success occurs within the first 3 pitches?",
+    "data": "",
+    "answer": {
+      "value": 0.4879999999999999,
+      "display": "0.488"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$1-0.8^3 = 0.488$."
+    ],
+    "hints": [
+      "Use the complement: no success in 3 pitches.",
+      "That is $0.8^3$.",
+      "Subtract from 1."
+    ],
+    "concept": "Geometric cumulative probability.",
+    "misconception": "Using $3\\times0.2$.",
+    "why": "The failures must happen three times in a row.",
+    "fam": "dist:waiting"
+  },
+  {
+    "id": "DST-66",
+    "topic": "dist",
+    "sub": "geometric: memorylessness",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "Sales pitches succeed independently with probability 0.2 each. You have already made 5 unsuccessful pitches. What is the probability that you need at least 3 more pitches to get the first success?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "$0.8^2 = 0.64$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "$0.8^2 = 0.64$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$0.8^7$",
+        "correct": false,
+        "why": "That would include the five failures already observed; the geometric law is memoryless."
+      },
+      {
+        "text": "$0.8^5$",
+        "correct": false,
+        "why": "This is the probability of 5 failures, which has already occurred."
+      },
+      {
+        "text": "$1-0.8^2$",
+        "correct": false,
+        "why": "This is the probability of success within 2 more pitches."
+      }
+    ],
+    "solution": [
+      "At least 3 more pitches means the next 2 fail: $0.8^2 = 0.64$.",
+      "Past failures do not matter."
+    ],
+    "hints": [
+      "At least 3 more means the next two must fail.",
+      "Does the past matter?",
+      "Compute the probability of two failures."
+    ],
+    "concept": "Memoryless property.",
+    "misconception": "Including the past failures.",
+    "why": "Independent trials have no memory.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-67",
+    "topic": "dist",
+    "sub": "negative binomial",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Each interview leads to an offer with probability 0.3, independently. What is the probability that the <b>second</b> offer comes on the 5th interview?",
+    "data": "",
+    "answer": {
+      "value": 0.12347999999999996,
+      "display": "0.1235"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "Exactly 1 offer in the first 4, then an offer on the 5th:",
+      "$\\binom41(0.3)(0.7)^3\\times0.3 = 4(0.09)(0.343) \\approx 0.1235$."
+    ],
+    "hints": [
+      "One offer must come in the first four interviews.",
+      "The fifth must be an offer.",
+      "Multiply the binomial term by 0.3."
+    ],
+    "concept": "Waiting time for the second success.",
+    "misconception": "Using $\\binom{5}{2}$.",
+    "why": "The last trial is fixed as a success.",
+    "fam": "dist:waiting"
+  },
+  {
+    "id": "DST-68",
+    "topic": "dist",
+    "sub": "hypergeometric",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A box has 12 laptops, 3 of which are faulty. An auditor tests 4 chosen at random without replacement. What is the probability that exactly one is faulty?",
+    "data": "",
+    "answer": {
+      "value": 0.509090909090909,
+      "display": "0.5091"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$\\binom31\\binom93/\\binom{12}{4} = 3(84)/495 \\approx 0.509$."
+    ],
+    "hints": [
+      "Count ways to choose one faulty and three good.",
+      "Divide by all ways to choose 4 of 12.",
+      "Evaluate the resulting expression numerically."
+    ],
+    "concept": "Hypergeometric distribution.",
+    "misconception": "Using binomial probabilities.",
+    "why": "Sampling without replacement changes the probabilities.",
+    "fam": "dist:waiting"
+  },
+  {
+    "id": "DST-69",
+    "topic": "dist",
+    "sub": "uniform: interval",
+    "diff": 1,
+    "kind": "num",
+    "diag": false,
+    "stem": "A delivery arrives at a time uniformly distributed between 2 pm and 6 pm. What is the probability it arrives between 3:30 pm and 5 pm?",
+    "data": "",
+    "answer": {
+      "value": 0.375,
+      "display": "0.375"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Interval length 1.5 out of 4 hours: $1.5/4 = 0.375$."
+    ],
+    "hints": [
+      "Probability is proportional to length.",
+      "Total length is 4 hours.",
+      "Divide the sub-interval length by 4."
+    ],
+    "concept": "Uniform distribution.",
+    "misconception": "Using the midpoint.",
+    "why": "Equal-length intervals are equally likely.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-70",
+    "topic": "dist",
+    "sub": "uniform: conditional",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A delivery arrives at a time uniformly distributed between 2 pm and 6 pm. It has not arrived by 4 pm. What is the probability it arrives before 5 pm?",
+    "data": "",
+    "answer": {
+      "value": 0.5,
+      "display": "0.5"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "Given it is after 4 pm, the time is uniform on $[4,6]$.",
+      "$P = 1/2$."
+    ],
+    "hints": [
+      "Condition on being after 4 pm.",
+      "The remaining distribution is uniform on 4 pm to 6 pm.",
+      "What fraction lies before 5 pm?"
+    ],
+    "concept": "Conditional uniform distribution.",
+    "misconception": "Using the unconditional answer.",
+    "why": "Conditioning rescales the uniform window.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-71",
+    "topic": "dist",
+    "sub": "exponential: survival",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "A server’s time to failure is exponential with mean 200 hours. What is the probability it lasts more than 300 hours?",
+    "data": "",
+    "answer": {
+      "value": 0.22313016014842982,
+      "display": "0.2231"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "$P(T>300)=e^{-300/200} = e^{-1.5} \\approx 0.223$."
+    ],
+    "hints": [
+      "The survival function is $e^{-t/\\text{mean}}$.",
+      "Compute $t/\\text{mean}$.",
+      "Evaluate the exponential."
+    ],
+    "concept": "Exponential survival function.",
+    "misconception": "Using $1-e^{-1.5}$.",
+    "why": "\"Lasts more than\" is the survival probability.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-72",
+    "topic": "dist",
+    "sub": "exponential: memoryless residual life",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "The server above has already run 100 hours without failure. What is the probability it lasts at least another 50 hours?",
+    "data": "",
+    "answer": {
+      "value": 0.7788007830714049,
+      "display": "0.7788"
+    },
+    "fmt": "d",
+    "tol": 0.001,
+    "options": [],
+    "solution": [
+      "By memorylessness $P(T>150\\mid T>100) = P(T>50) = e^{-0.25} \\approx 0.779$."
+    ],
+    "hints": [
+      "Use the conditional probability definition.",
+      "Memorylessness removes the past.",
+      "Evaluate $e^{-50/200}$."
+    ],
+    "concept": "Memorylessness of the exponential.",
+    "misconception": "Using $e^{-150/200}$.",
+    "why": "The remaining life has the original distribution.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-73",
+    "topic": "dist",
+    "sub": "exponential: comparing two clocks",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Two independent machines fail after exponential times with rates 2 and 3 per year. What is the probability that the first machine fails before the second?",
+    "data": "",
+    "answer": {
+      "value": 0.4,
+      "display": "0.4"
+    },
+    "fmt": "d",
+    "options": [],
+    "solution": [
+      "$P = \\lambda_1/(\\lambda_1+\\lambda_2) = 2/5 = 0.4$."
+    ],
+    "hints": [
+      "Competing exponentials: use a rate ratio.",
+      "Rate of machine 1 over the total rate.",
+      "Compute $2/(2+3)$."
+    ],
+    "concept": "Race between exponential clocks.",
+    "misconception": "Answering 1/2.",
+    "why": "The faster clock is more likely to ring first.",
+    "fam": "dist:continuous"
+  },
+  {
+    "id": "DST-74",
+    "topic": "dist",
+    "sub": "normal: probability between",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Monthly electricity use of a household is normal with mean 300 kWh and standard deviation 40 kWh. What is the probability use lies between 260 and 380 kWh? (Use standard normal tables.)",
+    "data": "",
+    "answer": {
+      "value": 0.8185946732803799,
+      "display": "0.8186"
+    },
+    "fmt": "d",
+    "tol": 0.003,
+    "options": [],
+    "solution": [
+      "$z$ from $-1$ to $2$.",
+      "$\\Phi(2)-\\Phi(-1) = 0.9772-0.1587 = 0.8185$."
+    ],
+    "hints": [
+      "Standardise each endpoint.",
+      "Look up the standard normal cdf at each $z$.",
+      "Subtract the lower cdf value from the upper."
+    ],
+    "concept": "Normal interval probability.",
+    "misconception": "Adding probabilities.",
+    "why": "Interval probability is a cdf difference.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-75",
+    "topic": "dist",
+    "sub": "normal: quantile",
+    "diff": 2,
+    "kind": "num",
+    "diag": false,
+    "stem": "Exam scores are normal with mean 55 and standard deviation 10. What score is exceeded by only the top 10% of students? (Use $z_{0.90}\\approx1.28$.)",
+    "data": "",
+    "answer": {
+      "value": 67.8,
+      "display": "67.8"
+    },
+    "fmt": "d",
+    "tol": 0.2,
+    "options": [],
+    "solution": [
+      "$x = \\mu+z\\sigma = 55+1.28(10) = 67.8$."
+    ],
+    "hints": [
+      "Top 10% means the 90th percentile.",
+      "Use $z\\approx1.28$.",
+      "Convert back with $\\mu+z\\sigma$."
+    ],
+    "concept": "Normal quantiles.",
+    "misconception": "Using $z$ directly.",
+    "why": "Quantile means cut-off value.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-76",
+    "topic": "dist",
+    "sub": "normal: sum of independent",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A commuter’s walking time is $N(12,\\,2^2)$ minutes and bus time is independently $N(25,\\,3^2)$ minutes. What is the probability the total journey exceeds 43 minutes? (Use tables.)",
+    "data": "",
+    "answer": {
+      "value": 0.04804614524496964,
+      "display": "0.048"
+    },
+    "fmt": "d",
+    "tol": 0.004,
+    "options": [],
+    "solution": [
+      "Total $\\sim N(37,\\,13)$, SD $\\approx3.606$.",
+      "$z = 6/3.606 \\approx 1.66$.",
+      "$P = 1-0.9515 \\approx 0.048$."
+    ],
+    "hints": [
+      "Add the means and the variances.",
+      "Standardise 43 using the combined SD.",
+      "Use the upper tail."
+    ],
+    "concept": "Sum of independent normals.",
+    "misconception": "Adding the SDs.",
+    "why": "Variances add, so SD = $\\sqrt{13}$.",
+    "fam": "dist:clt"
+  },
+  {
+    "id": "DST-77",
+    "topic": "dist",
+    "sub": "central limit theorem: sample mean",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "Individual basket values have mean ₹900 and standard deviation ₹300 (distribution unknown). For a random sample of 100 baskets, approximately what is the probability that the sample mean exceeds ₹960?",
+    "data": "",
+    "answer": {
+      "value": 0.02275006288725634,
+      "display": "0.0228"
+    },
+    "fmt": "d",
+    "tol": 0.002,
+    "options": [],
+    "solution": [
+      "SD of the mean $=300/\\sqrt{100}=30$.",
+      "$z = 60/30 = 2$.",
+      "$P \\approx 1-0.9772 = 0.0228$."
+    ],
+    "hints": [
+      "Find the standard deviation of the sample mean.",
+      "Standardise 960.",
+      "Use the upper tail of the normal."
+    ],
+    "concept": "CLT approximation.",
+    "misconception": "Dividing by 100 instead of $\\sqrt{100}$.",
+    "why": "Averages are much less variable than single baskets.",
+    "fam": "dist:clt"
+  },
+  {
+    "id": "DST-78",
+    "topic": "dist",
+    "sub": "normal approximation to binomial",
+    "diff": 3,
+    "kind": "num",
+    "diag": false,
+    "stem": "A fair coin is tossed 100 times. Using the normal approximation with continuity correction, what is the approximate probability of at least 60 heads?",
+    "data": "",
+    "answer": {
+      "value": 0.028716493915579067,
+      "display": "0.0287"
+    },
+    "fmt": "d",
+    "tol": 0.003,
+    "options": [],
+    "solution": [
+      "$\\mu=50$, $\\sigma=5$. $P(X\\ge60)\\approx P(Z>(59.5-50)/5)=P(Z>1.9)\\approx0.0287$."
+    ],
+    "hints": [
+      "Compute mean and standard deviation.",
+      "Use 59.5 as the cut-off.",
+      "Take the upper-tail probability."
+    ],
+    "concept": "Continuity-corrected normal approximation.",
+    "misconception": "Using 60 without correction.",
+    "why": "The correction bridges discrete and continuous.",
+    "fam": "dist:normal"
+  },
+  {
+    "id": "DST-79",
+    "topic": "dist",
+    "sub": "choosing a distribution",
+    "diff": 1,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "Which distribution is the most natural model for \"the number of customers who buy among 30 independent visitors, each buying with the same probability\"?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Binomial"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Binomial",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Poisson",
+        "correct": false,
+        "why": "There is a fixed number of trials; the Poisson counts events without a fixed number of trials."
+      },
+      {
+        "text": "Geometric",
+        "correct": false,
+        "why": "The geometric models the waiting time to a first success, not a count in fixed trials."
+      },
+      {
+        "text": "Uniform",
+        "correct": false,
+        "why": "The count is not equally likely over all values."
+      }
+    ],
+    "solution": [
+      "Fixed number of independent trials with a common success probability: binomial."
+    ],
+    "hints": [
+      "Is the number of trials fixed?",
+      "Are the trials independent with the same $p$?",
+      "Match with the distribution."
+    ],
+    "concept": "Recognising binomial settings.",
+    "misconception": "Using Poisson by default.",
+    "why": "Fixed $n$ and constant $p$ identify the binomial.",
+    "fam": "dist:binomial"
+  },
+  {
+    "id": "DST-80",
+    "topic": "dist",
+    "sub": "choosing between Poisson and binomial",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "Emails arrive in clusters: a busy hour often follows another busy hour. A manager models hourly counts as Poisson. Which assumption is most likely violated?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Independence of counts in different intervals"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Independence of counts in different intervals",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "The count must be non-negative",
+        "correct": false,
+        "why": "Counts are non-negative in any case."
+      },
+      {
+        "text": "The rate must be positive",
+        "correct": false,
+        "why": "A positive rate is not the issue."
+      },
+      {
+        "text": "The mean must be an integer",
+        "correct": false,
+        "why": "Poisson means need not be integers."
+      }
+    ],
+    "solution": [
+      "Poisson models assume events occur independently at a constant rate.",
+      "Clustering breaks independence between intervals."
+    ],
+    "hints": [
+      "What does Poisson assume about different intervals?",
+      "Does clustering conflict with that?",
+      "Choose the violated assumption."
+    ],
+    "concept": "Checking model assumptions.",
+    "misconception": "Assuming Poisson fits any count data.",
+    "why": "Clustering induces dependence.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-81",
+    "topic": "dist",
+    "sub": "comparing variance of binomial and Poisson",
+    "diff": 3,
+    "kind": "mcq",
+    "diag": false,
+    "stem": "A count has mean 4 and variance 3.2. Which standard distribution is consistent with these two moments?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "Binomial with $n=20$, $p=0.2$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "Binomial with $n=20$, $p=0.2$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "Poisson with $\\lambda=4$",
+        "correct": false,
+        "why": "A Poisson variable has variance equal to its mean, 4, not 3.2."
+      },
+      {
+        "text": "Geometric with $p=0.25$",
+        "correct": false,
+        "why": "A geometric variable with mean 4 has variance 12."
+      },
+      {
+        "text": "Binomial with $n=8$, $p=0.5$",
+        "correct": false,
+        "why": "This has mean 4 but variance 2."
+      }
+    ],
+    "solution": [
+      "Binomial: $np=4$, $np(1-p)=3.2$ gives $1-p=0.8$, $p=0.2$, $n=20$."
+    ],
+    "hints": [
+      "Write the mean and variance formulas.",
+      "Divide the variance by the mean.",
+      "The ratio gives $1-p$."
+    ],
+    "concept": "Matching moments to a distribution.",
+    "misconception": "Assuming equal mean and variance.",
+    "why": "Under-dispersion points to a binomial.",
+    "fam": "dist:poisson"
+  },
+  {
+    "id": "DST-82",
+    "topic": "dist",
+    "sub": "probability integral reading",
+    "diff": 2,
+    "kind": "mcq",
+    "diag": true,
+    "stem": "A continuous variable has density $f(x)$ with $f(3)=0.8$. Which statement is correct?",
+    "data": "",
+    "answer": {
+      "value": null,
+      "display": "The probability of being near 3 is about $0.8\\times$ the interval width, so $P(X=3)=0$"
+    },
+    "fmt": "d",
+    "options": [
+      {
+        "text": "The probability of being near 3 is about $0.8\\times$ the interval width, so $P(X=3)=0$",
+        "correct": true,
+        "why": ""
+      },
+      {
+        "text": "$P(X=3)=0.8$",
+        "correct": false,
+        "why": "A density value is not a probability; for continuous variables $P(X=3)=0$."
+      },
+      {
+        "text": "$P(X\\le3)=0.8$",
+        "correct": false,
+        "why": "That would be a cdf value."
+      },
+      {
+        "text": "$f(3)$ must be at most 1",
+        "correct": false,
+        "why": "Density values can exceed 1 when the spread is small."
+      }
+    ],
+    "solution": [
+      "Density times a small width approximates probability.",
+      "Exact points have probability zero."
+    ],
+    "hints": [
+      "Is a density a probability?",
+      "What is $P(X=x)$ for continuous $X$?",
+      "Think about intervals."
+    ],
+    "concept": "Density versus probability.",
+    "misconception": "Reading density as probability.",
+    "why": "Probabilities are areas under the density.",
+    "fam": "dist:binomial"
+  }
+]
